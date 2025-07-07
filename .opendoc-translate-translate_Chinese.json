@@ -1,0 +1,2467 @@
+{
+  "docs\\README.md": {
+    "path": "docs\\README.md",
+    "status": "translated",
+    "lastHash": "7d99bcbf1947949fab77d0540c45000f23e27822"
+  },
+  "docs\\docs\\how_to\\pydantic_compatibility.md": {
+    "path": "docs\\docs\\how_to\\pydantic_compatibility.md",
+    "status": "translated",
+    "lastHash": "5cc42baa2de1617ab04f91abf54eb3e0b3d0915b"
+  },
+  ".github\\CONTRIBUTING.md": {
+    "path": ".github\\CONTRIBUTING.md",
+    "status": "translated",
+    "lastHash": "d90322e897799ebf5ca0d813f821fc5c0d1cd77c"
+  },
+  "MIGRATE.md": {
+    "path": "MIGRATE.md",
+    "status": "translated",
+    "lastHash": "710f2d27b2fae4f023e9e6e0f45e9f5c384f271e"
+  },
+  ".github\\PULL_REQUEST_TEMPLATE.md": {
+    "path": ".github\\PULL_REQUEST_TEMPLATE.md",
+    "status": "translated",
+    "lastHash": "dc625ea0983317bdc4b5910a620be9b695097e27"
+  },
+  ".devcontainer\\README.md": {
+    "path": ".devcontainer\\README.md",
+    "status": "translated",
+    "lastHash": "eec3fd74e4804f1e9031f820652eb9e762ff3022"
+  },
+  "docs\\docs\\integrations\\document_loaders\\example_data\\example.md": {
+    "path": "docs\\docs\\integrations\\document_loaders\\example_data\\example.md",
+    "status": "translated",
+    "lastHash": "c7afd1e8b50d9be021a9e97a6bf286be11d089dc"
+  },
+  "docs\\docs\\integrations\\callbacks\\llmonitor.md": {
+    "path": "docs\\docs\\integrations\\callbacks\\llmonitor.md",
+    "status": "translated",
+    "lastHash": "0741930232a78f4c3e6aa5104047ef75960ca7ec"
+  },
+  "docs\\docs\\integrations\\providers\\abso.md": {
+    "path": "docs\\docs\\integrations\\providers\\abso.md",
+    "status": "translated",
+    "lastHash": "0a33ffceb0970e1822f09de9e9ad02f489943d3f"
+  },
+  "README.md": {
+    "path": "README.md",
+    "status": "translated",
+    "lastHash": "6630f47a15354e635f2d291eccb71d50ad51f2de"
+  },
+  "docs\\docs\\integrations\\callbacks\\streamlit.md": {
+    "path": "docs\\docs\\integrations\\callbacks\\streamlit.md",
+    "status": "translated",
+    "lastHash": "66d21b470dbc3a8bca5ed8107aacd4c91df8d2ef"
+  },
+  ".github\\CODE_OF_CONDUCT.md": {
+    "path": ".github\\CODE_OF_CONDUCT.md",
+    "status": "translated",
+    "lastHash": "23a2a4aec8356c538c67989ba7bf09fd1392cce6"
+  },
+  "SECURITY.md": {
+    "path": "SECURITY.md",
+    "status": "translated",
+    "lastHash": "96eb25812ea220ee07f871bd634640961ab4ca47"
+  },
+  "docs\\docs\\integrations\\memory\\remembrall.md": {
+    "path": "docs\\docs\\integrations\\memory\\remembrall.md",
+    "status": "translated",
+    "lastHash": "8f8b818785947965a080ea9a73239d438ff05f13"
+  },
+  "docs\\docs\\integrations\\providers\\awadb.md": {
+    "path": "docs\\docs\\integrations\\providers\\awadb.md",
+    "status": "translated",
+    "lastHash": "0bc4d374a8b8cb11f5586551ee4c35fb6197ffcf"
+  },
+  "docs\\docs\\integrations\\providers\\breebs.md": {
+    "path": "docs\\docs\\integrations\\providers\\breebs.md",
+    "status": "translated",
+    "lastHash": "fc6826874b4a8cb8b4328540c7e753ee448f7c1f"
+  },
+  "docs\\docs\\integrations\\providers\\baseten.md": {
+    "path": "docs\\docs\\integrations\\providers\\baseten.md",
+    "status": "translated",
+    "lastHash": "d5ced9dc0527923dd83d668c128c2d948a645e2d"
+  },
+  "docs\\docs\\integrations\\providers\\fiddler.md": {
+    "path": "docs\\docs\\integrations\\providers\\fiddler.md",
+    "status": "translated",
+    "lastHash": "87bffdff9cf917d3cf633f8d22dfbbe33456264e"
+  },
+  "docs\\docs\\integrations\\providers\\fireworks.md": {
+    "path": "docs\\docs\\integrations\\providers\\fireworks.md",
+    "status": "translated",
+    "lastHash": "ea5c7de34f9d1b138550e469ed7ddd639e3f5efc"
+  },
+  "docs\\docs\\integrations\\providers\\airtable.md": {
+    "path": "docs\\docs\\integrations\\providers\\airtable.md",
+    "status": "translated",
+    "lastHash": "e239c4ee6af42a130a5324f5f1848cc4fee30db4"
+  },
+  "docs\\docs\\integrations\\providers\\pipeshift.md": {
+    "path": "docs\\docs\\integrations\\providers\\pipeshift.md",
+    "status": "translated",
+    "lastHash": "73b29a1f0edae3c8cad4e7a89c87faf1cde498fb"
+  },
+  "docs\\docs\\integrations\\providers\\marqo.md": {
+    "path": "docs\\docs\\integrations\\providers\\marqo.md",
+    "status": "translated",
+    "lastHash": "1e18569309ee20e2c342942f1ff61a524cea5d6b"
+  },
+  "docs\\docs\\integrations\\providers\\prolog.md": {
+    "path": "docs\\docs\\integrations\\providers\\prolog.md",
+    "status": "translated",
+    "lastHash": "7d908a60679c4c3e1d4c6629fe78b6f0015c2da9"
+  },
+  "docs\\docs\\integrations\\providers\\pubmed.md": {
+    "path": "docs\\docs\\integrations\\providers\\pubmed.md",
+    "status": "translated",
+    "lastHash": "aa0a810cb6524d4bf5f4d7c1f37fbf38a5cca887"
+  },
+  "docs\\docs\\integrations\\providers\\databricks.md": {
+    "path": "docs\\docs\\integrations\\providers\\databricks.md",
+    "status": "translated",
+    "lastHash": "2cf4961971a15a3079ff56dcfbe1c5b9c945013e"
+  },
+  "docs\\docs\\integrations\\providers\\predibase.md": {
+    "path": "docs\\docs\\integrations\\providers\\predibase.md",
+    "status": "translated",
+    "lastHash": "dba020c8832b616bffb2d109d257ef0e1c4d8668"
+  },
+  "docs\\docs\\integrations\\providers\\uptrain.md": {
+    "path": "docs\\docs\\integrations\\providers\\uptrain.md",
+    "status": "translated",
+    "lastHash": "e371f27870d53d8f6f20e04d5dbc4cc7e01b0466"
+  },
+  "docs\\docs\\integrations\\providers\\vearch.md": {
+    "path": "docs\\docs\\integrations\\providers\\vearch.md",
+    "status": "translated",
+    "lastHash": "6f25eadd1e9a8465c40238745707168ec7954e79"
+  },
+  "docs\\docs\\integrations\\providers\\shaleprotocol.md": {
+    "path": "docs\\docs\\integrations\\providers\\shaleprotocol.md",
+    "status": "translated",
+    "lastHash": "553778cedea33348c2b8dea86fb4e1f9aa0880c2"
+  },
+  "docs\\docs\\integrations\\providers\\pebblo\\index.md": {
+    "path": "docs\\docs\\integrations\\providers\\pebblo\\index.md",
+    "status": "translated",
+    "lastHash": "d0ed9a69b2b2a4132a8718f4245a309f29c91f11"
+  },
+  "libs\\cli\\CONTRIBUTING.md": {
+    "path": "libs\\cli\\CONTRIBUTING.md",
+    "status": "translated",
+    "lastHash": "dcbd2c06b240129d875df31ae1ec5b40b9a85b46"
+  },
+  "libs\\community\\README.md": {
+    "path": "libs\\community\\README.md",
+    "status": "translated",
+    "lastHash": "1e0e394fdc4b4be52b441823c4d2c7e14a414a5d"
+  },
+  "libs\\experimental\\README.md": {
+    "path": "libs\\experimental\\README.md",
+    "status": "translated",
+    "lastHash": "876f54e626321c2102a1148a9ae4e115da57bb9d"
+  },
+  "libs\\cli\\README.md": {
+    "path": "libs\\cli\\README.md",
+    "status": "translated",
+    "lastHash": "f86c6ef69d45187e134443f52ec38b4ea949ff0a"
+  },
+  "libs\\langchain\\tests\\README.md": {
+    "path": "libs\\langchain\\tests\\README.md",
+    "status": "translated",
+    "lastHash": "881c196edf4ac4aaf44b6274989892cfb83b6016"
+  },
+  "libs\\cli\\DOCS.md": {
+    "path": "libs\\cli\\DOCS.md",
+    "status": "translated",
+    "lastHash": "d08ba956aa5e23956c42e76ebc65cad34eb342ca"
+  },
+  "libs\\partners\\ai21\\README.md": {
+    "path": "libs\\partners\\ai21\\README.md",
+    "status": "translated",
+    "lastHash": "a4a3cc65aec1e0b43abd3997d7e8141245c766b9"
+  },
+  "libs\\text-splitters\\README.md": {
+    "path": "libs\\text-splitters\\README.md",
+    "status": "translated",
+    "lastHash": "fbbfc34f5d69bfe703c723baafac8592719fe411"
+  },
+  "libs\\standard-tests\\README.md": {
+    "path": "libs\\standard-tests\\README.md",
+    "status": "translated",
+    "lastHash": "029a9bafb76da4ca6c00aa2cef120c927b5fb207"
+  },
+  "libs\\partners\\astradb\\README.md": {
+    "path": "libs\\partners\\astradb\\README.md",
+    "status": "translated",
+    "lastHash": "62566a567763278e705c8527a86df44cace75ba5"
+  },
+  "libs\\partners\\anthropic\\README.md": {
+    "path": "libs\\partners\\anthropic\\README.md",
+    "status": "translated",
+    "lastHash": "404972e8bdcc2d4db7e2efa46d258b8f88235c78"
+  },
+  "libs\\core\\README.md": {
+    "path": "libs\\core\\README.md",
+    "status": "translated",
+    "lastHash": "fb09de946ec221abce9247967a7a8df6fea492f0"
+  },
+  "cookbook\\README.md": {
+    "path": "cookbook\\README.md",
+    "status": "translated",
+    "lastHash": "6b18e508af71a8896b4628a09b790a3bf5536d6a"
+  },
+  "docs\\docs\\integrations\\providers\\premai.md": {
+    "path": "docs\\docs\\integrations\\providers\\premai.md",
+    "status": "translated",
+    "lastHash": "25498ebb287efc55ff150cdbc169de1d32e4d27e"
+  },
+  "libs\\partners\\azure-dynamic-sessions\\README.md": {
+    "path": "libs\\partners\\azure-dynamic-sessions\\README.md",
+    "status": "translated",
+    "lastHash": "2e46ff1e5a62b4f02062306eee87b6a4e37e58e5"
+  },
+  "libs\\partners\\chroma\\README.md": {
+    "path": "libs\\partners\\chroma\\README.md",
+    "status": "translated",
+    "lastHash": "24f56e2c0859c9a6524700b5ec373222a644cb35"
+  },
+  "docs\\docs\\integrations\\providers\\portkey\\index.md": {
+    "path": "docs\\docs\\integrations\\providers\\portkey\\index.md",
+    "status": "translated",
+    "lastHash": "a623e0afa2ae1a4d4e26463ea4b816d5c3672dea"
+  },
+  "libs\\partners\\couchbase\\README.md": {
+    "path": "libs\\partners\\couchbase\\README.md",
+    "status": "translated",
+    "lastHash": "9d5685072d44ac332eda0efad5bdf466da5c57a8"
+  },
+  "libs\\langchain\\README.md": {
+    "path": "libs\\langchain\\README.md",
+    "status": "translated",
+    "lastHash": "541befa107fe365799be5b45fe327689fbfc6252"
+  },
+  "libs\\partners\\deepseek\\README.md": {
+    "path": "libs\\partners\\deepseek\\README.md",
+    "status": "translated",
+    "lastHash": "8d7ecafa805d49649d5cb255980b89d98b083fe8"
+  },
+  "libs\\partners\\huggingface\\README.md": {
+    "path": "libs\\partners\\huggingface\\README.md",
+    "status": "translated",
+    "lastHash": "5890c284dda936df612b74ba6cfa999af0a0f8a1"
+  },
+  "libs\\partners\\milvus\\README.md": {
+    "path": "libs\\partners\\milvus\\README.md",
+    "status": "translated",
+    "lastHash": "5d7b8dccac0a3ace13bf7ee24c6d9276aef17f85"
+  },
+  "libs\\partners\\ibm\\README.md": {
+    "path": "libs\\partners\\ibm\\README.md",
+    "status": "translated",
+    "lastHash": "91cdbedf6c19271b86bc979229d05f48aa8d11b5"
+  },
+  "libs\\partners\\groq\\README.md": {
+    "path": "libs\\partners\\groq\\README.md",
+    "status": "translated",
+    "lastHash": "3e7388d2835b1689fe60fbc25ce440be2f969613"
+  },
+  "libs\\partners\\fireworks\\README.md": {
+    "path": "libs\\partners\\fireworks\\README.md",
+    "status": "translated",
+    "lastHash": "db6345706375791214eeb395ab840933f06f2cad"
+  },
+  "libs\\partners\\mongodb\\README.md": {
+    "path": "libs\\partners\\mongodb\\README.md",
+    "status": "translated",
+    "lastHash": "0889c8ac62cdc9dc7deffc1e9e2bbeba910220a7"
+  },
+  "libs\\partners\\nomic\\README.md": {
+    "path": "libs\\partners\\nomic\\README.md",
+    "status": "translated",
+    "lastHash": "c57ac50e13f3bf7971935d30fdc0e9d95127d71e"
+  },
+  "libs\\partners\\mistralai\\README.md": {
+    "path": "libs\\partners\\mistralai\\README.md",
+    "status": "translated",
+    "lastHash": "752544e10ce2ce5ce11dce5ee97f7dda6f8cd079"
+  },
+  "libs\\partners\\ollama\\README.md": {
+    "path": "libs\\partners\\ollama\\README.md",
+    "status": "translated",
+    "lastHash": "937ef85b1c1787d28abce187960b2a5e51d1123f"
+  },
+  "libs\\partners\\exa\\README.md": {
+    "path": "libs\\partners\\exa\\README.md",
+    "status": "translated",
+    "lastHash": "85dee325b75e61fa3077ac708a6c592e2f546517"
+  },
+  "libs\\partners\\pinecone\\README.md": {
+    "path": "libs\\partners\\pinecone\\README.md",
+    "status": "translated",
+    "lastHash": "3e4197eafb88442b663ae4a6b751ca1705788931"
+  },
+  "libs\\partners\\openai\\README.md": {
+    "path": "libs\\partners\\openai\\README.md",
+    "status": "translated",
+    "lastHash": "70176f8a482c7b6cbbdbafeb3ae8ad0def78db47"
+  },
+  "libs\\partners\\perplexity\\README.md": {
+    "path": "libs\\partners\\perplexity\\README.md",
+    "status": "translated",
+    "lastHash": "5e9cc31d7a48d626e127853d5e2ec365b4203ec0"
+  },
+  "libs\\partners\\qdrant\\README.md": {
+    "path": "libs\\partners\\qdrant\\README.md",
+    "status": "translated",
+    "lastHash": "020b684e06696c9e0fabbb794eda19c1cf124617"
+  },
+  "libs\\partners\\together\\README.md": {
+    "path": "libs\\partners\\together\\README.md",
+    "status": "translated",
+    "lastHash": "92284c00420b2f78d77b9a5c0e4dcbbf8a38bf56"
+  },
+  "libs\\partners\\unstructured\\README.md": {
+    "path": "libs\\partners\\unstructured\\README.md",
+    "status": "translated",
+    "lastHash": "267869d262e7a7ff374d4bb54826a0087fa3afe9"
+  },
+  "libs\\partners\\voyageai\\README.md": {
+    "path": "libs\\partners\\voyageai\\README.md",
+    "status": "translated",
+    "lastHash": "6c18d3a6ea90278daa586582eb2d802fa381de6f"
+  },
+  "libs\\partners\\xai\\README.md": {
+    "path": "libs\\partners\\xai\\README.md",
+    "status": "translated",
+    "lastHash": "528abee86ed29dffad068f9a8dcc74d7c9aadce4"
+  },
+  "libs\\cli\\langchain_cli\\integration_template\\README.md": {
+    "path": "libs\\cli\\langchain_cli\\integration_template\\README.md",
+    "status": "translated",
+    "lastHash": "19c73c4a5ba12fbe892a9e333ed35fa27045afaa"
+  },
+  "libs\\partners\\prompty\\README.md": {
+    "path": "libs\\partners\\prompty\\README.md",
+    "status": "translated",
+    "lastHash": "eb5bf8f2a1ab6ec1f04a891b08f7f95dda95e338"
+  },
+  "libs\\cli\\langchain_cli\\package_template\\README.md": {
+    "path": "libs\\cli\\langchain_cli\\package_template\\README.md",
+    "status": "translated",
+    "lastHash": "38d5efe839bd4eb64c67ec267430e80554eeb0ac"
+  },
+  "libs\\cli\\langchain_cli\\project_template\\README.md": {
+    "path": "libs\\cli\\langchain_cli\\project_template\\README.md",
+    "status": "translated",
+    "lastHash": "73a4998145279e7467cfdc2f42155268915caff7"
+  },
+  "libs\\cli\\langchain_cli\\namespaces\\migrate\\.grit\\patterns\\_test_replace_imports.md": {
+    "path": "libs\\cli\\langchain_cli\\namespaces\\migrate\\.grit\\patterns\\_test_replace_imports.md",
+    "status": "translated",
+    "lastHash": "8642f0ea8aff126024d0811d3b19cc0d17264c41"
+  },
+  "libs\\cli\\langchain_cli\\project_template\\packages\\README.md": {
+    "path": "libs\\cli\\langchain_cli\\project_template\\packages\\README.md",
+    "status": "translated",
+    "lastHash": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+  },
+  "docs\\docs\\people.mdx": {
+    "path": "docs\\docs\\people.mdx",
+    "status": "translated",
+    "lastHash": "2426dab3a5f2af55dd524a646b9b8d57d9eaf19b"
+  },
+  "docs\\docs\\concepts\\agents.mdx": {
+    "path": "docs\\docs\\concepts\\agents.mdx",
+    "status": "translated",
+    "lastHash": "3ca96125e1ff03777d9e59227e0e15ebb1fc0512"
+  },
+  "docs\\docs\\concepts\\async.mdx": {
+    "path": "docs\\docs\\concepts\\async.mdx",
+    "status": "translated",
+    "lastHash": "8e8a3de9a36eb308147ad96e3ce1f6157d39c006"
+  },
+  "docs\\docs\\concepts\\architecture.mdx": {
+    "path": "docs\\docs\\concepts\\architecture.mdx",
+    "status": "translated",
+    "lastHash": "66272190080b91bc5b6f4ee8c2647a2197f8caa8"
+  },
+  "docs\\docs\\additional_resources\\tutorials.mdx": {
+    "path": "docs\\docs\\additional_resources\\tutorials.mdx",
+    "status": "translated",
+    "lastHash": "871b12e40812f9ffd2f732241639cf1b0e2c73db"
+  },
+  "docs\\docs\\concepts\\chat_history.mdx": {
+    "path": "docs\\docs\\concepts\\chat_history.mdx",
+    "status": "translated",
+    "lastHash": "57d22c2735376997f0815aff037f95ef11b9c791"
+  },
+  "docs\\docs\\concepts\\callbacks.mdx": {
+    "path": "docs\\docs\\concepts\\callbacks.mdx",
+    "status": "translated",
+    "lastHash": "5899a4a98cd272979604e26b156be82ac45961c8"
+  },
+  "docs\\docs\\introduction.mdx": {
+    "path": "docs\\docs\\introduction.mdx",
+    "status": "translated",
+    "lastHash": "182c8e616019b46058bc3939bd123f7ce888fe04"
+  },
+  "docs\\docs\\concepts\\example_selectors.mdx": {
+    "path": "docs\\docs\\concepts\\example_selectors.mdx",
+    "status": "translated",
+    "lastHash": "32dad8c5fa4437c3e3509c6bfc14459c7691fae9"
+  },
+  "docs\\docs\\concepts\\evaluation.mdx": {
+    "path": "docs\\docs\\concepts\\evaluation.mdx",
+    "status": "translated",
+    "lastHash": "274ef98367cbd1cc95360a4d96983df32049642e"
+  },
+  "docs\\docs\\concepts\\document_loaders.mdx": {
+    "path": "docs\\docs\\concepts\\document_loaders.mdx",
+    "status": "translated",
+    "lastHash": "c38e81610e35d64be77e0f18a420ddfe7352b31a"
+  },
+  "docs\\docs\\concepts\\key_value_stores.mdx": {
+    "path": "docs\\docs\\concepts\\key_value_stores.mdx",
+    "status": "translated",
+    "lastHash": "2f5b7e640e7d5e7ba0fa141e61669e39152488d9"
+  },
+  "docs\\docs\\concepts\\embedding_models.mdx": {
+    "path": "docs\\docs\\concepts\\embedding_models.mdx",
+    "status": "translated",
+    "lastHash": "a91018036c0af838301bd7e21782592c6e070cc5"
+  },
+  "docs\\docs\\concepts\\few_shot_prompting.mdx": {
+    "path": "docs\\docs\\concepts\\few_shot_prompting.mdx",
+    "status": "translated",
+    "lastHash": "ad11df482554d3144c85bb9afda5efc88231ad92"
+  },
+  "docs\\docs\\additional_resources\\youtube.mdx": {
+    "path": "docs\\docs\\additional_resources\\youtube.mdx",
+    "status": "translated",
+    "lastHash": "cf694573f0631765149c3ffb59bddae59b5fe779"
+  },
+  "docs\\docs\\concepts\\multimodality.mdx": {
+    "path": "docs\\docs\\concepts\\multimodality.mdx",
+    "status": "translated",
+    "lastHash": "72139a29a87642ff7a829febafb430b1994a123c"
+  },
+  "docs\\docs\\concepts\\lcel.mdx": {
+    "path": "docs\\docs\\concepts\\lcel.mdx",
+    "status": "translated",
+    "lastHash": "d7701c0ad51ad69f69f71e1c2bef40b30b6e3c00"
+  },
+  "docs\\docs\\concepts\\prompt_templates.mdx": {
+    "path": "docs\\docs\\concepts\\prompt_templates.mdx",
+    "status": "translated",
+    "lastHash": "b8bb74314db2d0c02fe97ece2b36f65f65a6d491"
+  },
+  "docs\\docs\\concepts\\output_parsers.mdx": {
+    "path": "docs\\docs\\concepts\\output_parsers.mdx",
+    "status": "translated",
+    "lastHash": "254b3bcf3fc1f5a5cd877ef468830d99bb613c2a"
+  },
+  "docs\\docs\\concepts\\index.mdx": {
+    "path": "docs\\docs\\concepts\\index.mdx",
+    "status": "translated",
+    "lastHash": "e7b86f41e4e0f772cc6913f8f9175130fbdfdc00"
+  },
+  "docs\\docs\\concepts\\rag.mdx": {
+    "path": "docs\\docs\\concepts\\rag.mdx",
+    "status": "translated",
+    "lastHash": "0180aa74a87a517d68c6970b4e46f9ec8fac5711"
+  },
+  "docs\\docs\\concepts\\messages.mdx": {
+    "path": "docs\\docs\\concepts\\messages.mdx",
+    "status": "translated",
+    "lastHash": "c8765ab3d3471d0ceb001cc3cb9058d7503f61ff"
+  },
+  "docs\\docs\\concepts\\testing.mdx": {
+    "path": "docs\\docs\\concepts\\testing.mdx",
+    "status": "translated",
+    "lastHash": "cd0114f31e1b3e5e0a5e3c827cb006e6b8eb6a31"
+  },
+  "docs\\docs\\concepts\\text_llms.mdx": {
+    "path": "docs\\docs\\concepts\\text_llms.mdx",
+    "status": "translated",
+    "lastHash": "d35a72476af3e5d8da3e713449a688a8b54d2a5f"
+  },
+  "docs\\docs\\concepts\\structured_outputs.mdx": {
+    "path": "docs\\docs\\concepts\\structured_outputs.mdx",
+    "status": "translated",
+    "lastHash": "72b84608d1d9e04070c1a9c5054b891f9e2c045b"
+  },
+  "docs\\docs\\concepts\\retrievers.mdx": {
+    "path": "docs\\docs\\concepts\\retrievers.mdx",
+    "status": "translated",
+    "lastHash": "0cc7aaedfc0a98a0215e44b2afc7573993391033"
+  },
+  "docs\\docs\\concepts\\tokens.mdx": {
+    "path": "docs\\docs\\concepts\\tokens.mdx",
+    "status": "translated",
+    "lastHash": "d42755e8d561a6828ef4a3ae91f54a7107b686a9"
+  },
+  "docs\\docs\\concepts\\text_splitters.mdx": {
+    "path": "docs\\docs\\concepts\\text_splitters.mdx",
+    "status": "translated",
+    "lastHash": "b5875dd33b9d6fb6c4006786c12e25ebab734085"
+  },
+  "docs\\docs\\concepts\\tracing.mdx": {
+    "path": "docs\\docs\\concepts\\tracing.mdx",
+    "status": "translated",
+    "lastHash": "659992eeb95737e0c11312bba1de7d08959ebd88"
+  },
+  "docs\\docs\\concepts\\streaming.mdx": {
+    "path": "docs\\docs\\concepts\\streaming.mdx",
+    "status": "translated",
+    "lastHash": "c2dc400e23e2033e441b444937f13a09a385dd23"
+  },
+  "docs\\docs\\concepts\\tools.mdx": {
+    "path": "docs\\docs\\concepts\\tools.mdx",
+    "status": "translated",
+    "lastHash": "d121e4fedc196f7866a77de9374fa57d32d18e59"
+  },
+  "docs\\docs\\concepts\\tool_calling.mdx": {
+    "path": "docs\\docs\\concepts\\tool_calling.mdx",
+    "status": "translated",
+    "lastHash": "7f48142f4119af75c71be7d4de7f181b346bde77"
+  },
+  "docs\\docs\\concepts\\runnables.mdx": {
+    "path": "docs\\docs\\concepts\\runnables.mdx",
+    "status": "translated",
+    "lastHash": "29a4246aa3a091441ce332af8cf4af9a91848379"
+  },
+  "docs\\docs\\contributing\\how_to\\index.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\index.mdx",
+    "status": "translated",
+    "lastHash": "675586340f427859c31c0bed7ebc961db9a5c248"
+  },
+  "docs\\docs\\contributing\\index.mdx": {
+    "path": "docs\\docs\\contributing\\index.mdx",
+    "status": "translated",
+    "lastHash": "90e677bcf5f7788d191ae9aff200ee1d89806d90"
+  },
+  "docs\\docs\\concepts\\why_langchain.mdx": {
+    "path": "docs\\docs\\concepts\\why_langchain.mdx",
+    "status": "translated",
+    "lastHash": "1713222611c7d0a9cdee5c3c6ec7ecf54e584aff"
+  },
+  "docs\\docs\\contributing\\how_to\\code\\guidelines.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\code\\guidelines.mdx",
+    "status": "translated",
+    "lastHash": "54bf05238d1cb93e44b455985d76ac18ac34f74d"
+  },
+  "docs\\docs\\contributing\\how_to\\testing.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\testing.mdx",
+    "status": "translated",
+    "lastHash": "0afccc2a36087d0e3edaae0a241a30c7f30e3cc7"
+  },
+  "docs\\docs\\contributing\\how_to\\code\\index.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\code\\index.mdx",
+    "status": "translated",
+    "lastHash": "cd3889bed0cf4904f1ef11e6ded662c7899991ae"
+  },
+  "docs\\docs\\contributing\\how_to\\documentation\\index.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\documentation\\index.mdx",
+    "status": "translated",
+    "lastHash": "53e3cb052717cade08c1c93f9e2508e597ff9c80"
+  },
+  "docs\\docs\\concepts\\vectorstores.mdx": {
+    "path": "docs\\docs\\concepts\\vectorstores.mdx",
+    "status": "translated",
+    "lastHash": "6edc225aa714a70ee13ee7256d54e44a1f35562b"
+  },
+  "docs\\docs\\contributing\\how_to\\integrations\\community.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\integrations\\community.mdx",
+    "status": "translated",
+    "lastHash": "945ae766f7cd605c23db1070993609703f265be0"
+  },
+  "docs\\docs\\contributing\\how_to\\code\\setup.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\code\\setup.mdx",
+    "status": "translated",
+    "lastHash": "00aa5b770763d310ea081f784d12026b530a4739"
+  },
+  "docs\\docs\\contributing\\how_to\\documentation\\setup.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\documentation\\setup.mdx",
+    "status": "translated",
+    "lastHash": "d7ad896d74aac4522961d93ddbbee655b48a4c94"
+  },
+  "docs\\docs\\contributing\\how_to\\integrations\\from_template.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\integrations\\from_template.mdx",
+    "status": "translated",
+    "lastHash": "9365ff23dd5c912320e52dda72d92a6a8e96dcd7"
+  },
+  "docs\\docs\\contributing\\how_to\\documentation\\style_guide.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\documentation\\style_guide.mdx",
+    "status": "translated",
+    "lastHash": "201285dd14945f4a46cb8282125915cb664df6b6"
+  },
+  "docs\\docs\\contributing\\how_to\\integrations\\index.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\integrations\\index.mdx",
+    "status": "translated",
+    "lastHash": "efe95c065f3d3105fc6fce78a017c0eb9d8d798d"
+  },
+  "docs\\docs\\contributing\\reference\\faq.mdx": {
+    "path": "docs\\docs\\contributing\\reference\\faq.mdx",
+    "status": "translated",
+    "lastHash": "178796ca33f5bf0d47657cb8c16dad9d746ea5a6"
+  },
+  "docs\\docs\\contributing\\how_to\\integrations\\publish.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\integrations\\publish.mdx",
+    "status": "translated",
+    "lastHash": "36aa24f387bacdfa8dfeabd75a4e85e834158266"
+  },
+  "docs\\docs\\contributing\\reference\\index.mdx": {
+    "path": "docs\\docs\\contributing\\reference\\index.mdx",
+    "status": "translated",
+    "lastHash": "4311a01cda17c523e2366eceab829ef5167508ce"
+  },
+  "docs\\docs\\contributing\\reference\\repo_structure.mdx": {
+    "path": "docs\\docs\\contributing\\reference\\repo_structure.mdx",
+    "status": "translated",
+    "lastHash": "8838fdfb9357b81dd45f4098aea7f23b59cd787b"
+  },
+  "docs\\docs\\contributing\\tutorials\\docs.mdx": {
+    "path": "docs\\docs\\contributing\\tutorials\\docs.mdx",
+    "status": "translated",
+    "lastHash": "4b31b972e4c88872e7202fe7ec27931368abbd4b"
+  },
+  "docs\\docs\\contributing\\tutorials\\index.mdx": {
+    "path": "docs\\docs\\contributing\\tutorials\\index.mdx",
+    "status": "translated",
+    "lastHash": "fc557736189581cb16d056ce3eee3ef1c2e4cf0d"
+  },
+  "docs\\docs\\contributing\\reference\\review_process.mdx": {
+    "path": "docs\\docs\\contributing\\reference\\review_process.mdx",
+    "status": "translated",
+    "lastHash": "312540bf32cdd7edc34324b6ecad1129ec5803e1"
+  },
+  "docs\\docs\\contributing\\how_to\\integrations\\standard_tests.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\integrations\\standard_tests.mdx",
+    "status": "translated",
+    "lastHash": "5462b966a6404ff9acc00035b4ff5e45d596d0e3"
+  },
+  "docs\\docs\\contributing\\how_to\\integrations\\package.mdx": {
+    "path": "docs\\docs\\contributing\\how_to\\integrations\\package.mdx",
+    "status": "translated",
+    "lastHash": "570363ec323bf5efc37f3e3ce6ce6c37e3c64499"
+  },
+  "docs\\docs\\how_to\\document_loader_office_file.mdx": {
+    "path": "docs\\docs\\how_to\\document_loader_office_file.mdx",
+    "status": "translated",
+    "lastHash": "6d2ef5faad005f284440380f42ac23084813ece4"
+  },
+  "docs\\docs\\how_to\\embed_text.mdx": {
+    "path": "docs\\docs\\how_to\\embed_text.mdx",
+    "status": "translated",
+    "lastHash": "0c636fec3e7a084e369be35950ca276cb83073c0"
+  },
+  "docs\\docs\\how_to\\toolkits.mdx": {
+    "path": "docs\\docs\\how_to\\toolkits.mdx",
+    "status": "translated",
+    "lastHash": "c1f74199da1afc2e102f714cb0b6dc914f3712a3"
+  },
+  "docs\\docs\\how_to\\installation.mdx": {
+    "path": "docs\\docs\\how_to\\installation.mdx",
+    "status": "translated",
+    "lastHash": "871ce87bd71ce8328bc3f5112fbbc6e769c94c68"
+  },
+  "docs\\docs\\integrations\\chat\\index.mdx": {
+    "path": "docs\\docs\\integrations\\chat\\index.mdx",
+    "status": "translated",
+    "lastHash": "fb43dcdc89bc3ddc72141cf9498a5d32258f7c33"
+  },
+  "docs\\docs\\additional_resources\\dependents.mdx": {
+    "path": "docs\\docs\\additional_resources\\dependents.mdx",
+    "status": "translated",
+    "lastHash": "a09df5027ecdca05cfe4e1f372602cc7341d362d"
+  },
+  "docs\\docs\\integrations\\document_loaders\\index.mdx": {
+    "path": "docs\\docs\\integrations\\document_loaders\\index.mdx",
+    "status": "translated",
+    "lastHash": "971d40cd10cdfc0174695345eef898eebd407ed0"
+  },
+  "docs\\docs\\integrations\\graphs\\tigergraph.mdx": {
+    "path": "docs\\docs\\integrations\\graphs\\tigergraph.mdx",
+    "status": "translated",
+    "lastHash": "a9901459a0d9b0dcb047b2358d4ca6918c8a724b"
+  },
+  "docs\\docs\\integrations\\llms\\index.mdx": {
+    "path": "docs\\docs\\integrations\\llms\\index.mdx",
+    "status": "translated",
+    "lastHash": "1831274c455555e6e75505ffd8ef6b6b1aac797a"
+  },
+  "docs\\docs\\how_to\\vectorstores.mdx": {
+    "path": "docs\\docs\\how_to\\vectorstores.mdx",
+    "status": "translated",
+    "lastHash": "01d861503272fd2c3b3c0c4d3129168ff5861d88"
+  },
+  "docs\\docs\\how_to\\document_loader_json.mdx": {
+    "path": "docs\\docs\\how_to\\document_loader_json.mdx",
+    "status": "translated",
+    "lastHash": "83af3fdf93ef0e0b0d1732eab6e4104bca77c2cf"
+  },
+  "docs\\docs\\integrations\\providers\\acreom.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\acreom.mdx",
+    "status": "translated",
+    "lastHash": "78987870a2d2fbc3958980798f724ebaf52b2f5f"
+  },
+  "docs\\docs\\integrations\\llms\\layerup_security.mdx": {
+    "path": "docs\\docs\\integrations\\llms\\layerup_security.mdx",
+    "status": "translated",
+    "lastHash": "6beee5320903dcfc9ef58373189a1417ef3017a5"
+  },
+  "docs\\docs\\integrations\\providers\\activeloop_deeplake.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\activeloop_deeplake.mdx",
+    "status": "translated",
+    "lastHash": "f0bcb60afd6d31f084bfd2a2f69ed06173736524"
+  },
+  "docs\\docs\\integrations\\providers\\ads4gpts.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ads4gpts.mdx",
+    "status": "translated",
+    "lastHash": "fd82f96f8ebb86a2c4f7e14de39587edd4bf4fa2"
+  },
+  "docs\\docs\\integrations\\providers\\aerospike.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\aerospike.mdx",
+    "status": "translated",
+    "lastHash": "19486dca55a90c9b12807316e33e4a72cdcbad41"
+  },
+  "docs\\docs\\how_to\\index.mdx": {
+    "path": "docs\\docs\\how_to\\index.mdx",
+    "status": "translated",
+    "lastHash": "61c2e740741acb73879513b6f32387b5fb219e66"
+  },
+  "docs\\docs\\integrations\\providers\\agentql.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\agentql.mdx",
+    "status": "translated",
+    "lastHash": "20381e1784e77db8373bfdacea1e9f92a764461a"
+  },
+  "docs\\docs\\integrations\\providers\\ai21.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ai21.mdx",
+    "status": "translated",
+    "lastHash": "140e755da8b83d976efb38aba2d71f8baf6d731f"
+  },
+  "docs\\docs\\integrations\\providers\\ainetwork.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ainetwork.mdx",
+    "status": "translated",
+    "lastHash": "fdd8393e23cb51f28267b1f808d9be56d9653734"
+  },
+  "docs\\docs\\integrations\\providers\\airbyte.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\airbyte.mdx",
+    "status": "translated",
+    "lastHash": "f1198b14861a2d3f7ef930b26e93080a3c4df5c7"
+  },
+  "docs\\docs\\integrations\\providers\\alchemy.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\alchemy.mdx",
+    "status": "translated",
+    "lastHash": "f1d7bbbcf75fa1ba67f432606688f101c0d3cf91"
+  },
+  "docs\\docs\\integrations\\providers\\analyticdb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\analyticdb.mdx",
+    "status": "translated",
+    "lastHash": "7a9e551075e8595854a04704f5444deb27fac0a4"
+  },
+  "docs\\docs\\integrations\\providers\\annoy.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\annoy.mdx",
+    "status": "translated",
+    "lastHash": "18a86fbfa398f7016a20b8765fde9140a2d0ad2a"
+  },
+  "docs\\docs\\integrations\\providers\\aleph_alpha.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\aleph_alpha.mdx",
+    "status": "translated",
+    "lastHash": "4f8a5d0e086eb78ad022bdff58e4a064930a8a5e"
+  },
+  "docs\\docs\\integrations\\providers\\anthropic.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\anthropic.mdx",
+    "status": "translated",
+    "lastHash": "dfa9340f6ec004ed1df4b78de5d125a8d90d1707"
+  },
+  "docs\\docs\\integrations\\providers\\anyscale.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\anyscale.mdx",
+    "status": "translated",
+    "lastHash": "8b35f0490e3ff3511b0795c559f9f783d0593e7a"
+  },
+  "docs\\docs\\integrations\\providers\\alibaba_cloud.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\alibaba_cloud.mdx",
+    "status": "translated",
+    "lastHash": "b6d2718fac160b0c1e91cc44abec1cedd2d5b04d"
+  },
+  "docs\\docs\\integrations\\providers\\apache_doris.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\apache_doris.mdx",
+    "status": "translated",
+    "lastHash": "9beee729f33148e17afaf1960d16e371f20d4624"
+  },
+  "docs\\docs\\integrations\\providers\\apple.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\apple.mdx",
+    "status": "translated",
+    "lastHash": "5a87afeb6c57eedc065630715b5abae19d72387c"
+  },
+  "docs\\docs\\integrations\\providers\\apify.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\apify.mdx",
+    "status": "translated",
+    "lastHash": "3d30c6d4a987eb2854433de9f3dd0362430914e6"
+  },
+  "docs\\docs\\integrations\\providers\\arangodb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\arangodb.mdx",
+    "status": "translated",
+    "lastHash": "ff2d312fa9e76ef3087c8d8d74cbce9c057f0cd8"
+  },
+  "docs\\docs\\integrations\\providers\\apache.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\apache.mdx",
+    "status": "translated",
+    "lastHash": "6acb7156111e968bf3c3be3ba3af93478757d274"
+  },
+  "docs\\docs\\integrations\\providers\\argilla.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\argilla.mdx",
+    "status": "translated",
+    "lastHash": "fc4232e0ec9c488ab02fb73ee5811c2317223709"
+  },
+  "docs\\docs\\integrations\\providers\\arcgis.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\arcgis.mdx",
+    "status": "translated",
+    "lastHash": "c7a00fd7ffcc8454c35d0a4458e1ebfa1402d4be"
+  },
+  "docs\\docs\\integrations\\providers\\arcee.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\arcee.mdx",
+    "status": "translated",
+    "lastHash": "b685dd9b2d72fe0ddeab5962b1cf64b2548dbd59"
+  },
+  "docs\\docs\\integrations\\providers\\arize.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\arize.mdx",
+    "status": "translated",
+    "lastHash": "1f018195ac9138d20692f5b7de3e387d149ffd10"
+  },
+  "docs\\docs\\integrations\\providers\\arxiv.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\arxiv.mdx",
+    "status": "translated",
+    "lastHash": "7fabf7396c1b509e7d20122b998a27f17e990c57"
+  },
+  "docs\\docs\\integrations\\providers\\ascend.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ascend.mdx",
+    "status": "translated",
+    "lastHash": "b8c1769a48965c036cc8d43ae4790eaf8241c9f8"
+  },
+  "docs\\docs\\integrations\\providers\\asknews.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\asknews.mdx",
+    "status": "translated",
+    "lastHash": "1aa6dd81e4a6e2c767372f289b14358aced1cc63"
+  },
+  "docs\\docs\\integrations\\providers\\assemblyai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\assemblyai.mdx",
+    "status": "translated",
+    "lastHash": "dc666f2fc366f554d2364c2dc2f90a8a4f19e084"
+  },
+  "docs\\docs\\integrations\\providers\\atlas.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\atlas.mdx",
+    "status": "translated",
+    "lastHash": "06545aca112a9500ee23ee1b5ff5f22b17655d33"
+  },
+  "docs\\docs\\integrations\\providers\\azlyrics.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\azlyrics.mdx",
+    "status": "translated",
+    "lastHash": "78cbbc329d62df6e6f786a4e82d895ba81a9fadf"
+  },
+  "docs\\docs\\concepts\\chat_models.mdx": {
+    "path": "docs\\docs\\concepts\\chat_models.mdx",
+    "status": "translated",
+    "lastHash": "03133a253e582a587f4578b114e83486fb1f7bab"
+  },
+  "docs\\docs\\integrations\\providers\\bagel.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\bagel.mdx",
+    "status": "translated",
+    "lastHash": "d76aeff4b60a5c63babd1a0ab51d531088fcc16a"
+  },
+  "docs\\docs\\integrations\\providers\\azure_ai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\azure_ai.mdx",
+    "status": "translated",
+    "lastHash": "dd126d55e4164cde8dfa296b77e18c530c5746c6"
+  },
+  "docs\\docs\\integrations\\providers\\baai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\baai.mdx",
+    "status": "translated",
+    "lastHash": "58ff1152ef8ef0b79ea455be9ede81ef1ca4e82c"
+  },
+  "docs\\docs\\integrations\\providers\\bageldb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\bageldb.mdx",
+    "status": "translated",
+    "lastHash": "dc9a8ea708ffdf5750921ad30a05b2663ebead27"
+  },
+  "docs\\docs\\integrations\\providers\\baichuan.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\baichuan.mdx",
+    "status": "translated",
+    "lastHash": "409a66d6f8c6706dcff04e401d8b0b0a848b4372"
+  },
+  "docs\\docs\\integrations\\providers\\astradb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\astradb.mdx",
+    "status": "translated",
+    "lastHash": "9129c24cd77fb5583304adb879764f4a16426f0c"
+  },
+  "docs\\docs\\integrations\\providers\\beam.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\beam.mdx",
+    "status": "translated",
+    "lastHash": "7f723eb0decc4f9cdbd568e9ebbd336ebab18c58"
+  },
+  "docs\\docs\\integrations\\providers\\baidu.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\baidu.mdx",
+    "status": "translated",
+    "lastHash": "67ed5efe40916601f228c3857dbae651408780bb"
+  },
+  "docs\\docs\\integrations\\providers\\beautiful_soup.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\beautiful_soup.mdx",
+    "status": "translated",
+    "lastHash": "289d4059fab015854c2f5976f433e054c291f3be"
+  },
+  "docs\\docs\\integrations\\providers\\bananadev.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\bananadev.mdx",
+    "status": "translated",
+    "lastHash": "9972bc159a873e7f05f02a9c63debb960150832c"
+  },
+  "docs\\docs\\integrations\\providers\\bilibili.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\bilibili.mdx",
+    "status": "translated",
+    "lastHash": "ec497ec509d11993951aeab9d9eed662b5166199"
+  },
+  "docs\\docs\\integrations\\providers\\bibtex.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\bibtex.mdx",
+    "status": "translated",
+    "lastHash": "09cc2fd93d17503ceb595cf608c90a9297f0fe2f"
+  },
+  "docs\\docs\\integrations\\providers\\blackboard.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\blackboard.mdx",
+    "status": "translated",
+    "lastHash": "09312bc4dfa06b0fb7d189a8b25a2af9f03775ac"
+  },
+  "docs\\docs\\integrations\\providers\\bookendai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\bookendai.mdx",
+    "status": "translated",
+    "lastHash": "e5eecde38d7d003dcd96e4d1df9515ce79d02682"
+  },
+  "docs\\docs\\integrations\\providers\\aws.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\aws.mdx",
+    "status": "translated",
+    "lastHash": "c85b6eb837467451666eb93849f39d2719f8f639"
+  },
+  "docs\\docs\\integrations\\providers\\bittensor.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\bittensor.mdx",
+    "status": "translated",
+    "lastHash": "137069077dbdc064495499b9abefd4a203768722"
+  },
+  "docs\\docs\\integrations\\providers\\brave_search.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\brave_search.mdx",
+    "status": "translated",
+    "lastHash": "647004302cc4054ce9835a060789171622f3eafb"
+  },
+  "docs\\docs\\integrations\\providers\\byte_dance.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\byte_dance.mdx",
+    "status": "translated",
+    "lastHash": "25f6e2533ef6263dc0c87f650c509f4f5acd8504"
+  },
+  "docs\\docs\\integrations\\providers\\brightdata.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\brightdata.mdx",
+    "status": "translated",
+    "lastHash": "e7a8b2cfcf388f9d4854c902a94e0db1df568eaa"
+  },
+  "docs\\docs\\integrations\\providers\\browserbase.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\browserbase.mdx",
+    "status": "translated",
+    "lastHash": "0bd939ffbfc66e75a92286cdbad2d0079a3ef354"
+  },
+  "docs\\docs\\integrations\\providers\\browserless.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\browserless.mdx",
+    "status": "translated",
+    "lastHash": "0fe4463af921cd716b26c77a85e101a8e30ed1ae"
+  },
+  "docs\\docs\\integrations\\providers\\box.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\box.mdx",
+    "status": "translated",
+    "lastHash": "85ffc1a79e9e6085562cbe958ba54b69abef4d8a"
+  },
+  "docs\\docs\\integrations\\providers\\cassandra.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\cassandra.mdx",
+    "status": "translated",
+    "lastHash": "87cf5ebe0c92891bae1d12984cc4ee5fa9940424"
+  },
+  "docs\\docs\\integrations\\providers\\cerebras.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\cerebras.mdx",
+    "status": "translated",
+    "lastHash": "10201bc0240bcc7162a2f2b0d434a2d32fb689cb"
+  },
+  "docs\\docs\\integrations\\providers\\chaindesk.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\chaindesk.mdx",
+    "status": "translated",
+    "lastHash": "7cfd5e96b88f3777dfcef4be86bd02f9da04e166"
+  },
+  "docs\\docs\\integrations\\providers\\cerebriumai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\cerebriumai.mdx",
+    "status": "translated",
+    "lastHash": "912dbd90f61e634307a45cf875b72e4a946e09d3"
+  },
+  "docs\\docs\\integrations\\providers\\chroma.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\chroma.mdx",
+    "status": "translated",
+    "lastHash": "d5436c9dc2aef54dd4e0b0bec5f4f646ea0ffb67"
+  },
+  "docs\\docs\\integrations\\providers\\clickhouse.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\clickhouse.mdx",
+    "status": "translated",
+    "lastHash": "64e4608c535fde2b3733fb2f521fc7173545ed7d"
+  },
+  "docs\\docs\\integrations\\providers\\cloudflare.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\cloudflare.mdx",
+    "status": "translated",
+    "lastHash": "82d97d666c38523cb0d22dedbf13ac90c658da30"
+  },
+  "docs\\docs\\integrations\\providers\\clickup.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\clickup.mdx",
+    "status": "translated",
+    "lastHash": "256ae2cace4e6a151438945698676131ff0b1bb5"
+  },
+  "docs\\docs\\integrations\\providers\\clova.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\clova.mdx",
+    "status": "translated",
+    "lastHash": "b10aa930511363c9cc98699149354734a4ebf90c"
+  },
+  "docs\\docs\\integrations\\providers\\clarifai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\clarifai.mdx",
+    "status": "translated",
+    "lastHash": "e783833255490c1e4cbce95f018f6578baff4f42"
+  },
+  "docs\\docs\\integrations\\providers\\cognee.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\cognee.mdx",
+    "status": "translated",
+    "lastHash": "8cc40a17288b88747af31e387abb2b0a7d5104a4"
+  },
+  "docs\\docs\\integrations\\providers\\college_confidential.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\college_confidential.mdx",
+    "status": "translated",
+    "lastHash": "4f081945b944b1842f97a003a844d8d2447fe677"
+  },
+  "docs\\docs\\integrations\\providers\\confident.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\confident.mdx",
+    "status": "translated",
+    "lastHash": "51de57342146b41279ae602f18929851258ce592"
+  },
+  "docs\\docs\\integrations\\providers\\cogniswitch.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\cogniswitch.mdx",
+    "status": "translated",
+    "lastHash": "d8aee6a4c9d5c8ec21a32caf16eb1d62555c18e6"
+  },
+  "docs\\docs\\integrations\\providers\\cnosdb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\cnosdb.mdx",
+    "status": "translated",
+    "lastHash": "6d65ce29cf86fd7c9291b130af5566174ff1cfa9"
+  },
+  "docs\\docs\\integrations\\providers\\confluence.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\confluence.mdx",
+    "status": "translated",
+    "lastHash": "27a7e274a21ef98ab8b52e60c088b850245e77c1"
+  },
+  "docs\\docs\\integrations\\providers\\connery.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\connery.mdx",
+    "status": "translated",
+    "lastHash": "36684a97fa0e9068b886f5e36f76e1677f3a4a27"
+  },
+  "docs\\docs\\integrations\\providers\\context.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\context.mdx",
+    "status": "translated",
+    "lastHash": "0b2e46c21ddfb24d79b817bf8cf10b80159c7d54"
+  },
+  "docs\\docs\\integrations\\providers\\cohere.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\cohere.mdx",
+    "status": "translated",
+    "lastHash": "0bd8417317de8f5180417fdb91a3dc1abd288004"
+  },
+  "docs\\docs\\integrations\\providers\\coze.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\coze.mdx",
+    "status": "translated",
+    "lastHash": "ce1d0ce456b3506e4517ba82403ac2462ba0ca85"
+  },
+  "docs\\docs\\integrations\\providers\\ctranslate2.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ctranslate2.mdx",
+    "status": "translated",
+    "lastHash": "0e3c3a9319e4d281decfbbc7a1c8e006ae5d37d1"
+  },
+  "docs\\docs\\integrations\\providers\\cube.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\cube.mdx",
+    "status": "translated",
+    "lastHash": "9393bc36aa28c58616c8f5e5aa0b05f1b1dd9ffd"
+  },
+  "docs\\docs\\integrations\\providers\\ctransformers.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ctransformers.mdx",
+    "status": "translated",
+    "lastHash": "09414a8fe7d4412cc169ad79b1a7113f08e911dc"
+  },
+  "docs\\docs\\integrations\\providers\\couchbase.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\couchbase.mdx",
+    "status": "translated",
+    "lastHash": "70c318e794a6dc2b4b863c19485770f4389a09ad"
+  },
+  "docs\\docs\\integrations\\providers\\dappier.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\dappier.mdx",
+    "status": "translated",
+    "lastHash": "2a1235984f1064efcd1cecbe19e733eb1ac782eb"
+  },
+  "docs\\docs\\integrations\\providers\\datadog_logs.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\datadog_logs.mdx",
+    "status": "translated",
+    "lastHash": "eb365eed922cf2d7f1d31bf2ee246a9de95a7e3c"
+  },
+  "docs\\docs\\integrations\\providers\\dashvector.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\dashvector.mdx",
+    "status": "translated",
+    "lastHash": "b7ded751ddf7dbf506b0f9db7d2b7f61e861e3e1"
+  },
+  "docs\\docs\\integrations\\providers\\cratedb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\cratedb.mdx",
+    "status": "translated",
+    "lastHash": "d367eb3e945425875e94c0b17f372b043afa4e30"
+  },
+  "docs\\docs\\integrations\\providers\\datadog.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\datadog.mdx",
+    "status": "translated",
+    "lastHash": "b854c668759bf46d97ddc4f7fb0143119f3f67b9"
+  },
+  "docs\\docs\\integrations\\providers\\deeplake.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\deeplake.mdx",
+    "status": "translated",
+    "lastHash": "4aaea7861f554ba42f46e8d207a35185f769a3ad"
+  },
+  "docs\\docs\\integrations\\providers\\dataherald.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\dataherald.mdx",
+    "status": "translated",
+    "lastHash": "2b1c276df526b4d7d5f01ec8f88735b021dea832"
+  },
+  "docs\\docs\\integrations\\providers\\dedoc.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\dedoc.mdx",
+    "status": "translated",
+    "lastHash": "3f2aaa206e325e127e555f3a2fb6ca64e951296d"
+  },
+  "docs\\docs\\integrations\\providers\\deepinfra.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\deepinfra.mdx",
+    "status": "translated",
+    "lastHash": "5eb2b1b38770e4170f87ad72f19f030811752fba"
+  },
+  "docs\\docs\\integrations\\providers\\dataforseo.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\dataforseo.mdx",
+    "status": "translated",
+    "lastHash": "3ded2eba84fd48069ce62666db52dd6e9495bc04"
+  },
+  "docs\\docs\\integrations\\providers\\deepsparse.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\deepsparse.mdx",
+    "status": "translated",
+    "lastHash": "562d9e3e76512e3b717360e88172ddbca3f92877"
+  },
+  "docs\\docs\\integrations\\providers\\dell.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\dell.mdx",
+    "status": "translated",
+    "lastHash": "30bdecbe66279dcf2444e39e55289e2f1ae7fa60"
+  },
+  "docs\\docs\\integrations\\providers\\dingo.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\dingo.mdx",
+    "status": "translated",
+    "lastHash": "b12a6a72cbc6c95cf58fbd4c72bda5831be302db"
+  },
+  "docs\\docs\\integrations\\providers\\diffbot.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\diffbot.mdx",
+    "status": "translated",
+    "lastHash": "1a9e9934642f3ef383f30a660b9576511620b9ec"
+  },
+  "docs\\docs\\integrations\\providers\\discord.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\discord.mdx",
+    "status": "translated",
+    "lastHash": "17b87229031ab0054c96903feb0c987368e034bc"
+  },
+  "docs\\docs\\integrations\\providers\\docarray.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\docarray.mdx",
+    "status": "translated",
+    "lastHash": "d1d41a19834d1cd8bc1327e1840b60b739faa6ec"
+  },
+  "docs\\docs\\integrations\\providers\\discord-shikenso.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\discord-shikenso.mdx",
+    "status": "translated",
+    "lastHash": "32b5a576cc7ce618b334fd51d1dbbc57f7a7a7f1"
+  },
+  "docs\\docs\\integrations\\providers\\doctran.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\doctran.mdx",
+    "status": "translated",
+    "lastHash": "4710fa497eef7606f1b711683a38d056b4780d72"
+  },
+  "docs\\docs\\integrations\\providers\\docling.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\docling.mdx",
+    "status": "translated",
+    "lastHash": "e7515221c9b46732b0071844131a45d677c8213e"
+  },
+  "docs\\docs\\integrations\\providers\\docugami.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\docugami.mdx",
+    "status": "translated",
+    "lastHash": "dcd0566c4a773deeb3382e68ad7ec2f4c489b17e"
+  },
+  "docs\\docs\\integrations\\providers\\docusaurus.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\docusaurus.mdx",
+    "status": "translated",
+    "lastHash": "e137d627724c031f662ad7762383257fc12a823d"
+  },
+  "docs\\docs\\integrations\\providers\\dropbox.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\dropbox.mdx",
+    "status": "translated",
+    "lastHash": "590a58b9a681a714b7642e3790f95624ea47ca3b"
+  },
+  "docs\\docs\\integrations\\providers\\duckdb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\duckdb.mdx",
+    "status": "translated",
+    "lastHash": "f965e129b9536d10bd25750b2b0e10fcd5cdb411"
+  },
+  "docs\\docs\\integrations\\providers\\dria.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\dria.mdx",
+    "status": "translated",
+    "lastHash": "7e3c5cdbace43908d8ad5d9d0ffbc399009c86b8"
+  },
+  "docs\\docs\\integrations\\providers\\duckduckgo_search.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\duckduckgo_search.mdx",
+    "status": "translated",
+    "lastHash": "29ab01981f45fb30d346e1b1d75759fd9dce408b"
+  },
+  "docs\\docs\\integrations\\providers\\e2b.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\e2b.mdx",
+    "status": "translated",
+    "lastHash": "ee0ca085aa440a5569b92b35719af1887e43dd30"
+  },
+  "docs\\docs\\integrations\\providers\\edenai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\edenai.mdx",
+    "status": "translated",
+    "lastHash": "a33e92ec6a93c9ea45b50063879fc04d97462104"
+  },
+  "docs\\docs\\integrations\\providers\\elasticsearch.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\elasticsearch.mdx",
+    "status": "translated",
+    "lastHash": "734ef9d46ce8ecfbb3c39f707bb7c49a4f7fb78c"
+  },
+  "docs\\docs\\integrations\\providers\\elevenlabs.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\elevenlabs.mdx",
+    "status": "translated",
+    "lastHash": "563527304789d3774c508c7efb1b3fee2d61b194"
+  },
+  "docs\\docs\\integrations\\providers\\embedchain.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\embedchain.mdx",
+    "status": "translated",
+    "lastHash": "9078c6ab71d4dcf0990aa3a88aff0abd8ae1498e"
+  },
+  "docs\\docs\\integrations\\providers\\everlyai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\everlyai.mdx",
+    "status": "translated",
+    "lastHash": "2ec507030190485515356f63e0654af35080f798"
+  },
+  "docs\\docs\\integrations\\providers\\etherscan.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\etherscan.mdx",
+    "status": "translated",
+    "lastHash": "cc4e197b2899e0ba573982158c493a56915199ca"
+  },
+  "docs\\docs\\integrations\\providers\\epsilla.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\epsilla.mdx",
+    "status": "translated",
+    "lastHash": "78da4d6a984b4e6b7d5b74e815c065753c9cd825"
+  },
+  "docs\\docs\\integrations\\providers\\evernote.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\evernote.mdx",
+    "status": "translated",
+    "lastHash": "a58c3fc0cf7cd62f5541fb37e865f34388638718"
+  },
+  "docs\\docs\\integrations\\providers\\fauna.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\fauna.mdx",
+    "status": "translated",
+    "lastHash": "252c0101d2e7c1d1f6c130ad5f3f36f6e97024ee"
+  },
+  "docs\\docs\\integrations\\providers\\featherless-ai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\featherless-ai.mdx",
+    "status": "translated",
+    "lastHash": "c10de11717b861d505e006d270b6b96c389b3a42"
+  },
+  "docs\\docs\\integrations\\providers\\firecrawl.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\firecrawl.mdx",
+    "status": "translated",
+    "lastHash": "745c7637463e2993808ae56b8bf5aeb984877d95"
+  },
+  "docs\\docs\\integrations\\providers\\figma.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\figma.mdx",
+    "status": "translated",
+    "lastHash": "d907a4814118f0156ba4db35be13b17de80d15ec"
+  },
+  "docs\\docs\\integrations\\providers\\facebook.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\facebook.mdx",
+    "status": "translated",
+    "lastHash": "6734c9462e5bb34bd1ae22cdcdcdddc40869e730"
+  },
+  "docs\\docs\\integrations\\providers\\fmp-data.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\fmp-data.mdx",
+    "status": "translated",
+    "lastHash": "b2ab522fb03f396dbd7ddaa1c128b6136416feb8"
+  },
+  "docs\\docs\\integrations\\providers\\forefrontai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\forefrontai.mdx",
+    "status": "translated",
+    "lastHash": "4d447ee37a6223bf0ba94fb7502a221879f88344"
+  },
+  "docs\\docs\\integrations\\providers\\friendli.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\friendli.mdx",
+    "status": "translated",
+    "lastHash": "b988fdbeb07cd9af6917d0a46f2fcd26e2e605c5"
+  },
+  "docs\\docs\\integrations\\providers\\geopandas.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\geopandas.mdx",
+    "status": "translated",
+    "lastHash": "c14a29c40bd2f7395269e527591acd5bef4c2b98"
+  },
+  "docs\\docs\\integrations\\providers\\galaxia.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\galaxia.mdx",
+    "status": "translated",
+    "lastHash": "97855bfd7cff278d4a267ee8fbd8e1747d6a27e1"
+  },
+  "docs\\docs\\integrations\\providers\\gel.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\gel.mdx",
+    "status": "translated",
+    "lastHash": "4c18945c742a1d7eb57cbadac5f74350212a6294"
+  },
+  "docs\\docs\\integrations\\providers\\git.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\git.mdx",
+    "status": "translated",
+    "lastHash": "bc20c1710ca7a1be1e6d613f60ce1423345ad471"
+  },
+  "docs\\docs\\integrations\\providers\\flyte.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\flyte.mdx",
+    "status": "translated",
+    "lastHash": "5fe20d896517cc01eaf62f85eb6c33e7cdcb7b46"
+  },
+  "docs\\docs\\integrations\\providers\\gitbook.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\gitbook.mdx",
+    "status": "translated",
+    "lastHash": "4c8a8559234ee81ca4341d33712183306e8710ea"
+  },
+  "docs\\docs\\additional_resources\\arxiv_references.mdx": {
+    "path": "docs\\docs\\additional_resources\\arxiv_references.mdx",
+    "status": "translated",
+    "lastHash": "2b8e2bd3f70c145ce8ba0f884c0245f6144c8b4b"
+  },
+  "docs\\docs\\integrations\\providers\\gitlab.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\gitlab.mdx",
+    "status": "translated",
+    "lastHash": "5aab6d547a2af6548de4c79197c80a6a6b06a0f8"
+  },
+  "docs\\docs\\integrations\\providers\\goodfire.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\goodfire.mdx",
+    "status": "translated",
+    "lastHash": "176c5610a1e1eeb971fef0f82f5ff976836686bb"
+  },
+  "docs\\docs\\integrations\\providers\\github.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\github.mdx",
+    "status": "translated",
+    "lastHash": "0b8c369198cad08cd467100e208dabb3c9b22116"
+  },
+  "docs\\docs\\integrations\\providers\\golden.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\golden.mdx",
+    "status": "translated",
+    "lastHash": "884fdc55fd6c9b3490338198d29419e24e639d6c"
+  },
+  "docs\\docs\\integrations\\providers\\goat.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\goat.mdx",
+    "status": "translated",
+    "lastHash": "042a700b4550059488e43cfc842f7b41fb213612"
+  },
+  "docs\\docs\\integrations\\providers\\gooseai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\gooseai.mdx",
+    "status": "translated",
+    "lastHash": "f0bdf819d2ef7d34a55ad0284789e45afa31e459"
+  },
+  "docs\\docs\\integrations\\providers\\google_serper.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\google_serper.mdx",
+    "status": "translated",
+    "lastHash": "c2a82c6b336cb5f7067513463787ed64c4e0c5df"
+  },
+  "docs\\docs\\integrations\\providers\\gradient.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\gradient.mdx",
+    "status": "translated",
+    "lastHash": "37cd04e91ec5693f9af000f7e689480bb0eec016"
+  },
+  "docs\\docs\\integrations\\providers\\graph_rag.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\graph_rag.mdx",
+    "status": "translated",
+    "lastHash": "c2561ef0c7fd19ccd1a34991d7ad6adf61ffbbe9"
+  },
+  "docs\\docs\\integrations\\providers\\gpt4all.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\gpt4all.mdx",
+    "status": "translated",
+    "lastHash": "9e3b188328e02178afb0affd9bb9d3ee8e21cdcd"
+  },
+  "docs\\docs\\integrations\\providers\\graphsignal.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\graphsignal.mdx",
+    "status": "translated",
+    "lastHash": "6e4867d35794baa722a5c7970916b5987ac8d97b"
+  },
+  "docs\\docs\\integrations\\providers\\grobid.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\grobid.mdx",
+    "status": "translated",
+    "lastHash": "9740854ed117dab4e8a319217485a509427ea553"
+  },
+  "docs\\docs\\integrations\\providers\\gutenberg.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\gutenberg.mdx",
+    "status": "translated",
+    "lastHash": "36eb816383d60a8bc6db5d3061bffe278a908f36"
+  },
+  "docs\\docs\\integrations\\providers\\groq.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\groq.mdx",
+    "status": "translated",
+    "lastHash": "53a8dab417b18f69652f2462be2bb1be6ed563a7"
+  },
+  "docs\\docs\\integrations\\providers\\hacker_news.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\hacker_news.mdx",
+    "status": "translated",
+    "lastHash": "fc232a3db0c687c817327d910d382748e75984f0"
+  },
+  "docs\\docs\\integrations\\providers\\hazy_research.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\hazy_research.mdx",
+    "status": "translated",
+    "lastHash": "13cbda6b8ee52f0700a9f260cccac5a310850501"
+  },
+  "docs\\docs\\integrations\\providers\\html2text.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\html2text.mdx",
+    "status": "translated",
+    "lastHash": "c8cf35210fff72525fe00189526e4975f97cdcf6"
+  },
+  "docs\\docs\\integrations\\providers\\huawei.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\huawei.mdx",
+    "status": "translated",
+    "lastHash": "22b12ca717f7c3e9e8e38670f32982f8794aa6f2"
+  },
+  "docs\\docs\\integrations\\providers\\helicone.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\helicone.mdx",
+    "status": "translated",
+    "lastHash": "9f2898870b365ead07427583f13be5d0f68071d5"
+  },
+  "docs\\docs\\integrations\\providers\\hologres.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\hologres.mdx",
+    "status": "translated",
+    "lastHash": "8dbb3d80faa67bab84f4e70981147535b460ba6f"
+  },
+  "docs\\docs\\integrations\\providers\\huggingface.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\huggingface.mdx",
+    "status": "translated",
+    "lastHash": "da7d39c1c7a52452d4a24ec6f5f57f9ec4aa84d8"
+  },
+  "docs\\docs\\integrations\\providers\\ieit_systems.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ieit_systems.mdx",
+    "status": "translated",
+    "lastHash": "d81d0be3f74844597a097dcd29c63caccb190dc0"
+  },
+  "docs\\docs\\integrations\\providers\\imsdb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\imsdb.mdx",
+    "status": "translated",
+    "lastHash": "8b30a2dea980988f87def38adecfb5390c18bfed"
+  },
+  "docs\\docs\\integrations\\providers\\ifixit.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ifixit.mdx",
+    "status": "translated",
+    "lastHash": "fdcb4ba8023153f0d4ac1cc11705b18a5f8dc126"
+  },
+  "docs\\docs\\integrations\\providers\\ibm.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ibm.mdx",
+    "status": "translated",
+    "lastHash": "6c4d69d1c660ad5e73425c61b20359188048e53e"
+  },
+  "docs\\docs\\integrations\\providers\\iflytek.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\iflytek.mdx",
+    "status": "translated",
+    "lastHash": "9852830511cf0b4438d8c3d3811f4f76dc17c5af"
+  },
+  "docs\\docs\\integrations\\providers\\hyperbrowser.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\hyperbrowser.mdx",
+    "status": "translated",
+    "lastHash": "69f9c7a4fc2e29ed07484feef3dfe0ef9e687e53"
+  },
+  "docs\\docs\\integrations\\providers\\infinispanvs.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\infinispanvs.mdx",
+    "status": "translated",
+    "lastHash": "b42e7504231bfa0ca334a7982e7cc9760f773b8d"
+  },
+  "docs\\docs\\integrations\\providers\\infinity.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\infinity.mdx",
+    "status": "translated",
+    "lastHash": "887a8584036fefe61274d1bb6874047ae873e63d"
+  },
+  "docs\\docs\\integrations\\providers\\infino.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\infino.mdx",
+    "status": "translated",
+    "lastHash": "d11c502a3777c97c2a1e26a7cb6f118fff5a949c"
+  },
+  "docs\\docs\\integrations\\providers\\iugu.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\iugu.mdx",
+    "status": "translated",
+    "lastHash": "5abbeaa8a0669d11ba52ded55217dd92a44a6f6c"
+  },
+  "docs\\docs\\integrations\\providers\\jenkins.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\jenkins.mdx",
+    "status": "translated",
+    "lastHash": "45e217d2422404f5050745a8c660c9ddc9f353a5"
+  },
+  "docs\\docs\\integrations\\providers\\joplin.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\joplin.mdx",
+    "status": "translated",
+    "lastHash": "b3c83acc5ff57b77a0bd587d40d34cd7e51e8258"
+  },
+  "docs\\docs\\integrations\\providers\\jina.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\jina.mdx",
+    "status": "translated",
+    "lastHash": "66fa2464b1f0d4de2429ec3ba33126a0d48402bb"
+  },
+  "docs\\docs\\integrations\\providers\\javelin_ai_gateway.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\javelin_ai_gateway.mdx",
+    "status": "translated",
+    "lastHash": "d678e34597eabac0b1fe0e6cd5010f38a97700ec"
+  },
+  "docs\\docs\\integrations\\providers\\kdbai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\kdbai.mdx",
+    "status": "translated",
+    "lastHash": "a5f06d0128748f8c51e8a7976f53327ddd67b2b2"
+  },
+  "docs\\docs\\integrations\\providers\\intel.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\intel.mdx",
+    "status": "translated",
+    "lastHash": "9429d986c070399dc59cae8e010c0649318168f2"
+  },
+  "docs\\docs\\integrations\\providers\\johnsnowlabs.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\johnsnowlabs.mdx",
+    "status": "translated",
+    "lastHash": "39f3ea494cbf5d2e6486b4ee66ad9e25d78498ca"
+  },
+  "docs\\docs\\integrations\\providers\\jaguar.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\jaguar.mdx",
+    "status": "translated",
+    "lastHash": "839a34ad3269b658f64fb582a602482230fe0b8a"
+  },
+  "docs\\docs\\integrations\\providers\\kinetica.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\kinetica.mdx",
+    "status": "translated",
+    "lastHash": "df14e1ae8bc24076dc56026995ad464b728d1ad4"
+  },
+  "docs\\docs\\integrations\\providers\\koboldai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\koboldai.mdx",
+    "status": "translated",
+    "lastHash": "66db8d9df427b97617da172435419c96e1b63894"
+  },
+  "docs\\docs\\concepts\\retrieval.mdx": {
+    "path": "docs\\docs\\concepts\\retrieval.mdx",
+    "status": "translated",
+    "lastHash": "0467bb95ced9ea6fdfb48eb7a9a4503100129fcf"
+  },
+  "docs\\docs\\integrations\\providers\\konlpy.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\konlpy.mdx",
+    "status": "translated",
+    "lastHash": "d4d925144e34cfc15f766e7e1e6f9fb35c7792c1"
+  },
+  "docs\\docs\\integrations\\providers\\lakefs.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\lakefs.mdx",
+    "status": "translated",
+    "lastHash": "c38d5bb492827bd823c87fa9fffae68fd393af28"
+  },
+  "docs\\docs\\integrations\\providers\\lancedb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\lancedb.mdx",
+    "status": "translated",
+    "lastHash": "44440de047ac4ce566a0bca5f86b88b69c157a67"
+  },
+  "docs\\docs\\integrations\\providers\\kuzu.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\kuzu.mdx",
+    "status": "translated",
+    "lastHash": "aff0a0f6689336b04ac5e1532b9cfb722729e93d"
+  },
+  "docs\\docs\\integrations\\providers\\labelstudio.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\labelstudio.mdx",
+    "status": "translated",
+    "lastHash": "a634f086fca7e233c518ca989ee2313bbc37620a"
+  },
+  "docs\\docs\\integrations\\providers\\konko.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\konko.mdx",
+    "status": "translated",
+    "lastHash": "c7146778c9665001c24985e92dded13bc592e126"
+  },
+  "docs\\docs\\integrations\\providers\\lantern.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\lantern.mdx",
+    "status": "translated",
+    "lastHash": "9b4a537acfaa7b4d6b32843fcd822fb09ddd3759"
+  },
+  "docs\\docs\\integrations\\providers\\linkup.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\linkup.mdx",
+    "status": "translated",
+    "lastHash": "ee7f595321746f64e64fb0e6d3a0c4368d407283"
+  },
+  "docs\\docs\\integrations\\providers\\google.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\google.mdx",
+    "status": "translated",
+    "lastHash": "67bb994c7c3cf93c680263c61bb1e9e825130761"
+  },
+  "docs\\docs\\integrations\\providers\\litellm.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\litellm.mdx",
+    "status": "translated",
+    "lastHash": "e8b9a14b25799d69a4b85a0b95f77bef1559c330"
+  },
+  "docs\\docs\\integrations\\providers\\llamaedge.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\llamaedge.mdx",
+    "status": "translated",
+    "lastHash": "64fbb50d389db60374ed8d7230abe104c1c41b7f"
+  },
+  "docs\\docs\\integrations\\providers\\llamacpp.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\llamacpp.mdx",
+    "status": "translated",
+    "lastHash": "de7d40a1c5ae46f6674bc9d9c8e0c4921a9481de"
+  },
+  "docs\\docs\\integrations\\providers\\llamafile.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\llamafile.mdx",
+    "status": "translated",
+    "lastHash": "d0d0f268d100b6ae5ca4021e358e015fae6e278c"
+  },
+  "docs\\docs\\integrations\\providers\\localai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\localai.mdx",
+    "status": "translated",
+    "lastHash": "663eb592498cee43b2e83f0b40a36d89fd204967"
+  },
+  "docs\\docs\\integrations\\providers\\llmonitor.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\llmonitor.mdx",
+    "status": "translated",
+    "lastHash": "90fb10a26401309bedb7a1faca0848741697c040"
+  },
+  "docs\\docs\\integrations\\providers\\langfair.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\langfair.mdx",
+    "status": "translated",
+    "lastHash": "c140649e985d943b64482e3258320395409203ea"
+  },
+  "docs\\docs\\integrations\\providers\\mariadb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\mariadb.mdx",
+    "status": "translated",
+    "lastHash": "dfbbf2e8706847024da7fab9723d3099e04ed77e"
+  },
+  "docs\\docs\\integrations\\providers\\llama_index.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\llama_index.mdx",
+    "status": "translated",
+    "lastHash": "4ba7ac0eebae6fe06614d8d4b254eeedb036de00"
+  },
+  "docs\\docs\\integrations\\providers\\maritalk.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\maritalk.mdx",
+    "status": "translated",
+    "lastHash": "6b0dcda545690c7a2e1e43007f3634a05bc0103c"
+  },
+  "docs\\docs\\integrations\\providers\\langfuse.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\langfuse.mdx",
+    "status": "translated",
+    "lastHash": "77d6c7fce69ede5b35ca85c840d31b105fc7b67b"
+  },
+  "docs\\docs\\integrations\\providers\\mediawikidump.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\mediawikidump.mdx",
+    "status": "translated",
+    "lastHash": "52f5fde1e71283eb4792494f7df1268475d0d001"
+  },
+  "docs\\docs\\integrations\\providers\\meilisearch.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\meilisearch.mdx",
+    "status": "translated",
+    "lastHash": "31cc5d4c22ad14893d56a727765e936ce09cda42"
+  },
+  "docs\\docs\\integrations\\providers\\memcached.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\memcached.mdx",
+    "status": "translated",
+    "lastHash": "f7719deda4031d69311600a41c5519acd21c587a"
+  },
+  "docs\\docs\\integrations\\providers\\log10.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\log10.mdx",
+    "status": "translated",
+    "lastHash": "b4378506e7c0932296688ead50be23d414ea329b"
+  },
+  "docs\\docs\\integrations\\providers\\metal.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\metal.mdx",
+    "status": "translated",
+    "lastHash": "455830b2db775d1d332940c06249987a0aad8f4c"
+  },
+  "docs\\docs\\integrations\\providers\\memgraph.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\memgraph.mdx",
+    "status": "translated",
+    "lastHash": "fad5de9adbbc26d8680fb7924aae202aa0318ff4"
+  },
+  "docs\\docs\\integrations\\providers\\milvus.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\milvus.mdx",
+    "status": "translated",
+    "lastHash": "ccaa3005db5a4606a5ca5e15c5e9521c94229d9a"
+  },
+  "docs\\docs\\integrations\\providers\\mindsdb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\mindsdb.mdx",
+    "status": "translated",
+    "lastHash": "678d16f8127550a677bdfbc2f41aa9a5f9ee4e3d"
+  },
+  "docs\\docs\\integrations\\providers\\minimax.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\minimax.mdx",
+    "status": "translated",
+    "lastHash": "a472380920a1a44999385ddfa8f70d5d7e79d223"
+  },
+  "docs\\docs\\integrations\\providers\\mistralai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\mistralai.mdx",
+    "status": "translated",
+    "lastHash": "ba6790aabfceee3e21c46186ae70155aa75f9412"
+  },
+  "docs\\docs\\integrations\\providers\\mlx.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\mlx.mdx",
+    "status": "translated",
+    "lastHash": "dc859305cdee3df85d77337a12a32467b81a78fb"
+  },
+  "docs\\docs\\integrations\\providers\\modelscope.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\modelscope.mdx",
+    "status": "translated",
+    "lastHash": "30c50e33bd58aa94699c19ab23390e62af5c5a61"
+  },
+  "docs\\docs\\integrations\\providers\\mlflow.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\mlflow.mdx",
+    "status": "translated",
+    "lastHash": "861154a0b8a3e79adb4dd3bca9873bde4897a3a0"
+  },
+  "docs\\docs\\integrations\\providers\\modern_treasury.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\modern_treasury.mdx",
+    "status": "translated",
+    "lastHash": "908f17644effdbce09eb9c0e1cd0a68c01762ae0"
+  },
+  "docs\\docs\\integrations\\providers\\modal.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\modal.mdx",
+    "status": "translated",
+    "lastHash": "7e02799d717a12d68df42e4deb2db5e6e34c579a"
+  },
+  "docs\\docs\\integrations\\providers\\mongodb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\mongodb.mdx",
+    "status": "translated",
+    "lastHash": "f981cdc13027114ae97efd1df80cd99ce108876a"
+  },
+  "docs\\docs\\integrations\\providers\\langchain_decorators.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\langchain_decorators.mdx",
+    "status": "translated",
+    "lastHash": "1d51f06735bab27a83a06e98f46a2aed9504df4e"
+  },
+  "docs\\docs\\integrations\\providers\\momento.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\momento.mdx",
+    "status": "translated",
+    "lastHash": "6d39999878037c699a13ee3e9856f79baa8a5162"
+  },
+  "docs\\docs\\integrations\\providers\\mongodb_atlas.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\mongodb_atlas.mdx",
+    "status": "translated",
+    "lastHash": "531d106fd6b6f8acc8b428706b064be5f9f6ff08"
+  },
+  "docs\\docs\\integrations\\providers\\motorhead.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\motorhead.mdx",
+    "status": "translated",
+    "lastHash": "0d88c47f0d458e1e5574beba0689b646749bf146"
+  },
+  "docs\\docs\\integrations\\providers\\motherduck.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\motherduck.mdx",
+    "status": "translated",
+    "lastHash": "790f8167aaa759fb73503dde7a9b728763d7273a"
+  },
+  "docs\\docs\\integrations\\providers\\myscale.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\myscale.mdx",
+    "status": "translated",
+    "lastHash": "8192983ef93d340820cd6c50e66c060e9fde968f"
+  },
+  "docs\\docs\\integrations\\providers\\nlpcloud.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\nlpcloud.mdx",
+    "status": "translated",
+    "lastHash": "f6d664833a18d8303a65e1baebe930557da4edb1"
+  },
+  "docs\\docs\\integrations\\providers\\neo4j.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\neo4j.mdx",
+    "status": "translated",
+    "lastHash": "2b8d8f683cc9f33e50f2545262a5c5623d4ca847"
+  },
+  "docs\\docs\\integrations\\providers\\naver.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\naver.mdx",
+    "status": "translated",
+    "lastHash": "739ee9b3ec171515259195835348efdad2cf35a9"
+  },
+  "docs\\docs\\integrations\\providers\\nomic.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\nomic.mdx",
+    "status": "translated",
+    "lastHash": "f825e3c74e36041d427d12a8e3c81e5745ac41f2"
+  },
+  "docs\\docs\\integrations\\providers\\notion.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\notion.mdx",
+    "status": "translated",
+    "lastHash": "6ed4fd306fc935cd530281b1899331a58025a5c3"
+  },
+  "docs\\docs\\integrations\\providers\\nebius.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\nebius.mdx",
+    "status": "translated",
+    "lastHash": "c9e4e53fb4bdda8d9231a5984024195ffd1f82a8"
+  },
+  "docs\\docs\\integrations\\providers\\obsidian.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\obsidian.mdx",
+    "status": "translated",
+    "lastHash": "ce1169df90acbda16d48f609d58c8ebe94577257"
+  },
+  "docs\\docs\\integrations\\providers\\nuclia.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\nuclia.mdx",
+    "status": "translated",
+    "lastHash": "91daeb6a5a242e7f79d64fc6bd8f1cbcf9a77109"
+  },
+  "docs\\docs\\integrations\\providers\\oceanbase.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\oceanbase.mdx",
+    "status": "translated",
+    "lastHash": "30537f139100429261533a23e2e2314258fd501d"
+  },
+  "docs\\docs\\integrations\\providers\\octoai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\octoai.mdx",
+    "status": "translated",
+    "lastHash": "d4a064c7c7672a7f808bc3d1f95eb9a53edb7b4e"
+  },
+  "docs\\docs\\integrations\\providers\\ontotext_graphdb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ontotext_graphdb.mdx",
+    "status": "translated",
+    "lastHash": "468699cd215856625ac7995941054d3ed4d56849"
+  },
+  "docs\\docs\\integrations\\providers\\oci.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\oci.mdx",
+    "status": "translated",
+    "lastHash": "58c167995bfbf54e49442ca3884c45f38477e2ad"
+  },
+  "docs\\docs\\integrations\\providers\\nvidia.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\nvidia.mdx",
+    "status": "translated",
+    "lastHash": "2dc6bf2f43837a297dd35c9ac72ca1bec4ca310c"
+  },
+  "docs\\docs\\integrations\\providers\\ollama.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ollama.mdx",
+    "status": "translated",
+    "lastHash": "2636de04069390101f3f382b62429c073712f6fa"
+  },
+  "docs\\docs\\integrations\\providers\\opensearch.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\opensearch.mdx",
+    "status": "translated",
+    "lastHash": "be55c26d7b225ac8c59b610d7a9b9213c6c2ae61"
+  },
+  "docs\\docs\\integrations\\providers\\openllm.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\openllm.mdx",
+    "status": "translated",
+    "lastHash": "dd09257954774eff31c0e57dac32ea1c5d4e6e62"
+  },
+  "docs\\docs\\integrations\\providers\\microsoft.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\microsoft.mdx",
+    "status": "translated",
+    "lastHash": "64ac3c6136175490412c6c72eb48faa909f33ce6"
+  },
+  "docs\\docs\\integrations\\providers\\outline.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\outline.mdx",
+    "status": "translated",
+    "lastHash": "44335477ad7e3fbb1c4e6e2c9918869ed9709f51"
+  },
+  "docs\\docs\\integrations\\providers\\openai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\openai.mdx",
+    "status": "translated",
+    "lastHash": "61abb8f4bd64eb8292f8d2a35e782adf56119932"
+  },
+  "docs\\docs\\integrations\\providers\\openweathermap.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\openweathermap.mdx",
+    "status": "translated",
+    "lastHash": "2839526f03d9ce1fec03828ed3bb753389ddbb4a"
+  },
+  "docs\\docs\\integrations\\providers\\oxylabs.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\oxylabs.mdx",
+    "status": "translated",
+    "lastHash": "30b2093336bb93e4af8f70d5b7d28fade751b3f0"
+  },
+  "docs\\docs\\integrations\\providers\\oracleai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\oracleai.mdx",
+    "status": "translated",
+    "lastHash": "5df9d7eab02461fe5c2b0a715838ea6637b4dcb1"
+  },
+  "docs\\docs\\integrations\\providers\\pandas.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\pandas.mdx",
+    "status": "translated",
+    "lastHash": "15519b0b0f7927536cea800cbee7069551296034"
+  },
+  "docs\\docs\\integrations\\providers\\perplexity.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\perplexity.mdx",
+    "status": "translated",
+    "lastHash": "9af892b10dd9745be440f081e110ca52cb38deb7"
+  },
+  "docs\\docs\\integrations\\providers\\permit.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\permit.mdx",
+    "status": "translated",
+    "lastHash": "ff1cb10537737b486e9e70c97c946ab26463b4db"
+  },
+  "docs\\docs\\integrations\\providers\\petals.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\petals.mdx",
+    "status": "translated",
+    "lastHash": "db85c3cfc80e6a0441cf967ac64c26e6bb593f01"
+  },
+  "docs\\docs\\integrations\\providers\\outlines.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\outlines.mdx",
+    "status": "translated",
+    "lastHash": "bcae27ec50abb3ce004a3dd7fca145f5f2768030"
+  },
+  "docs\\docs\\integrations\\providers\\pg_embedding.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\pg_embedding.mdx",
+    "status": "translated",
+    "lastHash": "9bcd05bd27cd589ad9895b4fe77c4ab380a02f17"
+  },
+  "docs\\docs\\integrations\\providers\\payman-tool.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\payman-tool.mdx",
+    "status": "translated",
+    "lastHash": "a8a312d8d21a464d799878f4c541d27bb0b8e7e9"
+  },
+  "docs\\docs\\integrations\\providers\\pgvector.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\pgvector.mdx",
+    "status": "translated",
+    "lastHash": "c98aaea19a98d876055276e21874a190adccf30b"
+  },
+  "docs\\docs\\integrations\\providers\\pinecone.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\pinecone.mdx",
+    "status": "translated",
+    "lastHash": "4275c20d2bc63e115f74aa4261a232e50e9ade68"
+  },
+  "docs\\docs\\integrations\\providers\\pipelineai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\pipelineai.mdx",
+    "status": "translated",
+    "lastHash": "e13f6cffc5cd32f46f86ad71903e0b291ba1f66e"
+  },
+  "docs\\docs\\integrations\\providers\\promptlayer.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\promptlayer.mdx",
+    "status": "translated",
+    "lastHash": "550ff28f35b65e64ed603ecb6da7415f64132d69"
+  },
+  "docs\\docs\\integrations\\providers\\pygmalionai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\pygmalionai.mdx",
+    "status": "translated",
+    "lastHash": "2d98fdf38c0b62b44eecc38d46f2b5fc337f719e"
+  },
+  "docs\\docs\\integrations\\providers\\predictionguard.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\predictionguard.mdx",
+    "status": "translated",
+    "lastHash": "bd7eea8330b7c9a7a748e8bfc28a9a8643372339"
+  },
+  "docs\\docs\\integrations\\providers\\rank_bm25.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\rank_bm25.mdx",
+    "status": "translated",
+    "lastHash": "0deffeec23ed4a308b8fa539978760651993945f"
+  },
+  "docs\\docs\\integrations\\providers\\psychic.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\psychic.mdx",
+    "status": "translated",
+    "lastHash": "a415f8a5a484670dbdfa05d9b726c95b92a130c8"
+  },
+  "docs\\docs\\integrations\\providers\\reddit.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\reddit.mdx",
+    "status": "translated",
+    "lastHash": "5e806075513cdb04087a03fbfa0d8ba957fbfc5d"
+  },
+  "docs\\docs\\integrations\\providers\\qdrant.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\qdrant.mdx",
+    "status": "translated",
+    "lastHash": "ad047ce07212610824f1d4314b70886e0e8b09ff"
+  },
+  "docs\\docs\\integrations\\providers\\pull-md.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\pull-md.mdx",
+    "status": "translated",
+    "lastHash": "b7384a3eda4773201284079d7484f46562bd6f98"
+  },
+  "docs\\docs\\integrations\\providers\\remembrall.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\remembrall.mdx",
+    "status": "translated",
+    "lastHash": "822acab815ad047d17c6d9be44bc805a12000bf9"
+  },
+  "docs\\docs\\integrations\\providers\\roam.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\roam.mdx",
+    "status": "translated",
+    "lastHash": "322ade8d29aa390d54ddff211e883ab49e40f58b"
+  },
+  "docs\\docs\\integrations\\providers\\redis.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\redis.mdx",
+    "status": "translated",
+    "lastHash": "6a76e699f10ba608c5ecfc04a692767f326fdac7"
+  },
+  "docs\\docs\\integrations\\providers\\rockset.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\rockset.mdx",
+    "status": "translated",
+    "lastHash": "735c2181783fafcd389fa68190369e0d112d25e5"
+  },
+  "docs\\docs\\integrations\\providers\\salesforce.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\salesforce.mdx",
+    "status": "translated",
+    "lastHash": "ea27f204f71b22c388b482caa9557335b1031b47"
+  },
+  "docs\\docs\\integrations\\providers\\runhouse.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\runhouse.mdx",
+    "status": "translated",
+    "lastHash": "d0b63ed4905738311964f9ee3196aacef2b6c4f5"
+  },
+  "docs\\docs\\integrations\\providers\\replicate.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\replicate.mdx",
+    "status": "translated",
+    "lastHash": "21bd1925ddf6d1ff85ae914212d48dad8877fb72"
+  },
+  "docs\\docs\\integrations\\providers\\robocorp.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\robocorp.mdx",
+    "status": "translated",
+    "lastHash": "edafdf75dd27fa14067742d8882d97e64657a626"
+  },
+  "docs\\docs\\integrations\\providers\\rwkv.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\rwkv.mdx",
+    "status": "translated",
+    "lastHash": "90a795a420865b8fee15919486e4c30bf4452e28"
+  },
+  "docs\\docs\\integrations\\providers\\sap.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\sap.mdx",
+    "status": "translated",
+    "lastHash": "d9fcd76f4a2f87beec5c5b51e8df51bd40b104f8"
+  },
+  "cookbook\\sql_db_qa.mdx": {
+    "path": "cookbook\\sql_db_qa.mdx",
+    "status": "translated",
+    "lastHash": "692c3424f141f66720ec6762cb87cb8c55c9854d"
+  },
+  "docs\\docs\\integrations\\providers\\scrapegraph.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\scrapegraph.mdx",
+    "status": "translated",
+    "lastHash": "93507ef3a88d8efddf0da4fab5b51f05af76fafc"
+  },
+  "docs\\docs\\integrations\\providers\\sklearn.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\sklearn.mdx",
+    "status": "translated",
+    "lastHash": "a2d9e0554d706aee1fc7e4c8e03890f3408f6ff3"
+  },
+  "docs\\docs\\integrations\\providers\\slack.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\slack.mdx",
+    "status": "translated",
+    "lastHash": "9013e5b0cc2899cbb2650e23c6303f8faec3c7c6"
+  },
+  "docs\\docs\\integrations\\providers\\semadb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\semadb.mdx",
+    "status": "translated",
+    "lastHash": "905ef96613244363d72334f1058c9049c10b8216"
+  },
+  "docs\\docs\\integrations\\providers\\serpapi.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\serpapi.mdx",
+    "status": "translated",
+    "lastHash": "390931314538c119cd88c205aa123217c42a94f4"
+  },
+  "docs\\docs\\integrations\\providers\\searchapi.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\searchapi.mdx",
+    "status": "translated",
+    "lastHash": "569e7f7b49f60a95d3568a42ccba79497d1305f7"
+  },
+  "docs\\docs\\integrations\\providers\\spacy.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\spacy.mdx",
+    "status": "translated",
+    "lastHash": "d893f12a3dbd65c934977b006da6dc4161406f73"
+  },
+  "docs\\docs\\integrations\\providers\\snowflake.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\snowflake.mdx",
+    "status": "translated",
+    "lastHash": "c42c71975880373acc63abb4aef7ec0bd5251a73"
+  },
+  "docs\\docs\\integrations\\providers\\searx.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\searx.mdx",
+    "status": "translated",
+    "lastHash": "505304bab6cf6b6b376a2f31eaec9f5d593a5260"
+  },
+  "docs\\docs\\integrations\\providers\\spark.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\spark.mdx",
+    "status": "translated",
+    "lastHash": "a7721415af8db2e4d6863aea163a11ca8059bd82"
+  },
+  "docs\\docs\\integrations\\providers\\sparkllm.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\sparkllm.mdx",
+    "status": "translated",
+    "lastHash": "c4a661f1e3321e4fbe95a1e0106c48578c7958a5"
+  },
+  "docs\\docs\\integrations\\providers\\spreedly.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\spreedly.mdx",
+    "status": "translated",
+    "lastHash": "16930aa06e91078579abb2ecb3356157e1381a9c"
+  },
+  "docs\\docs\\integrations\\providers\\sqlite.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\sqlite.mdx",
+    "status": "translated",
+    "lastHash": "3bba662f0d888930e2c4c04072ed531f23f57c37"
+  },
+  "docs\\docs\\integrations\\providers\\stackexchange.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\stackexchange.mdx",
+    "status": "translated",
+    "lastHash": "08167db3bac145785f9dd94afa70c1d4ad4406cb"
+  },
+  "docs\\docs\\integrations\\providers\\stripe.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\stripe.mdx",
+    "status": "translated",
+    "lastHash": "a7e80d97a7fe0eb7043cbbe8bc15408451a5d53b"
+  },
+  "docs\\docs\\integrations\\providers\\stochasticai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\stochasticai.mdx",
+    "status": "translated",
+    "lastHash": "bd0b5484bb221b6d44fae70c28217fb4cc0df871"
+  },
+  "docs\\docs\\integrations\\providers\\streamlit.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\streamlit.mdx",
+    "status": "translated",
+    "lastHash": "7c1995221f4396d823b59eda693dbc05bae1e91e"
+  },
+  "docs\\docs\\integrations\\providers\\symblai_nebula.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\symblai_nebula.mdx",
+    "status": "translated",
+    "lastHash": "a302bd81b55a1b65942efc0a626c34f09017d29f"
+  },
+  "docs\\docs\\integrations\\providers\\supabase.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\supabase.mdx",
+    "status": "translated",
+    "lastHash": "7a574800d063a36e429ce1eb9607e2e452ac5e54"
+  },
+  "docs\\docs\\integrations\\providers\\starrocks.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\starrocks.mdx",
+    "status": "translated",
+    "lastHash": "bc5c9983c9e4a9e8bf90c2f7b683a7417b33c98f"
+  },
+  "docs\\docs\\integrations\\providers\\surrealdb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\surrealdb.mdx",
+    "status": "translated",
+    "lastHash": "7ea63c827c6a81d7214990fc5e083ebea7e27bd6"
+  },
+  "docs\\docs\\integrations\\providers\\tableau.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\tableau.mdx",
+    "status": "translated",
+    "lastHash": "fc872a5fa12f4adc04b0dbd7c93de4d7df7a3e7a"
+  },
+  "docs\\docs\\integrations\\providers\\taiga.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\taiga.mdx",
+    "status": "translated",
+    "lastHash": "5d7c9876110a8c4ed90f1ceeacb0eec0ea44fc63"
+  },
+  "docs\\docs\\integrations\\providers\\tair.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\tair.mdx",
+    "status": "translated",
+    "lastHash": "d84d7378033851c45c16763291f75841c4524726"
+  },
+  "docs\\docs\\integrations\\providers\\tavily.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\tavily.mdx",
+    "status": "translated",
+    "lastHash": "1e6785efdf330d976f14240d181a457e49dce53f"
+  },
+  "docs\\docs\\integrations\\providers\\telegram.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\telegram.mdx",
+    "status": "translated",
+    "lastHash": "124cbd509a7c292938994282bc163563417949c8"
+  },
+  "docs\\docs\\integrations\\providers\\tensorflow_datasets.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\tensorflow_datasets.mdx",
+    "status": "translated",
+    "lastHash": "b3cc150977b41436c29aa521f9c247abaa7ffe8a"
+  },
+  "docs\\docs\\integrations\\providers\\tigergraph.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\tigergraph.mdx",
+    "status": "translated",
+    "lastHash": "95a62635c83a3464fe34bb68f12b8e38ca74daf1"
+  },
+  "docs\\docs\\integrations\\providers\\tigris.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\tigris.mdx",
+    "status": "translated",
+    "lastHash": "7852b6453ccb62c1b8819c50679b9e5a47d0907f"
+  },
+  "docs\\docs\\integrations\\providers\\tomarkdown.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\tomarkdown.mdx",
+    "status": "translated",
+    "lastHash": "08787f943967b752df0ca39786548b50d9c6b8d7"
+  },
+  "docs\\docs\\integrations\\providers\\tidb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\tidb.mdx",
+    "status": "translated",
+    "lastHash": "401b4300c48f7ed94ac1b043f71dbc6abee04251"
+  },
+  "docs\\docs\\integrations\\providers\\transwarp.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\transwarp.mdx",
+    "status": "translated",
+    "lastHash": "4406f885babd00a167e941ae679d97d030d8eb31"
+  },
+  "docs\\docs\\integrations\\providers\\trello.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\trello.mdx",
+    "status": "translated",
+    "lastHash": "0b897ae66021d1a89bd11ff44ffdb813c3a25f24"
+  },
+  "docs\\docs\\integrations\\providers\\tencent.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\tencent.mdx",
+    "status": "translated",
+    "lastHash": "9efe6deed7dbbb32c63e49a0e9ae25849d1b502d"
+  },
+  "docs\\docs\\integrations\\providers\\trubrics.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\trubrics.mdx",
+    "status": "translated",
+    "lastHash": "4681b34bff4dd5758d82baac340c404d6cd47f31"
+  },
+  "docs\\docs\\integrations\\providers\\twitter.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\twitter.mdx",
+    "status": "translated",
+    "lastHash": "d2ba4fecb538815a267dd922275f36a35da6fc1d"
+  },
+  "docs\\docs\\integrations\\providers\\trulens.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\trulens.mdx",
+    "status": "translated",
+    "lastHash": "327a6de372084f5f800c78a82a283365f48dd5c4"
+  },
+  "docs\\docs\\integrations\\providers\\usearch.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\usearch.mdx",
+    "status": "translated",
+    "lastHash": "cdbc99ecc9094772f693c0ce6a815f2d0eafd0ab"
+  },
+  "docs\\docs\\integrations\\providers\\vdms.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\vdms.mdx",
+    "status": "translated",
+    "lastHash": "b1b02217741a0e00831abcef25a86dbf34f5533b"
+  },
+  "docs\\docs\\integrations\\providers\\vespa.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\vespa.mdx",
+    "status": "translated",
+    "lastHash": "7796fde96d78c23533c3382f4b60ea929dd4e16d"
+  },
+  "docs\\docs\\integrations\\providers\\vectorize.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\vectorize.mdx",
+    "status": "translated",
+    "lastHash": "f7ee1d62163bac384f612b4953f5ff43a8b6c6f5"
+  },
+  "docs\\docs\\integrations\\providers\\typesense.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\typesense.mdx",
+    "status": "translated",
+    "lastHash": "5bb2b3ca0e41cdd4bf47763deeaca8ec583ff253"
+  },
+  "docs\\docs\\integrations\\providers\\vlite.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\vlite.mdx",
+    "status": "translated",
+    "lastHash": "6599dec720110beb60c68dcb49821e827bc5d3f2"
+  },
+  "docs\\docs\\integrations\\providers\\valthera.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\valthera.mdx",
+    "status": "translated",
+    "lastHash": "7a7f56963a0fdca16d566c37a70b9f4decde3480"
+  },
+  "docs\\docs\\integrations\\providers\\voyageai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\voyageai.mdx",
+    "status": "translated",
+    "lastHash": "d40cb69bedf6940bdce1181d35adee0860a4148f"
+  },
+  "docs\\docs\\integrations\\providers\\wandb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\wandb.mdx",
+    "status": "translated",
+    "lastHash": "8eb85116ff02fc59d2af7b5112495dff46c44b4f"
+  },
+  "docs\\docs\\integrations\\providers\\weather.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\weather.mdx",
+    "status": "translated",
+    "lastHash": "199af6ccb9772058fbc34f749147c37f2b58f62d"
+  },
+  "docs\\docs\\integrations\\providers\\upstash.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\upstash.mdx",
+    "status": "translated",
+    "lastHash": "d1bfa783c230cb5045c1742642e3cfc57d527f14"
+  },
+  "docs\\docs\\integrations\\providers\\wikipedia.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\wikipedia.mdx",
+    "status": "translated",
+    "lastHash": "cf1b08a50a65f052141ebbebd4810572584820fe"
+  },
+  "docs\\docs\\integrations\\providers\\whatsapp.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\whatsapp.mdx",
+    "status": "translated",
+    "lastHash": "dbe45e1b865bf9049d2ac3d8214f850ced36b1f0"
+  },
+  "docs\\docs\\integrations\\providers\\weaviate.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\weaviate.mdx",
+    "status": "translated",
+    "lastHash": "25041cbc2736883f72ba0070c49bb1e7250449c6"
+  },
+  "docs\\docs\\integrations\\providers\\xata.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\xata.mdx",
+    "status": "translated",
+    "lastHash": "986468d63c7321a302eab2cb78e8f6f6b2a8b859"
+  },
+  "docs\\docs\\integrations\\providers\\writer.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\writer.mdx",
+    "status": "translated",
+    "lastHash": "10680e4958711869e9615d0c6fade0fc55fbbc39"
+  },
+  "docs\\docs\\integrations\\providers\\wolfram_alpha.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\wolfram_alpha.mdx",
+    "status": "translated",
+    "lastHash": "84b017be255f3ed6b8f9f691780aa3d5cbef8ef3"
+  },
+  "docs\\docs\\integrations\\providers\\yahoo.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\yahoo.mdx",
+    "status": "translated",
+    "lastHash": "70023477f5597b4d09886e1607ebe642f281a825"
+  },
+  "docs\\docs\\integrations\\providers\\unstructured.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\unstructured.mdx",
+    "status": "translated",
+    "lastHash": "8425ff1faa226da14b130216bb42c1c6c6be2446"
+  },
+  "docs\\docs\\integrations\\providers\\yandex.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\yandex.mdx",
+    "status": "translated",
+    "lastHash": "40600d89f30732fcc1bbf049aa240993e415669c"
+  },
+  "docs\\docs\\integrations\\providers\\xinference.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\xinference.mdx",
+    "status": "translated",
+    "lastHash": "88a471f3b44b50519f94124a83ec71bb5db708b1"
+  },
+  "docs\\docs\\integrations\\providers\\yellowbrick.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\yellowbrick.mdx",
+    "status": "translated",
+    "lastHash": "911f1ab52503af2b9e43af3ab64b5a324e7842f2"
+  },
+  "docs\\docs\\integrations\\providers\\you.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\you.mdx",
+    "status": "translated",
+    "lastHash": "eb088be77b89b8de65ea3e63c5c4ebc9d7c915d0"
+  },
+  "docs\\docs\\integrations\\providers\\youtube.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\youtube.mdx",
+    "status": "translated",
+    "lastHash": "8f3d69b819b5567bd4a3972ccb2b750170d16fa2"
+  },
+  "docs\\docs\\integrations\\providers\\yeagerai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\yeagerai.mdx",
+    "status": "translated",
+    "lastHash": "6483cce900151cd054c250aaafd5fdc9886032cf"
+  },
+  "docs\\docs\\integrations\\providers\\ydb.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\ydb.mdx",
+    "status": "translated",
+    "lastHash": "181ce935adbc61e81caac4bd0b04bfba33440540"
+  },
+  "docs\\docs\\integrations\\providers\\yi.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\yi.mdx",
+    "status": "translated",
+    "lastHash": "e26590ac82974d2559d74f4432a5a31222c1857a"
+  },
+  "docs\\docs\\integrations\\providers\\zhipuai.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\zhipuai.mdx",
+    "status": "translated",
+    "lastHash": "0bcad6c4f4850be9fae6f9dd4da7ab181e359ebe"
+  },
+  "docs\\docs\\integrations\\providers\\zilliz.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\zilliz.mdx",
+    "status": "translated",
+    "lastHash": "6170afd351e08a17b40db0cff1c7431c896dbaff"
+  },
+  "docs\\docs\\integrations\\retrievers\\self_query\\index.mdx": {
+    "path": "docs\\docs\\integrations\\retrievers\\self_query\\index.mdx",
+    "status": "translated",
+    "lastHash": "fba56cb6145c4d60e0e4bef3f1bd637a45407d58"
+  },
+  "docs\\docs\\integrations\\retrievers\\index.mdx": {
+    "path": "docs\\docs\\integrations\\retrievers\\index.mdx",
+    "status": "translated",
+    "lastHash": "2da2337e6ebe42beda204657f0e2e6ce73b420c9"
+  },
+  "docs\\docs\\integrations\\vectorstores\\index.mdx": {
+    "path": "docs\\docs\\integrations\\vectorstores\\index.mdx",
+    "status": "translated",
+    "lastHash": "c213d968ee3e2ff0e5a9e25a98f7d14a980b8b51"
+  },
+  "docs\\docs\\integrations\\text_embedding\\index.mdx": {
+    "path": "docs\\docs\\integrations\\text_embedding\\index.mdx",
+    "status": "translated",
+    "lastHash": "169480565122bfa84beca2d841b588f513b8b660"
+  },
+  "docs\\docs\\tutorials\\index.mdx": {
+    "path": "docs\\docs\\tutorials\\index.mdx",
+    "status": "translated",
+    "lastHash": "c7603e61ab5784e3bc06e7b56c81f8cbda502ae0"
+  },
+  "docs\\docs\\integrations\\providers\\zep.mdx": {
+    "path": "docs\\docs\\integrations\\providers\\zep.mdx",
+    "status": "translated",
+    "lastHash": "343bfd83a95866d6acd4e3aa37a59200daa404df"
+  },
+  "docs\\docs\\versions\\release_policy.mdx": {
+    "path": "docs\\docs\\versions\\release_policy.mdx",
+    "status": "translated",
+    "lastHash": "9e32e31acf69881c4bb81d222d89f79d5974dc55"
+  },
+  "docs\\docs\\versions\\v0_2\\index.mdx": {
+    "path": "docs\\docs\\versions\\v0_2\\index.mdx",
+    "status": "translated",
+    "lastHash": "07bb76dfdee58763d59bdc7bf81d224bda08138c"
+  },
+  "docs\\docs\\changes\\changelog\\core.mdx": {
+    "path": "docs\\docs\\changes\\changelog\\core.mdx",
+    "status": "translated",
+    "lastHash": "bd8b7a5d6730988df17f7c9b1bd794b4d4f9d568"
+  },
+  "docs\\docs\\versions\\v0_2\\migrating_astream_events.mdx": {
+    "path": "docs\\docs\\versions\\v0_2\\migrating_astream_events.mdx",
+    "status": "translated",
+    "lastHash": "24d8855a6949e33ba35cf6338771a28233c3c2b5"
+  },
+  "docs\\docs\\_templates\\integration.mdx": {
+    "path": "docs\\docs\\_templates\\integration.mdx",
+    "status": "translated",
+    "lastHash": "5e686ad3fc1224b148363a4dbd9a3ac8f133fb11"
+  },
+  "docs\\docs\\integrations\\retrievers\\graph_rag.mdx": {
+    "path": "docs\\docs\\integrations\\retrievers\\graph_rag.mdx",
+    "status": "translated",
+    "lastHash": "3c7cee5d2deb40299a743a8776f57e5c67a0b708"
+  },
+  "docs\\docs\\troubleshooting\\errors\\index.mdx": {
+    "path": "docs\\docs\\troubleshooting\\errors\\index.mdx",
+    "status": "translated",
+    "lastHash": "aad0308b9c49448444a5de1870ce083eb511bac2"
+  },
+  "docs\\docs\\troubleshooting\\errors\\MODEL_NOT_FOUND.mdx": {
+    "path": "docs\\docs\\troubleshooting\\errors\\MODEL_NOT_FOUND.mdx",
+    "status": "translated",
+    "lastHash": "32b8d6896a6a26639a3884c8532fbb5e94eb4d1c"
+  },
+  "docs\\docs\\troubleshooting\\errors\\INVALID_PROMPT_INPUT.mdx": {
+    "path": "docs\\docs\\troubleshooting\\errors\\INVALID_PROMPT_INPUT.mdx",
+    "status": "translated",
+    "lastHash": "030881a19c0d0f36bff5463e157525835f6e1414"
+  },
+  "docs\\docs\\troubleshooting\\errors\\MODEL_AUTHENTICATION.mdx": {
+    "path": "docs\\docs\\troubleshooting\\errors\\MODEL_AUTHENTICATION.mdx",
+    "status": "translated",
+    "lastHash": "e3d58b5e6e79bcb68ba5a37fab08442f6878e687"
+  },
+  "docs\\docs\\troubleshooting\\errors\\MODEL_RATE_LIMIT.mdx": {
+    "path": "docs\\docs\\troubleshooting\\errors\\MODEL_RATE_LIMIT.mdx",
+    "status": "translated",
+    "lastHash": "d589913479e1fc320aeccece96fac641a6076939"
+  },
+  "docs\\docs\\versions\\v0_2\\overview.mdx": {
+    "path": "docs\\docs\\versions\\v0_2\\overview.mdx",
+    "status": "translated",
+    "lastHash": "7fdb3fa78a74025ee7f2fb4688cda57d1b192e6d"
+  },
+  "docs\\docs\\changes\\changelog\\langchain.mdx": {
+    "path": "docs\\docs\\changes\\changelog\\langchain.mdx",
+    "status": "translated",
+    "lastHash": "04a7d8d9dcdf8cd448dd34e05622cb0d02629443"
+  },
+  "docs\\docs\\versions\\v0_2\\deprecations.mdx": {
+    "path": "docs\\docs\\versions\\v0_2\\deprecations.mdx",
+    "status": "translated",
+    "lastHash": "d08d885c2d393ce67b15bd25b104deadff4ea914"
+  },
+  "docs\\docs\\versions\\v0_3\\index.mdx": {
+    "path": "docs\\docs\\versions\\v0_3\\index.mdx",
+    "status": "translated",
+    "lastHash": "f553ab19866160a963c1a25696bb4d15a79c1e3a"
+  },
+  "docs\\docs\\versions\\migrating_memory\\index.mdx": {
+    "path": "docs\\docs\\versions\\migrating_memory\\index.mdx",
+    "status": "translated",
+    "lastHash": "0043dcb13b54c9675999c6126cbd8eccc6564649"
+  },
+  "cookbook\\advanced_rag_eval.ipynb": {
+    "path": "cookbook\\advanced_rag_eval.ipynb",
+    "status": "translated",
+    "lastHash": "2e71ce549ea688f7588c59dce885d7c6ce230ff4"
+  }
+}

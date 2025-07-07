@@ -1,86 +1,71 @@
-# Security Policy
+# 安全策略
 
-LangChain has a large ecosystem of integrations with various external resources like local and remote file systems, APIs and databases. These integrations allow developers to create versatile applications that combine the power of LLMs with the ability to access, interact with and manipulate external resources.
+LangChain 拥有一个庞大的生态系统，集成了各种外部资源，如本地和远程文件系统、API 和数据库。这些集成使开发人员能够创建多功能应用程序，将 LLM 的强大功能与访问、交互和操作外部资源的能力相结合。
 
-## Best practices
+## 最佳实践
 
-When building such applications developers should remember to follow good security practices:
+在构建此类应用程序时，开发人员应牢记遵循良好的安全实践：
 
-* [**Limit Permissions**](https://en.wikipedia.org/wiki/Principle_of_least_privilege): Scope permissions specifically to the application's need. Granting broad or excessive permissions can introduce significant security vulnerabilities. To avoid such vulnerabilities, consider using read-only credentials, disallowing access to sensitive resources, using sandboxing techniques (such as running inside a container), specifying proxy configurations to control external requests, etc. as appropriate for your application.
-* **Anticipate Potential Misuse**: Just as humans can err, so can Large Language Models (LLMs). Always assume that any system access or credentials may be used in any way allowed by the permissions they are assigned. For example, if a pair of database credentials allows deleting data, it's safest to assume that any LLM able to use those credentials may in fact delete data.
-* [**Defense in Depth**](https://en.wikipedia.org/wiki/Defense_in_depth_(computing)): No security technique is perfect. Fine-tuning and good chain design can reduce, but not eliminate, the odds that a Large Language Model (LLM) may make a mistake. It's best to combine multiple layered security approaches rather than relying on any single layer of defense to ensure security. For example: use both read-only permissions and sandboxing to ensure that LLMs are only able to access data that is explicitly meant for them to use.
+* [**限制权限**](https://en.wikipedia.org/wiki/Principle_of_least_privilege)：将权限范围限定在应用程序的特定需求。授予广泛或过多的权限可能会引入重大的安全漏洞。为避免此类漏洞，请考虑使用只读凭据、禁止访问敏感资源、使用沙盒技术（例如在容器内运行）、指定代理配置以控制外部请求等，具体取决于您的应用程序。
+* **预见潜在的滥用**：正如人类会犯错一样，大型语言模型 (LLM) 也会犯错。始终假定任何系统访问或凭据都可能以其被分配的权限允许的任何方式使用。例如，如果一对数据库凭据允许删除数据，那么最安全的方式是假定任何能够使用这些凭据的 LLM 实际上都可能删除数据。
+* [**纵深防御**](https://en.wikipedia.org/wiki/Defense_in_depth_(computing))：没有一种安全技术是完美的。微调和良好的链设计可以减少大型语言模型 (LLM) 犯错的可能性，但不能完全消除。最好结合多种分层安全方法，而不是依赖任何单一的防御层来确保安全。例如：同时使用只读权限和沙盒技术，以确保 LLM 只能访问明确供其使用的数据。
 
-Risks of not doing so include, but are not limited to:
-* Data corruption or loss.
-* Unauthorized access to confidential information.
-* Compromised performance or availability of critical resources.
+不这样做可能带来的风险包括但不限于：
+* 数据损坏或丢失。
+* 未经授权访问机密信息。
+* 关键资源的性能或可用性受到损害。
 
-Example scenarios with mitigation strategies:
+示例场景及缓解策略：
 
-* A user may ask an agent with access to the file system to delete files that should not be deleted or read the content of files that contain sensitive information. To mitigate, limit the agent to only use a specific directory and only allow it to read or write files that are safe to read or write. Consider further sandboxing the agent by running it in a container.
-* A user may ask an agent with write access to an external API to write malicious data to the API, or delete data from that API. To mitigate, give the agent read-only API keys, or limit it to only use endpoints that are already resistant to such misuse.
-* A user may ask an agent with access to a database to drop a table or mutate the schema. To mitigate, scope the credentials to only the tables that the agent needs to access and consider issuing READ-ONLY credentials.
+* 用户可能会要求一个可以访问文件系统的代理删除不应删除的文件，或读取包含敏感信息的文件内容。为缓解此问题，请将代理限制为仅使用特定目录，并仅允许其读取或写入可以安全读写的文件。考虑通过在容器中运行代理来进一步对其进行沙盒化。
+* 用户可能会要求一个具有外部 API 写入访问权限的代理向 API 写入恶意数据，或从该 API 中删除数据。为缓解此问题，请为代理提供只读 API 密钥，或将其限制为仅使用已能抵抗此类滥用的端点。
+* 用户可能会要求一个具有数据库访问权限的代理删除表或修改模式。为缓解此问题，请将凭据的范围限定为仅代理需要访问的表，并考虑发放只读凭据。
 
-If you're building applications that access external resources like file systems, APIs
-or databases, consider speaking with your company's security team to determine how to best
-design and secure your applications.
+如果您正在构建访问文件系统、API 或数据库等外部资源的应用程序，请考虑与您公司的安全团队沟通，以确定如何最好地设计和保护您的应用程序。
 
-## Reporting OSS Vulnerabilities
+## 报告开源漏洞
 
-LangChain is partnered with [huntr by Protect AI](https://huntr.com/) to provide 
-a bounty program for our open source projects. 
+LangChain 与 [huntr by Protect AI](https://huntr.com/) 合作，为我们的开源项目提供赏金计划。
 
-Please report security vulnerabilities associated with the LangChain 
-open source projects by visiting the following link:
+请通过访问以下链接报告与 LangChain 开源项目相关的安全漏洞：
 
 [https://huntr.com/bounties/disclose/](https://huntr.com/bounties/disclose/?target=https%3A%2F%2Fgithub.com%2Flangchain-ai%2Flangchain&validSearch=true)
 
-Before reporting a vulnerability, please review:
+在报告漏洞之前，请查阅：
 
-1) In-Scope Targets and Out-of-Scope Targets below.
-2) The [langchain-ai/langchain](https://python.langchain.com/docs/contributing/repo_structure) monorepo structure.
-3) The [Best practices](#best-practices) above to
-   understand what we consider to be a security vulnerability vs. developer
-   responsibility.
+1) 下面的“范围内目标”和“范围外目标”。
+2) [langchain-ai/langchain](https://python.langchain.com/docs/contributing/repo_structure) 单体仓库结构。
+3) 上面的 [最佳实践](#best-practices)，以了解我们如何将安全漏洞与开发者责任区分开来。
 
-### In-Scope Targets
+### 范围内目标
 
-The following packages and repositories are eligible for bug bounties:
+以下软件包和存储库符合漏洞赏金的资格：
 
 - langchain-core
-- langchain (see exceptions)
-- langchain-community (see exceptions)
+- langchain（请参阅例外）
+- langchain-community（请参阅例外）
 - langgraph
 - langserve
 
-### Out of Scope Targets
+### 范围外目标
 
-All out of scope targets defined by huntr as well as:
+huntr 定义的所有范围外目标，以及：
 
-- **langchain-experimental**: This repository is for experimental code and is not
-  eligible for bug bounties (see [package warning](https://pypi.org/project/langchain-experimental/)), bug reports to it will be marked as interesting or waste of
-  time and published with no bounty attached.
-- **tools**: Tools in either langchain or langchain-community are not eligible for bug
-  bounties. This includes the following directories
+- **langchain-experimental**：此存储库包含实验性代码，不符合漏洞赏金的资格（请参阅 [软件包警告](https://pypi.org/project/langchain-experimental/)），对其的错误报告将被标记为“有趣”或“浪费时间”，并在不附带赏金的情况下发布。
+- **tools**：langchain 或 langchain-community 中的工具不符合漏洞赏金的资格。这包括以下目录：
   - libs/langchain/langchain/tools
   - libs/community/langchain_community/tools
-  - Please review the [best practices](#best-practices)
-    for more details, but generally tools interact with the real world. Developers are
-    expected to understand the security implications of their code and are responsible
-    for the security of their tools.
-- Code documented with security notices. This will be decided done on a case by
-  case basis, but likely will not be eligible for a bounty as the code is already
-  documented with guidelines for developers that should be followed for making their
-  application secure.
-- Any LangSmith related repositories or APIs (see [Reporting LangSmith Vulnerabilities](#reporting-langsmith-vulnerabilities)).
+  - 请参阅 [最佳实践](#best-practices) 以获取更多详细信息，但通常工具会与真实世界进行交互。开发者应了解其代码的安全含义，并对其工具的安全性负责。
+- 带有安全通知的代码。这将根据具体情况决定，但可能不符合赏金资格，因为代码已附带应遵循的指南，以确保开发人员构建的安全应用程序。
+- 任何与 LangSmith 相关的存储库或 API（请参阅 [报告 LangSmith 漏洞](#reporting-langsmith-vulnerabilities)）。
 
-## Reporting LangSmith Vulnerabilities
+## 报告 LangSmith 漏洞
 
-Please report security vulnerabilities associated with LangSmith by email to `security@langchain.dev`.
+请通过电子邮件 `security@langchain.dev` 报告与 LangSmith 相关的安全漏洞。
 
-- LangSmith site: https://smith.langchain.com
-- SDK client: https://github.com/langchain-ai/langsmith-sdk
+- LangSmith 网站：https://smith.langchain.com
+- SDK 客户端：https://github.com/langchain-ai/langsmith-sdk
 
-### Other Security Concerns
+### 其他安全问题
 
-For any other security concerns, please contact us at `security@langchain.dev`.
+对于任何其他安全问题，请通过 `security@langchain.dev` 与我们联系。

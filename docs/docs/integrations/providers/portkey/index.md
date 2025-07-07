@@ -1,37 +1,37 @@
 # Portkey
 
-[Portkey](https://portkey.ai) is the Control Panel for AI apps. With it's popular AI Gateway and Observability Suite, hundreds of teams ship **reliable**, **cost-efficient**, and **fast** apps.
+[Portkey](https://portkey.ai) 是 AI 应用的控制面板。凭借其流行的 AI Gateway 和 Observability Suite，数百个团队得以交付**可靠**、**经济高效**且**快速**的应用。
 
-## LLMOps for Langchain
+## Langchain 的 LLMOps
 
-Portkey brings production readiness to Langchain. With Portkey, you can 
-- [x] Connect to 150+ models through a unified API,
-- [x] View 42+ **metrics & logs** for all requests, 
-- [x] Enable **semantic cache** to reduce latency & costs, 
-- [x] Implement automatic **retries & fallbacks** for failed requests, 
-- [x] Add **custom tags** to requests for better tracking and analysis and [more](https://portkey.ai/docs).
+Portkey 为 Langchain 带来了生产就绪能力。通过 Portkey，您可以：
+- [x] 通过统一的 API 连接到 150 多个模型，
+- [x] 查看所有请求的 42 多个**指标和日志**，
+- [x] 启用**语义缓存**以降低延迟和成本，
+- [x] 为失败的请求实现自动**重试和回退**，
+- [x] 为请求添加**自定义标签**以进行更好的跟踪和分析，以及更多功能（[详情](https://portkey.ai/docs)）。
 
 
-## Quickstart - Portkey & Langchain
-Since Portkey is fully compatible with the OpenAI signature, you can connect to the Portkey AI Gateway through the `ChatOpenAI` interface.
+## 快速入门 - Portkey & Langchain
+由于 Portkey 完全兼容 OpenAI 签名，您可以通过 `ChatOpenAI` 接口连接到 Portkey AI Gateway。
 
-- Set the `base_url` as `PORTKEY_GATEWAY_URL`
-- Add `default_headers` to consume the headers needed by Portkey using the `createHeaders` helper method.
+- 将 `base_url` 设置为 `PORTKEY_GATEWAY_URL`
+- 添加 `default_headers` 以使用 `createHeaders` 辅助方法消耗 Portkey 所需的标头。
 
-To start, get your Portkey API key by [signing up here](https://app.portkey.ai/signup). (Click the profile icon on the bottom left, then click on "Copy API Key") or deploy the open source AI gateway in [your own environment](https://github.com/Portkey-AI/gateway/blob/main/docs/installation-deployments.md).
+首先，通过[在此处注册](https://app.portkey.ai/signup)获取您的 Portkey API 密钥。（点击左下角的个人资料图标，然后点击“复制 API 密钥”）或在[您自己的环境中](https://github.com/Portkey-AI/gateway/blob/main/docs/installation-deployments.md)部署开源 AI 网关。
 
-Next, install the Portkey SDK
+接下来，安装 Portkey SDK
 ```python
 pip install -U portkey_ai
 ```
 
-We can now connect to the Portkey AI Gateway by updating the `ChatOpenAI` model in Langchain
+现在，我们可以通过更新 Langchain 中的 `ChatOpenAI` 模型来连接到 Portkey AI Gateway
 ```python
 from langchain_openai import ChatOpenAI
 from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
-PORTKEY_API_KEY = "..." # Not needed when hosting your own gateway
-PROVIDER_API_KEY = "..." # Add the API key of the AI provider being used 
+PORTKEY_API_KEY = "..." # 托管自己的网关时不需要
+PROVIDER_API_KEY = "..." # 添加正在使用的 AI 提供商的 API 密钥
 
 portkey_headers = createHeaders(api_key=PORTKEY_API_KEY,provider="openai")
 
@@ -40,27 +40,27 @@ llm = ChatOpenAI(api_key=PROVIDER_API_KEY, base_url=PORTKEY_GATEWAY_URL, default
 llm.invoke("What is the meaning of life, universe and everything?")
 ```
 
-The request is routed through your Portkey AI Gateway to the specified `provider`. Portkey will also start logging all the requests in your account that makes debugging extremely simple.
+请求通过您的 Portkey AI Gateway 路由到指定的 `provider`。Portkey 还将开始记录您账户中的所有请求，从而使调试变得极其简单。
 
-![View logs from Langchain in Portkey](https://assets.portkey.ai/docs/langchain-logs.gif)
+![在 Portkey 中查看 Langchain 的日志](https://assets.portkey.ai/docs/langchain-logs.gif)
 
-## Using 150+ models through the AI Gateway
-The power of the AI gateway comes when you're able to use the above code snippet to connect with 150+ models across 20+ providers supported through the AI gateway.
+## 通过 AI Gateway 使用 150 多个模型
+当您能够使用上述代码片段连接到 AI Gateway 支持的 20 多个提供商的 150 多个模型时，AI Gateway 的强大功能就显现出来了。
 
-Let's modify the code above to make a call to Anthropic's `claude-3-opus-20240229` model.
+让我们修改上面的代码，调用 Anthropic 的 `claude-3-opus-20240229` 模型。
 
-Portkey supports **[Virtual Keys](https://docs.portkey.ai/docs/product/ai-gateway-streamline-llm-integrations/virtual-keys)** which are an easy way to store and manage API keys in a secure vault. Let's try using a Virtual Key to make LLM calls. You can navigate to the Virtual Keys tab in Portkey and create a new key for Anthropic.
+Portkey 支持**[虚拟密钥](https://docs.portkey.ai/docs/product/ai-gateway-streamline-llm-integrations/virtual-keys)**，这是一种安全存储和管理 API 密钥的便捷方式。让我们尝试使用虚拟密钥进行 LLM 调用。您可以导航到 Portkey 中的虚拟密钥选项卡，为 Anthropic 创建一个新密钥。
 
-The `virtual_key` parameter sets the authentication and provider for the AI provider being used. In our case we're using the Anthropic Virtual key.
+`virtual_key` 参数设置了正在使用的 AI 提供商的身份验证和提供商。在本例中，我们使用的是 Anthropic 虚拟密钥。
 
-> Notice that the `api_key` can be left blank as that authentication won't be used.
+> 请注意，`api_key` 可以留空，因为该身份验证将不被使用。
 
 ```python
 from langchain_openai import ChatOpenAI
 from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
 PORTKEY_API_KEY = "..."
-VIRTUAL_KEY = "..." # Anthropic's virtual key we copied above
+VIRTUAL_KEY = "..." # 我们上面复制的 Anthropic 虚拟密钥
 
 portkey_headers = createHeaders(api_key=PORTKEY_API_KEY,virtual_key=VIRTUAL_KEY)
 
@@ -69,14 +69,14 @@ llm = ChatOpenAI(api_key="X", base_url=PORTKEY_GATEWAY_URL, default_headers=port
 llm.invoke("What is the meaning of life, universe and everything?")
 ```
 
-The Portkey AI gateway will authenticate the API request to Anthropic and get the response back in the OpenAI format for you to consume.
+Portkey AI 网关将向 Anthropic 验证 API 请求，并以 OpenAI 格式将响应返回给您使用。
 
-The AI gateway extends Langchain's `ChatOpenAI` class making it a single interface to call any provider and any model.
+AI Gateway 扩展了 Langchain 的 `ChatOpenAI` 类，使其成为调用任何提供商和任何模型的单一接口。
 
-## Advanced Routing - Load Balancing, Fallbacks, Retries
-The Portkey AI Gateway brings capabilities like load-balancing, fallbacks, experimentation and canary testing to Langchain through a configuration-first approach.
+## 高级路由 - 负载均衡、回退、重试
+Portkey AI Gateway 通过一种配置优先的方法，为 Langchain 带来了负载均衡、回退、实验和金丝雀测试等功能。
 
-Let's take an **example** where we might want to split traffic between `gpt-4` and `claude-opus` 50:50 to test the two large models. The gateway configuration for this would look like the following:
+让我们看一个**示例**，我们可能希望将流量以 50:50 的比例在 `gpt-4` 和 `claude-opus` 之间分配，以测试这两个大型模型。相应的网关配置如下所示：
 
 ```python
 config = {
@@ -84,18 +84,18 @@ config = {
          "mode": "loadbalance"
     },
     "targets": [{
-        "virtual_key": "openai-25654", # OpenAI's virtual key
+        "virtual_key": "openai-25654", # OpenAI 的虚拟密钥
         "override_params": {"model": "gpt4"},
         "weight": 0.5
     }, {
-        "virtual_key": "anthropic-25654", # Anthropic's virtual key
+        "virtual_key": "anthropic-25654", # Anthropic 的虚拟密钥
         "override_params": {"model": "claude-3-opus-20240229"},
         "weight": 0.5
     }]
 }
 ```
 
-We can then use this config in our requests being made from langchain.
+然后，我们可以在从 langchain 发出的请求中使用此配置。
 
 ```python
 portkey_headers = createHeaders(
@@ -108,15 +108,15 @@ llm = ChatOpenAI(api_key="X", base_url=PORTKEY_GATEWAY_URL, default_headers=port
 llm.invoke("What is the meaning of life, universe and everything?")
 ```
 
-When the LLM is invoked, Portkey will distribute the requests to `gpt-4` and `claude-3-opus-20240229` in the ratio of the defined weights.
+当调用 LLM 时，Portkey 将按照定义的权重比例将请求分发到 `gpt-4` 和 `claude-3-opus-20240229`。
 
-You can find more config examples [here](https://docs.portkey.ai/docs/api-reference/config-object#examples).
+您可以在此处找到更多配置示例（[链接](https://docs.portkey.ai/docs/api-reference/config-object#examples)）。
 
-## **Tracing Chains & Agents**
+## **跟踪链和代理**
 
-Portkey's Langchain integration gives you full visibility into the running of an agent. Let's take an example of a [popular agentic workflow](https://python.langchain.com/docs/use_cases/tool_use/quickstart/#agents).
+Portkey 的 Langchain 集成让您可以完全了解代理的运行情况。让我们以一个[流行的代理工作流](https://python.langchain.com/docs/use_cases/tool_use/quickstart/#agents)为例。
 
-We only need to modify the `ChatOpenAI` class to use the AI Gateway as above.
+我们只需要像上面一样修改 `ChatOpenAI` 类来使用 AI Gateway。
 
 ```python
 from langchain import hub  
@@ -135,13 +135,13 @@ portkey_headers = createHeaders(
 
 @tool
 def multiply(first_int: int, second_int: int) -> int:
-    """Multiply two integers together."""
+    """将两个整数相乘。"""
     return first_int * second_int
   
   
 @tool  
 def exponentiate(base: int, exponent: int) -> int:  
-    "Exponentiate the base to the exponent power."  
+    "计算基数的指数次幂。"  
     return base**exponent  
   
   
@@ -149,10 +149,10 @@ tools = [multiply, exponentiate]
 
 model = ChatOpenAI(api_key="X", base_url=PORTKEY_GATEWAY_URL, default_headers=portkey_headers, temperature=0)
   
-# Construct the OpenAI Tools agent  
+# 构建 OpenAI 工具代理  
 agent = create_openai_tools_agent(model, tools, prompt)
 
-# Create an agent executor by passing in the agent and tools
+# 通过传入代理和工具来创建代理执行器
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
 agent_executor.invoke({
@@ -160,15 +160,15 @@ agent_executor.invoke({
 })
 ```
 
-**You can see the requests' logs along with the trace id on Portkey dashboard:**
-![Langchain Agent Logs on Portkey](https://assets.portkey.ai/docs/agent_tracing.gif)
+**您可以在 Portkey 仪表板上查看请求的日志以及跟踪 ID：**
+![Portkey 上的 Langchain 代理日志](https://assets.portkey.ai/docs/agent_tracing.gif)
 
 
-Additional Docs are available here:
-- Observability - https://portkey.ai/docs/product/observability-modern-monitoring-for-llms
+其他文档可在以下位置找到：
+- 可观测性 - https://portkey.ai/docs/product/observability-modern-monitoring-for-llms
 - AI Gateway - https://portkey.ai/docs/product/ai-gateway-streamline-llm-integrations
 - Prompt Library - https://portkey.ai/docs/product/prompt-library
 
-You can check out our popular Open Source AI Gateway here - https://github.com/portkey-ai/gateway
+您可以在此处查看我们流行的开源 AI 网关 - https://github.com/portkey-ai/gateway
 
-For detailed information on each feature and how to use it, [please refer to the Portkey docs](https://portkey.ai/docs). If you have any questions or need further assistance, [reach out to us on Twitter.](https://twitter.com/portkeyai) or our [support email](mailto:hello@portkey.ai).
+有关每个功能及其使用方法的详细信息，[请参阅 Portkey 文档](https://portkey.ai/docs)。如果您有任何问题或需要进一步的帮助，请通过 Twitter [联系我们](https://twitter.com/portkeyai)。或我们的[支持邮箱](mailto:hello@portkey.ai)。

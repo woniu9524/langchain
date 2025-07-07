@@ -1,6 +1,6 @@
-# Contributing to LangChain
+# 贡献 LangChain
 
-Hi there! Thank you for even being interested in contributing to LangChain.
-As an open-source project in a rapidly developing field, we are extremely open to contributions, whether they involve new features, improved infrastructure, better documentation, or bug fixes.
+你好！感谢你对贡献 LangChain 感兴趣。
+作为一个在快速发展领域的开源项目，我们非常欢迎各种贡献，无论是新功能、改进的基础设施、更好的文档还是错误修复。
 
-To learn how to contribute to LangChain, please follow the [contribution guide here](https://python.langchain.com/docs/contributing/).
+要了解如何为 LangChain 做出贡献，请遵循[此处的贡献指南](https://python.langchain.com/docs/contributing/)。

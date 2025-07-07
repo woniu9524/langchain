@@ -1,14 +1,13 @@
 # Abso
 
-[Abso](https://abso.ai/#router) is an open-source LLM proxy that automatically routes requests between fast and slow models based on prompt complexity. It uses various heuristics to chose the proper model. It's very fast and has low latency.
+[Abso](https://abso.ai/#router) 是一个开源的 LLM 代理，它根据提示的复杂性在快速和慢速模型之间自动路由请求。它使用各种启发式方法来选择合适的模型。它速度非常快，延迟很低。
 
-
-## Installation and setup
+## 安装和设置
 
 ```bash
 pip install langchain-abso
 ```
 
-## Chat Model
+## Chat 模型
 
-See usage details [here](/docs/integrations/chat/abso)
+在此处查看使用详情：[/docs/integrations/chat/abso](/docs/integrations/chat/abso)

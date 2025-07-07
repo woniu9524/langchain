@@ -1,79 +1,75 @@
 # __app_name__
 
-## Installation
+## 安装
 
-Install the LangChain CLI if you haven't yet
+如果尚未安装 LangChain CLI，请进行安装
 
 ```bash
 pip install -U langchain-cli
 ```
 
-## Adding packages
+## 添加包
 
 ```bash
-# adding packages from 
+# 从以下位置添加包
 # https://github.com/langchain-ai/langchain/tree/master/templates
 langchain app add $PROJECT_NAME
 
-# adding custom GitHub repo packages
+# 添加自定义 GitHub 仓库包
 langchain app add --repo $OWNER/$REPO
-# or with whole git string (supports other git providers):
+# 或者使用完整的 git 字符串（支持其他 git 提供商）：
 # langchain app add git+https://github.com/hwchase17/chain-of-verification
 
-# with a custom api mount point (defaults to `/{package_name}`)
+# 使用自定义 API 挂载点（默认为 `/{package_name}`）
 langchain app add $PROJECT_NAME --api_path=/my/custom/path/rag
 ```
 
-Note: you remove packages by their api path
+注意：您可以通过其 API 路径移除包
 
 ```bash
 langchain app remove my/custom/path/rag
 ```
 
-## Setup LangSmith (Optional)
-LangSmith will help us trace, monitor and debug LangChain applications. 
-You can sign up for LangSmith [here](https://smith.langchain.com/). 
-If you don't have access, you can skip this section
-
+## 设置 LangSmith (可选)
+LangSmith 将帮助我们跟踪、监控和调试 LangChain 应用程序。
+您可以在 [此处](https://smith.langchain.com/) 注册 LangSmith。
+如果您没有访问权限，可以跳过此部分
 
 ```shell
 export LANGSMITH_TRACING=true
 export LANGSMITH_API_KEY=<your-api-key>
-export LANGSMITH_PROJECT=<your-project>  # if not specified, defaults to "default"
+export LANGSMITH_PROJECT=<your-project>  # 如果未指定，则默认为 "default"
 ```
 
-## Launch LangServe
+## 启动 LangServe
 
 ```bash
 langchain serve
 ```
 
-## Running in Docker
+## 在 Docker 中运行
 
-This project folder includes a Dockerfile that allows you to easily build and host your LangServe app.
+此项目文件夹包含一个 Dockerfile，允许您轻松构建和托管您的 LangServe 应用程序。
 
-### Building the Image
+### 构建镜像
 
-To build the image, you simply:
+要构建镜像，只需执行以下操作：
 
 ```shell
 docker build . -t my-langserve-app
 ```
 
-If you tag your image with something other than `my-langserve-app`,
-note it for use in the next step.
+如果您使用的镜像标签不是 `my-langserve-app`，
+请记下它以便在下一步中使用。
 
-### Running the Image Locally
+### 在本地运行镜像
 
-To run the image, you'll need to include any environment variables
-necessary for your application.
+要运行镜像，您需要包含应用程序所需的任何环境变量。
 
-In the below example, we inject the `OPENAI_API_KEY` environment
-variable with the value set in my local environment
-(`$OPENAI_API_KEY`)
+在下面的示例中，我们使用本地环境中设置的值 (`$OPENAI_API_KEY`)
+注入 `OPENAI_API_KEY` 环境变量。
 
-We also expose port 8080 with the `-p 8080:8080` option.
+我们还使用 `-p 8080:8080` 选项公开了 8080 端口。
 
 ```shell
 docker run -e OPENAI_API_KEY=$OPENAI_API_KEY -p 8080:8080 my-langserve-app
-```

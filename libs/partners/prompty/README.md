@@ -1,25 +1,25 @@
 # langchain-prompty
 
-This package contains the LangChain integration with Microsoft Prompty.
+此包包含 LangChain 与 Microsoft Prompty 的集成。
 
-## Installation
+## 安装
 
 ```bash
 pip install -U langchain-prompty
 ```
 
-## Usage
+## 用法
 
-Use the `create_chat_prompt` function to load `prompty` file as prompt.
+使用 `create_chat_prompt` 函数将 `prompty` 文件加载为提示。
 
 ```python
 from langchain_prompty import create_chat_prompt
 
-prompt = create_chat_prompt('<your .prompty file path>')
+prompt = create_chat_prompt('<您的 .prompty 文件路径>')
 ```
-Then you can use the prompt for next steps.
+然后您可以在后续步骤中使用此提示。
 
-Here is an example .prompty file:
+这是一个 .prompty 文件的示例：
 ```prompty
 ---
 name: Basic Prompt
@@ -50,5 +50,3 @@ and in a personable manner using markdown and even add some personal flair with 
 
 user:
 {{input}}
-
-```

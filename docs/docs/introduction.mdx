@@ -3,15 +3,15 @@ sidebar_position: 0
 sidebar_class_name: hidden
 ---
 
-# Introduction
+# 简介
 
-**LangChain** is a framework for developing applications powered by large language models (LLMs).
+**LangChain** 是一个用于开发由大型语言模型 (LLM) 驱动的应用程序的框架。
 
-LangChain simplifies every stage of the LLM application lifecycle:
-- **Development**: Build your applications using LangChain's open-source [components](/docs/concepts) and [third-party integrations](/docs/integrations/providers/).
-Use [LangGraph](/docs/concepts/architecture/#langgraph) to build stateful agents with first-class streaming and human-in-the-loop support.
-- **Productionization**: Use [LangSmith](https://docs.smith.langchain.com/) to inspect, monitor and evaluate your applications, so that you can continuously optimize and deploy with confidence.
-- **Deployment**: Turn your LangGraph applications into production-ready APIs and Assistants with [LangGraph Platform](https://langchain-ai.github.io/langgraph/cloud/).
+LangChain 简化了 LLM 应用程序生命周期的每个阶段：
+- **开发**: 使用 LangChain 的开源 [组件](/docs/concepts) 和 [第三方集成](/docs/integrations/providers/) 构建您的应用程序。
+使用 [LangGraph](/docs/concepts/architecture/#langgraph) 构建具有一流流式传输和人工干预支持的有状态代理。
+- **生产化**: 使用 [LangSmith](https://docs.smith.langchain.com/) 来检查、监控和评估您的应用程序，以便您可以持续优化并自信地部署。
+- **部署**: 使用 [LangGraph Platform](https://langchain-ai.github.io/langgraph/cloud/) 将您的 LangGraph 应用程序转化为生产就绪的 API 和助手。
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -26,10 +26,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   title="LangChain Framework Overview"
 />
 
-LangChain implements a standard interface for large language models and related
-technologies, such as embedding models and vector stores, and integrates with
-hundreds of providers. See the [integrations](/docs/integrations/providers/) page for
-more.
+LangChain 为大型语言模型和相关技术（如嵌入模型和向量存储）实现了标准接口，并与数百个提供商进行了集成。有关更多信息，请参阅 [集成](/docs/integrations/providers/) 页面。
 
 import ChatModelTabs from "@theme/ChatModelTabs";
 
@@ -41,78 +38,75 @@ model.invoke("Hello, world!")
 
 :::note
 
-These docs focus on the Python LangChain library. [Head here](https://js.langchain.com) for docs on the JavaScript LangChain library.
+本文档重点介绍 Python LangChain 库。有关 JavaScript LangChain 库的文档，请访问 [此处](https://js.langchain.com)。
 
 :::
 
-## Architecture
+## 架构
 
-The LangChain framework consists of multiple open-source libraries. Read more in the
-[Architecture](/docs/concepts/architecture/) page.
+LangChain 框架包含多个开源库。请阅读 [架构](/docs/concepts/architecture/) 页面了解更多信息。
 
-- **`langchain-core`**: Base abstractions for chat models and other components.
-- **Integration packages** (e.g. `langchain-openai`, `langchain-anthropic`, etc.): Important integrations have been split into lightweight packages that are co-maintained by the LangChain team and the integration developers.
-- **`langchain`**: Chains, agents, and retrieval strategies that make up an application's cognitive architecture.
-- **`langchain-community`**: Third-party integrations that are community maintained.
-- **`langgraph`**: Orchestration framework for combining LangChain components into production-ready applications with persistence, streaming, and other key features. See [LangGraph documentation](https://langchain-ai.github.io/langgraph/).
+- **`langchain-core`**: 聊天模型和其他组件的基础抽象。
+- **集成包** (例如 `langchain-openai`、`langchain-anthropic` 等)：重要的集成已拆分为轻量级包，由 LangChain 团队和集成开发者共同维护。
+- **`langchain`**: 构成应用程序认知架构的链、代理和检索策略。
+- **`langchain-community`**: 由社区维护的第三方集成。
+- **`langgraph`**: 用于将 LangChain 组件组合成具有持久性、流式传输和其他关键功能的生产就绪应用程序的编排框架。请参阅 [LangGraph 文档](https://langchain-ai.github.io/langgraph/)。
 
-## Guides
+## 指南
 
-### [Tutorials](/docs/tutorials)
+### [教程](/docs/tutorials)
 
-If you're looking to build something specific or are more of a hands-on learner, check out our [tutorials section](/docs/tutorials).
-This is the best place to get started.
+如果您想构建特定内容或更倾向于动手学习，请查看我们的 [教程部分](/docs/tutorials)。
+这是开始的最佳地点。
 
-These are the best ones to get started with:
+以下是开始学习的最佳教程：
 
-- [Build a Simple LLM Application](/docs/tutorials/llm_chain)
-- [Build a Chatbot](/docs/tutorials/chatbot)
-- [Build an Agent](/docs/tutorials/agents)
-- [Introduction to LangGraph](https://langchain-ai.github.io/langgraph/tutorials/introduction/)
+- [构建简单的 LLM 应用程序](/docs/tutorials/llm_chain)
+- [构建聊天机器人](/docs/tutorials/chatbot)
+- [构建代理](/docs/tutorials/agents)
+- [LangGraph 简介](https://langchain-ai.github.io/langgraph/tutorials/introduction/)
 
-Explore the full list of LangChain tutorials [here](/docs/tutorials), and check out other [LangGraph tutorials here](https://langchain-ai.github.io/langgraph/tutorials/). To learn more about LangGraph, check out our first LangChain Academy course, *Introduction to LangGraph*, available [here](https://academy.langchain.com/courses/intro-to-langgraph).
-
-
-### [How-to guides](/docs/how_to)
-
-[Here](/docs/how_to) you’ll find short answers to “How do I….?” types of questions.
-These how-to guides don’t cover topics in depth – you’ll find that material in the [Tutorials](/docs/tutorials) and the [API Reference](https://python.langchain.com/api_reference/).
-However, these guides will help you quickly accomplish common tasks using [chat models](/docs/how_to/#chat-models),
-[vector stores](/docs/how_to/#vector-stores), and other common LangChain components.
-
-Check out [LangGraph-specific how-tos here](https://langchain-ai.github.io/langgraph/how-tos/).
-
-### [Conceptual guide](/docs/concepts)
-
-Introductions to all the key parts of LangChain you’ll need to know! [Here](/docs/concepts) you'll find high level explanations of all LangChain concepts.
-
-For a deeper dive into LangGraph concepts, check out [this page](https://langchain-ai.github.io/langgraph/concepts/).
-
-### [Integrations](integrations/providers/index.mdx)
-
-LangChain is part of a rich ecosystem of tools that integrate with our framework and build on top of it.
-If you're looking to get up and running quickly with [chat models](/docs/integrations/chat/), [vector stores](/docs/integrations/vectorstores/),
-or other LangChain components from a specific provider, check out our growing list of [integrations](/docs/integrations/providers/).
+在此处 [此处](/docs/tutorials) 探索 LangChain 教程的完整列表，并在此处 [此处](https://langchain-ai.github.io/langgraph/tutorials/) 查看其他 [LangGraph 教程](https://langchain-ai.github.io/langgraph/tutorials/)。要了解有关 LangGraph 的更多信息，请查看我们的第一个 LangChain Academy 课程“LangGraph 简介”，可在 [此处](https://academy.langchain.com/courses/intro-to-langgraph) 获得。
 
 
-### [API reference](https://python.langchain.com/api_reference/)
-Head to the reference section for full documentation of all classes and methods in the LangChain Python packages.
+### [操作指南](/docs/how_to)
 
-## Ecosystem
+[此处](/docs/how_to) 您可以找到对“如何…？”类型问题的简短回答。
+这些操作指南不深入探讨主题——您将在 [教程](/docs/tutorials) 和 [API 参考](https://python.langchain.com/api_reference/) 中找到相关材料。
+但是，这些指南将帮助您使用 [聊天模型](/docs/how_to/#chat-models)、[向量存储](/docs/how_to/#vector-stores) 和其他常用 LangChain 组件快速完成常见任务。
+
+在此处查看 [LangGraph 特定的操作指南](https://langchain-ai.github.io/langgraph/how-tos/)。
+
+### [概念指南](/docs/concepts)
+
+介绍您需要了解的 LangChain 的所有关键部分！[此处](/docs/concepts) 您将找到对所有 LangChain 概念的高级解释。
+
+有关 LangGraph 概念的更深入探讨，请查看 [此页面](https://langchain-ai.github.io/langgraph/concepts/)。
+
+### [集成](integrations/providers/index.mdx)
+
+LangChain 是一个丰富的工具生态系统的一部分，这些工具与我们的框架集成并在此基础上构建。
+如果您希望快速上手使用来自特定提供商的 [聊天模型](/docs/integrations/chat/)、[向量存储](/docs/integrations/vectorstores/) 或其他 LangChain 组件，请查看我们不断增长的 [集成](/docs/integrations/providers/) 列表。
+
+
+### [API 参考](https://python.langchain.com/api_reference/)
+前往参考部分，获取 LangChain Python 包中所有类和方法的完整文档。
+
+## 生态系统
 
 ### [🦜🛠️ LangSmith](https://docs.smith.langchain.com)
-Trace and evaluate your language model applications and intelligent agents to help you move from prototype to production.
+跟踪和评估您的语言模型应用程序和智能代理，以帮助您从原型过渡到生产。
 
 ### [🦜🕸️ LangGraph](https://langchain-ai.github.io/langgraph)
-Build stateful, multi-actor applications with LLMs. Integrates smoothly with LangChain, but can be used without it. LangGraph powers production-grade agents, trusted by Linkedin, Uber, Klarna, GitLab, and many more.
+构建具有 LLM 的有状态、多参与者应用程序。与 LangChain 无缝集成，但也可单独使用。LangGraph 支持生产级代理，并获得 Linkedin、Uber、Klarna、GitLab 等公司的信赖。
 
-## Additional resources
+## 附加资源
 
-### [Versions](/docs/versions/v0_3/)
-See what changed in v0.3, learn how to migrate legacy code, read up on our versioning policies, and more.
+### [版本](/docs/versions/v0_3/)
+查看 v0.3 的变更内容，了解如何迁移旧代码，了解我们的版本策略等。
 
-### [Security](/docs/security)
-Read up on [security](/docs/security) best practices to make sure you're developing safely with LangChain.
+### [安全](/docs/security)
+阅读有关 [安全](/docs/security) 最佳实践，以确保您使用 LangChain 安全地进行开发。
 
-### [Contributing](contributing/index.mdx)
-Check out the developer's guide for guidelines on contributing and help getting your dev environment set up.
+### [贡献](contributing/index.mdx)
+查看开发人员指南，了解贡献指南并帮助设置您的开发环境。

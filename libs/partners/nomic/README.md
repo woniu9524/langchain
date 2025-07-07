@@ -1,20 +1,20 @@
 # langchain-nomic
 
-This package contains the LangChain integration with Nomic
+此包包含 LangChain 与 Nomic 的集成
 
-## Installation
+## 安装
 
 ```bash
 pip install -U langchain-nomic
 ```
 
-And you should configure credentials by setting the following environment variables:
+您应该通过设置以下环境变量来配置凭据：
 
-* `NOMIC_API_KEY`: your nomic API key
+* `NOMIC_API_KEY`: 您的 nomic API 密钥
 
-## Embeddings
+## 嵌入
 
-`NomicEmbeddings` class exposes embeddings from Nomic.
+`NomicEmbeddings` 类公开了来自 Nomic 的嵌入。
 
 ```python
 from langchain_nomic import NomicEmbeddings

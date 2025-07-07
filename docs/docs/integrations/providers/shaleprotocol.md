@@ -1,23 +1,22 @@
 # Shale Protocol
 
-[Shale Protocol](https://shaleprotocol.com) provides production-ready inference APIs for open LLMs. It's a Plug & Play API as it's hosted on a highly scalable GPU cloud infrastructure. 
+[Shale Protocol](https://shaleprotocol.com) 为开源 LLM 提供生产就绪的推理 API。它是一个即插即用 API，托管在高度可扩展的 GPU 云基础设施上。
 
-Our free tier supports up to 1K daily requests per key as we want to eliminate the barrier for anyone to start building genAI apps with LLMs. 
+我们的免费套餐每天支持每个密钥高达 1000 次请求，因为我们希望消除任何人使用 LLM 构建 genAI 应用的障碍。
 
-With Shale Protocol, developers/researchers can create apps and explore the capabilities of open LLMs at no cost.
+通过 Shale Protocol，开发人员/研究人员可以免费创建应用程序并探索开源 LLM 的功能。
 
-This page covers how Shale-Serve API can be incorporated with LangChain.
+本页面介绍如何将 Shale-Serve API 与 LangChain 集成。
 
-As of June 2023, the API supports Vicuna-13B by default. We are going to support more LLMs such as Falcon-40B in future releases. 
+截至 2023 年 6 月，该 API 默认支持 Vicuna-13B。我们将在未来的版本中支持更多 LLM，例如 Falcon-40B。
 
+## 如何操作
 
-## How to
+### 1. 在 https://shaleprotocol.com 上找到我们 Discord 的链接。通过我们 Discord 上的“Shale Bot”生成 API 密钥。无需信用卡，也没有免费试用。这是一个永久免费套餐，每个 API 密钥每天限制为 1000 次。
 
-### 1. Find the link to our Discord on https://shaleprotocol.com. Generate an API key through the "Shale Bot" on our Discord. No credit card is required and no free trials. It's a forever free tier with 1K limit per day per API key.
+### 2. 使用 https://shale.live/v1 作为 OpenAI API 的直接替代品
 
-### 2. Use https://shale.live/v1 as OpenAI API drop-in replacement 
-
-For example
+例如
 ```python
 from langchain_openai import OpenAI
 from langchain_core.prompts import PromptTemplate
@@ -25,21 +24,19 @@ from langchain_core.output_parsers import StrOutputParser
 
 import os
 os.environ['OPENAI_API_BASE'] = "https://shale.live/v1"
-os.environ['OPENAI_API_KEY'] = "ENTER YOUR API KEY"
+os.environ['OPENAI_API_KEY'] = "ENTER YOUR API KEY" # 输入您的 API 密钥
 
 llm = OpenAI()
 
 template = """Question: {question}
 
-# Answer: Let's think step by step."""
+# Answer: Let's think step by step.""" # 回答：让我们一步一步地思考。
 
 prompt = PromptTemplate.from_template(template)
 
 
 llm_chain = prompt | llm | StrOutputParser()
 
-question = "What NFL team won the Super Bowl in the year Justin Beiber was born?"
+question = "What NFL team won the Super Bowl in the year Justin Beiber was born?" # 哪个 NFL 球队赢得了贾斯汀·比伯出生的那年的超级碗？
 
 llm_chain.invoke(question)
-
-```

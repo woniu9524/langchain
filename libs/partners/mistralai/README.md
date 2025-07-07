@@ -1,8 +1,8 @@
 # langchain-mistralai
 
-This package contains the LangChain integrations for [MistralAI](https://docs.mistral.ai) through their [mistralai](https://pypi.org/project/mistralai/) SDK.
+此包包含通过其 [mistralai](https://pypi.org/project/mistralai/) SDK 与 [MistralAI](https://docs.mistral.ai) 的 LangChain 集成。
 
-## Installation
+## 安装
 
 ```bash
 pip install -U langchain-mistralai
@@ -10,15 +10,15 @@ pip install -U langchain-mistralai
 
 ## Chat Models
 
-This package contains the `ChatMistralAI` class, which is the recommended way to interface with MistralAI models.
+此包包含 `ChatMistralAI` 类，这是与 MistralAI 模型交互的推荐方式。
 
-To use, install the requirements, and configure your environment.
+要使用，请安装需求并配置您的环境。
 
 ```bash
 export MISTRAL_API_KEY=your-api-key
 ```
 
-Then initialize
+然后初始化
 
 ```python
 from langchain_core.messages import HumanMessage
@@ -29,7 +29,7 @@ messages = [HumanMessage(content="say a brief hello")]
 chat.invoke(messages)
 ```
 
-`ChatMistralAI` also supports async and streaming functionality:
+`ChatMistralAI` 还支持异步和流式传输功能：
 
 ```python
 # For async...
@@ -42,16 +42,16 @@ for chunk in chat.stream(messages):
 
 ## Embeddings
 
-With `MistralAIEmbeddings`, you can directly use the default model 'mistral-embed', or set a different one if available.
+使用 `MistralAIEmbeddings`，您可以直接使用默认模型 'mistral-embed'，或者在可用时设置其他模型。
 
-### Choose model
+### 选择模型
 
 `embedding.model = 'mistral-embed'`
 
-### Simple query
+### 简单查询
 
 `res_query = embedding.embed_query("The test information")`
 
-### Documents
+### 文档
 
 `res_document = embedding.embed_documents(["test1", "another test"])`

@@ -1,41 +1,38 @@
 # Ollama
 
->[Ollama](https://ollama.com/) allows you to run open-source large language models, 
-> such as [Llama3.1](https://ai.meta.com/blog/meta-llama-3-1/), locally.
+>[Ollama](https://ollama.com/) 允许您在本地运行开源大语言模型，例如 [Llama3.1](https://ai.meta.com/blog/meta-llama-3-1/)。
 >
->`Ollama` bundles model weights, configuration, and data into a single package, defined by a Modelfile. 
->It optimizes setup and configuration details, including GPU usage.
->For a complete list of supported models and model variants, see the [Ollama model library](https://ollama.ai/library).
+>`Ollama` 将模型权重、配置和数据打包到一个由 Modelfile 定义的单一包中。
+>它优化了设置和配置细节，包括 GPU 使用。
+>有关支持的模型和模型变体的完整列表，请参阅 [Ollama 模型库](https://ollama.ai/library)。
 
-See [this guide](/docs/how_to/local_llms) for more details
-on how to use `Ollama` with LangChain.
+请参阅[本指南](/docs/how_to/local_llms)了解如何将 `Ollama` 与 LangChain 结合使用的更多详细信息。
 
-## Installation and Setup
-### Ollama installation
-Follow [these instructions](https://github.com/ollama/ollama?tab=readme-ov-file#ollama) 
-to set up and run a local Ollama instance.
+## 安装和设置
+### Ollama 安装
+请遵循[这些说明](https://github.com/ollama/ollama?tab=readme-ov-file#ollama)来设置和运行本地 Ollama 实例。
 
-Ollama will start as a background service automatically, if this is disabled, run:
+Ollama 将自动作为后台服务启动，如果禁用，请运行：
 
 ```bash
-# export OLLAMA_HOST=127.0.0.1 # environment variable to set ollama host
-# export OLLAMA_PORT=11434 # environment variable to set the ollama port
+# export OLLAMA_HOST=127.0.0.1 # 设置 ollama 主机的环境变量
+# export OLLAMA_PORT=11434 # 设置 ollama 端口的环境变量
 ollama serve
 ```
 
-After starting ollama, run `ollama pull <name-of-model>` to download a model from the [Ollama model library](https://ollama.ai/library):
+启动 ollama 后，运行 `ollama pull <模型名称>` 从 [Ollama 模型库](https://ollama.ai/library)下载模型：
 
 ```bash
 ollama pull llama3.1
 ```
 
-- This will download the default tagged version of the model. Typically, the default points to the latest, smallest sized-parameter model.
-- To view all pulled (downloaded) models, use `ollama list`
+- 这将下载模型的默认标记版本。通常，默认指向最新、最小参数的模型。
+- 要查看所有已拉取（下载）的模型，请使用 `ollama list`
 
-We're now ready to install the `langchain-ollama` partner package and run a model.
+现在我们已准备好安装 `langchain-ollama` 合作伙伴包并运行模型。
 
-### Ollama LangChain partner package install
-Install the integration package with:
+### Ollama LangChain 合作伙伴包安装
+使用以下命令安装集成包：
 ```bash
 pip install langchain-ollama
 ```
@@ -45,7 +42,7 @@ pip install langchain-ollama
 from langchain_ollama.llms import OllamaLLM
 ```
 
-See the notebook example [here](/docs/integrations/llms/ollama).
+在此处查看笔记本示例：[here](/docs/integrations/llms/ollama)。
 
 ## Chat Models
 
@@ -55,14 +52,14 @@ See the notebook example [here](/docs/integrations/llms/ollama).
 from langchain_ollama.chat_models import ChatOllama
 ```
 
-See the notebook example [here](/docs/integrations/chat/ollama).
+在此处查看笔记本示例：[here](/docs/integrations/chat/ollama)。
 
-### Ollama tool calling
-[Ollama tool calling](https://ollama.com/blog/tool-support) uses the
-OpenAI compatible web server specification, and can be used with
-the default `BaseChatModel.bind_tools()` methods
-as described [here](/docs/how_to/tool_calling/).
-Make sure to select an ollama model that supports [tool calling](https://ollama.com/search?&c=tools).
+### Ollama 工具调用
+[Ollama 工具调用](https://ollama.com/blog/tool-support) 使用
+与 OpenAI 兼容的 Web 服务器规范，并且可以与
+默认的 `BaseChatModel.bind_tools()` 方法一起使用，
+如[此处](/docs/how_to/tool_calling/)所述。
+请确保选择支持[工具调用](https://ollama.com/search?&c=tools)的 ollama 模型。
 
 ## Embedding models
 
@@ -70,6 +67,4 @@ Make sure to select an ollama model that supports [tool calling](https://ollama.
 from langchain_community.embeddings import OllamaEmbeddings
 ```
 
-See the notebook example [here](/docs/integrations/text_embedding/ollama).
-
-
+在此处查看笔记本示例：[here](/docs/integrations/text_embedding/ollama)。

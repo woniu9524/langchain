@@ -1,64 +1,62 @@
 # __package_name__
 
-TODO: What does this package do
+待办：此包的功能说明
 
-## Environment Setup
+## 环境设置
 
-TODO: What environment variables need to be set (if any)
+待办：需要设置哪些环境变量（如果有）
 
-## Usage
+## 用法
 
-To use this package, you should first have the LangChain CLI installed:
+要使用此包，您首先需要安装 LangChain CLI：
 
 ```shell
 pip install -U langchain-cli
 ```
 
-To create a new LangChain project and install this as the only package, you can do:
+要创建一个新的 LangChain 项目并将此包作为唯一包安装，您可以执行：
 
 ```shell
 langchain app new my-app --package __package_name__
 ```
 
-If you want to add this to an existing project, you can just run:
+如果您想将其添加到现有项目中，只需运行：
 
 ```shell
 langchain app add __package_name__
 ```
 
-And add the following code to your `server.py` file:
+并将以下代码添加到您的 `server.py` 文件中：
 ```python
 __app_route_code__
 ```
 
-(Optional) Let's now configure LangSmith. 
-LangSmith will help us trace, monitor and debug LangChain applications. 
-You can sign up for LangSmith [here](https://smith.langchain.com/). 
-If you don't have access, you can skip this section
-
+（可选）现在让我们配置 LangSmith。
+LangSmith 将帮助我们跟踪、监控和调试 LangChain 应用程序。
+您可以在 [此处](https://smith.langchain.com/) 注册 LangSmith。
+如果您没有访问权限，可以跳过此部分
 
 ```shell
 export LANGSMITH_TRACING=true
 export LANGSMITH_API_KEY=<your-api-key>
-export LANGSMITH_PROJECT=<your-project>  # if not specified, defaults to "default"
+export LANGSMITH_PROJECT=<your-project>  # 如果未指定，则默认为 "default"
 ```
 
-If you are inside this directory, then you can spin up a LangServe instance directly by:
+如果您在此目录中，则可以直接启动 LangServe 实例：
 
 ```shell
 langchain serve
 ```
 
-This will start the FastAPI app with a server is running locally at 
+这将启动 FastAPI 应用程序，服务器将在本地运行于
 [http://localhost:8000](http://localhost:8000)
 
-We can see all templates at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-We can access the playground at [http://127.0.0.1:8000/__package_name__/playground](http://127.0.0.1:8000/__package_name__/playground)  
+我们可以在 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) 查看所有模板
+我们可以在 [http://127.0.0.1:8000/__package_name__/playground](http://127.0.0.1:8000/__package_name__/playground) 访问 playground
 
-We can access the template from code with:
+我们可以通过以下方式从代码中访问模板：
 
 ```python
 from langserve.client import RemoteRunnable
 
 runnable = RemoteRunnable("http://localhost:8000/__package_name__")
-```

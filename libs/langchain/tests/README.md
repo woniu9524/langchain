@@ -1,3 +1,3 @@
-# Langchain Tests
+# Langchain 测试
 
-[This guide has moved to the docs](https://python.langchain.com/docs/contributing/testing)
+[本指南已移至文档](https://python.langchain.com/docs/contributing/testing)

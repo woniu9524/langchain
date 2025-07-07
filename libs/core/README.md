@@ -3,88 +3,88 @@
 [![Downloads](https://static.pepy.tech/badge/langchain_core/month)](https://pepy.tech/project/langchain_core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Quick Install
+## 快速安装
 
 ```bash
 pip install langchain-core
 ```
 
-## What is it?
+## 这是什么？
 
-LangChain Core contains the base abstractions that power the rest of the LangChain ecosystem.
+LangChain Core 包含驱动 LangChain 生态系统其余部分的底层抽象。
 
-These abstractions are designed to be as modular and simple as possible. Examples of these abstractions include those for language models, document loaders, embedding models, vectorstores, retrievers, and more.
+这些抽象被设计得尽可能模块化和简洁。这些抽象的例子包括语言模型、文档加载器、嵌入模型、向量存储、检索器等。
 
-The benefit of having these abstractions is that any provider can implement the required interface and then easily be used in the rest of the LangChain ecosystem.
+拥有这些抽象的好处是，任何提供商都可以实现所需的接口，然后轻松地在 LangChain 生态系统的其余部分中使用。
 
-For full documentation see the [API reference](https://python.langchain.com/api_reference/core/index.html).
+有关完整文档，请参阅 [API 参考](https://python.langchain.com/api_reference/core/index.html)。
 
-## 1️⃣ Core Interface: Runnables
+## 1️⃣ 核心接口：Runnables
 
-The concept of a Runnable is central to LangChain Core – it is the interface that most LangChain Core components implement, giving them
+Runnable 的概念是 LangChain Core 的核心——它是大多数 LangChain Core 组件实现的接口，赋予它们：
 
-- a common invocation interface (invoke, batch, stream, etc.)
-- built-in utilities for retries, fallbacks, schemas and runtime configurability
-- easy deployment with [LangServe](https://github.com/langchain-ai/langserve)
+- 通用的调用接口（invoke、batch、stream 等）
+- 内置的重试、回退、模式和运行时可配置性工具
+- 通过 [LangServe](https://github.com/langchain-ai/langserve) 轻松部署
 
-For more check out the [runnable docs](https://python.langchain.com/docs/expression_language/interface). Examples of components that implement the interface include: LLMs, Chat Models, Prompts, Retrievers, Tools, Output Parsers.
+有关更多信息，请查看 [runnable 文档](https://python.langchain.com/docs/expression_language/interface)。实现该接口的组件示例包括：LLM、聊天模型、提示、检索器、工具、输出解析器。
 
-You can use LangChain Core objects in two ways:
+您可以通过两种方式使用 LangChain Core 对象：
 
-1. **imperative**, ie. call them directly, eg. `model.invoke(...)`
+1. **命令式**，即直接调用它们，例如 `model.invoke(...)`
 
-2. **declarative**, with LangChain Expression Language (LCEL)
+2. **声明式**，使用 LangChain Expression Language (LCEL)
 
-3. or a mix of both! eg. one of the steps in your LCEL sequence can be a custom function
+3. 或者两者的结合！例如，您的 LCEL 序列中的一个步骤可以是一个自定义函数
 
-| Feature   | Imperative                      | Declarative    |
-| --------- | ------------------------------- | -------------- |
-| Syntax    | All of Python                   | LCEL           |
-| Tracing   | ✅ – Automatic                  | ✅ – Automatic |
-| Parallel  | ✅ – with threads or coroutines | ✅ – Automatic |
-| Streaming | ✅ – by yielding                | ✅ – Automatic |
-| Async     | ✅ – by writing async functions | ✅ – Automatic |
+| 功能   | 命令式                      | 声明式    |
+| ------ | --------------------------- | -------------- |
+| 语法    | 全部 Python                   | LCEL           |
+| 追踪   | ✅ – 自动                  | ✅ – 自动 |
+| 并行   | ✅ – 使用线程或协程 | ✅ – 自动 |
+| 流式传输 | ✅ – 通过 yield                | ✅ – 自动 |
+| 异步   | ✅ – 通过编写异步函数 | ✅ – 自动 |
 
-## ⚡️ What is LangChain Expression Language?
+## ⚡️ 什么是 LangChain Expression Language？
 
-LangChain Expression Language (LCEL) is a _declarative language_ for composing LangChain Core runnables into sequences (or DAGs), covering the most common patterns when building with LLMs.
+LangChain Expression Language (LCEL) 是一个用于将 LangChain Core runnables 组合成序列（或 DAG）的_声明式语言_，涵盖了使用 LLM 构建时的最常见模式。
 
-LangChain Core compiles LCEL sequences to an _optimized execution plan_, with automatic parallelization, streaming, tracing, and async support.
+LangChain Core 将 LCEL 序列编译成一个_优化的执行计划_，具有自动并行化、流式传输、追踪和异步支持。
 
-For more check out the [LCEL docs](https://python.langchain.com/docs/expression_language/).
+有关更多信息，请查看 [LCEL 文档](https://python.langchain.com/docs/expression_language/)。
 
-![Diagram outlining the hierarchical organization of the LangChain framework, displaying the interconnected parts across multiple layers.](https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/svg/langchain_stack_112024.svg "LangChain Framework Overview")
+![Diagram outlining the hierarchical organization of the LangChain framework, displaying the interconnected parts across multiple layers.](https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/svg/langchain_stack_112024.svg "LangChain 框架概述")
 
-For more advanced use cases, also check out [LangGraph](https://github.com/langchain-ai/langgraph), which is a graph-based runner for cyclic and recursive LLM workflows.
+对于更高级的用例，还可以查看 [LangGraph](https://github.com/langchain-ai/langgraph)，这是一个用于循环和递归 LLM 工作流的基于图的运行器。
 
-## 📕 Releases & Versioning
+## 📕 版本和版本控制
 
-`langchain-core` is currently on version `0.1.x`.
+`langchain-core` 目前的版本是 `0.1.x`。
 
-As `langchain-core` contains the base abstractions and runtime for the whole LangChain ecosystem, we will communicate any breaking changes with advance notice and version bumps. The exception for this is anything in `langchain_core.beta`. The reason for `langchain_core.beta` is that given the rate of change of the field, being able to move quickly is still a priority, and this module is our attempt to do so.
+由于 `langchain-core` 包含了整个 LangChain 生态系统的基础抽象和运行时，我们将提前通知任何破坏性更改并进行版本升级。例外情况是 `langchain_core.beta` 中的任何内容。`langchain_core.beta` 的原因是，考虑到该领域的快速变化，能够快速移动仍然是优先事项，而此模块是我们尝试这样做的方式。
 
-Minor version increases will occur for:
+次要版本增加将发生在：
 
-- Breaking changes for any public interfaces NOT in `langchain_core.beta`
+- 对任何不在 `langchain_core.beta` 中的公共接口的破坏性更改
 
-Patch version increases will occur for:
+补丁版本增加将发生在：
 
-- Bug fixes
-- New features
-- Any changes to private interfaces
-- Any changes to `langchain_core.beta`
+- 错误修复
+- 新功能
+- 对私有接口的任何更改
+- 对 `langchain_core.beta` 的任何更改
 
-## 💁 Contributing
+## 💁 贡献
 
-As an open-source project in a rapidly developing field, we are extremely open to contributions, whether it be in the form of a new feature, improved infrastructure, or better documentation.
+作为一个在快速发展领域中的开源项目，我们非常欢迎贡献，无论是新功能、改进的基础设施还是更好的文档。
 
-For detailed information on how to contribute, see the [Contributing Guide](https://python.langchain.com/docs/contributing/).
+有关如何贡献的详细信息，请参阅 [贡献指南](https://python.langchain.com/docs/contributing/)。
 
-## ⛰️ Why build on top of LangChain Core?
+## ⛰️ 为什么要在 LangChain Core 之上构建？
 
-The whole LangChain ecosystem is built on top of LangChain Core, so you're in good company when building on top of it. Some of the benefits:
+整个 LangChain 生态系统都建立在 LangChain Core 之上，因此在它之上构建时，您将与优秀的团队同行。一些好处包括：
 
-- **Modularity**: LangChain Core is designed around abstractions that are independent of each other, and not tied to any specific model provider.
-- **Stability**: We are committed to a stable versioning scheme, and will communicate any breaking changes with advance notice and version bumps.
-- **Battle-tested**: LangChain Core components have the largest install base in the LLM ecosystem, and are used in production by many companies.
-- **Community**: LangChain Core is developed in the open, and we welcome contributions from the community.
+- **模块化**：LangChain Core 是围绕相互独立的抽象设计的，并且不与任何特定的模型提供商绑定。
+- **稳定性**：我们致力于稳定的版本控制方案，并将提前通知任何破坏性更改并进行版本升级。
+- **久经考验**：LangChain Core 组件在 LLM 生态系统中拥有最大的安装量，并且被许多公司用于生产环境。
+- **社区**：LangChain Core 是在公开场合开发的，我们欢迎社区的贡献。

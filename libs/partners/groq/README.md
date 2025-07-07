@@ -1,61 +1,61 @@
 # langchain-groq
 
-## Welcome to Groq! 🚀
+## 欢迎来到 Groq！🚀
 
-At Groq, we've developed the world's first Language Processing Unit™, or LPU. The Groq LPU has a deterministic, single core streaming architecture that sets the standard for GenAI inference speed with predictable and repeatable performance for any given workload.
+在 Groq，我们开发了世界上第一个语言处理单元™，即 LPU。Groq LPU 采用确定性的单核流式架构，通过对任何给定工作负载可预测且可重复的性能，为 GenAI 推理速度树立了标杆。
 
-Beyond the architecture, our software is designed to empower developers like you with the tools you need to create innovative, powerful AI applications. With Groq as your engine, you can:
+除了架构之外，我们的软件旨在通过您所需的工具赋能像您一样的开发者，以创建创新、强大的 AI 应用程序。借助 Groq 作为您的引擎，您可以：
 
-* Achieve uncompromised low latency and performance for real-time AI and HPC inferences 🔥
-* Know the exact performance and compute time for any given workload 🔮
-* Take advantage of our cutting-edge technology to stay ahead of the competition 💪
+* 为实时 AI 和 HPC 推理实现无损的低延迟和高性能 🔥
+* 了解任何给定工作负载的确切性能和计算时间 🔮
+* 利用我们的尖端技术保持竞争优势 💪
 
-Want more Groq? Check out our [website](https://groq.com) for more resources and join our [Discord community](https://discord.gg/JvNsBDKeCG) to connect with our developers!
+想要了解更多 Groq？请访问我们的 [网站](https://groq.com) 获取更多资源，并加入我们的 [Discord 社区](https://discord.gg/JvNsBDKeCG) 与我们的开发者交流！
 
 
-## Installation and Setup
-Install the integration package:
+## 安装和设置
+安装集成包：
 
 ```bash
 pip install langchain-groq
 ```
 
-Request an [API key](https://console.groq.com/login?utm_source=langchain&utm_content=package_readme) and set it as an environment variable
+申请一个 [API 密钥](https://console.groq.com/login?utm_source=langchain&utm_content=package_readme) 并将其设置为环境变量
 
 ```bash
 export GROQ_API_KEY=gsk_...
 ```
 
 ## Chat Model
-See a [usage example](https://python.langchain.com/docs/integrations/chat/groq).
+请参阅 [用法示例](https://python.langchain.com/docs/integrations/chat/groq)。
 
-## Development
+## 开发
 
-To develop the `langchain-groq` package, you'll need to follow these instructions:
+要开发 `langchain-groq` 包，您需要遵循以下说明：
 
-### Install dev dependencies
+### 安装开发依赖项
 
 ```bash
 uv sync --group lint --group test
 ```
 
-### Build the package
+### 构建包
 
 ```bash
 uv build
 ```
 
-### Run unit tests
+### 运行单元测试
 
-Unit tests live in `tests/unit_tests` and SHOULD NOT require an internet connection or a valid API KEY.  Run unit tests with
+单元测试位于 `tests/unit_tests`，不应需要互联网连接或有效的 API KEY。使用以下命令运行单元测试：
 
 ```bash
 make tests
 ```
 
-### Run integration tests
+### 运行集成测试
 
-Integration tests live in `tests/integration_tests` and require a connection to the Groq API and a valid API KEY.
+集成测试位于 `tests/integration_tests`，需要连接到 Groq API 和有效的 API KEY。
 
 ```bash
 make integration_tests
@@ -63,8 +63,7 @@ make integration_tests
 
 ### Lint & Format
 
-Run additional tests and linters to ensure your code is up to standard.
+运行额外的测试和 linters 以确保您的代码符合标准。
 
 ```bash
 make lint spell_check check_imports
-```

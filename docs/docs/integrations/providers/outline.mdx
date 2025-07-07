@@ -1,10 +1,10 @@
-# Outline
+# 大纲
 
-> [Outline](https://www.getoutline.com/) is an open-source collaborative knowledge base platform designed for team information sharing.
+> [Outline](https://www.getoutline.com/) 是一个开源的协作知识库平台，专为团队信息共享而设计。
 
-## Setup
+## 设置
 
-You first need to [create an api key](https://www.getoutline.com/developers#section/Authentication) for your Outline instance. Then you need to set the following environment variables:
+您首先需要为您的 Outline 实例 [创建 API 密钥](https://www.getoutline.com/developers#section/Authentication)。然后需要设置以下环境变量：
 
 ```python
 import os
@@ -13,10 +13,9 @@ os.environ["OUTLINE_API_KEY"] = "xxx"
 os.environ["OUTLINE_INSTANCE_URL"] = "https://app.getoutline.com"
 ```
 
-## Retriever
+## 检索器
 
-See a [usage example](/docs/integrations/retrievers/outline).
+请参阅[用法示例](/docs/integrations/retrievers/outline)。
 
 ```python
 from langchain.retrievers import OutlineRetriever
-```

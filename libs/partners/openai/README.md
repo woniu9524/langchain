@@ -1,55 +1,55 @@
 # langchain-openai
 
-This package contains the LangChain integrations for OpenAI through their `openai` SDK.
+此包包含通过其 `openai` SDK 实现的 LangChain 与 OpenAI 的集成。
 
-## Installation and Setup
+## 安装和设置
 
-- Install the LangChain partner package
+- 安装 LangChain 合作伙伴包
 ```bash
 pip install langchain-openai
 ```
-- Get an OpenAI api key and set it as an environment variable (`OPENAI_API_KEY`)
+- 获取 OpenAI API 密钥并将其设置为环境变量 (`OPENAI_API_KEY`)
 
-## Chat model
+## 聊天模型
 
-See a [usage example](http://python.langchain.com/docs/integrations/chat/openai).
+请参阅 [使用示例](http://python.langchain.com/docs/integrations/chat/openai)。
 
 ```python
 from langchain_openai import ChatOpenAI
 ```
 
-If you are using a model hosted on `Azure`, you should use different wrapper for that:
+如果您使用的是托管在 `Azure` 上的模型，则应为此使用不同的包装器：
 ```python
 from langchain_openai import AzureChatOpenAI
 ```
-For a more detailed walkthrough of the `Azure` wrapper, see [here](http://python.langchain.com/docs/integrations/chat/azure_chat_openai)
+有关 `Azure` 包装器的更详细演练，请参阅 [此处](http://python.langchain.com/docs/integrations/chat/azure_chat_openai)。
 
 
-## Text Embedding Model
+## 文本嵌入模型
 
-See a [usage example](http://python.langchain.com/docs/integrations/text_embedding/openai)
+请参阅 [使用示例](http://python.langchain.com/docs/integrations/text_embedding/openai)。
 
 ```python
 from langchain_openai import OpenAIEmbeddings
 ```
 
-If you are using a model hosted on `Azure`, you should use different wrapper for that:
+如果您使用的是托管在 `Azure` 上的模型，则应为此使用不同的包装器：
 ```python
 from langchain_openai import AzureOpenAIEmbeddings
 ```
-For a more detailed walkthrough of the `Azure` wrapper, see [here](https://python.langchain.com/docs/integrations/text_embedding/azureopenai)
+有关 `Azure` 包装器的更详细演练，请参阅 [此处](https://python.langchain.com/docs/integrations/text_embedding/azureopenai)。
 
 
-## LLM (Legacy)
+## LLM (旧版)
 
-LLM refers to the legacy text-completion models that preceded chat models. See a [usage example](http://python.langchain.com/docs/integrations/llms/openai).
+LLM 指的是在聊天模型之前出现的旧版文本补全模型。请参阅 [使用示例](http://python.langchain.com/docs/integrations/llms/openai)。
 
 ```python
 from langchain_openai import OpenAI
 ```
 
-If you are using a model hosted on `Azure`, you should use different wrapper for that:
+如果您使用的是托管在 `Azure` 上的模型，则应为此使用不同的包装器：
 ```python
 from langchain_openai import AzureOpenAI
 ```
-For a more detailed walkthrough of the `Azure` wrapper, see [here](http://python.langchain.com/docs/integrations/llms/azure_openai)
+有关 `Azure` 包装器的更详细演练，请参阅 [此处](http://python.langchain.com/docs/integrations/llms/azure_openai)。

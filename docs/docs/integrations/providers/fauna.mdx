@@ -1,25 +1,21 @@
 # Fauna
 
->[Fauna](https://fauna.com/) is a distributed document-relational database 
-> that combines the flexibility of documents with the power of a relational, 
-> ACID compliant database that scales across regions, clouds or the globe.
- 
+>[Fauna](https://fauna.com/) 是一个分布式文档关系型数据库，它结合了文档的灵活性和关系型数据库的强大功能，该数据库符合 ACID 标准，并可在区域、云或全球范围内进行扩展。
 
-## Installation and Setup
+## 安装和设置
 
-We have to get the secret key.
-See the detailed [guide](https://docs.fauna.com/fauna/current/learn/security_model/).
+我们需要获取密钥。
+请参阅详细的[指南](https://docs.fauna.com/fauna/current/learn/security_model/)。
 
-We have to install the `fauna` package.
+我们需要安装 `fauna` 包。
 
 ```bash
 pip install -U fauna
 ```
 
-## Document Loader
+## 文档加载器
 
-See a [usage example](/docs/integrations/document_loaders/fauna).
+请参阅[用法示例](/docs/integrations/document_loaders/fauna)。
 
 ```python
 from langchain_community.document_loaders.fauna import FaunaLoader
-```

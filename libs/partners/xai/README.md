@@ -1,17 +1,17 @@
 # langchain-xai
 
-This package contains the LangChain integrations for [xAI](https://x.ai/) through their [APIs](https://console.x.ai).
+此包包含通过其 [API](https://console.x.ai) 与 [xAI](https://x.ai/) 的 LangChain 集成。
 
-## Installation and Setup
+## 安装和设置
 
-- Install the LangChain partner package
+- 安装 LangChain 合作伙伴包
 
 ```bash
 pip install -U langchain-xai
 ```
 
-- Get your xAI api key from the [xAI Dashboard](https://console.x.ai) and set it as an environment variable (`XAI_API_KEY`)
+- 从 [xAI Dashboard](https://console.x.ai) 获取您的 xAI API 密钥，并将其设置为环境变量 (`XAI_API_KEY`)
 
-## Chat Completions
+## 聊天补全
 
-This package contains the `ChatXAI` class, which is the recommended way to interface with xAI chat models.
+此包包含 `ChatXAI` 类，这是与 xAI 聊天模型交互的推荐方式。

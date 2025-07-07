@@ -1,22 +1,22 @@
 # LLMonitor
 
->[LLMonitor](https://llmonitor.com?utm_source=langchain&utm_medium=py&utm_campaign=docs) is an open-source observability platform that provides cost and usage analytics, user tracking, tracing and evaluation tools.
+>[LLMonitor](https://llmonitor.com?utm_source=langchain&utm_medium=py&utm_campaign=docs) 是一个开源的可观测性平台，提供成本和使用情况分析、用户跟踪、追踪和评估工具。
 
 <video controls width='100%' >
   <source src='https://llmonitor.com/videos/demo-annotated.mp4'/>
 </video>
 
-## Setup
+## 设置
 
-Create an account on [llmonitor.com](https://llmonitor.com?utm_source=langchain&utm_medium=py&utm_campaign=docs), then copy your new app's `tracking id`.
+在 [llmonitor.com](https://llmonitor.com?utm_source=langchain&utm_medium=py&utm_campaign=docs) 上创建一个账户，然后复制您新应用的 `tracking id`。
 
-Once you have it, set it as an environment variable by running:
+获取后，通过运行以下命令将其设置为环境变量：
 
 ```bash
 export LLMONITOR_APP_ID="..."
 ```
 
-If you'd prefer not to set an environment variable, you can pass the key directly when initializing the callback handler:
+如果您不想设置环境变量，可以在初始化回调处理器时直接传入密钥：
 
 ```python
 from langchain_community.callbacks.llmonitor_callback import LLMonitorCallbackHandler
@@ -24,7 +24,7 @@ from langchain_community.callbacks.llmonitor_callback import LLMonitorCallbackHa
 handler = LLMonitorCallbackHandler(app_id="...")
 ```
 
-## Usage with LLM/Chat models
+## 与 LLM/Chat 模型一起使用
 
 ```python
 from langchain_openai import OpenAI
@@ -38,17 +38,17 @@ llm = OpenAI(
 
 chat = ChatOpenAI(callbacks=[handler])
 
-llm("Tell me a joke")
+llm("给我讲个笑话")
 
 ```
 
-## Usage with chains and agents
+## 与链和代理一起使用
 
-Make sure to pass the callback handler to the `run` method so that all related chains and llm calls are correctly tracked.
+确保将回调处理器传递给 `run` 方法，以便正确跟踪所有相关的链和 LLM 调用。
 
-It is also recommended to pass `agent_name` in the metadata to be able to distinguish between agents in the dashboard.
+还建议在元数据中传递 `agent_name`，以便在仪表板中区分不同的代理。
 
-Example:
+示例：
 
 ```python
 from langchain_openai import ChatOpenAI
@@ -62,25 +62,25 @@ handler = LLMonitorCallbackHandler()
 
 @tool
 def get_word_length(word: str) -> int:
-    """Returns the length of a word."""
+    """返回一个单词的长度。"""
     return len(word)
 
 tools = [get_word_length]
 
 prompt = OpenAIFunctionsAgent.create_prompt(
     system_message=SystemMessage(
-        content="You are very powerful assistant, but bad at calculating lengths of words."
+        content="你是一个非常强大的助手，但计算单词长度的能力很差。"
     )
 )
 
 agent = OpenAIFunctionsAgent(llm=llm, tools=tools, prompt=prompt, verbose=True)
 agent_executor = AgentExecutor(
-    agent=agent, tools=tools, verbose=True, metadata={"agent_name": "WordCount"}  # <- recommended, assign a custom name
+    agent=agent, tools=tools, verbose=True, metadata={"agent_name": "WordCount"}  # <- 推荐，指定一个自定义名称
 )
-agent_executor.run("how many letters in the word educa?", callbacks=[handler])
+agent_executor.run("educa 这个词有多少个字母？", callbacks=[handler])
 ```
 
-Another example:
+另一个示例：
 
 ```python
 import os
@@ -101,24 +101,24 @@ agent = create_react_agent("openai:gpt-4.1-mini", tools)
 
 input_message = {
     "role": "user",
-    "content": "What's the weather in SF?",
+    "content": "旧金山的天气怎么样？",
 }
 
 agent.invoke({"messages": [input_message]})
 ```
 
-## User Tracking
-User tracking allows you to identify your users, track their cost, conversations and more.
+## 用户跟踪
+用户跟踪允许您识别用户、跟踪他们的成本、对话等。
 
 ```python
 from langchain_community.callbacks.llmonitor_callback import LLMonitorCallbackHandler, identify
 
 with identify("user-123"):
-    llm.invoke("Tell me a joke")
+    llm.invoke("给我讲个笑话")
 
 with identify("user-456", user_props={"email": "user456@test.com"}):
     agent.invoke(...)
 ```
-## Support
+## 支持
 
-For any question or issue with integration you can reach out to the LLMonitor team on [Discord](http://discord.com/invite/8PafSG58kK) or via [email](mailto:vince@llmonitor.com).
+如果您在集成过程中有任何疑问或问题，可以通过 [Discord](http://discord.com/invite/8PafSG58kK) 或 [电子邮件](mailto:vince@llmonitor.com) 联系 LLMonitor 团队。

@@ -1,21 +1,20 @@
 # langchain-chroma
 
-This package contains the LangChain integration with Chroma.
+此包包含 LangChain 与 Chroma 的集成。
 
-## Installation
+## 安装
 
 ```bash
 pip install -U langchain-chroma
 ```
 
-## Usage
+## 用法
 
-The `Chroma` class exposes the connection to the Chroma vector store.
+`Chroma` 类公开了与 Chroma 向量存储的连接。
 
 ```python
 from langchain_chroma import Chroma
 
-embeddings = ... # use a LangChain Embeddings class
+embeddings = ... # 使用 LangChain Embeddings 类
 
 vectorstore = Chroma(embeddings=embeddings)
-```

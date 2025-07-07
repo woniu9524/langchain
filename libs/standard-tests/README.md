@@ -1,38 +1,34 @@
 # langchain-tests
 
-This is a testing library for LangChain integrations. It contains the base classes for
-a standard set of tests.
+这是 LangChain 集成的测试库。它包含了一套标准测试的基础类。
 
-## Installation
+## 安装
 
-We encourage pinning your version to a specific version in order to avoid breaking
-your CI when we publish new tests. We recommend upgrading to the latest version
-periodically to make sure you have the latest tests.
+我们鼓励您将版本固定到特定版本，以避免在我们发布新测试时破坏您的 CI。我们建议定期升级到最新版本，以确保您拥有最新的测试。
 
-Not pinning your version will ensure you always have the latest tests, but it may
-also break your CI if we introduce tests that your integration doesn't pass.
+不固定版本将确保您始终拥有最新的测试，但如果我们引入了您的集成无法通过的测试，也可能会破坏您的 CI。
 
 Pip:
-    
-    ```bash
-    pip install -U langchain-tests
-    ```
+
+```bash
+pip install -U langchain-tests
+```
 
 Poetry:
-    
-    ```bash
-    poetry add langchain-tests
-    ```
 
-## Usage
+```bash
+poetry add langchain-tests
+```
 
-To add standard tests to an integration package's e.g. ChatModel, you need to create
+## 用法
 
-1. A unit test class that inherits from ChatModelUnitTests
-2. An integration test class that inherits from ChatModelIntegrationTests
+要为集成包（例如 ChatModel）添加标准测试，您需要创建：
+
+1. 一个继承自 `ChatModelUnitTests` 的单元测试类
+2. 一个继承自 `ChatModelIntegrationTests` 的集成测试类
 
 `tests/unit_tests/test_standard.py`:
-    
+
 ```python
 """Standard LangChain interface tests"""
 
@@ -52,7 +48,7 @@ class TestParrotChainStandard(ChatModelUnitTests):
 ```
 
 `tests/integration_tests/test_standard.py`:
-    
+
 ```python
 """Standard LangChain interface tests"""
 
@@ -71,12 +67,11 @@ class TestParrotChainStandard(ChatModelIntegrationTests):
         return ChatParrotChain
 ```
 
-## Reference
+## 参考
 
-The following fixtures are configurable in the test classes. Anything not marked
-as required is optional.
+以下 fixture 可在测试类中进行配置。未标记为必需的都是可选的。
 
-- `chat_model_class` (required): The class of the chat model to be tested
-- `chat_model_params`: The keyword arguments to pass to the chat model constructor
-- `chat_model_has_tool_calling`: Whether the chat model can call tools. By default, this is set to `hasattr(chat_model_class, 'bind_tools)`
-- `chat_model_has_structured_output`: Whether the chat model can structured output. By default, this is set to `hasattr(chat_model_class, 'with_structured_output')`
+- `chat_model_class` (必需): 要测试的聊天模型的类
+- `chat_model_params`: 传递给聊天模型构造函数的关键字参数
+- `chat_model_has_tool_calling`: 聊天模型是否可以调用工具。默认情况下，此设置为 `hasattr(chat_model_class, 'bind_tools)`
+- `chat_model_has_structured_output`: 聊天模型是否支持结构化输出。默认情况下，此设置为 `hasattr(chat_model_class, 'with_structured_output')`

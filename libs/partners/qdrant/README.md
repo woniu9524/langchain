@@ -1,25 +1,24 @@
 # langchain-qdrant
 
-This package contains the LangChain integration with [Qdrant](https://qdrant.tech/).
+此包包含 LangChain 与 [Qdrant](https://qdrant.tech/) 的集成。
 
-## Installation
+## 安装
 
 ```bash
 pip install -U langchain-qdrant
 ```
 
-## Usage
+## 用法
 
-The `Qdrant` class exposes the connection to the Qdrant vector store.
+`Qdrant` 类公开了与 Qdrant 向量存储的连接。
 
 ```python
 from langchain_qdrant import Qdrant
 
-embeddings = ... # use a LangChain Embeddings class
+embeddings = ... # 使用 LangChain Embeddings 类
 
 vectorstore = Qdrant.from_existing_collection(
     embeddings=embeddings,
     collection_name="<COLLECTION_NAME>",
     url="http://localhost:6333",
 )
-```

@@ -24,10 +24,10 @@ install-vercel-deps:
 
 install-py-deps:
 	python3 -m venv .venv
-	$(PYTHON) -m pip install -q --upgrade pip
-	$(PYTHON) -m pip install -q --upgrade uv
-	$(PYTHON) -m uv pip install -q --pre -r vercel_requirements.txt
-	$(PYTHON) -m uv pip install -q --pre $$($(PYTHON) scripts/partner_deps_list.py) --overrides vercel_overrides.txt
+	$(PYTHON) -m pip install -q --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
+	$(PYTHON) -m pip install -q --upgrade uv -i https://pypi.tuna.tsinghua.edu.cn/simple
+	$(PYTHON) -m uv pip install -q --pre -r vercel_requirements.txt --index-url https://pypi.tuna.tsinghua.edu.cn/simple
+	$(PYTHON) -m uv pip install -q --pre $$($(PYTHON) scripts/partner_deps_list.py) --overrides vercel_overrides.txt --index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 generate-files:
 	mkdir -p $(INTERMEDIATE_DIR)

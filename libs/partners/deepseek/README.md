@@ -1,24 +1,23 @@
 # langchain-deepseek
 
-This package contains the LangChain integration with the DeepSeek API
+此包包含 LangChain 与 DeepSeek API 的集成
 
-## Installation
+## 安装
 
 ```bash
 pip install -U langchain-deepseek
 ```
 
-And you should configure credentials by setting the following environment variables:
+您应该通过设置以下环境变量来配置凭据：
 
 * `DEEPSEEK_API_KEY`
 
 ## Chat Models
 
-`ChatDeepSeek` class exposes chat models from DeepSeek.
+`ChatDeepSeek` 类公开了来自 DeepSeek 的聊天模型。
 
 ```python
 from langchain_deepseek import ChatDeepSeek
 
 llm = ChatDeepSeek(model="deepseek-chat")
 llm.invoke("Sing a ballad of LangChain.")
-```

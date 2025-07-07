@@ -4,18 +4,18 @@ keywords: [openllm]
 
 # OpenLLM
 
-OpenLLM lets developers run any **open-source LLMs** as **OpenAI-compatible API** endpoints with **a single command**.
+OpenLLM 允许开发者通过**一个命令**将任何**开源 LLM** 作为**兼容 OpenAI 的 API** 端点来运行。
 
-- 🔬 Build for fast and production usages
-- 🚂 Support llama3, qwen2, gemma, etc, and many **quantized** versions [full list](https://github.com/bentoml/openllm-models)
-- ⛓️ OpenAI-compatible API
-- 💬 Built-in ChatGPT like UI
-- 🔥 Accelerated LLM decoding with state-of-the-art inference backends
-- 🌥️ Ready for enterprise-grade cloud deployment (Kubernetes, Docker and BentoCloud)
+- 🔬 为快速和生产环境构建
+- 🚂 支持 llama3、qwen2、gemma 等，以及许多**量化**版本 [完整列表](https://github.com/bentoml/openllm-models)
+- ⛓️ 兼容 OpenAI 的 API
+- 💬 内置类似 ChatGPT 的 UI
+- 🔥 使用最先进的推理后端加速 LLM 解码
+- 🌥️ 准备好进行企业级云部署（Kubernetes、Docker 和 BentoCloud）
 
-## Installation and Setup
+## 安装和设置
 
-Install the OpenLLM package via PyPI:
+通过 PyPI 安装 OpenLLM 包：
 
 ```bash
 pip install openllm
@@ -23,29 +23,27 @@ pip install openllm
 
 ## LLM
 
-OpenLLM supports a wide range of open-source LLMs as well as serving users' own
-fine-tuned LLMs. Use `openllm model` command to see all available models that
-are pre-optimized for OpenLLM.
+OpenLLM 支持各种开源 LLM 以及用户自己的微调 LLM。使用 `openllm model` 命令查看所有可用的、为 OpenLLM 预优化的模型。
 
-## Wrappers
+## 包装器
 
-There is a OpenLLM Wrapper which supports interacting with running server with OpenLLM:
+有一个 OpenLLM 包装器支持与运行中的 OpenLLM 服务器进行交互：
 
 ```python
 from langchain_community.llms import OpenLLM
 ```
 
-### Wrapper for OpenLLM server
+### OpenLLM 服务器包装器
 
-This wrapper supports interacting with OpenLLM's OpenAI-compatible endpoint.
+此包装器支持与 OpenLLM 的兼容 OpenAI 端点进行交互。
 
-To run a model, do:
+要运行模型，请执行：
 
 ```bash
 openllm hello
 ```
 
-Wrapper usage:
+包装器用法：
 
 ```python
 from langchain_community.llms import OpenLLM
@@ -55,7 +53,7 @@ llm = OpenLLM(base_url="http://localhost:3000/v1", api_key="na")
 llm("What is the difference between a duck and a goose? And why there are so many Goose in Canada?")
 ```
 
-### Usage
+### 用法
 
-For a more detailed walkthrough of the OpenLLM Wrapper, see the
-[example notebook](/docs/integrations/llms/openllm)
+有关 OpenLLM 包装器的更详细演练，请参阅
+[示例笔记本](/docs/integrations/llms/openllm)

@@ -1,38 +1,38 @@
-# 🦜✂️ LangChain Text Splitters
+# 🦜✂️ LangChain 文本分割器
 
 [![Downloads](https://static.pepy.tech/badge/langchain_text_splitters/month)](https://pepy.tech/project/langchain_text_splitters)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Quick Install
+## 快速安装
 
 ```bash
 pip install langchain-text-splitters
 ```
 
-## What is it?
+## 是什么？
 
-LangChain Text Splitters contains utilities for splitting into chunks a wide variety of text documents.
+LangChain Text Splitters 包含用于分割各种文本文档的实用工具。
 
-For full documentation see the [API reference](https://python.langchain.com/api_reference/text_splitters/index.html)
-and the [Text Splitters](https://python.langchain.com/docs/modules/data_connection/document_transformers/) module in the main docs.
+有关完整文档，请参阅 [API 参考](https://python.langchain.com/api_reference/text_splitters/index.html)
+以及主文档中的 [文本分割器](https://python.langchain.com/docs/modules/data_connection/document_transformers/) 模块。
 
-## 📕 Releases & Versioning
+## 📕 版本发布与版本控制
 
-`langchain-text-splitters` is currently on version `0.0.x`.
+`langchain-text-splitters` 目前的版本是 `0.0.x`。
 
-Minor version increases will occur for:
+次要版本增加将用于：
 
-- Breaking changes for any public interfaces NOT marked `beta`
+- 对任何未标记为 `beta` 的公共接口的重大更改
 
-Patch version increases will occur for:
+补丁版本增加将用于：
 
-- Bug fixes
-- New features
-- Any changes to private interfaces
-- Any changes to `beta` features
+- 错误修复
+- 新功能
+- 对私有接口的任何更改
+- 对 `beta` 功能的任何更改
 
-## 💁 Contributing
+## 💁 贡献
 
-As an open-source project in a rapidly developing field, we are extremely open to contributions, whether it be in the form of a new feature, improved infrastructure, or better documentation.
+作为一个在快速发展领域中的开源项目，我们非常欢迎各种形式的贡献，无论是新功能、改进的基础设施还是更好的文档。
 
-For detailed information on how to contribute, see the [Contributing Guide](https://python.langchain.com/docs/contributing/).
+有关如何贡献的详细信息，请参阅 [贡献指南](https://python.langchain.com/docs/contributing/)。

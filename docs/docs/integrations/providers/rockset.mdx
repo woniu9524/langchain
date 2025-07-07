@@ -1,10 +1,10 @@
 # Rockset
 
->[Rockset](https://rockset.com/product/) is a real-time analytics database service for serving low latency, high concurrency analytical queries at scale. It builds a Converged Index™ on structured and semi-structured data with an efficient store for vector embeddings. Its support for running SQL on schemaless data makes it a perfect choice for running vector search with metadata filters. 
+>[Rockset](https://rockset.com/product/) 是一个实时分析数据库服务，用于大规模提供低延迟、高并发的分析查询。它在结构化和半结构化数据上构建 Converged Index™，并提供高效的向量嵌入存储。它支持在无模式数据上运行 SQL，使其成为使用元数据过滤器运行向量搜索的理想选择。
 
-## Installation and Setup
+## 安装和设置
 
-Make sure you have Rockset account and go to the web console to get the API key. Details can be found on [the website](https://rockset.com/docs/rest-api/).
+确保您拥有 Rockset 账户，并前往 Web 控制台获取 API 密钥。详细信息可在[官方网站](https://rockset.com/docs/rest-api/)上找到。
 
 ```bash
 pip install rockset
@@ -12,22 +12,21 @@ pip install rockset
 
 ## Vector Store
 
-See a [usage example](/docs/integrations/vectorstores/rockset).
+请参阅[用法示例](/docs/integrations/vectorstores/rockset)。
 
 ```python
-from langchain_community.vectorstores import Rockset 
+from langchain_community.vectorstores import Rockset
 ```
 
 ## Document Loader
 
-See a [usage example](/docs/integrations/document_loaders/rockset).
+请参阅[用法示例](/docs/integrations/document_loaders/rockset)。
 ```python
 from langchain_community.document_loaders import RocksetLoader
 ```
 
 ## Chat Message History
 
-See a [usage example](/docs/integrations/memory/rockset_chat_message_history).
+请参阅[用法示例](/docs/integrations/memory/rockset_chat_message_history)。
 ```python
 from langchain_community.chat_message_histories import RocksetChatMessageHistory
-```

@@ -1,27 +1,25 @@
 # AwaDB
 
->[AwaDB](https://github.com/awa-ai/awadb) is an AI Native database for the search and storage of embedding vectors used by LLM Applications.
+>[AwaDB](https://github.com/awa-ai/awadb) 是一个原生AI数据库，用于 LLM 应用中嵌入向量的搜索和存储。
 
-## Installation and Setup
+## 安装和设置
 
 ```bash
 pip install awadb
 ```
 
-
-## Vector store
+## 向量存储
 
 ```python
 from langchain_community.vectorstores import AwaDB
 ```
 
-See a [usage example](/docs/integrations/vectorstores/awadb).
+请参阅 [使用示例](/docs/integrations/vectorstores/awadb)。
 
-
-## Embedding models
+## 嵌入模型
 
 ```python
 from langchain_community.embeddings import AwaEmbeddings
 ```
 
-See a [usage example](/docs/integrations/text_embedding/awadb).
+请参阅 [使用示例](/docs/integrations/text_embedding/awadb)。

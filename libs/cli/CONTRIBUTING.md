@@ -1,3 +1,3 @@
-# Contributing to langchain-cli
+# 贡献 langchain-cli
 
-Update CLI versions with `poe bump` to ensure that version commands display correctly.
+使用 `poe bump` 更新 CLI 版本，以确保版本命令正确显示。

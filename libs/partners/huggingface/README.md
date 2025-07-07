@@ -1,10 +1,9 @@
 # langchain-huggingface
 
-This package contains the LangChain integrations for huggingface related classes.
+此包包含与 HuggingFace 相关的类的 LangChain 集成。
 
-## Installation and Setup
+## 安装和设置
 
-- Install the LangChain partner package
+- 安装 LangChain 合作伙伴包
 ```bash
 pip install langchain-huggingface
-```

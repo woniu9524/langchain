@@ -1,19 +1,18 @@
 # langchain-perplexity
 
-This package contains the LangChain integration with Perplexity.
+此包包含 LangChain 与 Perplexity 的集成。
 
-## Installation
+## 安装
 
 ```bash
 pip install -U langchain-perplexity
 ```
 
-And you should [configure your perplexity credentials](https://docs.perplexity.ai/guides/getting-started)
-and then set the `PPLX_API_KEY` environment variable.
+您应该[配置您的 Perplexity 凭证](https://docs.perplexity.ai/guides/getting-started)，然后设置 `PPLX_API_KEY` 环境变量。
 
-## Usage
+## 用法
 
-This package contains the `ChatPerplexity` class, which is the recommended way to interface with Perplexity chat models.
+此包包含 `ChatPerplexity` 类，这是与 Perplexity 聊天模型交互的推荐方式。
 
 ```python
 import getpass
@@ -26,4 +25,3 @@ from langchain.chat_models import init_chat_model
 
 llm = init_chat_model("llama-3.1-sonar-small-128k-online", model_provider="perplexity")
 llm.invoke("Hello, world!")
-```

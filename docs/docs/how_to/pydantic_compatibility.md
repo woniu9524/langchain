@@ -1,9 +1,7 @@
-# How to use LangChain with different Pydantic versions
+# 如何将 LangChain 与不同的 Pydantic 版本结合使用
 
-As of the `0.3` release, LangChain uses Pydantic 2 internally. 
+从 `0.3` 版本开始，LangChain 在内部使用 Pydantic 2。
 
-Users should install Pydantic 2 and are advised to **avoid** using the `pydantic.v1` namespace of Pydantic 2 with
-LangChain APIs.
+用户应安装 Pydantic 2，并建议**避免**在 LangChain API 中使用 Pydantic 2 的 `pydantic.v1` 命名空间。
 
-If you're working with prior versions of LangChain, please see the following guide
-on [Pydantic compatibility](https://python.langchain.com/v0.2/docs/how_to/pydantic_compatibility).
+如果您使用的是 LangChain 的早期版本，请参阅以下关于 [Pydantic 兼容性](https://python.langchain.com/v0.2/docs/how_to/pydantic_compatibility) 的指南。

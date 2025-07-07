@@ -1,14 +1,14 @@
 # Langfuse 🪢
 
-> **What is Langfuse?** [Langfuse](https://langfuse.com) is an open source LLM engineering platform that helps teams trace API calls, monitor performance, and debug issues in their AI applications.
+> **什么是 Langfuse？** [Langfuse](https://langfuse.com) 是一个开源的 LLM 工程平台，可帮助团队跟踪 API 调用、监控性能并调试其 AI 应用程序中的问题。
 
-## Tracing LangChain
+## 跟踪 LangChain
 
-[Langfuse Tracing](https://langfuse.com/docs/tracing) integrates with Langchain using Langchain Callbacks ([Python](https://python.langchain.com/docs/how_to/#callbacks), [JS](https://js.langchain.com/docs/how_to/#callbacks)). Thereby, the Langfuse SDK automatically creates a nested trace for every run of your Langchain applications. This allows you to log, analyze and debug your LangChain application.
+[Langfuse 跟踪](https://langfuse.com/docs/tracing) 使用 Langchain 回调 ([Python](https://python.langchain.com/docs/how_to/#callbacks), [JS](https://js.langchain.com/docs/how_to/#callbacks)) 与 Langchain 集成。因此，Langfuse SDK 会为您的 Langchain 应用程序的每次运行自动创建一个嵌套跟踪。这使您可以记录、分析和调试您的 LangChain 应用程序。
 
-You can configure the integration via (1) constructor arguments or (2) environment variables. Get your Langfuse credentials by signing up at [cloud.langfuse.com](https://cloud.langfuse.com) or [self-hosting Langfuse](https://langfuse.com/self-hosting).
+您可以通过 (1) 构造函数参数或 (2) 环境变量配置集成。通过在 [cloud.langfuse.com](https://cloud.langfuse.com) 上注册或 [自托管 Langfuse](https://langfuse.com/self-hosting) 来获取您的 Langfuse 凭据。
 
-### Constructor arguments 
+### 构造函数参数
 
 ```python
 pip install langfuse
@@ -17,68 +17,68 @@ pip install langfuse
 ```python
 from langfuse import Langfuse, get_client
 from langfuse.langchain import CallbackHandler
-from langchain_openai import ChatOpenAI  # Example LLM
+from langchain_openai import ChatOpenAI  # 示例 LLM
 from langchain_core.prompts import ChatPromptTemplate
  
-# Initialize Langfuse client with constructor arguments
+# 使用构造函数参数初始化 Langfuse 客户端
 Langfuse(
     public_key="your-public-key",
     secret_key="your-secret-key",
-    host="https://cloud.langfuse.com"  # Optional: defaults to https://cloud.langfuse.com
+    host="https://cloud.langfuse.com"  # 可选：默认为 https://cloud.langfuse.com
 )
  
-# Get the configured client instance
+# 获取已配置的客户端实例
 langfuse = get_client()
  
-# Initialize the Langfuse handler
+# 初始化 Langfuse 处理程序
 langfuse_handler = CallbackHandler()
  
-# Create your LangChain components
+# 创建您的 LangChain 组件
 llm = ChatOpenAI(model_name="gpt-4o")
 prompt = ChatPromptTemplate.from_template("Tell me a joke about {topic}")
 chain = prompt | llm
  
-# Run your chain with Langfuse tracing
+# 使用 Langfuse 跟踪运行您的链
 response = chain.invoke({"topic": "cats"}, config={"callbacks": [langfuse_handler]})
 print(response.content)
  
-# Flush events to Langfuse in short-lived applications
+# 在短暂的应用程序中刷新事件到 Langfuse
 langfuse.flush()
 ```
 
-### Environment variables
+### 环境变量
 
 ```bash filename=".env"
 LANGFUSE_SECRET_KEY="sk-lf-..."
 LANGFUSE_PUBLIC_KEY="pk-lf-..."
-# 🇪🇺 EU region
+# 🇪🇺 欧盟地区
 LANGFUSE_HOST="https://cloud.langfuse.com"
-# 🇺🇸 US region
+# 🇺🇸 美国地区
 # LANGFUSE_HOST="https://us.cloud.langfuse.com"
 ```
 
 ```python
-# Initialize Langfuse handler
+# 初始化 Langfuse 处理程序
 from langfuse.langchain import CallbackHandler
 langfuse_handler = CallbackHandler()
  
-# Your Langchain code
+# 您的 Langchain 代码
  
-# Add Langfuse handler as callback (classic and LCEL)
+# 将 Langfuse 处理程序添加为回调（经典和 LCEL）
 chain.invoke({"input": "<user_input>"}, config={"callbacks": [langfuse_handler]})
 ```
 
-To see how to use this integration together with other Langfuse features, check out [this end-to-end example](https://langfuse.com/docs/integrations/langchain/example-python).
+要查看如何将此集成与其他 Langfuse 功能一起使用，请查看[此端到端示例](https://langfuse.com/docs/integrations/langchain/example-python)。
 
-## Tracing LangGraph
+## 跟踪 LangGraph
 
-This part demonstrates how [Langfuse](https://langfuse.com/docs) helps to debug, analyze, and iterate on your LangGraph application using the [LangChain integration](https://langfuse.com/docs/integrations/langchain/tracing).
+本节演示了 [Langfuse](https://langfuse.com/docs) 如何使用 [LangChain 集成](https://langfuse.com/docs/integrations/langchain/tracing) 来调试、分析和迭代您的 LangGraph 应用程序。
 
-### Initialize Langfuse
+### 初始化 Langfuse
 
-**Note:** You need to run at least Python 3.11 ([GitHub Issue](https://github.com/langfuse/langfuse/issues/1926)).
+**注意：**您需要运行至少 Python 3.11 ([GitHub Issue](https://github.com/langfuse/langfuse/issues/1926))。
 
-Initialize the Langfuse client with your [API keys](https://langfuse.com/faq/all/where-are-langfuse-api-keys) from the project settings in the Langfuse UI and add them to your environment.
+使用 Langfuse UI 中项目的 [API 密钥](https://langfuse.com/faq/all/where-are-langfuse-api-keys)初始化 Langfuse 客户端，并将它们添加到您的环境中。
 
 
 ```python
@@ -90,28 +90,28 @@ Initialize the Langfuse client with your [API keys](https://langfuse.com/faq/all
 ```python
 import os
 
-# get keys for your project from https://cloud.langfuse.com
+# 从 https://cloud.langfuse.com 获取您项目的密钥
 os.environ["LANGFUSE_PUBLIC_KEY"] = "pk-lf-***"
 os.environ["LANGFUSE_SECRET_KEY"] = "sk-lf-***"
-os.environ["LANGFUSE_HOST"] = "https://cloud.langfuse.com" # for EU data region
-# os.environ["LANGFUSE_HOST"] = "https://us.cloud.langfuse.com" # for US data region
+os.environ["LANGFUSE_HOST"] = "https://cloud.langfuse.com" # 欧盟数据区域
+# os.environ["LANGFUSE_HOST"] = "https://us.cloud.langfuse.com" # 美国数据区域
 
-# your openai key
+# 您的 openai 密钥
 os.environ["OPENAI_API_KEY"] = "***"
 ```
 
-### Simple chat app with LangGraph
+### 使用 LangGraph 的简单聊天应用
 
-**What we will do in this section:**
+**本节我们将做什么：**
 
-*   Build a support chatbot in LangGraph that can answer common questions
-*   Tracing the chatbot's input and output using Langfuse
+*   构建一个 LangGraph 中的支持聊天机器人，它可以回答常见问题
+*   使用 Langfuse 跟踪聊天机器人的输入和输出
 
-We will start with a basic chatbot and build a more advanced multi agent setup in the next section, introducing key LangGraph concepts along the way.
+我们将从一个基本的聊天机器人开始，并在下一节构建一个更高级的多代理设置，沿途介绍关键的 LangGraph 概念。
 
-#### Create Agent
+#### 创建代理
 
-Start by creating a `StateGraph`. A `StateGraph` object defines our chatbot's structure as a state machine. We will add nodes to represent the LLM and functions the chatbot can call, and edges to specify how the bot transitions between these functions.
+首先创建一个 `StateGraph`。`StateGraph` 对象将我们的聊天机器人结构定义为状态机。我们将添加节点来表示 LLM 和聊天机器人可以调用的函数，以及指定机器人如何在这些函数之间转换的边。
 
 
 ```python
@@ -125,40 +125,40 @@ from langgraph.graph import StateGraph
 from langgraph.graph.message import add_messages
 
 class State(TypedDict):
-    # Messages have the type "list". The `add_messages` function in the annotation defines how this state key should be updated
-    # (in this case, it appends messages to the list, rather than overwriting them)
+    # Messages 的类型为“list”。注释中的 `add_messages` 函数定义了此状态键应如何更新
+    # （在此情况下，它将消息追加到列表中，而不是覆盖它们）
     messages: Annotated[list, add_messages]
 
 graph_builder = StateGraph(State)
 
 llm = ChatOpenAI(model = "gpt-4o", temperature = 0.2)
 
-# The chatbot node function takes the current State as input and returns an updated messages list. This is the basic pattern for all LangGraph node functions.
+# 聊天机器人节点函数以当前 State 作为输入，并返回更新的消息列表。这是所有 LangGraph 节点函数的基本模式。
 def chatbot(state: State):
     return {"messages": [llm.invoke(state["messages"])]}
 
-# Add a "chatbot" node. Nodes represent units of work. They are typically regular python functions.
+# 添加一个“chatbot”节点。节点代表工作单元。它们通常是常规的 Python 函数。
 graph_builder.add_node("chatbot", chatbot)
 
-# Add an entry point. This tells our graph where to start its work each time we run it.
+# 添加一个入口点。这告诉我们的图每次运行时从哪里开始工作。
 graph_builder.set_entry_point("chatbot")
 
-# Set a finish point. This instructs the graph "any time this node is run, you can exit."
+# 设置一个结束点。这会指示图“任何时候运行此节点，您都可以退出。”
 graph_builder.set_finish_point("chatbot")
 
-# To be able to run our graph, call "compile()" on the graph builder. This creates a "CompiledGraph" we can use invoke on our state.
+# 为了能够运行我们的图，请在图构建器上调用“compile()”。这将创建一个我们可以对状态调用 invoke 的“CompiledGraph”。
 graph = graph_builder.compile()
 ```
 
-#### Add Langfuse as callback to the invocation
+#### 将 Langfuse 添加为调用的回调
 
-Now, we will add then [Langfuse callback handler for LangChain](https://langfuse.com/docs/integrations/langchain/tracing) to trace the steps of our application: `config={"callbacks": [langfuse_handler]}`
+现在，我们将添加 [Langfuse 回调处理程序用于 LangChain](https://langfuse.com/docs/integrations/langchain/tracing) 来跟踪我们应用程序的步骤：`config={"callbacks": [langfuse_handler]}`
 
 
 ```python
 from langfuse.langchain import CallbackHandler
 
-# Initialize Langfuse CallbackHandler for Langchain (tracing)
+# 初始化 Langfuse 回调处理程序用于 Langchain（跟踪）
 langfuse_handler = CallbackHandler()
 
 for s in graph.stream({"messages": [HumanMessage(content = "What is Langfuse?")]},
@@ -171,11 +171,11 @@ for s in graph.stream({"messages": [HumanMessage(content = "What is Langfuse?")]
 ```
 
 
-#### View traces in Langfuse
+#### 在 Langfuse 中查看跟踪
 
-Example trace in Langfuse: https://cloud.langfuse.com/project/cloramnkj0002jz088vzn1ja4/traces/d109e148-d188-4d6e-823f-aac0864afbab
+Langfuse 中的示例跟踪：https://cloud.langfuse.com/project/cloramnkj0002jz088vzn1ja4/traces/d109e148-d188-4d6e-823f-aac0864afbab
 
-![Trace view of chat app in Langfuse](https://langfuse.com/images/cookbook/integration-langgraph/integration_langgraph_chatapp_trace.png)
+![Langfuse 中聊天应用的跟踪视图](https://langfuse.com/images/cookbook/integration-langgraph/integration_langgraph_chatapp_trace.png)
 
-- Check out the [full notebook](https://langfuse.com/docs/integrations/langchain/example-python-langgraph) to see more examples.
-- To learn how to evaluate the performance of your LangGraph application, check out the [LangGraph evaluation guide](https://langfuse.com/docs/integrations/langchain/example-langgraph-agents).
+- 查看[完整的笔记本](https://langfuse.com/docs/integrations/langchain/example-python-langgraph)以获取更多示例。
+- 要了解如何评估 LangGraph 应用程序的性能，请查看[LangGraph 评估指南](https://langfuse.com/docs/integrations/langchain/example-langgraph-agents)。

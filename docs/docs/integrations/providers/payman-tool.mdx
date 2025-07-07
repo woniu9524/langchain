@@ -1,72 +1,72 @@
 # PaymanAI
 
-PaymanAI provides functionality to send and receive payments (fiat and crypto) on behalf of an AI Agent. To get started:
+PaymanAI 提供代表 AI Agent 发送和接收支付（法定货币和加密货币）的功能。开始之前：
 
-1. **Sign up** at app.paymanai.com to create an AI Agent and obtain your **API Key**.
-2. **Set** environment variables (`PAYMAN_API_SECRET` for your API Key, `PAYMAN_ENVIRONMENT` for sandbox or production).
+1. 在 app.paymanai.com **注册**以创建 AI Agent 并获取您的 **API 密钥**。
+2. **设置**环境变量（`PAYMAN_API_SECRET` 用于您的 API 密钥，`PAYMAN_ENVIRONMENT` 用于沙盒或生产环境）。
 
-This notebook gives a quick overview of integrating PaymanAI into LangChain as a tool. For complete reference, see the API documentation.
+本笔记本将快速概述将 PaymanAI 集成到 LangChain 作为工具的过程。有关完整参考，请参阅 API 文档。
 
-## Overview
+## 概述
 
-The PaymanAI integration is part of the `langchain-community` (or your custom) package. It allows you to:
+PaymanAI 集成是 `langchain-community`（或您的自定义）包的一部分。它允许您：
 
-- Send payments (`send_payment`) to crypto addresses or bank accounts.
-- Search for payees (`search_payees`).
-- Add new payees (`add_payee`).
-- Request money from customers with a hosted checkout link (`ask_for_money`).
-- Check agent or customer balances (`get_balance`).
+- 发送支付（`send_payment`）到加密货币地址或银行账户。
+- 搜索收款人（`search_payees`）。
+- 添加新的收款人（`add_payee`）。
+- 使用托管的结账链接向客户收款（`ask_for_money`）。
+- 检查代理商或客户余额（`get_balance`）。
 
-These can be wrapped as **LangChain Tools** for an LLM-based agent to call them automatically.
+这些可以被包装成 **LangChain 工具**，供基于 LLM 的代理自动调用。
 
-### Integration details
+### 集成详情
 
-| Class | Package | Serializable | JS support | Package latest |
+| 类名 | 包名 | 可序列化 | JS 支持 | 包最新版本 |
 | :--- | :--- | :---: | :---: | :--- |
-| PaymanAI | `langchain-payman-tool` | ❌ | ❌ | [PyPI Version] |
+| PaymanAI | `langchain-payman-tool` | ❌ | ❌ | [PyPI 版本] |
 
-If you're simply calling the PaymanAI SDK, you can do it directly or via the **Tool** interface in LangChain.
+如果您只是调用 PaymanAI SDK，您可以直接调用，也可以通过 LangChain 中的**工具**接口进行调用。
 
-## Setup
+## 设置
 
-1. **Install** the PaymanAI tool package:
+1. **安装** PaymanAI 工具包：
 
 ```bash
 pip install langchain-payman-tool
 ```
 
-2. **Install** the PaymanAI SDK:
+2. **安装** PaymanAI SDK：
 ```bash
 pip install paymanai
 ```
 
-3. **Set** environment variables:
+3. **设置**环境变量：
 ```bash
 export PAYMAN_API_SECRET="YOUR_SECRET_KEY"
 export PAYMAN_ENVIRONMENT="sandbox"
 ```
 
-Your `PAYMAN_API_SECRET` should be the secret key from app.paymanai.com. The `PAYMAN_ENVIRONMENT` can be `sandbox` or `production` depending on your usage.
+您的 `PAYMAN_API_SECRET` 应为 app.paymanai.com 提供的密钥。`PAYMAN_ENVIRONMENT` 可以是 `sandbox` 或 `production`，具体取决于您的使用情况。
 
-## Instantiation
+## 实例化
 
-Here is an example of instantiating a PaymanAI tool. If you have multiple Payman methods, you can create multiple tools.
+以下是实例化 PaymanAI 工具的示例。如果您有多个 Payman 方法，可以创建多个工具。
 
 ```python
 from langchain_payman_tool.tool import PaymanAI
 
-# Instantiate the PaymanAI tool (example)
+# 实例化 PaymanAI 工具（示例）
 tool = PaymanAI(
     name="send_payment",
     description="Send a payment to a specified payee.",
 )
 ```
 
-## Invocation
+## 调用
 
-### Invoke directly with args
+### 直接使用参数调用
 
-You can call `tool.invoke(...)` and pass a dictionary matching the tool's expected fields. For example:
+您可以调用 `tool.invoke(...)` 并传递一个与工具预期字段匹配的字典。例如：
 
 ```python
 response = tool.invoke({
@@ -77,9 +77,9 @@ response = tool.invoke({
 })
 ```
 
-### Invoke with ToolCall
+### 使用 ToolCall 调用
 
-When used inside an AI workflow, the LLM might produce a `ToolCall` dict. You can simulate it as follows:
+当在 AI 工作流中使用时，LLM 可能会生成一个 `ToolCall` 字典。您可以模拟如下：
 
 ```python
 model_generated_tool_call = {
@@ -94,21 +94,21 @@ model_generated_tool_call = {
 tool.invoke(model_generated_tool_call)
 ```
 
-## Using the Tool in a Chain or Agent
+## 在链或代理中使用工具
 
-You can bind a PaymanAI tool to a LangChain agent or chain that supports tool-calling.
+您可以将 PaymanAI 工具绑定到支持工具调用的 LangChain 代理或链。
 
-## Quick Start Summary
+## 快速入门摘要
 
-1. **Sign up** at app.paymanai.com to get your **API Key**.
-2. **Install** dependencies:
+1. 在 app.paymanai.com **注册**以获取您的 **API 密钥**。
+2. **安装**依赖项：
    ```bash
    pip install paymanai langchain-payman-tool
    ```
-3. **Export** environment variables:
+3. **导出**环境变量：
    ```bash
    export PAYMAN_API_SECRET="YOUR_SECRET_KEY"
    export PAYMAN_ENVIRONMENT="sandbox"
    ```
-4. **Instantiate** a PaymanAI tool, passing your desired name/description.
-5. **Call** the tool with `.invoke(...)` or integrate it into a chain or agent.
+4. 实例化一个 PaymanAI 工具，传入您想要的名称/描述。
+5. 使用 `.invoke(...)` **调用**该工具，或将其集成到链或代理中。

@@ -20,64 +20,37 @@
 [![CodSpeed Badge](https://img.shields.io/endpoint?url=https://codspeed.io/badge.json)](https://codspeed.io/langchain-ai/langchain)
 
 > [!NOTE]
-> Looking for the JS/TS library? Check out [LangChain.js](https://github.com/langchain-ai/langchainjs).
+> 正在寻找 JS/TS 库？请查看 [LangChain.js](https://github.com/langchain-ai/langchainjs)。
 
-LangChain is a framework for building LLM-powered applications. It helps you chain
-together interoperable components and third-party integrations to simplify AI
-application development —  all while future-proofing decisions as the underlying
-technology evolves.
+LangChain 是一个用于构建 LLM 驱动的应用程序的框架。它帮助您将可互操作的组件和第三方集成链接起来，以简化 AI 应用程序的开发——同时随着底层技术的发展，为未来的决策做好准备。
 
 ```bash
 pip install -U langchain
 ```
 
-To learn more about LangChain, check out
-[the docs](https://python.langchain.com/docs/introduction/). If you’re looking for more
-advanced customization or agent orchestration, check out
-[LangGraph](https://langchain-ai.github.io/langgraph/), our framework for building
-controllable agent workflows.
+要了解更多关于 LangChain 的信息，请查看
+[文档](https://python.langchain.com/docs/introduction/)。如果您正在寻找更高级的定制或代理编排，请查看
+[LangGraph](https://langchain-ai.github.io/langgraph/)，这是我们用于构建可控代理工作流的框架。
 
-## Why use LangChain?
+## 为什么使用 LangChain？
 
-LangChain helps developers build applications powered by LLMs through a standard
-interface for models, embeddings, vector stores, and more. 
+LangChain 通过模型、嵌入、向量存储等的标准接口，帮助开发人员构建由 LLM 驱动的应用程序。
 
-Use LangChain for:
-- **Real-time data augmentation**. Easily connect LLMs to diverse data sources and
-external / internal systems, drawing from LangChain’s vast library of integrations with
-model providers, tools, vector stores, retrievers, and more.
-- **Model interoperability**. Swap models in and out as your engineering team
-experiments to find the best choice for your application’s needs. As the industry
-frontier evolves, adapt quickly — LangChain’s abstractions keep you moving without
-losing momentum.
+使用 LangChain 进行：
+- **实时数据增强**。轻松将 LLM 连接到多样化的数据源和外部/内部系统，利用 LangChain 丰富的集成库，包括模型提供商、工具、向量存储、检索器等。
+- **模型互操作性**。在工程团队尝试寻找最适合您应用程序需求的模型时，可以轻松地进行替换。随着行业前沿的发展，快速适应——LangChain 的抽象使您能够保持前进，而不会失去动力。
 
-## LangChain’s ecosystem
-While the LangChain framework can be used standalone, it also integrates seamlessly
-with any LangChain product, giving developers a full suite of tools when building LLM
-applications. 
+## LangChain 的生态系统
+虽然 LangChain 框架可以独立使用，但它也可以与任何 LangChain 产品无缝集成，为开发 LLM 应用程序的开发人员提供一套完整的工具。
 
-To improve your LLM application development, pair LangChain with:
+为了改进您的 LLM 应用程序开发，请将 LangChain 与以下产品搭配使用：
 
-- [LangSmith](http://www.langchain.com/langsmith) - Helpful for agent evals and
-observability. Debug poor-performing LLM app runs, evaluate agent trajectories, gain
-visibility in production, and improve performance over time.
-- [LangGraph](https://langchain-ai.github.io/langgraph/) - Build agents that can
-reliably handle complex tasks with LangGraph, our low-level agent orchestration
-framework. LangGraph offers customizable architecture, long-term memory, and
-human-in-the-loop workflows — and is trusted in production by companies like LinkedIn,
-Uber, Klarna, and GitLab.
-- [LangGraph Platform](https://langchain-ai.github.io/langgraph/concepts/langgraph_platform/) - Deploy
-and scale agents effortlessly with a purpose-built deployment platform for long
-running, stateful workflows. Discover, reuse, configure, and share agents across
-teams — and iterate quickly with visual prototyping in
-[LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/).
+- [LangSmith](http://www.langchain.com/langsmith) - 有助于代理评估和可观察性。调试性能不佳的 LLM 应用运行，评估代理轨迹，获得生产环境的可视性，并随着时间的推移提高性能。
+- [LangGraph](https://langchain-ai.github.io/langgraph/) - 使用 LangGraph（我们的低级代理编排框架）构建能够可靠处理复杂任务的代理。LangGraph 提供可定制的架构、长期记忆和人工干预工作流——并且受到 LinkedIn、Uber、Klarna 和 GitLab 等公司的生产环境信任。
+- [LangGraph Platform](https://langchain-ai.github.io/langgraph/concepts/langgraph_platform/) - 使用专为长期、有状态工作流构建的部署平台，轻松部署和扩展代理。跨团队发现、重用、配置和共享代理——并通过 [LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/) 进行可视化原型设计，快速迭代。
 
-## Additional resources
-- [Tutorials](https://python.langchain.com/docs/tutorials/): Simple walkthroughs with
-guided examples on getting started with LangChain.
-- [How-to Guides](https://python.langchain.com/docs/how_to/): Quick, actionable code
-snippets for topics such as tool calling, RAG use cases, and more.
-- [Conceptual Guides](https://python.langchain.com/docs/concepts/): Explanations of key
-concepts behind the LangChain framework.
-- [API Reference](https://python.langchain.com/api_reference/): Detailed reference on
-navigating base packages and integrations for LangChain.
+## 附加资源
+- [教程](https://python.langchain.com/docs/tutorials/)：简单的演练，提供关于开始使用 LangChain 的指导性示例。
+- [操作指南](https://python.langchain.com/docs/how_to/)：针对工具调用、RAG 用例等主题的快速、可操作的代码片段。
+- [概念指南](https://python.langchain.com/docs/concepts/)：解释 LangChain 框架背后的关键概念。
+- [API 参考](https://python.langchain.com/api_reference/)：关于导航 LangChain 的基础包和集成的详细参考。
