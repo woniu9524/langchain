@@ -46,20 +46,18 @@ jobs:
           cache: yarn
           cache-dependency-path: docs/yarn.lock
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - name: Setup Python and uv
+        uses: ./.github/actions/uv_setup
         with:
           python-version: '3.11'
 
       - name: Install Python dependencies
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install uv
           cd docs
           python -m venv .venv
           source .venv/bin/activate
-          python -m uv pip install --pre -r vercel_requirements.txt
-          python -m uv pip install --pre $(python scripts/partner_deps_list.py) --overrides vercel_overrides.txt
+          uv pip install --pre -r vercel_requirements.txt
+          uv pip install --pre $(python scripts/partner_deps_list.py) --overrides vercel_overrides.txt
 
       - name: Install Node.js dependencies
         run: |
