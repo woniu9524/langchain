@@ -11,7 +11,7 @@ const prism = require("prism-react-renderer");
 const baseLightCodeBlockTheme = prism.themes.vsLight;
 const baseDarkCodeBlockTheme = prism.themes.vsDark;
 
-const baseUrl = "/";
+const baseUrl = process.env.NODE_ENV === 'production' ? "/langchain/" : "/";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -19,10 +19,16 @@ const config = {
   tagline: "LangChain Python Docs",
   favicon: "img/brand/favicon.png",
   // Set the production url of your site here
-  url: "https://python.langchain.com",
+  url: "https://woniu9524.github.io", // 替换为您的GitHub用户名
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: baseUrl,
+  
+  // GitHub pages deployment config
+  organizationName: 'woniu9524', // 替换为您的GitHub用户名
+  projectName: 'langchain', // 替换为您的仓库名
+  deploymentBranch: 'gh-pages',
+  
   trailingSlash: true,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
@@ -86,7 +92,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          editUrl: "https://github.com/langchain-ai/langchain/edit/master/docs/",
+          editUrl: "https://github.com/woniu9524/langchain/edit/translate/Chinese/docs/",
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins: [
             [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
