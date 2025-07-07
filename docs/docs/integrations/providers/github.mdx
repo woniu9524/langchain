@@ -1,16 +1,16 @@
 # GitHub
 
->[GitHub](https://github.com/) 是一个开发者平台，允许开发者创建、存储、管理和共享他们的代码。它使用 `Git` 软件，提供 Git 的分布式版本控制，以及每个项目的访问控制、错误跟踪、软件功能请求、任务管理、持续集成和 Wiki。
+>[GitHub](https://github.com/) 是一个开发者平台，允许开发者创建、存储、管理和分享他们的代码。它使用 `Git` 软件，在 Git 的分布式版本控制功能之上，还为每个项目提供了访问控制、缺陷跟踪、软件功能请求、任务管理、持续集成和维基等功能。
 
-## 安装和设置
+## 安装与设置
 
-要访问 GitHub API，您需要一个[个人访问令牌](https://github.com/settings/tokens)。
+要访问 GitHub API，你需要一个[个人访问令牌](https://github.com/settings/tokens)。
 
 ## 文档加载器
 
-GitHub 提供两个文档加载器。
+GitHub 有两种可用的文档加载器。
 
-请参阅[用法示例](/docs/integrations/document_loaders/github)。
+查看[使用示例](/docs/integrations/document_loaders/github)。
 
 ```python
 from langchain_community.document_loaders import GitHubIssuesLoader, GithubFileLoader
@@ -19,9 +19,10 @@ from langchain_community.document_loaders import GitHubIssuesLoader, GithubFileL
 ## 工具/工具包
 
 ### GitHubToolkit
-`GitHub` 工具包包含使 LLM 代理能够与 GitHub 存储库交互的工具。
 
-该工具包是 `PyGitHub` 库的包装器。
+`GitHub` 工具包包含了一些工具，可以让 LLM 代理与 GitHub 仓库进行交互。
+
+该工具包是 `PyGitHub` 库的一个封装。
 
 ```python
 from langchain_community.agent_toolkits.github.toolkit import GitHubToolkit
