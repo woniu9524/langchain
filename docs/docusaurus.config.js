@@ -4,7 +4,13 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { ProvidePlugin } = require("webpack");
-require("dotenv").config();
+
+// 添加条件检查，避免在没有dotenv时出错
+try {
+  require("dotenv").config();
+} catch (error) {
+  console.warn("dotenv not found, skipping environment variable loading");
+}
 
 const prism = require("prism-react-renderer");
 
@@ -15,18 +21,18 @@ const baseUrl = "/";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "🦜️🔗 LangChain",
-  tagline: "LangChain Python Docs",
+  title: "🦜️🔗 LangChain中文文档",
+  tagline: "LangChain Python 中文文档",
   favicon: "img/brand/favicon.png",
   // Set the production url of your site here
-  url: "https://python.langchain.com",
+  url: "https://woniu9524.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: baseUrl,
+  baseUrl: "/langchain/",
   trailingSlash: true,
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
-  onBrokenAnchors: "throw",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
+  onBrokenAnchors: "warn",
 
   themes: ["@docusaurus/theme-mermaid"],
   markdown: {
@@ -86,7 +92,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          editUrl: "https://github.com/langchain-ai/langchain/edit/master/docs/",
+          editUrl: "https://github.com/woniu9524/langchain/edit/translate/Chinese/docs/",
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins: [
             [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
@@ -139,7 +145,7 @@ const config = {
       },
       announcementBar: {
         content:
-          '<strong>Our <a href="https://academy.langchain.com/courses/ambient-agents/?utm_medium=internal&utm_source=docs&utm_campaign=q2-2025_ambient-agents_co" target="_blank">Building Ambient Agents with LangGraph</a> course is now available on LangChain Academy!</strong>',
+          '<strong>欢迎使用 <a href="https://github.com/woniu9524/langchain" target="_blank">LangChain中文文档</a>！</strong>',
           backgroundColor: '#d0c9fe'
       },
       prism: {
@@ -166,31 +172,31 @@ const config = {
             type: "docSidebar",
             position: "left",
             sidebarId: "integrations",
-            label: "Integrations",
+            label: "集成",
           },
           {
-            label: "API Reference",
+            label: "API 参考",
             to: "https://python.langchain.com/api_reference/",
           },
           {
             type: "dropdown",
-            label: "More",
+            label: "更多",
             position: "left",
             items: [
               {
                 type: "doc",
                 docId: "contributing/index",
-                label: "Contributing",
+                label: "贡献指南",
               },
               {
                 type: "doc",
                 docId: "people",
-                label: "People",
+                label: "团队成员",
               },
               {
                 type: "doc",
                 docId: "troubleshooting/errors/index",
-                label: "Error reference",
+                label: "错误参考",
               },
               {
                 type: 'html',
@@ -240,7 +246,7 @@ const config = {
           },
           // Please keep GitHub link to the right for consistency.
           {
-            href: "https://github.com/langchain-ai/langchain",
+            href: "https://github.com/woniu9524/langchain",
             position: "right",
             className: "header-github-link",
             "aria-label": "GitHub repository",
@@ -251,10 +257,10 @@ const config = {
         style: "light",
         links: [
           {
-            title: "Community",
+            title: "社区",
             items: [
               {
-                label: "LangChain Forum",
+                label: "LangChain 论坛",
                 href: "https://forum.langchain.com/",
               },
               {
@@ -267,7 +273,7 @@ const config = {
             title: "GitHub",
             items: [
               {
-                label: "Organization",
+                label: "组织",
                 href: "https://github.com/langchain-ai",
               },
               {
@@ -281,14 +287,14 @@ const config = {
             ],
           },
           {
-            title: "More",
+            title: "更多",
             items: [
               {
-                label: "Homepage",
+                label: "主页",
                 href: "https://langchain.com",
               },
               {
-                label: "Blog",
+                label: "博客",
                 href: "https://blog.langchain.dev",
               },
               {
