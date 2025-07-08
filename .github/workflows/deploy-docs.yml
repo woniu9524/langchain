@@ -37,7 +37,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref }}
+          ref: translate/Chinese  # 明确指定要检出的分支
           fetch-depth: 0  # 需要完整历史记录用于一些docusaurus功能
 
       - name: Setup Node.js
