@@ -1447,7 +1447,7 @@
   "docs\\docs\\integrations\\providers\\huggingface.mdx": {
     "path": "docs\\docs\\integrations\\providers\\huggingface.mdx",
     "status": "translated",
-    "lastHash": "da7d39c1c7a52452d4a24ec6f5f57f9ec4aa84d8"
+    "lastHash": "b956fc60241715b88ce8e459d243a3185b4af1bf"
   },
   "docs\\docs\\integrations\\providers\\ieit_systems.mdx": {
     "path": "docs\\docs\\integrations\\providers\\ieit_systems.mdx",
@@ -2977,7 +2977,7 @@
   "docs\\docs\\how_to\\callbacks_custom_events.ipynb": {
     "path": "docs\\docs\\how_to\\callbacks_custom_events.ipynb",
     "status": "translated",
-    "lastHash": "8fd6b0d0662dba6278061baf53e7d1ab275eb442"
+    "lastHash": "36be81b063d7339f3908e132616644f83c18a20c"
   },
   "docs\\docs\\how_to\\character_text_splitter.ipynb": {
     "path": "docs\\docs\\how_to\\character_text_splitter.ipynb",
@@ -3597,7 +3597,7 @@
   "docs\\docs\\how_to\\tool_streaming.ipynb": {
     "path": "docs\\docs\\how_to\\tool_streaming.ipynb",
     "status": "translated",
-    "lastHash": "fc85d3c31faeba6035ee7fb4a7f28cee645976bf"
+    "lastHash": "aae04df82c1a73a13362af9635e005830c4b2183"
   },
   "docs\\docs\\how_to\\tool_results_pass_to_model.ipynb": {
     "path": "docs\\docs\\how_to\\tool_results_pass_to_model.ipynb",
@@ -3612,7 +3612,7 @@
   "docs\\docs\\how_to\\tool_stream_events.ipynb": {
     "path": "docs\\docs\\how_to\\tool_stream_events.ipynb",
     "status": "translated",
-    "lastHash": "2f48cf40e4a94290107ff2eb617807fa3a6fdd6a"
+    "lastHash": "55b3b73cbf4204a8024751e10ae291fcc3f7dd1a"
   },
   "docs\\docs\\how_to\\vectorstore_retriever.ipynb": {
     "path": "docs\\docs\\how_to\\vectorstore_retriever.ipynb",
@@ -3902,7 +3902,7 @@
   "docs\\docs\\integrations\\chat\\huggingface.ipynb": {
     "path": "docs\\docs\\integrations\\chat\\huggingface.ipynb",
     "status": "translated",
-    "lastHash": "e665776a2b4247df992a630b80de402f5eec829b"
+    "lastHash": "801471dc67cd82e6e61de974ebb10e36b82f3ce5"
   },
   "docs\\docs\\integrations\\chat\\moonshot.ipynb": {
     "path": "docs\\docs\\integrations\\chat\\moonshot.ipynb",
@@ -4132,7 +4132,7 @@
   "docs\\docs\\integrations\\chat\\xai.ipynb": {
     "path": "docs\\docs\\integrations\\chat\\xai.ipynb",
     "status": "translated",
-    "lastHash": "22cc06d256f79e76801e9442db9289c21cb23441"
+    "lastHash": "7e9d37eb426de21a73951e2fd054495d70ff6574"
   },
   "docs\\docs\\integrations\\chat\\yuan2.ipynb": {
     "path": "docs\\docs\\integrations\\chat\\yuan2.ipynb",
@@ -5522,7 +5522,7 @@
   "docs\\docs\\integrations\\llms\\huggingface_endpoint.ipynb": {
     "path": "docs\\docs\\integrations\\llms\\huggingface_endpoint.ipynb",
     "status": "translated",
-    "lastHash": "933a4d1d52456fd0341ab791e25df1e5be124410"
+    "lastHash": "ed54b27b7a689c1372d26c96bd9d42361e7c4d7a"
   },
   "docs\\docs\\integrations\\llms\\edenai.ipynb": {
     "path": "docs\\docs\\integrations\\llms\\edenai.ipynb",
@@ -6132,7 +6132,7 @@
   "docs\\docs\\integrations\\providers\\xai.ipynb": {
     "path": "docs\\docs\\integrations\\providers\\xai.ipynb",
     "status": "translated",
-    "lastHash": "4840db40a53dc07640bfb470f283efffe760dcae"
+    "lastHash": "8cf4de3104b520756a6624e595b38a108323865d"
   },
   "docs\\docs\\integrations\\providers\\sambanova.ipynb": {
     "path": "docs\\docs\\integrations\\providers\\sambanova.ipynb",
@@ -6757,7 +6757,7 @@
   "docs\\docs\\integrations\\text_embedding\\huggingfacehub.ipynb": {
     "path": "docs\\docs\\integrations\\text_embedding\\huggingfacehub.ipynb",
     "status": "translated",
-    "lastHash": "568d56860121d16da35e4e72a7a09940304d7a9d"
+    "lastHash": "4b8db414c19281ee5609527f371c28f32783ba28"
   },
   "docs\\docs\\integrations\\text_embedding\\fireworks.ipynb": {
     "path": "docs\\docs\\integrations\\text_embedding\\fireworks.ipynb",
@@ -7377,7 +7377,7 @@
   "docs\\docs\\integrations\\tools\\google_serper.ipynb": {
     "path": "docs\\docs\\integrations\\tools\\google_serper.ipynb",
     "status": "translated",
-    "lastHash": "95ae68baaa4635cabf99c1e4aedd9002e065a394"
+    "lastHash": "6f05ef14b8154f240249dd0989367d7b1f8b7549"
   },
   "docs\\docs\\integrations\\tools\\json.ipynb": {
     "path": "docs\\docs\\integrations\\tools\\json.ipynb",
