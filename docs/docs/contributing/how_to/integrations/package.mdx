@@ -2,86 +2,77 @@
 pagination_next: contributing/how_to/integrations/standard_tests
 pagination_prev: contributing/how_to/integrations/index
 ---
-# How to implement an integration package
+# 如何实现一个集成包
 
-This guide walks through the process of implementing a LangChain integration 
-package.
+本指南将引导你完成 LangChain 集成包的实现过程。
 
-Integration packages are just Python packages that can be installed with `pip install <your-package>`,
-which contain classes that are compatible with LangChain's core interfaces.
+集成包本质上就是可以通过 `pip install <your-package>` 安装的 Python 包，其中包含与 LangChain 核心接口兼容的类。
 
-We will cover:
+我们将涵盖：
 
-1. (Optional) How to bootstrap a new integration package
-2. How to implement components, such as [chat models](/docs/concepts/chat_models/) and [vector stores](/docs/concepts/vectorstores/), that adhere
-to the LangChain interface;  
+1. （可选）如何引导一个新集成包
+2. 如何实现遵循 LangChain 接口的组件，例如 [聊天模型](/docs/concepts/chat_models/) 和 [向量存储](/docs/concepts/vectorstores/)；
 
-## (Optional) bootstrapping a new integration package
+## （可选）引导一个新集成包
 
-In this section, we will outline 2 options for bootstrapping a new integration package, 
-and you're welcome to use other tools if you prefer!
+在本节中，我们将概述引导新集成包的两种选项，当然，如果你愿意，也可以使用其他工具！
 
-1. **langchain-cli**: This is a command-line tool that can be used to bootstrap a new integration package with a template for LangChain components and Poetry for dependency management.
-2. **Poetry**: This is a Python dependency management tool that can be used to bootstrap a new Python package with dependencies. You can then add LangChain components to this package.
+1. **langchain-cli**：这是一个命令行工具，可用于引导一个包含 LangChain 组件模板和用于依赖管理的 Poetry 的新集成包。
+2. **Poetry**：这是一个 Python 依赖管理工具，可用于引导一个新的带依赖关系的 Python 包。然后，你可以向该包添加 LangChain 组件。
 
 <details>
-    <summary>Option 1: langchain-cli (recommended)</summary>
+    <summary>选项 1：langchain-cli（推荐）</summary>
 
-In this guide, we will be using the `langchain-cli` to create a new integration package
-from a template, which can be edited to implement your LangChain components.
+在本指南中，我们将使用 `langchain-cli` 从模板创建一个新的集成包，该模板可以进行编辑以实现你的 LangChain 组件。
 
-### **Prerequisites**
+### **先决条件**
 
-- [GitHub](https://github.com) account
-- [PyPi](https://pypi.org/) account
+- [GitHub](https://github.com) 账户
+- [PyPi](https://pypi.org/) 账户
 
-### Bootstrapping a new Python package with langchain-cli
+### 使用 langchain-cli 引导新的 Python 包
 
-First, install `langchain-cli` and `poetry`:
+首先，安装 `langchain-cli` 和 `poetry`：
 
 ```bash
 pip install langchain-cli poetry
 ```
 
-Next, come up with a name for your package. For this guide, we'll use `langchain-parrot-link`.
-You can confirm that the name is available on PyPi by searching for it on the [PyPi website](https://pypi.org/).
+接下来，为你想要创建的包想一个名字。在本指南中，我们将使用 `langchain-parrot-link`。你可以通过在 [PyPi 网站](https://pypi.org/)上搜索来确认该名称是否可用。
 
-Next, create your new Python package with `langchain-cli`, and navigate into the new directory with `cd`:
+然后，使用 `langchain-cli` 创建你的新 Python 包，并使用 `cd` 进入新目录：
 
 ```bash
 langchain-cli integration new
 
-> The name of the integration to create (e.g. `my-integration`): parrot-link
-> Name of integration in PascalCase [ParrotLink]:
+> 要创建的集成名称（例如 `my-integration`）：parrot-link
+> 集成类名称（PascalCase）[ParrotLink]：
 
 cd parrot-link
 ```
 
-Next, let's add any dependencies we need
+接下来，添加我们需要的任何依赖项：
 
 ```bash
 poetry add my-integration-sdk
 ```
 
-We can also add some `typing` or `test` dependencies in a separate poetry dependency group.
+我们还可以在单独的 poetry 依赖项组中添加一些 `typing` 或 `test` 依赖项。
 
 ```
 poetry add --group typing my-typing-dep
 poetry add --group test my-test-dep
 ```
 
-And finally, have poetry set up a virtual environment with your dependencies, as well
-as your integration package:
+最后，让 poetry 使用你的依赖项和你的集成包设置一个虚拟环境：
 
 ```bash
 poetry install --with lint,typing,test,test_integration
 ```
 
-You now have a new Python package with a template for LangChain components! This
-template comes with files for each integration type, and you're welcome to duplicate or
-delete any of these files as needed (including the associated test files).
+现在你已经拥有了一个包含 LangChain 组件模板的新 Python 包！此模板为每个集成类型都提供了文件，你可以根据需要复制或删除这些文件（包括相关的测试文件）。
 
-To create any individual files from the [template], you can run e.g.:
+要从[模板]创建任何单个文件，你可以运行，例如：
 
 ```bash
 langchain-cli integration new \
@@ -94,67 +85,59 @@ langchain-cli integration new \
 </details>
 
 <details>
-    <summary>Option 2: Poetry (manual)</summary>
+    <summary>选项 2：Poetry（手动）</summary>
 
-In this guide, we will be using [Poetry](https://python-poetry.org/) for
-dependency management and packaging, and you're welcome to use any other tools you prefer.
+在本指南中，我们将使用 [Poetry](https://python-poetry.org/) 进行依赖管理和打包，当然，你也可以使用任何其他你喜欢的工具。
 
-### **Prerequisites**
+### **先决条件**
 
-- [GitHub](https://github.com) account
-- [PyPi](https://pypi.org/) account
+- [GitHub](https://github.com) 账户
+- [PyPi](https://pypi.org/) 账户
 
-### Bootstrapping a new Python package with Poetry
+### 使用 Poetry 引导新的 Python 包
 
-First, install Poetry:
+首先，安装 Poetry：
 
 ```bash
 pip install poetry
 ```
 
-Next, come up with a name for your package. For this guide, we'll use `langchain-parrot-link`.
-You can confirm that the name is available on PyPi by searching for it on the [PyPi website](https://pypi.org/).
+接下来，为你想要创建的包想一个名字。在本指南中，我们将使用 `langchain-parrot-link`。你可以通过在 [PyPi 网站](https://pypi.org/)上搜索来确认该名称是否可用。
 
-Next, create your new Python package with Poetry, and navigate into the new directory with `cd`:
+然后，使用 Poetry 创建你的新 Python 包，并使用 `cd` 进入新目录：
 
 ```bash
 poetry new langchain-parrot-link
 cd langchain-parrot-link
 ```
 
-Add main dependencies using Poetry, which will add them to your `pyproject.toml` file:
+使用 Poetry 添加主要依赖项，这将把它们添加到你的 `pyproject.toml` 文件中：
 
 ```bash
 poetry add langchain-core
 ```
 
-We will also add some `test` dependencies in a separate poetry dependency group. If
-you are not using Poetry, we recommend adding these in a way that won't package them
-with your published package, or just installing them separately when you run tests.
+我们还将在单独的 poetry 依赖项组中添加一些 `test` 依赖项。如果你不使用 Poetry，我们建议以一种不打包这些依赖项的方式添加它们，或者在运行测试时单独安装它们。
 
-`langchain-tests` will provide the [standard tests](../standard_tests) we will use later. 
-We recommended pinning these to the latest version: <img src="https://img.shields.io/pypi/v/langchain-tests" style={{position:"relative",top:4,left:3}} />
+`langchain-tests` 将提供我们稍后将使用的[标准测试](../standard_tests)。我们建议将它们固定到最新版本：<img src="https://img.shields.io/pypi/v/langchain-tests" style={{position:"relative",top:4,left:3}} />
 
-Note: Replace `<latest_version>` with the latest version of `langchain-tests` below.
+注意：在下面的命令中将 `<latest_version>` 替换为 `langchain-tests` 的最新版本。
 
 ```bash
 poetry add --group test pytest pytest-socket pytest-asyncio langchain-tests==<latest_version>
 ```
 
-And finally, have poetry set up a virtual environment with your dependencies, as well
-as your integration package:
+最后，让 poetry 使用你的依赖项和你的集成包设置一个虚拟环境：
 
 ```bash
 poetry install --with test
 ```
 
-You're now ready to start writing your integration package!
+你现在已准备好开始编写你的集成包了！
 
-### Writing your integration
+### 编写你的集成
 
-Let's say you're building a simple integration package that provides a `ChatParrotLink`
-chat model integration for LangChain. Here's a simple example of what your project
-structure might look like:
+假设你正在构建一个简单的集成包，它为 LangChain 提供了一个 `ChatParrotLink` 聊天模型集成。下面是你的项目结构可能的样子：
 
 ```plaintext
 langchain-parrot-link/
@@ -168,32 +151,25 @@ langchain-parrot-link/
 └── README.md
 ```
 
-All of these files should already exist from step 1, except for 
-`chat_models.py` and `test_chat_models.py`! We will implement `test_chat_models.py` 
-later, following the [standard tests](../standard_tests) guide.
+除了 `chat_models.py` 和 `test_chat_models.py` 之外，所有这些文件都应该已经存在于步骤 1 中了！我们将在后面的[标准测试](../standard_tests)指南中实现 `test_chat_models.py`。
 
-For `chat_models.py`, simply paste the contents of the chat model implementation
-[above](#implementing-langchain-components).
+对于 `chat_models.py`，只需粘贴聊天模型实现的[内容](#implementing-langchain-components)。
 
 </details>
 
-### Push your package to a public Github repository
+### 将你的包推送到公共 GitHub 仓库
 
-This is only required if you want to publish your integration in the LangChain documentation.
+只有当你想要在 LangChain 文档中发布你的集成时，才需要这样做。
 
-1. Create a new repository on GitHub.
-2. Push your code to the repository.
-3. Confirm that your repository is viewable by the public (e.g. in a private browsing window, where you're not logged into Github).
+1. 在 GitHub 上创建一个新存储库。
+2. 将你的代码推送到该存储库。
+3. 确认你的存储库可以被公众查看（例如，在私密浏览窗口中，你未登录 GitHub 时）。
 
-## Implementing LangChain components
+## 实现 LangChain 组件
 
-LangChain components are subclasses of base classes in [langchain-core](/docs/concepts/architecture/#langchain-core).
-Examples include [chat models](/docs/concepts/chat_models/),
-[vector stores](/docs/concepts/vectorstores/), [tools](/docs/concepts/tools/),
-[embedding models](/docs/concepts/embedding_models/) and [retrievers](/docs/concepts/retrievers/).
+LangChain 组件是 [langchain-core](/docs/concepts/architecture/#langchain-core) 中基类的子类。示例包括 [聊天模型](/docs/concepts/chat_models/)、[向量存储](/docs/concepts/vectorstores/)、[工具](/docs/concepts/tools/)、[嵌入模型](/docs/concepts/embedding_models/) 和 [检索器](/docs/concepts/retrievers/)。
 
-Your integration package will typically implement a subclass of at least one of these
-components. Expand the tabs below to see details on each.
+你的集成包通常会实现至少一个这些组件的子类。展开下面的选项卡以查看每个组件的详细信息。
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -201,12 +177,11 @@ import CodeBlock from '@theme/CodeBlock';
 
 <Tabs>
 
-    <TabItem value="chat_models" label="Chat models">
+    <TabItem value="chat_models" label="聊天模型">
         
-        Refer to the [Custom Chat Model Guide](/docs/how_to/custom_chat_model) guide for
-        detail on a starter chat model [implementation](/docs/how_to/custom_chat_model/#implementation).
+        有关启动器聊天模型[实现](/docs/how_to/custom_chat_model/#implementation)的详细信息，请参阅[自定义聊天模型指南](/docs/how_to/custom_chat_model)。
 
-        You can start from the following template or langchain-cli command:
+        你可以从以下模板或 langchain-cli 命令开始：
 
         ```bash
         langchain-cli integration new \
@@ -217,7 +192,7 @@ import CodeBlock from '@theme/CodeBlock';
         ```
 
         <details>
-            <summary>Example chat model code</summary>
+            <summary>示例聊天模型代码</summary>
 
 import ChatModelSource from '../../../../src/theme/integration_template/integration_template/chat_models.py';
 
@@ -233,44 +208,37 @@ import ChatModelSource from '../../../../src/theme/integration_template/integrat
         </details>
 
     </TabItem>
-    <TabItem value="vector_stores" label="Vector stores">
+    <TabItem value="vector_stores" label="向量存储">
 
-        Your vector store implementation will depend on your chosen database technology.
-        `langchain-core` includes a minimal
-        [in-memory vector store](https://python.langchain.com/api_reference/core/vectorstores/langchain_core.vectorstores.in_memory.InMemoryVectorStore.html)
-        that we can use as a guide. You can access the code [here](https://github.com/langchain-ai/langchain/blob/master/libs/core/langchain_core/vectorstores/in_memory.py).
+你的向量存储实现将取决于你选择的数据库技术。
+`langchain-core` 包括一个最小化的
+[内存向量存储](https://python.langchain.com/api_reference/core/vectorstores/langchain_core.vectorstores.in_memory.InMemoryVectorStore.html)，
+我们可以将其作为参考。你可以在[此处](https://github.com/langchain-ai/langchain/blob/master/libs/core/langchain_core/vectorstores/in_memory.py)访问其代码。
 
-        All vector stores must inherit from the [VectorStore](https://python.langchain.com/api_reference/core/vectorstores/langchain_core.vectorstores.base.VectorStore.html)
-        base class. This interface consists of methods for writing, deleting and searching
-        for documents in the vector store.
+所有向量存储都必须继承自 [VectorStore](https://python.langchain.com/api_reference/core/vectorstores/langchain_core.vectorstores.base.VectorStore.html) 基类。该接口包含用于在向量存储中写入、删除和搜索文档的方法。
 
-        `VectorStore` supports a variety of synchronous and asynchronous search types (e.g., 
-        nearest-neighbor or maximum marginal relevance), as well as interfaces for adding
-        documents to the store. See the [API Reference](https://python.langchain.com/api_reference/core/vectorstores/langchain_core.vectorstores.base.VectorStore.html)
-        for all supported methods. The required methods are tabulated below:
+`VectorStore` 支持多种同步和异步搜索类型（例如，最近邻搜索或最大边际相关性搜索），以及用于向存储添加文档的接口。有关所有支持的方法，请参阅[API 参考](https://python.langchain.com/api_reference/core/vectorstores/langchain_core.vectorstores.base.VectorStore.html)。下面选项卡中列出了必需的方法：
 
-        | Method/Property         | Description                                          |
-        |------------------------ |------------------------------------------------------|
-        | `add_documents`         | Add documents to the vector store.                   |
-        | `delete`                | Delete selected documents from vector store (by IDs) |
-        | `get_by_ids`            | Get selected documents from vector store (by IDs)    |
-        | `similarity_search`     | Get documents most similar to a query.               |
-        | `embeddings` (property) | Embeddings object for vector store.                  |
-        | `from_texts`            | Instantiate vector store via adding texts.           |
+        | 方法/属性           | 描述                                     |
+        |----------------------|------------------------------------------|
+        | `add_documents`      | 将文档添加到向量存储。                 |
+        | `delete`             | 从向量存储中删除选定的文档（按 ID）。 |
+        | `get_by_ids`         | 从向量存储中获取选定的文档（按 ID）。 |
+        | `similarity_search`  | 获取与查询最相似的文档。               |
+        | `embeddings`（属性） | 向量存储的嵌入对象。                   |
+        | `from_texts`         | 通过添加文本来实例化向量存储。         |
 
-        Note that `InMemoryVectorStore` implements some optional search types, as well as
-        convenience methods for loading and dumping the object to a file, but this is not
-        necessary for all implementations.
+请注意，`InMemoryVectorStore` 实现了一些可选的搜索类型，以及用于将对象加载和保存到文件的便捷方法，但并非所有实现都必须如此。
 
         :::tip
 
-        The [in-memory vector store](https://github.com/langchain-ai/langchain/blob/master/libs/core/langchain_core/vectorstores/in_memory.py)
-        is tested against the standard tests in the LangChain Github repository.
+        [内存向量存储](https://github.com/langchain-ai/langchain/blob/master/libs/core/langchain_core/vectorstores/in_memory.py)
+        会针对 LangChain GitHub 存储库中的标准测试进行测试。
 
         :::
 
         <details>
-            <summary>Example vector store code</summary>
+            <summary>示例向量存储代码</summary>
 
 import VectorstoreSource from '../../../../src/theme/integration_template/integration_template/vectorstores.py';
 
@@ -286,15 +254,13 @@ import VectorstoreSource from '../../../../src/theme/integration_template/integr
         </details>
 
     </TabItem>
-    <TabItem value="embeddings" label="Embeddings">
+    <TabItem value="embeddings" label="嵌入">
 
-Embeddings are used to convert `str` objects from `Document.page_content` fields
-into a vector representation (represented as a list of floats).
+嵌入用于将 `Document.page_content` 字段中的 `str` 对象转换为向量表示（表示为浮点数列表）。
 
-Refer to the [Custom Embeddings Guide](/docs/how_to/custom_embeddings) guide for
-detail on a starter embeddings [implementation](/docs/how_to/custom_embeddings/#implementation).
+有关启动器嵌入[实现](/docs/how_to/custom_embeddings/#implementation)的详细信息，请参阅[自定义嵌入指南](/docs/how_to/custom_embeddings)。
 
-You can start from the following template or langchain-cli command:
+你可以从以下模板或 langchain-cli 命令开始：
 
 ```bash
 langchain-cli integration new \
@@ -305,7 +271,7 @@ langchain-cli integration new \
 ```
 
         <details>
-            <summary>Example embeddings code</summary>
+            <summary>示例嵌入代码</summary>
 
 import EmbeddingsSource from '/src/theme/integration_template/integration_template/embeddings.py';
 
@@ -321,57 +287,38 @@ import EmbeddingsSource from '/src/theme/integration_template/integration_templa
         </details>
 
     </TabItem>
-    <TabItem value="tools" label="Tools">
+    <TabItem value="tools" label="工具">
 
-Tools are used in 2 main ways:
+工具主要有两种用法：
 
-1. To define an "input schema" or "args schema" to pass to a chat model's tool calling
-feature along with a text request, such that the chat model can generate a "tool call",
-or parameters to call the tool with.
-2. To take a "tool call" as generated above, and take some action and return a response
-that can be passed back to the chat model as a ToolMessage.
+1. 定义一个“输入模式”或“参数模式”与文本请求一起传递给聊天模型的工具调用功能，以便聊天模型可以生成一个“工具调用”，或者生成调用该工具的参数。
+2. 接收上述生成的“工具调用”，执行某些操作，并返回一个可以作为 `ToolMessage` 传递回聊天模型的响应。
 
-The `Tools` class must inherit from the [BaseTool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool) base class. This interface has 3 properties and 2 methods that should be implemented in a 
-subclass.
+`Tools` 类必须继承自 [BaseTool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool) 基类。该接口有 3 个属性和 2 个方法应在子类中实现。
 
-| Method/Property         | Description                                          |
-|------------------------ |------------------------------------------------------|
-| `name`                  | Name of the tool (passed to the LLM too).            |
-| `description`           | Description of the tool (passed to the LLM too).     |
-| `args_schema`           | Define the schema for the tool's input arguments.    |
-| `_run`                  | Run the tool with the given arguments.               |
-| `_arun`                 | Asynchronously run the tool with the given arguments.|
+        | 方法/属性     | 描述                                                              |
+        |-----------------|-------------------------------------------------------------------|
+        | `name`          | 工具的名称（也传递给 LLM）。                                      |
+        | `description`   | 工具的描述（也传递给 LLM）。                                      |
+        | `args_schema`   | 定义工具输入参数的模式。                                          |
+        | `_run`          | 使用给定参数运行工具。                                            |
+        | `_arun`         | 异步运行工具，并使用给定参数。                                  |
 
-### Properties
+### 属性
 
-`name`, `description`, and `args_schema` are all properties that should be implemented
-in the subclass. `name` and `description` are strings that are used to identify the tool
-and provide a description of what the tool does. Both of these are passed to the LLM,
-and users may override these values depending on the LLM they are using as a form of
-"prompt engineering." Giving these a concise and LLM-usable name and description is
-important for the initial user experience of the tool.
+`name`、`description` 和 `args_schema` 都应该是子类中实现的属性。`name` 和 `description` 是用于标识工具和提供工具作用描述的字符串。这两者都会传递给 LLM，用户可以根据他们使用的 LLM 来覆盖这些值，作为一种“提示工程”形式。为它们赋予简洁且 LLM 可用的名称和描述对于工具的初始用户体验很重要。
 
-`args_schema` is a Pydantic `BaseModel` that defines the schema for the tool's input
-arguments. This is used to validate the input arguments to the tool, and to provide
-a schema for the LLM to fill out when calling the tool. Similar to the `name` and
-`description` of the overall Tool class, the fields' names (the variable name) and
-description (part of `Field(..., description="description")`) are passed to the LLM, 
-and the values in these fields should be concise and LLM-usable.
+`args_schema` 是一个 Pydantic `BaseModel`，用于定义工具输入参数的模式。它用于验证传递给工具的输入参数，并为 LLM 在调用工具时填充提供模式。与整体 Tool 类的 `name` 和 `description` 类似，字段的名称（变量名）和描述（`Field(..., description="description")` 的一部分）会传递给 LLM，这些字段中的值应简洁且 LLM 可用。
 
-### Run Methods
+### 运行方法
 
-`_run` is the main method that should be implemented in the subclass. This method
-takes in the arguments from `args_schema` and runs the tool, returning a string
-response. This method is usually called in a LangGraph [`ToolNode`](https://langchain-ai.github.io/langgraph/how-tos/tool-calling/), and can also be called in a legacy
-`langchain.agents.AgentExecutor`.
+`_run` 是子类中应实现的主要方法。此方法接收来自 `args_schema` 的参数并运行工具，返回一个字符串响应。此方法通常在 LangGraph 的 [`ToolNode`](https://langchain-ai.github.io/langgraph/how-tos/tool-calling/) 中调用，也可以在旧版的 `langchain.agents.AgentExecutor` 中调用。
 
-`_arun` is optional because by default, `_run` will be run in an async executor.
-However, if your tool is calling any apis or doing any async work, you should implement
-this method to run the tool asynchronously in addition to `_run`.
+`_arun` 是可选的，因为默认情况下，`_run` 将在异步执行器中运行。但是，如果你的工具正在调用任何 API 或执行任何异步工作，你应该实现此方法，除了 `_run` 之外，还可以异步运行该工具。
 
-### Implementation
+### 实现
 
-You can start from the following template or langchain-cli command:
+你可以从以下模板或 langchain-cli 命令开始：
 
 ```bash
 langchain-cli integration new \
@@ -382,7 +329,7 @@ langchain-cli integration new \
 ```
 
         <details>
-            <summary>Example tool code</summary>
+            <summary>示例工具代码</summary>
 
 import ToolSource from '/src/theme/integration_template/integration_template/tools.py';
 
@@ -398,47 +345,36 @@ import ToolSource from '/src/theme/integration_template/integration_template/too
         </details>
 
     </TabItem>
-    <TabItem value="retrievers" label="Retrievers">
+    <TabItem value="retrievers" label="检索器">
 
-Retrievers are used to retrieve documents from APIs, databases, or other sources
-based on a query. The `Retriever` class must inherit from the [BaseRetriever](https://python.langchain.com/api_reference/core/retrievers/langchain_core.retrievers.BaseRetriever.html) base class. This interface has 1 attribute and 2 methods that should be implemented in a subclass.
+检索器用于根据查询从 API、数据库或其他源检索文档。`Retriever` 类必须继承自 [BaseRetriever](https://python.langchain.com/api_reference/core/retrievers/langchain_core.retrievers.BaseRetriever.html) 基类。该接口有 1 个属性和 2 个方法应在子类中实现。
 
-| Method/Property         | Description                                          |
-|------------------------ |------------------------------------------------------|
-| `k`                     | Default number of documents to retrieve (configurable). |
-| `_get_relevant_documents`| Retrieve documents based on a query.                 |
-| `_aget_relevant_documents`| Asynchronously retrieve documents based on a query.  |
+        | 方法/属性         | 描述                                       |
+        |--------------------|--------------------------------------------|
+        | `k`                | 要检索的默认文档数量（可配置）。         |
+        | `_get_relevant_documents`| 根据查询检索文档。                     |
+        | `_aget_relevant_documents`| 异步根据查询检索文档。                   |
 
-### Attributes
+### 属性
 
-`k` is an attribute that should be implemented in the subclass. This attribute
-can simply be defined at the top of the class with a default value like
-`k: int = 5`. This attribute is the default number of documents to retrieve
-from the retriever, and can be overridden by the user when constructing or calling
-the retriever.
+`k` 是子类中应实现的属性。此属性可以简单地在类顶部定义，并带有默认值，例如 `k: int = 5`。此属性是要从检索器检索的文档的默认数量，用户在构造或调用检索器时可以覆盖此值。
 
-### Methods
+### 方法
 
-`_get_relevant_documents` is the main method that should be implemented in the subclass.
+`_get_relevant_documents` 是子类中应实现的主要方法。
 
-This method takes in a query and returns a list of `Document` objects, which have 2
-main properties:
+此方法接收一个查询，并返回一个 `Document` 对象列表，这些对象有两个主要属性：
 
-- `page_content` - the text content of the document
-- `metadata` - a dictionary of metadata about the document
+- `page_content` - 文档的文本内容
+- `metadata` - 关于文档的元数据的字典
 
-Retrievers are typically directly invoked by a user, e.g. as
-`MyRetriever(k=4).invoke("query")`, which will automatically call `_get_relevant_documents`
-under the hood.
+检索器通常由用户直接调用，例如 `MyRetriever(k=4).invoke("query")`，它会在后台自动调用 `_get_relevant_documents`。
 
-`_aget_relevant_documents` is optional because by default, `_get_relevant_documents` will
-be run in an async executor. However, if your retriever is calling any apis or doing
-any async work, you should implement this method to run the retriever asynchronously
-in addition to `_get_relevant_documents` for performance reasons.
+`_aget_relevant_documents` 是可选的，因为默认情况下，`_get_relevant_documents` 将在异步执行器中运行。但是，如果你的检索器正在调用任何 API 或执行任何异步工作，你应该实现此方法以异步运行检索器，并为了性能原因而实现 `_get_relevant_documents`。
 
-### Implementation
+### 实现
 
-You can start from the following template or langchain-cli command:
+你可以从以下模板或 langchain-cli 命令开始：
 
 ```bash
 langchain-cli integration new \
@@ -449,7 +385,7 @@ langchain-cli integration new \
 ```
 
         <details>
-            <summary>Example retriever code</summary>
+            <summary>示例检索器代码</summary>
 
 import RetrieverSource from '/src/theme/integration_template/integration_template/retrievers.py';
 
@@ -469,6 +405,6 @@ import RetrieverSource from '/src/theme/integration_template/integration_templat
 
 ---
 
-## Next Steps
+## 后续步骤
 
-Now that you've implemented your package, you can move on to [testing your integration](../standard_tests) for your integration and successfully run them.
+现在你已经实现了你的包，你可以继续进行[测试你的集成](../standard_tests)，以确保它们能成功运行。

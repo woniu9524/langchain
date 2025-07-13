@@ -3,89 +3,84 @@ pagination_prev: null
 pagination_next: contributing/how_to/integrations/package
 ---
 
-# Contribute Integrations
+# 贡献集成
 
-Integrations are a core component of LangChain.
-LangChain provides standard interfaces for several different components (language models, vector stores, etc) that are crucial when building LLM applications.
-
-
-## Why contribute an integration to LangChain?
-
-- **Discoverability:** LangChain is the most used framework for building LLM applications, with over 20 million monthly downloads. LangChain integrations are discoverable by a large community of GenAI builders.
-- **Interoperability:** LangChain components expose a standard interface, allowing developers to easily swap them for each other. If you implement a LangChain integration, any developer using a different component will easily be able to swap yours in.
-- **Best Practices:** Through their standard interface, LangChain components encourage and facilitate best practices (streaming, async, etc)
+集成是 LangChain 的核心组件。
+LangChain 为几个不同的组件（语言模型、向量存储等）提供了标准接口，这些接口在构建 LLM 应用程序时至关重要。
 
 
-## Components to Integrate
+## 为什么向 LangChain 贡献集成？
+
+- **可发现性：**LangChain 是构建 LLM 应用程序最常用的框架，每月下载量超过 2000 万次。LangChain 集成可被大量 GenAI 构建者社区发现。
+- **互操作性：**LangChain 组件公开标准接口，允许开发人员轻松地将它们相互替换。如果您实现了 LangChain 集成，任何使用不同组件的开发人员都可以轻松地替换使用您的组件。
+- **最佳实践：**通过其标准接口，LangChain 组件鼓励并促进最佳实践（流式传输、异步等）。
+
+
+## 要集成的组件
 
 :::info
 
-See the [Conceptual Guide](../../../concepts/index.mdx) for an overview of all components
-supported in LangChain
+请参阅[概念指南](../../../concepts/index.mdx)以了解 LangChain 支持的所有组件的概述。
 
 :::
 
-While any component can be integrated into LangChain, there are specific types of integrations we encourage more:
+虽然任何组件都可以集成到 LangChain 中，但我们更鼓励特定类型的集成：
 
 <table>
   <tr>
-    <th>Integrate these ✅</th>
-    <th>Not these ❌</th>
+    <th>集成这些 ✅</th>
+    <th>这些不集成 ❌</th>
   </tr>
   <tr>
     <td>
       <ul>
-        <li>Chat Models</li>
-        <li>Tools/Toolkits</li>
-        <li>Retrievers</li>
-        <li>Vector Stores</li>
-        <li>Embedding Models</li>
+        <li>聊天模型</li>
+        <li>工具/工具包</li>
+        <li>检索器</li>
+        <li>向量存储</li>
+        <li>嵌入模型</li>
       </ul>
     </td>
     <td>
       <ul>
-        <li>LLMs (Text-Completion Models)</li>
-        <li>Document Loaders</li>
-        <li>Key-Value Stores</li>
-        <li>Document Transformers</li>
-        <li>Model Caches</li>
-        <li>Graphs</li>
-        <li>Message Histories</li>
-        <li>Callbacks</li>
-        <li>Chat Loaders</li>
-        <li>Adapters</li>
-        <li>Other abstractions</li>
+        <li>LLM（文本补全模型）</li>
+        <li>文档加载器</li>
+        <li>键值存储</li>
+        <li>文档转换器</li>
+        <li>模型缓存</li>
+        <li>图</li>
+        <li>消息历史</li>
+        <li>回调</li>
+        <li>聊天加载器</li>
+        <li>适配器</li>
+        <li>其他抽象</li>
       </ul>
     </td>
   </tr>
 </table>
 
-## How to contribute an integration
+## 如何贡献集成
 
-In order to contribute an integration, you should follow these steps:
+为了贡献集成，您应该遵循以下步骤：
 
-1. Confirm that your integration is in the [list of components](#components-to-integrate) we are currently encouraging.
-2. [Implement your package](/docs/contributing/how_to/integrations/package/) and publish it to a public github repository.
-3. [Implement the standard tests](./standard_tests) for your integration and successfully run them.
-4. [Publish your integration](./publish.mdx) by publishing the package to PyPi and add docs in the `docs/docs/integrations` directory of the LangChain monorepo.
-5. [Optional] Open and merge a PR to add documentation for your integration to the official LangChain docs.
-6. [Optional] Engage with the LangChain team for joint co-marketing ([see below](#co-marketing)).
+1. 确认您的集成在我们当前鼓励的[组件列表](#components-to-integrate)中。
+2. [实现您的包](/docs/contributing/how_to/integrations/package/)并将其发布到公开的 GitHub 存储库。
+3. [实现标准的测试](./standard_tests)以集成您的组件并成功运行它们。
+4. 通过将包发布到 PyPi 并将文档添加到 LangChain monorepo 的 `docs/docs/integrations` 目录来[发布您的集成](./publish.mdx)。
+5. [可选] 打开并合并一个 PR，将您的集成文档添加到官方 LangChain 文档中。
+6. [可选] 与 LangChain 团队合作进行联合营销（请参阅下文）。
 
-## Co-Marketing
+## 联合营销
 
-With over 20 million monthly downloads, LangChain has a large audience of developers
-building LLM applications. Beyond just listing integrations, we aim to highlight
-high-quality, educational examples that inspire developers and advance the ecosystem.
+LangChain 每月下载量超过 2000 万次，拥有大量构建 LLM 应用程序的开发人员受众。除了列出集成之外，我们还旨在重点介绍高质量的教学示例，以启发开发人员并推动生态系统发展。
 
-While we occasionally share integrations, we prioritize content that provides
-meaningful insights and best practices. Our main social channels are Twitter and
-LinkedIn, where we highlight the best examples.
+虽然我们偶尔会分享集成，但我们优先考虑提供有意义的见解和最佳实践的内容。我们的主要社交渠道是 Twitter 和 LinkedIn，我们在这些频道上重点介绍最好的示例。
 
-Here are some heuristics for types of content we are excited to promote:
+以下是我们乐于推广的内容类型的启发式方法：
 
-- **Educational content:** Blogs, YouTube videos and other media showcasing educational content. Note that we prefer content that is NOT framed as "here's how to use integration XYZ", but rather "here's how to do ABC", as we find that is more educational and helpful for developers.
-- **End-to-end applications:** End-to-end applications are great resources for developers looking to build. We prefer to highlight applications that are more complex/agentic in nature, and that use [LangGraph](https://github.com/langchain-ai/langgraph) as the orchestration framework. We get particularly excited about anything involving long-term memory, human-in-the-loop interaction patterns, or multi-agent architectures.
-- **Research:** We love highlighting novel research! Whether it is research built on top of LangChain or that integrates with it.
+- **教学内容：**博客、YouTube 视频和其他展示教学内容的媒体。请注意，我们更喜欢那些不被构建为“这是如何使用集成 XYZ 的”，而是“这是如何执行 ABC 的”的内容，因为我们发现这些内容对开发人员更具教学性和帮助性。
+- **端到端应用程序：**端到端应用程序是寻找构建方法的开发人员的绝佳资源。我们更倾向于重点介绍更复杂/代理性质的应用程序，并且使用 [LangGraph](https://github.com/langchain-ai/langgraph) 作为编排框架。我们对涉及长期记忆、人工干预交互模式或多代理架构的任何内容都特别感兴趣。
+- **研究：**我们喜欢重点介绍新颖的研究！无论是基于 LangChain 构建的研究，还是与之集成的研究。
 
-## Further Reading
-To get started, let's learn [how to implement an integration package](/docs/contributing/how_to/integrations/package/) for LangChain.
+## 延伸阅读
+首先，让我们学习[如何为 LangChain 实现集成包](/docs/contributing/how_to/integrations/package/)。

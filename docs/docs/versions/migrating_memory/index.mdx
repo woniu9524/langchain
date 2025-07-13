@@ -2,151 +2,146 @@
 sidebar_position: 1
 ---
 
-# How to migrate to LangGraph memory
+# 如何迁移到 LangGraph 记忆
 
-As of the v0.3 release of LangChain, we recommend that LangChain users take advantage of [LangGraph persistence](https://langchain-ai.github.io/langgraph/concepts/persistence/) to incorporate `memory` into their LangChain application.
+自 LangChain v0.3 版本发布以来，我们建议 LangChain 用户利用 [LangGraph 持久化](https://langchain-ai.github.io/langgraph/concepts/persistence/) 将 `memory` 集成到他们的 LangChain 应用中。
 
-* Users that rely on `RunnableWithMessageHistory` or `BaseChatMessageHistory` do **not** need to make any changes, but are encouraged to consider using LangGraph for more complex use cases.
-* Users that rely on deprecated memory abstractions from LangChain 0.0.x should follow this guide to upgrade to the new LangGraph persistence feature in LangChain 0.3.x.
+* 依赖 `RunnableWithMessageHistory` 或 `BaseChatMessageHistory` 的用户 **无需** 进行任何更改，但鼓励他们考虑使用 LangGraph 来处理更复杂的用例。
+* 依赖 LangChain 0.0.x 中已弃用的记忆抽象的用户应遵循本指南，升级到 LangChain 0.3.x 中的新 LangGraph 持久化功能。
 
-## Why use LangGraph for memory?
+## 为什么在 LangGraph 中使用记忆？
 
-The main advantages of persistence in LangGraph are:
+LangGraph 持久化的主要优势包括：
 
-- Built-in support for multiple users and conversations, which is a typical requirement for real-world conversational AI applications.
-- Ability to save and resume complex conversations at any point. This helps with:
-  - Error recovery
-  - Allowing human intervention in AI workflows
-  - Exploring different conversation paths ("time travel")
-- Full compatibility with both traditional [language models](/docs/concepts/text_llms) and modern [chat models](/docs/concepts/chat_models). Early memory implementations in LangChain weren't designed for newer chat model APIs, causing issues with features like tool-calling. LangGraph memory can persist any custom state.
-- Highly customizable, allowing you to fully control how memory works and use different storage backends.
+- 内置支持多用户和多会话，这是真实会话式 AI 应用的典型需求。
+- 能够随时保存和恢复复杂的对话。这有助于：
+  - 错误恢复
+  - 允许人工干预 AI 工作流
+  - 探索不同的对话路径（“时间旅行”）
+- 与传统的[语言模型](/docs/concepts/text_llms)和现代[聊天模型](/docs/concepts/chat_models)完全兼容。LangChain 中早期的记忆实现并未为新的聊天模型 API 设计，导致了诸如工具调用等功能出现问题。LangGraph 记忆可以持久化任何自定义状态。
+- 高度可定制，允许您完全控制记忆的工作方式并使用不同的存储后端。
 
-## Evolution of memory in LangChain
+## LangChain 中记忆的演进
 
-The concept of memory has evolved significantly in LangChain since its initial release.
+自发布以来，LangChain 中的记忆概念已发生重大演变。
 
-### LangChain 0.0.x memory
+### LangChain 0.0.x 记忆
 
-Broadly speaking, LangChain 0.0.x memory was used to handle three main use cases:
+总的来说，LangChain 0.0.x 记忆用于处理三个主要用例：
 
-| Use Case                             | Example                                                                                                                           |
-|--------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| Managing conversation history        | Keep only the last `n` turns of the conversation between the user and the AI.                                                     |
-| Extraction of structured information | Extract structured information from the conversation history, such as a list of facts learned about the user.                     |
-| Composite memory implementations     | Combine multiple memory sources, e.g., a list of known facts about the user along with facts learned during a given conversation. |
+| 用例                             | 示例                                                                                                                                                          |
+|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 管理对话历史                     | 只保留用户和 AI 之间对话的最后 `n` 轮。                                                                                                                      |
+| 提取结构化信息                   | 从对话历史中提取结构化信息，例如关于用户所学知识的列表。                                                                                                          |
+| 复合记忆实现                     | 组合多个记忆来源，例如，关于用户已知事实的列表以及在给定对话中学习到的事实。                                                                                        |
 
-While the LangChain 0.0.x memory abstractions were useful, they were limited in their capabilities and not well suited for real-world conversational AI applications. These memory abstractions lacked built-in support for multi-user, multi-conversation scenarios, which are essential for practical conversational AI systems.
+虽然 LangChain 0.0.x 记忆抽象很有用，但它们的功能有限，并且不适合真实的会话式 AI 应用。这些记忆抽象缺乏对多用户、多会话场景的原生支持，而这对于实际的会话式 AI 系统至关重要。
 
-Most of these implementations have been officially deprecated in LangChain 0.3.x in favor of LangGraph persistence.
+其中大部分实现已在 LangChain 0.3.x 中被 LangGraph 持久化正式弃用。
 
-### RunnableWithMessageHistory and BaseChatMessageHistory
+### RunnableWithMessageHistory 和 BaseChatMessageHistory
 
 :::note
-Please see [How to use BaseChatMessageHistory with LangGraph](./chat_history), if you would like to use `BaseChatMessageHistory` (with or without `RunnableWithMessageHistory`) in LangGraph.
+如果您想在 LangGraph 中使用 `BaseChatMessageHistory`（无论是否使用 `RunnableWithMessageHistory`），请参阅[如何将 BaseChatMessageHistory 用于 LangGraph](./chat_history)。
 :::
 
-As of LangChain v0.1, we started recommending that users rely primarily on [BaseChatMessageHistory](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.history.RunnableWithMessageHistory.html#langchain_core.runnables.history.RunnableWithMessageHistory). `BaseChatMessageHistory` serves
-as a simple persistence for storing and retrieving messages in a conversation.
+从 LangChain v0.1 开始，我们开始建议用户主要依赖 [BaseChatMessageHistory](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.history.RunnableWithMessageHistory.html#langchain_core.runnables.history.RunnableWithMessageHistory)。`BaseChatMessageHistory` 作为一种简单的持久化机制，用于存储和检索对话中的消息。
 
-At that time, the only option for orchestrating LangChain chains was via [LCEL](https://python.langchain.com/docs/how_to/#langchain-expression-language-lcel). To incorporate memory with `LCEL`, users had to use the [RunnableWithMessageHistory](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.history.RunnableWithMessageHistory.html#langchain_core.runnables.history.RunnableWithMessageHistory) interface. While sufficient for basic chat applications, many users found the API unintuitive and challenging to use.
+当时，编排 LangChain 链的唯一选择是通过 [LCEL](https://python.langchain.com/docs/how_to/#langchain-expression-language-lcel)。要结合使用 `LCEL` 和记忆，用户必须使用 [RunnableWithMessageHistory](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.history.RunnableWithMessageHistory.html#langchain_core.runnables.history.RunnableWithMessageHistory) 接口。虽然这对于基本的聊天应用来说已经足够，但许多用户发现该 API 直观性不足且难以使用。
 
-As of LangChain v0.3, we recommend that **new** code takes advantage of LangGraph for both orchestration and persistence:
+从 LangChain v0.3 开始，我们建议**新**代码利用 LangGraph 进行编排和持久化：
 
-- Orchestration: In LangGraph, users define [graphs](https://langchain-ai.github.io/langgraph/concepts/low_level/) that specify the flow of the application. This allows users to keep using `LCEL` within individual nodes when `LCEL` is needed, while making it easy to define complex orchestration logic that is more readable and maintainable.
-- Persistence: Users can rely on LangGraph's [persistence](https://langchain-ai.github.io/langgraph/concepts/persistence/) to store and retrieve data. LangGraph persistence is extremely flexible and can support a much wider range of use cases than the `RunnableWithMessageHistory` interface.
+- 编排：在 LangGraph 中，用户定义[图](https://langchain-ai.github.io/langgraph/concepts/low_level/)来指定应用程序的流程。这允许用户在需要时使用 `LCEL`，同时轻松定义更具可读性和可维护性的复杂编排逻辑。
+- 持久化：用户可以依赖 LangGraph 的[持久化](https://langchain-ai.github.io/langgraph/concepts/persistence/)来存储和检索数据。LangGraph 持久性非常灵活，可以支持比 `RunnableWithMessageHistory` 接口更广泛的用例。
 
 :::important
-If you have been using `RunnableWithMessageHistory` or `BaseChatMessageHistory`, you do not need to make any changes. We do not plan on deprecating either functionality in the near future. This functionality is sufficient for simple chat applications and any code that uses `RunnableWithMessageHistory` will continue to work as expected.
+如果您一直在使用 `RunnableWithMessageHistory` 或 `BaseChatMessageHistory`，则无需进行任何更改。我们不计划在不久的将来弃用任一功能。此功能对于简单的聊天应用程序已足够，并且任何使用 `RunnableWithMessageHistory` 的代码将继续按预期工作。
 :::
 
-## Migrations
+## 迁移
 
-:::info Prerequisites
+:::info 先决条件
 
-These guides assume some familiarity with the following concepts:
+这些指南假定您对以下概念有所了解：
 - [LangGraph](https://langchain-ai.github.io/langgraph/)
-- [v0.0.x Memory](https://python.langchain.com/v0.1/docs/modules/memory/)
-- [How to add persistence ("memory") to your graph](https://langchain-ai.github.io/langgraph/how-tos/persistence/)
+- [v0.0.x 记忆](https://python.langchain.com/v0.1/docs/modules/memory/)
+- [如何为您的图添加持久化（“记忆”）](https://langchain-ai.github.io/langgraph/how-tos/persistence/)
 :::
 
-### 1. Managing conversation history
+### 1. 管理对话历史
 
-The goal of managing conversation history is to store and retrieve the history in a way that is optimal for a chat model to use.
+管理对话历史的目标是以最适合聊天模型使用的方式存储和检索历史记录。
 
-Often this involves trimming and / or summarizing the conversation history to keep the most relevant parts of the conversation while having the conversation fit inside the context window of the chat model.
+这通常涉及修剪和/或总结对话历史，以保留对话中最相关的部分，同时使对话适合聊天模型的上下文窗口。
 
-Memory classes that fall into this category include:
+属于此类的记忆类包括：
 
-| Memory Type                       | How to Migrate                                                                                                                                              | Description                                                                                                                                                                                                         |
-|-----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ConversationBufferMemory`        | [Link to Migration Guide](conversation_buffer_memory)                                                                                                       | A basic memory implementation that simply stores the conversation history.                                                                                                                                          |
-| `ConversationStringBufferMemory`  | [Link to Migration Guide](conversation_buffer_memory)                                                                                                       | A special case of `ConversationBufferMemory` designed for LLMs and no longer relevant.                                                                                                                              |
-| `ConversationBufferWindowMemory`  | [Link to Migration Guide](conversation_buffer_window_memory)                                                                                                | Keeps the last `n` turns of the conversation. Drops the oldest turn when the buffer is full.                                                                                                                        |
-| `ConversationTokenBufferMemory`   | [Link to Migration Guide](conversation_buffer_window_memory)                                                                                                | Keeps only the most recent messages in the conversation under the constraint that the total number of tokens in the conversation does not exceed a certain limit.                                                   |
-| `ConversationSummaryMemory`       | [Link to Migration Guide](conversation_summary_memory)                                                                                                      | Continually summarizes the conversation history. The summary is updated after each conversation turn. The abstraction returns the summary of the conversation history.                                              |
-| `ConversationSummaryBufferMemory` | [Link to Migration Guide](conversation_summary_memory)                                                                                                      | Provides a running summary of the conversation together with the most recent messages in the conversation under the constraint that the total number of tokens in the conversation does not exceed a certain limit. |
-| `VectorStoreRetrieverMemory`      | See related [long-term memory agent tutorial](long_term_memory_agent) | Stores the conversation history in a vector store and retrieves the most relevant parts of past conversation based on the input.                                                                                    |
+| 记忆类型                       | 如何迁移                                                                                                | 描述                                                                                                                                                           |
+|--------------------------------|:--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ConversationBufferMemory`     | [迁移指南链接](conversation_buffer_memory)                                                                | 基本记忆实现，仅存储对话历史。                                                                                                                                 |
+| `ConversationStringBufferMemory` | [迁移指南链接](conversation_buffer_memory)                                                                | `ConversationBufferMemory` 的特例，专为 LLM 设计，现已不再相关。                                                                                                   |
+| `ConversationBufferWindowMemory` | [迁移指南链接](conversation_buffer_window_memory)                                                         | 保留对话的最后 `n` 轮。当缓冲区已满时，会丢弃最旧的一轮。                                                                                                        |
+| `ConversationTokenBufferMemory`  | [迁移指南链接](conversation_buffer_window_memory)                                                         | 保留对话中最近的消息，同时限制对话中的总令牌数不超过特定限制。                                                                                                     |
+| `ConversationSummaryMemory`    | [迁移指南链接](conversation_summary_memory)                                                               | 持续总结对话历史。每次对话轮次后都会更新摘要。该抽象返回对话历史的摘要。                                                                                           |
+| `ConversationSummaryBufferMemory`| [迁移指南链接](conversation_summary_memory)                                                               | 提供对话的运行摘要以及对话中最近的消息，同时限制对话中的总令牌数不超过特定限制。                                                                                   |
+| `VectorStoreRetrieverMemory`   | 请参阅相关的[长期记忆代理教程](long_term_memory_agent) | 将对话历史存储在矢量存储中，并根据输入检索过去对话中最相关的部分。 |
 
+### 2. 从对话历史中提取结构化信息
 
-### 2. Extraction of structured information from the conversation history
+请参阅[长期记忆代理教程](long_term_memory_agent)，该教程实现了一个可以从对话历史中提取结构化信息的代理。
 
-Please see [long-term memory agent tutorial](long_term_memory_agent) implements an agent that can extract structured information from the conversation history.
+属于此类的记忆类包括：
 
-Memory classes that fall into this category include:
+| 记忆类型                | 描述                                                                                                                                                                          |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `BaseEntityStore`       | 一个类似于键值存储的抽象接口。它用于存储在对话中学习到的结构化信息。信息必须表示为键值对的字典。                                                                            |
+| `ConversationEntityMemory`| 结合了总结对话的能力，同时从对话历史中提取结构化信息。                                                                                                                        |
 
-| Memory Type                | Description                                                                                                                                                                                                       |
-|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `BaseEntityStore`          | An abstract interface that resembles a key-value store. It was used for storing structured information learned during the conversation. The information had to be represented as a dictionary of key-value pairs. |
-| `ConversationEntityMemory` | Combines the ability to summarize the conversation while extracting structured information from the conversation history.                                                                                         |
+以及抽象的特定后端实现：
 
-And specific backend implementations of abstractions:
+| 记忆类型               | 描述                                                                             |
+|------------------------|----------------------------------------------------------------------------------|
+| `InMemoryEntityStore`    | `BaseEntityStore` 的一个实现，将信息存储在计算机内存（RAM）中。                    |
+| `RedisEntityStore`     | 使用 Redis 作为后端的 `BaseEntityStore` 的特定实现。                               |
+| `SQLiteEntityStore`    | 使用 SQLite 作为后端的 `BaseEntityStore` 的特定实现。                              |
+| `UpstashRedisEntityStore`| 使用 Upstash 作为后端的 `BaseEntityStore` 的特定实现。                             |
 
-| Memory Type               | Description                                                                                              |
-|---------------------------|----------------------------------------------------------------------------------------------------------|
-| `InMemoryEntityStore`     | An implementation of `BaseEntityStore` that stores the information in the literal computer memory (RAM). |
-| `RedisEntityStore`        | A specific implementation of `BaseEntityStore` that uses Redis as the backend.                           |
-| `SQLiteEntityStore`       | A specific implementation of `BaseEntityStore` that uses SQLite as the backend.                          |
-| `UpstashRedisEntityStore` | A specific implementation of `BaseEntityStore` that uses Upstash as the backend.                         |
+这些抽象自发布以来只得到了有限的开发。这是因为它们通常需要针对特定应用程序进行大量定制才能有效，这使得它们的普及程度不及对话历史管理抽象。
 
-These abstractions have received limited development since their initial release. This is because they generally require significant customization for a specific application to be effective, making
-them less widely used than the conversation history management abstractions.
+因此，没有这些抽象的迁移指南。如果您在迁移依赖这些抽象的应用时遇到困难，请执行以下操作：
+1) 请查阅此[长期记忆代理教程](long_term_memory_agent)，该教程应能提供提取对话历史结构化信息的良好起点。
+2) 如果您仍然遇到困难，请在 LangChain GitHub 存储库上打开一个 issue，解释您的用例，我们将尝试提供有关如何迁移这些抽象的更多指导。
 
-For this reason, there are no migration guides for these abstractions. If you're struggling to migrate an application
-that relies on these abstractions, please:
-1) Please review this [Long-term memory agent tutorial](long_term_memory_agent) which should provide a good starting point for how to extract structured information from the conversation history.
-2) If you're still struggling, please open an issue on the LangChain GitHub repository, explain your use case, and we'll try to provide more guidance on how to migrate these abstractions.
+从对话历史中提取结构化信息的通用策略是使用支持工具调用的聊天模型从对话历史中提取结构化信息。
+提取的信息可以保存到适当的数据结构（例如，字典）中，然后可以检索其中的信息并根据需要添加到提示中。
 
-The general strategy for extracting structured information from the conversation history is to use a chat model with tool calling capabilities to extract structured information from the conversation history.
-The extracted information can then be saved into an appropriate data structure (e.g., a dictionary), and information from it can be retrieved and added into the prompt as needed.
+### 3. 在一个或多个记忆实现之上提供复合逻辑的实现
 
-### 3. Implementations that provide composite logic on top of one or more memory implementations
+属于此类的记忆类包括：
 
-Memory classes that fall into this category include:
+| 记忆类型            | 描述                                                                                                                               |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| `CombinedMemory`    | 此抽象接受一个 `BaseMemory` 列表，并根据输入从每个列表中获取相关的记忆信息。                                                       |
+| `SimpleMemory`      | 用于添加只读的硬编码上下文。用户可以直接将此信息写入提示。                                                                           |
+| `ReadOnlySharedMemory`| 为现有的 `BaseMemory` 实现提供只读视图。                                                                                             |
 
-| Memory Type            | Description                                                                                                                    |
-|------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| `CombinedMemory`       | This abstraction accepted a list of `BaseMemory` and fetched relevant memory information from each of them based on the input. |
-| `SimpleMemory`         | Used to add read-only hard-coded context. Users can simply write this information into the prompt.                             |
-| `ReadOnlySharedMemory` | Provided a read-only view of an existing `BaseMemory` implementation.                                                          |
+这些实现似乎并未被广泛使用或提供显著的价值。用户应该能够非常轻松地在自定义代码中重新实现它们。
 
-These implementations did not seem to be used widely or provide significant value. Users should be able
-to re-implement these without too much difficulty in custom code.
+## 相关资源
 
-## Related Resources
+通过 LangGraph 探索持久化：
 
-Explore persistence with LangGraph:
+* [LangGraph 入门教程](https://langchain-ai.github.io/langgraph/tutorials/introduction/)
+* [如何为您的图添加持久化（“记忆”）](https://langchain-ai.github.io/langgraph/how-tos/persistence/)
+* [如何管理对话历史](https://langchain-ai.github.io/langgraph/how-tos/memory/manage-conversation-history/)
+* [如何添加对话历史摘要](https://langchain-ai.github.io/langgraph/how-tos/memory/add-summary-conversation-history/)
 
-* [LangGraph quickstart tutorial](https://langchain-ai.github.io/langgraph/tutorials/introduction/)
-* [How to add persistence ("memory") to your graph](https://langchain-ai.github.io/langgraph/how-tos/persistence/)
-* [How to manage conversation history](https://langchain-ai.github.io/langgraph/how-tos/memory/manage-conversation-history/)
-* [How to add summary of the conversation history](https://langchain-ai.github.io/langgraph/how-tos/memory/add-summary-conversation-history/)
+使用简单的 LCEL 添加持久化（对于更复杂的用例，请优先使用 langgraph）：
 
-Add persistence with simple LCEL (favor langgraph for more complex use cases):
+* [如何添加消息历史](https://python.langchain.com/docs/how_to/message_history/)
 
-* [How to add message history](https://python.langchain.com/docs/how_to/message_history/)
+处理消息历史：
 
-Working with message history:
-
-* [How to trim messages](https://python.langchain.com/docs/how_to/trim_messages)
-* [How to filter messages](https://python.langchain.com/docs/how_to/filter_messages/)
-* [How to merge message runs](https://python.langchain.com/docs/how_to/merge_message_runs/)
+* [如何修剪消息](https://python.langchain.com/docs/how_to/trim_messages)
+* [如何过滤消息](https://python.langchain.com/docs/how_to/filter_messages/)
+* [如何合并消息运行](https://python.langchain.com/docs/how_to/merge_message_runs/)

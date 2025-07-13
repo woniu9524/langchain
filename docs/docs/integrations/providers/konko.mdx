@@ -1,44 +1,43 @@
 # Konko
-All functionality related to Konko
+与 Konko 相关的所有功能。
 
->[Konko AI](https://www.konko.ai/) provides a fully managed API to help application developers
+>[Konko AI](https://www.konko.ai/) 为应用程序开发人员提供完全托管的 API，帮助他们：
 
->1. **Select** the right open source or proprietary LLMs for their application
->2. **Build** applications faster with integrations to leading application frameworks and fully managed APIs
->3. **Fine tune** smaller open-source LLMs to achieve industry-leading performance at a fraction of the cost
->4. **Deploy production-scale APIs** that meet security, privacy, throughput, and latency SLAs without infrastructure set-up or administration using Konko AI's SOC 2 compliant, multi-cloud infrastructure
+>1. **选择**适合其应用程序的开源或专有 LLM。
+>2.借助与领先的应用程序框架的集成和完全托管的 API，**更快地构建**应用程序。
+>3. **微调**较小的开源 LLM，以更低的成本实现行业领先的性能。
+>4.使用符合 SOC 2 标准的 Konko AI 的多云基础设施部署**生产级 API**，该 API 可满足安全、隐私、吞吐量和延迟的 SLA 要求，而无需进行基础设施设置或管理。
 
-## Installation and Setup
+## 安装和设置
 
-1. Sign in to our web app to [create an API key](https://platform.konko.ai/settings/api-keys) to access models via our endpoints for [chat completions](https://docs.konko.ai/reference/post-chat-completions) and [completions](https://docs.konko.ai/reference/post-completions).
-2. Enable a Python3.8+ environment
-3. Install the SDK
+1. 登录我们的 Web 应用程序以[创建 API 密钥](https://platform.konko.ai/settings/api-keys)，以便通过我们的聊天补全和补全终端节点访问模型。
+2. 启用 Python3.8+ 环境。
+3. 安装 SDK。
 
 ```bash
 pip install konko
 ```
 
-4. Set API Keys as environment variables(`KONKO_API_KEY`,`OPENAI_API_KEY`)
+4. 将 API 密钥设置为环境变量（`KONKO_API_KEY`、`OPENAI_API_KEY`）。
 
 ```bash
 export KONKO_API_KEY={your_KONKO_API_KEY_here}
 export OPENAI_API_KEY={your_OPENAI_API_KEY_here} #Optional
 ```
 
-Please see [the Konko docs](https://docs.konko.ai/docs/getting-started) for more details.
-
+更多详情请参阅[Konko 文档](https://docs.konko.ai/docs/getting-started)。
 
 ## LLM
 
-**Explore Available Models:** Start by browsing through the [available models](https://docs.konko.ai/docs/list-of-models) on Konko. Each model caters to different use cases and capabilities.
+**浏览可用模型：**首先在 Konko 上浏览[可用模型](https://docs.konko.ai/docs/list-of-models)。每个模型都针对不同的用例和功能。
 
-Another way to find the list of models running on the Konko instance is through this [endpoint](https://docs.konko.ai/reference/get-models).
+您可以通过此[终端节点](https://docs.konko.ai/reference/get-models)找到在 Konko 实例上运行的模型列表。
 
-See a usage [example](/docs/integrations/llms/konko).
+请参阅使用[示例](/docs/integrations/llms/konko)。
 
-### Examples of Endpoint Usage
+### 终端节点用法示例
 
-- **Completion with mistralai/Mistral-7B-v0.1:**
+- **使用 mistralai/Mistral-7B-v0.1 进行补全：**
 
   ```python
   from langchain_community.llms import Konko
@@ -49,10 +48,9 @@ See a usage [example](/docs/integrations/llms/konko).
 
 ## Chat Models
 
-See a usage [example](/docs/integrations/chat/konko).
+请参阅使用[示例](/docs/integrations/chat/konko)。
 
-
-- **ChatCompletion with Mistral-7B:**
+- **使用 Mistral-7B 进行 ChatCompletion：**
 
   ```python
   from langchain_core.messages import HumanMessage
@@ -62,4 +60,4 @@ See a usage [example](/docs/integrations/chat/konko).
   chat_response = chat_instance([msg])
   ```
 
-For further assistance, contact [support@konko.ai](mailto:support@konko.ai) or join our [Discord](https://discord.gg/TXV2s3z7RZ).
+如需进一步帮助，请通过 [support@konko.ai](mailto:support@konko.ai) 联系我们或加入我们的 [Discord](https://discord.gg/TXV2s3z7RZ)。

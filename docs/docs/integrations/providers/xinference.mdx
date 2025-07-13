@@ -1,16 +1,14 @@
-# Xorbits Inference (Xinference)
+# Xorbits 推理 (Xinference)
 
-This page demonstrates how to use [Xinference](https://github.com/xorbitsai/inference)
-with LangChain.
+此页面演示了如何使用 [Xinference](https://github.com/xorbitsai/inference)
+与 LangChain 结合。
 
-`Xinference` is a powerful and versatile library designed to serve LLMs, 
-speech recognition models, and multimodal models, even on your laptop. 
-With Xorbits Inference, you can effortlessly deploy and serve your or 
-state-of-the-art built-in models using just a single command.
+`Xinference` 是一个强大而通用的库，旨在部署大型语言模型、语音识别模型和多模态模型，甚至可以在你的笔记本电脑上运行。
+通过 Xorbits Inference，你只需一个命令即可轻松部署和提供你自己的或者最先进的内置模型。
 
-## Installation and Setup
+## 安装与设置
 
-Xinference can be installed via pip from PyPI: 
+可以通过 pip 从 PyPI 安装 Xinference：
 
 ```bash
 pip install "xinference[all]"
@@ -18,69 +16,67 @@ pip install "xinference[all]"
 
 ## LLM
 
-Xinference supports various models compatible with GGML, including chatglm, baichuan, whisper, 
-vicuna, and orca. To view the builtin models, run the command:
+Xinference 支持与 GGML 兼容的各种模型，包括 chatglm、baichuan、whisper、
+vicuna 和 orca。要查看内置模型，请运行命令：
 
 ```bash
 xinference list --all
 ```
 
 
-### Wrapper for Xinference
+### Xinference 的 Wrapper
 
-You can start a local instance of Xinference by running:
+你可以通过运行以下命令来启动一个本地 Xinference 实例：
 
 ```bash
 xinference
 ```
 
-You can also deploy Xinference in a distributed cluster. To do so, first start an Xinference supervisor
-on the server you want to run it:
+你也可以在分布式集群中部署 Xinference。为此，首先在你想要运行它的服务器上启动一个 Xinference supervisor：
 
 ```bash
 xinference-supervisor -H "${supervisor_host}"
 ```
 
 
-Then, start the Xinference workers on each of the other servers where you want to run them on:
+然后，在你想要运行它们的其他服务器上启动 Xinference workers：
 
 ```bash
 xinference-worker -e "http://${supervisor_host}:9997"
 ```
 
-You can also start a local instance of Xinference by running:
+你也可以通过运行以下命令来启动一个本地 Xinference 实例：
 
 ```bash
 xinference
 ```
 
-Once Xinference is running, an endpoint will be accessible for model management via CLI or 
-Xinference client. 
+一旦 Xinference 运行起来，就可以通过 CLI 或 Xinference 客户端访问一个端点来管理模型。
 
-For local deployment, the endpoint will be http://localhost:9997. 
-
-
-For cluster deployment, the endpoint will be http://$\{supervisor_host\}:9997.
+对于本地部署，端点将是 http://localhost:9997.
 
 
-Then, you need to launch a model. You can specify the model names and other attributes 
-including model_size_in_billions and quantization. You can use command line interface (CLI) to 
-do it. For example, 
+对于集群部署，端点将是 http://${supervisor_host}:9997。
+
+
+然后，你需要启动一个模型。你可以指定模型名称和其他属性，
+包括 model_size_in_billions 和 quantization。你可以使用命令行界面 (CLI) 来
+这样做。例如：
 
 ```bash
 xinference launch -n orca -s 3 -q q4_0
 ```
 
-A model uid will be returned.
+将返回一个模型 uid。
 
-Example usage:
+示例用法：
 
 ```python
 from langchain_community.llms import Xinference
 
 llm = Xinference(
     server_url="http://0.0.0.0:9997",
-    model_uid = {model_uid} # replace model_uid with the model UID return from launching the model
+    model_uid = {model_uid} # 将 model_uid 替换为启动模型时返回的模型 UID
 )
 
 llm(
@@ -90,20 +86,20 @@ llm(
 
 ```
 
-### Usage
+### 用法
 
-For more information and detailed examples, refer to the
-[example for xinference LLMs](/docs/integrations/llms/xinference)
+有关更多信息和详细示例，请参阅
+[xinference LLM 的示例](/docs/integrations/llms/xinference)
 
 ### Embeddings
 
-Xinference also supports embedding queries and documents. See
-[example for xinference embeddings](/docs/integrations/text_embedding/xinference) 
-for a more detailed demo.
+Xinference 还支持对查询和文档进行嵌入。请参阅
+[xinference 嵌入的示例](/docs/integrations/text_embedding/xinference)
+以获取更详细的演示。
 
 
-### Xinference LangChain partner package install
-Install the integration package with:
+### Xinference LangChain 合作伙伴包安装
+使用以下命令安装集成包：
 ```bash
 pip install langchain-xinference
 ```
@@ -118,4 +114,3 @@ from langchain_xinference.chat_models import ChatXinference
 ```python
 from langchain_xinference.llms import Xinference
 ```
-

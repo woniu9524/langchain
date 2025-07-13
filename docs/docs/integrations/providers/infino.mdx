@@ -1,34 +1,33 @@
 # Infino
 
->[Infino](https://github.com/infinohq/infino) is an open-source observability platform that stores both metrics and application logs together.
+>[Infino](https://github.com/infinohq/infino) 是一个开源的可观测性平台，可将指标和应用程序日志一起存储。
 
-Key features of `Infino` include:
-- **Metrics Tracking**: Capture time taken by LLM model to handle request, errors, number of tokens, and costing indication for the particular LLM.
-- **Data Tracking**: Log and store prompt, request, and response data for each LangChain interaction.
-- **Graph Visualization**: Generate basic graphs over time, depicting metrics such as request duration, error occurrences, token count, and cost.
+`Infino` 的主要功能包括：
+- **指标跟踪**: 捕获 LLM 模型处理请求所花费的时间、错误、token 数量以及特定 LLM 的成本指示。
+- **数据跟踪**: 记录并存储每次 LangChain 交互的 prompt、请求和响应数据。
+- **图形可视化**: 生成随时间变化的基本图形，描绘诸如请求持续时间、错误发生次数、token 计数和成本等指标。
 
-## Installation and Setup
+## 安装和设置
 
-First, you'll need to install the  `infinopy` Python package as follows:
+首先，您需要安装 `infinopy` Python 包，如下所示：
 
 ```bash
 pip install infinopy
 ```
 
-If you already have an `Infino Server` running, then you're good to go; but if
-you don't, follow the next steps to start it:
+如果您已经运行了 `Infino Server`，那么您就可以开始了；但如果您没有，请按照以下步骤启动它：
 
-- Make sure you have Docker installed
-- Run the following in your terminal:
+- 确保您已安装 Docker
+- 在您的终端中运行以下命令：
     ```
     docker run --rm --detach --name infino-example -p 3000:3000 infinohq/infino:latest
     ```
 
 
 
-## Using Infino
+## 使用 Infino
 
-See a [usage example of `InfinoCallbackHandler`](/docs/integrations/callbacks/infino).
+请参阅 [`InfinoCallbackHandler` 的用法示例](/docs/integrations/callbacks/infino)。
 
 ```python
 from langchain.callbacks import InfinoCallbackHandler

@@ -7,33 +7,33 @@ import {CategoryTable, IndexTable} from '@theme/FeatureTables'
 
 # Retrievers
 
-A [retriever](/docs/concepts/retrievers) is an interface that returns documents given an unstructured query.
-It is more general than a vector store.
-A retriever does not need to be able to store documents, only to return (or retrieve) them.
-Retrievers can be created from vector stores, but are also broad enough to include [Wikipedia search](/docs/integrations/retrievers/wikipedia/) and [Amazon Kendra](/docs/integrations/retrievers/amazon_kendra_retriever/).
+[检索器 (retriever)](/docs/concepts/retrievers)是一个接口，它接受一个非结构化的查询并返回文档。
+它比向量存储（vector store）更通用。
+检索器不需要能够存储文档，只需要能够返回（或检索）它们。
+检索器可以由向量存储创建，但也足够广泛，可以支持 [维基百科搜索](/docs/integrations/retrievers/wikipedia/) 和 [Amazon Kendra](/docs/integrations/retrievers/amazon_kendra_retriever/)。
 
-Retrievers accept a string query as input and return a list of [Documents](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html) as output.
+检索器接受字符串查询作为输入，并返回一个 [Document](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html) 列表作为输出。
 
-For specifics on how to use retrievers, see the [relevant how-to guides here](/docs/how_to/#retrievers).
+关于如何使用检索器的具体信息，请参见[相关的操作指南](/docs/how_to/#retrievers)。
 
-Note that all [vector stores](/docs/concepts/vectorstores) can be [cast to retrievers](/docs/how_to/vectorstore_retriever/).
-Refer to the vector store [integration docs](/docs/integrations/vectorstores/) for available vector stores.
-This page lists custom retrievers, implemented via subclassing [BaseRetriever](/docs/how_to/custom_retriever/).
+请注意，所有 [向量存储](/docs/concepts/vectorstores) 都可以被 [转换为检索器](/docs/how_to/vectorstore_retriever/)。
+有关可用的向量存储，请参阅向量存储的[集成文档](/docs/integrations/vectorstores/)。
+此页面列出了通过继承 [BaseRetriever](/docs/how_to/custom_retriever/) 实现的自定义检索器。
 
-## Bring-your-own documents
+## 自带文档 (Bring-your-own documents)
 
-The below retrievers allow you to index and search a custom corpus of documents.
+下面的检索器允许您索引和搜索自定义文档语料库。
 
 <CategoryTable category="document_retrievers" />
 
-## External index
+## 外部索引 (External index)
 
-The below retrievers will search over an external index (e.g., constructed from Internet data or similar).
+下面的检索器将在外部索引上进行搜索（例如，从互联网数据或类似来源构建的）。
 
 <CategoryTable category="external_retrievers" />
 
-## All retrievers
+## 所有检索器 (All retrievers)
 
-> **Note:** The descriptions in the table below are truncated for readability.
+> **注意：** 下表中的描述为了便于阅读已进行截断处理。
 
 <IndexTable />

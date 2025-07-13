@@ -1,39 +1,39 @@
-# Why LangChain?
+# 为什么选择 LangChain？
 
-The goal of `langchain` the Python package and LangChain the company is to make it as easy as possible for developers to build applications that reason.
-While LangChain originally started as a single open source package, it has evolved into a company and a whole ecosystem.
-This page will talk about the LangChain ecosystem as a whole.
-Most of the components within the LangChain ecosystem can be used by themselves - so if you feel particularly drawn to certain components but not others, that is totally fine! Pick and choose whichever components you like best for your own use case!
+`langchain` Python 包和 LangChain 公司旨在让开发人员尽可能轻松地构建可以进行推理的应用程序。
+虽然 LangChain 最初是一个开源包，但它已发展成为一家公司和一个完整的生态系统。
+本页面将全面介绍 LangChain 生态系统。
+LangChain 生态系统中的大多数组件都可以独立使用，所以如果您特别喜欢某些组件而不喜欢其他组件，那完全没问题！根据您的用例选择最适合您的组件！
 
-## Features
+## 特性
 
-There are several primary needs that LangChain aims to address:
+LangChain 旨在解决几个主要需求：
 
-1. **Standardized component interfaces:** The growing number of [models](/docs/integrations/chat/) and [related components](/docs/integrations/vectorstores/) for AI applications has resulted in a wide variety of different APIs that developers need to learn and use.
-This diversity can make it challenging for developers to switch between providers or combine components when building applications.
-LangChain exposes a standard interface for key components, making it easy to switch between providers.
+1. **标准化的组件接口：** 随着 AI 应用程序的[模型](/docs/integrations/chat/)和[相关组件](/docs/integrations/vectorstores/)越来越多，开发人员需要学习和使用各种不同的 API。
+这种多样性使得开发人员在构建应用程序时难以在提供商之间切换或组合组件。
+LangChain 为关键组件公开了标准接口，可以轻松地在提供商之间切换。
 
-2. **Orchestration:** As applications become more complex, combining multiple components and models, there's [a growing need to efficiently connect these elements into control flows](https://lilianweng.github.io/posts/2023-06-23-agent/) that can [accomplish diverse tasks](https://www.sequoiacap.com/article/generative-ais-act-o1/).
-[Orchestration](https://en.wikipedia.org/wiki/Orchestration_(computing)) is crucial for building such applications.
+2. **编排：** 随着应用程序变得越来越复杂，需要组合多个组件和模型，因此[有效地将这些元素连接到可以完成各种任务的控制流中](https://lilianweng.github.io/posts/2023-06-23-agent/)的需求日益增长。
+[编排](https://en.wikipedia.org/wiki/Orchestration_(computing))对于构建此类应用程序至关重要。
 
-3. **Observability and evaluation:** As applications become more complex, it becomes increasingly difficult to understand what is happening within them.
-Furthermore, the pace of development can become rate-limited by the [paradox of choice](https://en.wikipedia.org/wiki/Paradox_of_choice).
-For example, developers often wonder how to engineer their prompt or which LLM best balances accuracy, latency, and cost. 
-[Observability](https://en.wikipedia.org/wiki/Observability) and evaluations can help developers monitor their applications and rapidly answer these types of questions with confidence.
-
-
-## Standardized component interfaces
-
-LangChain provides common interfaces for components that are central to many AI applications.
-As an example, all [chat models](/docs/concepts/chat_models/) implement the [BaseChatModel](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.chat_models.BaseChatModel.html) interface.
-This provides a standard way to interact with chat models, supporting important but often provider-specific features like [tool calling](/docs/concepts/tool_calling/) and [structured outputs](/docs/concepts/structured_outputs/).
+3. **可观测性和评估：** 随着应用程序变得越来越复杂，了解应用程序内部发生的情况也变得越来越困难。
+此外，开发步伐可能会受到[选择困境](https://en.wikipedia.org/wiki/Paradox_of_choice)的限制。
+例如，开发人员经常想知道如何设计他们的提示或哪个 LLM 能够最好地平衡准确性、延迟和成本。
+[可观测性](https://en.wikipedia.org/wiki/Observability)和评估可以帮助开发人员监控他们的应用程序并自信地快速回答这些类型的问题。
 
 
-### Example: chat models 
+## 标准化的组件接口
 
-Many [model providers](/docs/concepts/chat_models/) support [tool calling](/docs/concepts/tool_calling/), a critical feature for many applications (e.g., [agents](https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/)), that allows a developer to request model responses that match a particular schema.
-The APIs for each provider differ. 
-LangChain's [chat model](/docs/concepts/chat_models/) interface provides a common way to bind [tools](/docs/concepts/tools) to a model in order to support [tool calling](/docs/concepts/tool_calling/):
+LangChain 为许多 AI 应用程序的核心组件提供了通用接口。
+例如，所有[聊天模型](/docs/concepts/chat_models/)都实现了[BaseChatModel](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.chat_models.BaseChatModel.html)接口。
+这提供了一种与聊天模型交互的标准方式，支持重要但通常特定于提供商的功能，如[工具调用](/docs/concepts/tool_calling/)和[结构化输出](/docs/concepts/structured_outputs/)。
+
+
+### 示例：聊天模型
+
+许多[模型提供商](/docs/concepts/chat_models/)支持[工具调用](/docs/concepts/tool_calling/)，这是许多应用程序（例如[代理](https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/)）的关键功能，它允许开发人员请求与特定模式匹配的模型响应。
+每个提供商的 API 都不同。
+LangChain 的[聊天模型](/docs/concepts/chat_models/)接口提供了一种通用方法，可以将[工具](/docs/concepts/tools)绑定到模型以支持[工具调用](/docs/concepts/tool_calling/)：
 
 ```python
 # Tool creation
@@ -42,9 +42,9 @@ tools = [my_tool]
 model_with_tools = model.bind_tools(tools)
 ```
 
-Similarly, getting models to produce [structured outputs](/docs/concepts/structured_outputs/) is an extremely common use case. 
-Providers support different approaches for this, including [JSON mode or tool calling](https://platform.openai.com/docs/guides/structured-outputs), with different APIs.
-LangChain's [chat model](/docs/concepts/chat_models/) interface provides a common way to produce structured outputs using the `with_structured_output()` method:
+同样，让模型生成[结构化输出](/docs/concepts/structured_outputs/)也是一个极其常见的用例。
+提供商支持不同的方法，包括[JSON 模式或工具调用](https://platform.openai.com/docs/guides/structured-outputs)，具有不同的 API。
+LangChain 的[聊天模型](/docs/concepts/chat_models/)接口提供了一种通过 `with_structured_output()` 方法生成结构化输出的通用方法：
 
 ```python
 # Define schema
@@ -53,57 +53,57 @@ schema = ...
 model_with_structure = model.with_structured_output(schema)
 ```
 
-### Example: retrievers
+### 示例：检索器
 
-In the context of [RAG](/docs/concepts/rag/) and LLM application components, LangChain's [retriever](/docs/concepts/retrievers/) interface provides a standard way to connect to many different types of data services or databases (e.g., [vector stores](/docs/concepts/vectorstores) or databases).
-The underlying implementation of the retriever depends on the type of data store or database you are connecting to, but all retrievers implement the [runnable interface](/docs/concepts/runnables/), meaning they can be invoked in a common manner.
+在[RAG](/docs/concepts/rag/)和 LLM 应用程序组件的上下文中，LangChain 的[检索器](/docs/concepts/retrievers/)接口提供了一种与许多不同类型的数据服务或数据库（例如[矢量存储](/docs/concepts/vectorstores)或数据库）连接的标准方法。
+检索器的底层实现取决于您连接的数据存储或数据库的类型，但所有检索器都实现了[可运行接口](/docs/concepts/runnables/)，这意味着它们可以以通用方式调用。
 
 ```python
 documents = my_retriever.invoke("What is the meaning of life?")
 ```
 
-## Orchestration 
+## 编排
 
-While standardization for individual components is useful, we've increasingly seen that developers want to *combine* components into more complex applications. 
-This motivates the need for [orchestration](https://en.wikipedia.org/wiki/Orchestration_(computing)).
-There are several common characteristics of LLM applications that this orchestration layer should support:
+虽然单个组件的标准化很有用，但我们越来越多地看到开发人员希望将组件*组合*成更复杂的应用程序。
+这激发了对[编排](https://en.wikipedia.org/wiki/Orchestration_(computing))的需求。
+LLM 应用程序的几个常见特性是该编排层应支持的：
 
-* **Complex control flow:** The application requires complex patterns such as cycles (e.g., a loop that reiterates until a condition is met).
-* **[Persistence](https://langchain-ai.github.io/langgraph/concepts/persistence/):** The application needs to maintain [short-term and / or long-term memory](https://langchain-ai.github.io/langgraph/concepts/memory/).
-* **[Human-in-the-loop](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/):** The application needs human interaction, e.g., pausing, reviewing, editing, approving certain steps.
+* **复杂的控制流：** 应用程序需要复杂的模式，例如循环（例如，一个循环直到满足条件才重复）。
+* **[持久性](https://langchain-ai.github.io/langgraph/concepts/persistence/)：** 应用程序需要维护[短期和/或长期记忆](https://langchain-ai.github.io/langgraph/concepts/memory/)。
+* **[人工干预](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/)：** 应用程序需要人工交互，例如暂停、审查、编辑、批准某些步骤。
 
-The recommended way to orchestrate components for complex applications is [LangGraph](https://langchain-ai.github.io/langgraph/concepts/high_level/).
-LangGraph is a library that gives developers a high degree of control by expressing the flow of the application as a set of nodes and edges.
-LangGraph comes with built-in support for [persistence](https://langchain-ai.github.io/langgraph/concepts/persistence/), [human-in-the-loop](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/), [memory](https://langchain-ai.github.io/langgraph/concepts/memory/), and other features.
-It's particularly well suited for building [agents](https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/) or [multi-agent](https://langchain-ai.github.io/langgraph/concepts/multi_agent/) applications. 
-Importantly, individual LangChain components can be used as LangGraph nodes, but you can also use LangGraph **without** using LangChain components.
+对于复杂应用程序的编排组件，推荐的方法是[LangGraph](https://langchain-ai.github.io/langgraph/concepts/high_level/)。
+LangGraph 是一个库，它通过将应用程序流表示为一组节点和边缘，为开发人员提供高度的控制。
+LangGraph 内置支持[持久性](https://langchain-ai.github.io/langgraph/concepts/persistence/)、[人工干预](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/)、[记忆](https://langchain-ai.github.io/langgraph/concepts/memory/)和其他功能。
+它特别适合构建[代理](https://langchain-ai.github.io/langgraph/concepts/agentic_concepts/)或[多代理](https://langchain-ai.github.io/langgraph/concepts/multi_agent/)应用程序。
+重要的是，单独的 LangChain 组件可以用作 LangGraph 节点，但您也可以在*不*使用 LangChain 组件的情况下使用 LangGraph。
 
-:::info[Further reading]
+:::info[进一步阅读]
 
-Have a look at our free course, [Introduction to LangGraph](https://academy.langchain.com/courses/intro-to-langgraph), to learn more about how to use LangGraph to build complex applications.
-
-:::
-
-## Observability and evaluation
-
-The pace of AI application development is often rate-limited by high-quality evaluations because there is a paradox of choice. 
-Developers often wonder how to engineer their prompt or which LLM best balances accuracy, latency, and cost. 
-High quality tracing and evaluations can help you rapidly answer these types of questions with confidence.
-[LangSmith](https://docs.smith.langchain.com/) is our platform that supports observability and evaluation for AI applications.
-See our conceptual guides on [evaluations](https://docs.smith.langchain.com/concepts/evaluation) and [tracing](https://docs.smith.langchain.com/concepts/tracing) for more details.
-
-:::info[Further reading]
-
-See our video playlist on [LangSmith tracing and evaluations](https://youtube.com/playlist?list=PLfaIDFEXuae0um8Fj0V4dHG37fGFU8Q5S&feature=shared) for more details.
+请查阅我们的免费课程 [LangGraph 简介](https://academy.langchain.com/courses/intro-to-langgraph)，了解更多关于如何使用 LangGraph 构建复杂应用程序的信息。
 
 :::
 
-## Conclusion
+## 可观测性和评估
 
-LangChain offers standard interfaces for components that are central to many AI applications, which offers a few specific advantages:
-- **Ease of swapping providers:** It allows you to swap out different component providers without having to change the underlying code.
-- **Advanced features:** It provides common methods for more advanced features, such as [streaming](/docs/concepts/streaming) and [tool calling](/docs/concepts/tool_calling/).
+AI 应用程序的开发速度通常受高质量评估的限制，因为存在选择困境。
+开发人员经常想知道如何设计他们的提示或哪个 LLM 能够最好地平衡准确性、延迟和成本。
+高质量的追踪和评估可以帮助您自信地快速回答这些类型的问题。
+[LangSmith](https://docs.smith.langchain.com/) 是我们支持 AI 应用程序可观测性和评估的平台。
+请参阅我们的[评估](https://docs.smith.langchain.com/concepts/evaluation)和[追踪](https://docs.smith.langchain.com/concepts/tracing)概念指南以获取更多详细信息。
 
-[LangGraph](https://langchain-ai.github.io/langgraph/concepts/high_level/) makes it possible to orchestrate complex applications (e.g., [agents](/docs/concepts/agents/)) and provide features like including [persistence](https://langchain-ai.github.io/langgraph/concepts/persistence/), [human-in-the-loop](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/), or [memory](https://langchain-ai.github.io/langgraph/concepts/memory/).
+:::info[进一步阅读]
 
-[LangSmith](https://docs.smith.langchain.com/) makes it possible to iterate with confidence on your applications, by providing LLM-specific observability and framework for testing and evaluating your application.
+请参阅我们关于[LangSmith 追踪和评估](https://youtube.com/playlist?list=PLfaIDFEXuae0um8Fj0V4dHG37fGFU8Q5S&feature=shared)的视频播放列表以获取更多详细信息。
+
+:::
+
+## 结论
+
+LangChain 为许多 AI 应用程序的核心组件提供了标准接口，这带来了几个特定优势：
+- **易于更换提供商：** 它允许您在不更改底层代码的情况下更换不同的组件提供商。
+- **高级功能：** 它为[流式传输](/docs/concepts/streaming)和[工具调用](/docs/concepts/tool_calling/)等高级功能提供了通用方法。
+
+[LangGraph](https://langchain-ai.github.io/langgraph/concepts/high_level/)使得编排复杂应用程序（例如[代理](/docs/concepts/agents/)）成为可能，并提供诸如[持久性](https://langchain-ai.github.io/langgraph/concepts/persistence/)、[人工干预](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/)或[记忆](https://langchain-ai.github.io/langgraph/concepts/memory/)等功能。
+
+[LangSmith](https://docs.smith.langchain.com/) 通过提供 LLM 特定的可观测性以及用于测试和评估应用程序的框架，使您能够自信地迭代您的应用程序。

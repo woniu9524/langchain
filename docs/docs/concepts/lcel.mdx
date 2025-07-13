@@ -1,79 +1,77 @@
-# LangChain Expression Language (LCEL)
+# LangChain 表达式语言 (LCEL)
 
-:::info Prerequisites
-* [Runnable Interface](/docs/concepts/runnables)
+:::info 先决条件
+* [Runnable 接口](/docs/concepts/runnables)
 :::
 
-The **L**ang**C**hain **E**xpression **L**anguage (LCEL) takes a [declarative](https://en.wikipedia.org/wiki/Declarative_programming) approach to building new [Runnables](/docs/concepts/runnables) from existing Runnables.
+**L**ang**C**hain **E**xpression **L**anguage (LCEL) 采用一种[声明式](https://en.wikipedia.org/wiki/Declarative_programming)方法，通过现有的 `Runnable` 来构建新的 `Runnable`。
 
-This means that you describe what *should* happen, rather than *how* it should happen, allowing LangChain to optimize the run-time execution of the chains.
+这意味着你描述的是*应该*发生什么，而不是*如何*发生，这使得 LangChain 能够优化链的运行时执行。
 
-We often refer to a `Runnable` created using LCEL as a "chain". It's important to remember that a "chain" is `Runnable` and it implements the full [Runnable Interface](/docs/concepts/runnables).
+我们经常将使用 LCEL 创建的 `Runnable` 称为“链”。需要记住的是，“链”是一个 `Runnable`，它实现了完整的[Runnable 接口](/docs/concepts/runnables)。
 
 :::note
-* The [LCEL cheatsheet](/docs/how_to/lcel_cheatsheet/) shows common patterns that involve the Runnable interface and LCEL expressions.
-* Please see the following list of [how-to guides](/docs/how_to/#langchain-expression-language-lcel) that cover common tasks with LCEL.
-* A list of built-in `Runnables` can be found in the [LangChain Core API Reference](https://python.langchain.com/api_reference/core/runnables.html). Many of these Runnables are useful when composing custom "chains" in LangChain using LCEL.
+* [LCEL 备忘单](/docs/how_to/lcel_cheatsheet/) 展示了涉及 Runnable 接口和 LCEL 表达式的常见模式。
+* 请参阅以下[如何操作指南](/docs/how_to/#langchain-expression-language-lcel)列表，其中涵盖了 LCEL 的常见任务。
+* 可以在[LangChain Core API 参考](https://python.langchain.com/api_reference/core/runnables.html)中找到内置 `Runnable` 的列表。在 LangChain 中使用 LCEL 组合自定义“链”时，许多这些 `Runnable` 都很有用。
 :::
 
-## Benefits of LCEL
+## LCEL 的优势
 
-LangChain optimizes the run-time execution of chains built with LCEL in a number of ways:
+LangChain 以多种方式优化了使用 LCEL 构建的链的运行时执行：
 
-- **Optimized parallel execution**: Run Runnables in parallel using [RunnableParallel](#runnableparallel) or run multiple inputs through a given chain in parallel using the [Runnable Batch API](/docs/concepts/runnables/#optimized-parallel-execution-batch). Parallel execution can significantly reduce the latency as processing can be done in parallel instead of sequentially.
-- **Guaranteed Async support**: Any chain built with LCEL can be run asynchronously using the [Runnable Async API](/docs/concepts/runnables/#asynchronous-support). This can be useful when running chains in a server environment where you want to handle large number of requests concurrently.
-- **Simplify streaming**: LCEL chains can be streamed, allowing for incremental output as the chain is executed. LangChain can optimize the streaming of the output to minimize the time-to-first-token(time elapsed until the first chunk of output from a [chat model](/docs/concepts/chat_models) or [llm](/docs/concepts/text_llms) comes out).
+- **优化的并行执行**：使用 [RunnableParallel](#runnableparallel) 并行运行 `Runnable`，或使用 [Runnable Batch API](/docs/concepts/runnables/#optimized-parallel-execution-batch) 并行处理多个输入。并行执行可以显着降低延迟，因为处理可以并行进行而不是顺序进行。
+- **保证的异步支持**：使用 [Runnable Async API](/docs/concepts/runnables/#asynchronous-support) 可以异步运行使用 LCEL 构建的任何链。这在服务器环境中运行链时非常有用，因为您希望并发处理大量请求。
+- **简化流式传输**：LCEL 链可以流式传输，允许在链执行时进行增量输出。LangChain 可以优化输出的流式传输，以最小化首次令牌时间（从[聊天模型](/docs/concepts/chat_models)或[LLM](/docs/concepts/text_llms)输出的第一个块开始经过的时间）。
 
-Other benefits include:
+其他优势包括：
 
-- [**Seamless LangSmith tracing**](https://docs.smith.langchain.com)
-As your chains get more and more complex, it becomes increasingly important to understand what exactly is happening at every step.
-With LCEL, **all** steps are automatically logged to [LangSmith](https://docs.smith.langchain.com/) for maximum observability and debuggability.
-- **Standard API**: Because all chains are built using the Runnable interface, they can be used in the same way as any other Runnable.
-- [**Deployable with LangServe**](/docs/concepts/architecture#langserve): Chains built with LCEL can be deployed using for production use.
+- [**无缝的 LangSmith 跟踪**](https://docs.smith.langchain.com)
+随着链变得越来越复杂，理解每个步骤确切的发生情况变得越来越重要。
+使用 LCEL，**所有**步骤都会自动记录到 [LangSmith](https://docs.smith.langchain.com/) 中，以实现最大的可观察性和可调试性。
+- **标准 API**：由于所有链都是使用 Runnable 接口构建的，因此可以像使用任何其他 Runnable 一样使用它们。
+- [**可使用 LangServe 进行部署**](/docs/concepts/architecture#langserve)：使用 LCEL 构建的链可以部署以用于生产。
 
-## Should I use LCEL?
+## 我应该使用 LCEL 吗？
 
-LCEL is an [orchestration solution](https://en.wikipedia.org/wiki/Orchestration_(computing)) -- it allows LangChain to handle run-time execution of chains in an optimized way.
+LCEL 是一个[编排解决方案](https://en.wikipedia.org/wiki/Orchestration_(computing))——它允许 LangChain 以优化的方式处理链的运行时执行。
 
-While we have seen users run chains with hundreds of steps in production, we generally recommend using LCEL for simpler orchestration tasks. When the application requires complex state management, branching, cycles or multiple agents, we recommend that users take advantage of [LangGraph](/docs/concepts/architecture#langgraph).
+尽管我们看到用户在生产环境中运行了数百个步骤的链，但我们通常建议将 LCEL 用于更简单的编排任务。当应用程序需要复杂的有状态管理、分支、循环或多个代理时，我们建议用户利用[LangGraph](/docs/concepts/architecture#langgraph)。
 
-In LangGraph, users define graphs that specify the application's flow. This allows users to keep using LCEL within individual nodes when LCEL is needed, while making it easy to define complex orchestration logic that is more readable and maintainable.
+在 LangGraph 中，用户定义指定应用程序流程的图。这允许用户在需要 LCEL 的单个节点内继续使用 LCEL，同时易于定义更具可读性和可维护性的复杂编排逻辑。
 
-Here are some guidelines:
+以下是一些指南：
 
-* If you are making a single LLM call, you don't need LCEL; instead call the underlying [chat model](/docs/concepts/chat_models) directly.
-* If you have a simple chain (e.g., prompt + llm + parser, simple retrieval set up etc.), LCEL is a reasonable fit, if you're taking advantage of the LCEL benefits.
-* If you're building a complex chain (e.g., with branching, cycles, multiple agents, etc.) use [LangGraph](/docs/concepts/architecture#langgraph) instead. Remember that you can always use LCEL within individual nodes in LangGraph.
+* 如果你正在进行单个 LLM 调用，则不需要 LCEL；而是直接调用底层的[聊天模型](/docs/concepts/chat_models)。
+* 如果你有一个简单的链（例如，prompt + llm + parser，简单的检索设置等），LCEL 是一个不错的选择，前提是你利用了 LCEL 的优势。
+* 如果你正在构建一个复杂的链（例如，带有分支、循环、多个代理等），请改用[LangGraph](/docs/concepts/architecture#langgraph)。请记住，你始终可以在 LangGraph 的各个节点内使用 LCEL。
 
-## Composition Primitives
+## 组合原语
 
-`LCEL` chains are built by composing existing `Runnables` together. The two main composition primitives are [RunnableSequence](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.base.RunnableSequence.html#langchain_core.runnables.base.RunnableSequence) and [RunnableParallel](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.base.RunnableParallel.html#langchain_core.runnables.base.RunnableParallel).
+`LCEL` 链是通过组合现有的 `Runnable` 来构建的。两个主要的组合原语是 [RunnableSequence](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.base.RunnableSequence.html#langchain_core.runnables.base.RunnableSequence) 和 [RunnableParallel](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.base.RunnableParallel.html#langchain_core.runnables.base.RunnableParallel)。
 
-Many other composition primitives (e.g., [RunnableAssign](
-https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.passthrough.RunnableAssign.html#langchain_core.runnables.passthrough.RunnableAssign
-)) can be thought of as variations of these two primitives.
+许多其他组合原语（例如 [RunnableAssign](https://python.langchain.com/api_reference/core/runnables/langchain_core.runnables.passthrough.RunnableAssign.html#langchain_core.runnables.passthrough.RunnableAssign)）可以被视为这两个原语的变体。
 
 :::note
-You can find a list of all composition primitives in the [LangChain Core API Reference](https://python.langchain.com/api_reference/core/runnables.html).
+你可以在[LangChain Core API 参考](https://python.langchain.com/api_reference/core/runnables.html)中找到所有组合原语的列表。
 :::
 
 ### RunnableSequence
 
-`RunnableSequence` is a composition primitive that allows you "chain" multiple runnables sequentially, with the output of one runnable serving as the input to the next.
+`RunnableSequence` 是一个组合原语，允许你将多个 `Runnable` 按顺序“链接”起来，其中一个 `Runnable` 的输出作为下一个的输入。
 
 ```python
 from langchain_core.runnables import RunnableSequence
 chain = RunnableSequence([runnable1, runnable2])
 ```
 
-Invoking the `chain` with some input:
+使用某些输入调用 `chain`：
 
 ```python
 final_output = chain.invoke(some_input)
 ```
 
-corresponds to the following:
+相当于：
 
 ```python
 output1 = runnable1.invoke(some_input)
@@ -81,12 +79,12 @@ final_output = runnable2.invoke(output1)
 ```
 
 :::note
-`runnable1` and `runnable2` are placeholders for any `Runnable` that you want to chain together.
+`runnable1` 和 `runnable2` 是你想链接在一起的任何 `Runnable` 的占位符。
 :::
 
 ### RunnableParallel
 
-`RunnableParallel` is a composition primitive that allows you to run multiple runnables concurrently, with the same input provided to each.
+`RunnableParallel` 是一个组合原语，允许你并行运行多个 `Runnable`，并为每个 `Runnable` 提供相同的输入。
 
 ```python
 from langchain_core.runnables import RunnableParallel
@@ -96,13 +94,13 @@ chain = RunnableParallel({
 })
 ```
 
-Invoking the `chain` with some input:
+使用某些输入调用 `chain`：
 
 ```python
 final_output = chain.invoke(some_input)
 ```
 
-Will yield a `final_output` dictionary with the same keys as the input dictionary, but with the values replaced by the output of the corresponding runnable.
+将产生一个 `final_output` 字典，其键与输入字典相同，但值替换为相应 `Runnable` 的输出。
 
 ```python
 {
@@ -111,56 +109,54 @@ Will yield a `final_output` dictionary with the same keys as the input dictionar
 }
 ```
 
-Recall, that the runnables are executed in parallel, so while the result is the same as
-dictionary comprehension shown above, the execution time is much faster.
+请记住，`Runnable` 是并行执行的，因此虽然结果与上面显示的字典推导相同，但执行时间要快得多。
 
 :::note
-`RunnableParallel`supports both synchronous and asynchronous execution (as all `Runnables` do).
+`RunnableParallel` 支持同步和异步执行（就像所有 `Runnable` 一样）。
 
-* For synchronous execution, `RunnableParallel` uses a [ThreadPoolExecutor](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor) to run the runnables concurrently.
-* For asynchronous execution, `RunnableParallel` uses [asyncio.gather](https://docs.python.org/3/library/asyncio.html#asyncio.gather) to run the runnables concurrently.
+* 对于同步执行，`RunnableParallel` 使用 [ThreadPoolExecutor](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor) 并行运行 `Runnable`。
+* 对于异步执行，`RunnableParallel` 使用 [asyncio.gather](https://docs.python.org/3/library/asyncio.html#asyncio.gather) 并行运行 `Runnable`。
 :::
 
-## Composition Syntax
+## 组合语法
 
-The usage of `RunnableSequence` and `RunnableParallel` is so common that we created a shorthand syntax for using them. This helps
-to make the code more readable and concise.
+`RunnableSequence` 和 `RunnableParallel` 的使用非常普遍，以至于我们为其创建了简写语法。这有助于使代码更具可读性和简洁性。
 
-### The `|` operator
+### `|` 运算符
 
-We have [overloaded](https://docs.python.org/3/reference/datamodel.html#special-method-names) the `|` operator to create a `RunnableSequence` from two `Runnables`.
+我们已经[重载](https://docs.python.org/3/reference/datamodel.html#special-method-names)了 `|` 运算符以从两个 `Runnable` 创建 `RunnableSequence`。
 
 ```python
 chain = runnable1 | runnable2
 ```
 
-is Equivalent to:
+相当于：
 
 ```python
 chain = RunnableSequence([runnable1, runnable2])
 ```
 
-### The `.pipe` method
+### `.pipe` 方法
 
-If you have moral qualms with operator overloading, you can use the `.pipe` method instead. This is equivalent to the `|` operator.
+如果你对运算符重载有任何顾虑，可以使用 `.pipe` 方法代替。这等同于 `|` 运算符。
 
 ```python
 chain = runnable1.pipe(runnable2)
 ```
 
-### Coercion
+### 类型转换
 
-LCEL applies automatic type coercion to make it easier to compose chains.
+LCEL 应用自动类型转换，以方便组合链。
 
-If you do not understand the type coercion, you can always use the `RunnableSequence` and `RunnableParallel` classes directly.
+如果你不理解类型转换，可以随时直接使用 `RunnableSequence` 和 `RunnableParallel` 类。
 
-This will make the code more verbose, but it will also make it more explicit.
+这将使代码更冗长，但也会更明确。
 
-#### Dictionary to RunnableParallel
+#### 字典到 RunnableParallel
 
-Inside an LCEL expression, a dictionary is automatically converted to a `RunnableParallel`.
+在 LCEL 表达式中，字典会自动转换为 `RunnableParallel`。
 
-For example, the following code:
+例如，以下代码：
 
 ```python
 mapping = {
@@ -171,23 +167,23 @@ mapping = {
 chain = mapping | runnable3
 ```
 
-It gets automatically converted to the following:
+它会自动转换为：
 
 ```python
 chain = RunnableSequence([RunnableParallel(mapping), runnable3])
 ```
 
 :::caution
-You have to be careful because the `mapping` dictionary is not a `RunnableParallel` object, it is just a dictionary. This means that the following code will raise an `AttributeError`:
+你需要小心，因为 `mapping` 字典不是一个 `RunnableParallel` 对象，它只是一个字典。这意味着以下代码将引发 `AttributeError`：
 
 ```python
 mapping.invoke(some_input)
 ```
 :::
 
-#### Function to RunnableLambda
+#### 函数到 RunnableLambda
 
-Inside an LCEL expression, a function is automatically converted to a `RunnableLambda`.
+在 LCEL 表达式中，函数会自动转换为 `RunnableLambda`。
 
 ```
 def some_func(x):
@@ -196,26 +192,24 @@ def some_func(x):
 chain = some_func | runnable1
 ```
 
-It gets automatically converted to the following:
+它会自动转换为：
 
 ```python
 chain = RunnableSequence([RunnableLambda(some_func), runnable1])
 ```
 
 :::caution
-You have to be careful because the lambda function is not a `RunnableLambda` object, it is just a function. This means that the following code will raise an `AttributeError`:
+你需要小心，因为 lambda 函数不是一个 `RunnableLambda` 对象，它只是一个函数。这意味着以下代码将引发 `AttributeError`：
 
 ```python
 lambda x: x + 1.invoke(some_input)
 ```
 :::
 
-## Legacy chains
+## 旧版链
 
-LCEL aims to provide consistency around behavior and customization over legacy subclassed chains such as `LLMChain` and
-`ConversationalRetrievalChain`. Many of these legacy chains hide important details like prompts, and as a wider variety
-of viable models emerge, customization has become more and more important.
+LCEL 旨在围绕行为和自定义提供一致性，以替代旧的子类化链，如 `LLMChain` 和 `ConversationalRetrievalChain`。其中许多旧版链隐藏了重要的细节，如提示，随着更多可行的模型出现，自定义变得越来越重要。
 
-If you are currently using one of these legacy chains, please see [this guide for guidance on how to migrate](/docs/versions/migrating_chains).
+如果你目前正在使用其中一个旧版链，请参阅[此指南有关如何迁移的说明](/docs/versions/migrating_chains)。
 
-For guides on how to do specific tasks with LCEL, check out [the relevant how-to guides](/docs/how_to/#langchain-expression-language-lcel).
+有关使用 LCEL 执行特定任务的指南，请查看[相关操作指南](/docs/how_to/#langchain-expression-language-lcel)。

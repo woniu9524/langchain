@@ -1,1101 +1,469 @@
 # arXiv
             
-LangChain implements the latest research in the field of Natural Language Processing.
-This page contains `arXiv` papers referenced in the LangChain Documentation, API Reference,
- Templates, and Cookbooks.
+LangChain 实现自然语言处理领域的最新研究进展。
+本页面包含 LangChain 文档、API 参考、模板和食谱中引用的 `arXiv` 论文。
 
-From the opposite direction, scientists use `LangChain` in research and reference it in the research papers. 
+反过来，科学家们也在研究中使用 `LangChain`，并在研究论文中引用它。
 
-`arXiv` papers with references to:
+引用了以下 `arXiv` 论文：
  [LangChain](https://arxiv.org/search/?query=langchain&searchtype=all&source=header) | [LangGraph](https://arxiv.org/search/?query=langgraph&searchtype=all&source=header) | [LangSmith](https://arxiv.org/search/?query=langsmith&searchtype=all&source=header)
 
-## Summary
+## 摘要
 
-| arXiv id / Title | Authors | Published date 🔻 | LangChain Documentation|
+| arXiv id / 标题 | 作者 | 发布日期 🔻 | LangChain 文档 |
 |------------------|---------|-------------------|------------------------|
-| `2403.14403v2` [Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity](http://arxiv.org/abs/2403.14403v2) | Soyeong Jeong, Jinheon Baek, Sukmin Cho,  et al. | 2024&#8209;03&#8209;21 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts)
-| `2402.03620v1` [Self-Discover: Large Language Models Self-Compose Reasoning Structures](http://arxiv.org/abs/2402.03620v1) | Pei Zhou, Jay Pujara, Xiang Ren,  et al. | 2024&#8209;02&#8209;06 | `Cookbook:` [Self-Discover](https://github.com/langchain-ai/langchain/blob/master/cookbook/self-discover.ipynb)
-| `2402.03367v2` [RAG-Fusion: a New Take on Retrieval-Augmented Generation](http://arxiv.org/abs/2402.03367v2) | Zackary Rackauckas | 2024&#8209;01&#8209;31 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts)
-| `2401.18059v1` [RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval](http://arxiv.org/abs/2401.18059v1) | Parth Sarthi, Salman Abdullah, Aditi Tuli,  et al. | 2024&#8209;01&#8209;31 | `Cookbook:` [Raptor](https://github.com/langchain-ai/langchain/blob/master/cookbook/RAPTOR.ipynb)
-| `2401.15884v2` [Corrective Retrieval Augmented Generation](http://arxiv.org/abs/2401.15884v2) | Shi-Qi Yan, Jia-Chen Gu, Yun Zhu,  et al. | 2024&#8209;01&#8209;29 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts), `Cookbook:` [Langgraph Crag](https://github.com/langchain-ai/langchain/blob/master/cookbook/langgraph_crag.ipynb)
-| `2401.08500v1` [Code Generation with AlphaCodium: From Prompt Engineering to Flow Engineering](http://arxiv.org/abs/2401.08500v1) | Tal Ridnik, Dedy Kredo, Itamar Friedman | 2024&#8209;01&#8209;16 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts)
-| `2401.04088v1` [Mixtral of Experts](http://arxiv.org/abs/2401.04088v1) | Albert Q. Jiang, Alexandre Sablayrolles, Antoine Roux,  et al. | 2024&#8209;01&#8209;08 | `Cookbook:` [Together Ai](https://github.com/langchain-ai/langchain/blob/master/cookbook/together_ai.ipynb)
-| `2312.06648v2` [Dense X Retrieval: What Retrieval Granularity Should We Use?](http://arxiv.org/abs/2312.06648v2) | Tong Chen, Hongwei Wang, Sihao Chen,  et al. | 2023&#8209;12&#8209;11 | `Template:` [propositional-retrieval](https://python.langchain.com/docs/templates/propositional-retrieval)
-| `2311.09210v1` [Chain-of-Note: Enhancing Robustness in Retrieval-Augmented Language Models](http://arxiv.org/abs/2311.09210v1) | Wenhao Yu, Hongming Zhang, Xiaoman Pan,  et al. | 2023&#8209;11&#8209;15 | `Template:` [chain-of-note-wiki](https://python.langchain.com/docs/templates/chain-of-note-wiki)
-| `2310.11511v1` [Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection](http://arxiv.org/abs/2310.11511v1) | Akari Asai, Zeqiu Wu, Yizhong Wang,  et al. | 2023&#8209;10&#8209;17 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts), `Cookbook:` [Langgraph Self Rag](https://github.com/langchain-ai/langchain/blob/master/cookbook/langgraph_self_rag.ipynb)
-| `2310.06117v2` [Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models](http://arxiv.org/abs/2310.06117v2) | Huaixiu Steven Zheng, Swaroop Mishra, Xinyun Chen,  et al. | 2023&#8209;10&#8209;09 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts), `Template:` [stepback-qa-prompting](https://python.langchain.com/docs/templates/stepback-qa-prompting), `Cookbook:` [Stepback-Qa](https://github.com/langchain-ai/langchain/blob/master/cookbook/stepback-qa.ipynb)
-| `2307.15337v3` [Skeleton-of-Thought: Prompting LLMs for Efficient Parallel Generation](http://arxiv.org/abs/2307.15337v3) | Xuefei Ning, Zinan Lin, Zixuan Zhou,  et al. | 2023&#8209;07&#8209;28 | `Template:` [skeleton-of-thought](https://python.langchain.com/docs/templates/skeleton-of-thought)
-| `2307.09288v2` [Llama 2: Open Foundation and Fine-Tuned Chat Models](http://arxiv.org/abs/2307.09288v2) | Hugo Touvron, Louis Martin, Kevin Stone,  et al. | 2023&#8209;07&#8209;18 | `Cookbook:` [Semi Structured Rag](https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_Structured_RAG.ipynb)
-| `2307.03172v3` [Lost in the Middle: How Language Models Use Long Contexts](http://arxiv.org/abs/2307.03172v3) | Nelson F. Liu, Kevin Lin, John Hewitt,  et al. | 2023&#8209;07&#8209;06 | `Docs:` [docs/how_to/long_context_reorder](https://python.langchain.com/docs/how_to/long_context_reorder)
-| `2305.14283v3` [Query Rewriting for Retrieval-Augmented Large Language Models](http://arxiv.org/abs/2305.14283v3) | Xinbei Ma, Yeyun Gong, Pengcheng He,  et al. | 2023&#8209;05&#8209;23 | `Template:` [rewrite-retrieve-read](https://python.langchain.com/docs/templates/rewrite-retrieve-read), `Cookbook:` [Rewrite](https://github.com/langchain-ai/langchain/blob/master/cookbook/rewrite.ipynb)
-| `2305.08291v1` [Large Language Model Guided Tree-of-Thought](http://arxiv.org/abs/2305.08291v1) | Jieyi Long | 2023&#8209;05&#8209;15 | `API:` [langchain_experimental.tot](https://python.langchain.com/api_reference/experimental/tot.html), `Cookbook:` [Tree Of Thought](https://github.com/langchain-ai/langchain/blob/master/cookbook/tree_of_thought.ipynb)
-| `2305.04091v3` [Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models](http://arxiv.org/abs/2305.04091v3) | Lei Wang, Wanyu Xu, Yihuai Lan,  et al. | 2023&#8209;05&#8209;06 | `Cookbook:` [Plan And Execute Agent](https://github.com/langchain-ai/langchain/blob/master/cookbook/plan_and_execute_agent.ipynb)
-| `2305.02156v1` [Zero-Shot Listwise Document Reranking with a Large Language Model](http://arxiv.org/abs/2305.02156v1) | Xueguang Ma, Xinyu Zhang, Ronak Pradeep,  et al. | 2023&#8209;05&#8209;03 | `Docs:` [docs/how_to/contextual_compression](https://python.langchain.com/docs/how_to/contextual_compression), `API:` [langchain...LLMListwiseRerank](https://python.langchain.com/api_reference/langchain/retrievers/langchain.retrievers.document_compressors.listwise_rerank.LLMListwiseRerank.html#)
-| `2304.08485v2` [Visual Instruction Tuning](http://arxiv.org/abs/2304.08485v2) | Haotian Liu, Chunyuan Li, Qingyang Wu,  et al. | 2023&#8209;04&#8209;17 | `Cookbook:` [Semi Structured Multi Modal Rag Llama2](https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_structured_multi_modal_RAG_LLaMA2.ipynb), [Semi Structured And Multi Modal Rag](https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_structured_and_multi_modal_RAG.ipynb)
-| `2304.03442v2` [Generative Agents: Interactive Simulacra of Human Behavior](http://arxiv.org/abs/2304.03442v2) | Joon Sung Park, Joseph C. O'Brien, Carrie J. Cai,  et al. | 2023&#8209;04&#8209;07 | `Cookbook:` [Generative Agents Interactive Simulacra Of Human Behavior](https://github.com/langchain-ai/langchain/blob/master/cookbook/generative_agents_interactive_simulacra_of_human_behavior.ipynb), [Multiagent Bidding](https://github.com/langchain-ai/langchain/blob/master/cookbook/multiagent_bidding.ipynb)
-| `2303.17760v2` [CAMEL: Communicative Agents for "Mind" Exploration of Large Language Model Society](http://arxiv.org/abs/2303.17760v2) | Guohao Li, Hasan Abed Al Kader Hammoud, Hani Itani,  et al. | 2023&#8209;03&#8209;31 | `Cookbook:` [Camel Role Playing](https://github.com/langchain-ai/langchain/blob/master/cookbook/camel_role_playing.ipynb)
-| `2303.17580v4` [HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face](http://arxiv.org/abs/2303.17580v4) | Yongliang Shen, Kaitao Song, Xu Tan,  et al. | 2023&#8209;03&#8209;30 | `API:` [langchain_experimental.autonomous_agents](https://python.langchain.com/api_reference/experimental/autonomous_agents.html), `Cookbook:` [Hugginggpt](https://github.com/langchain-ai/langchain/blob/master/cookbook/hugginggpt.ipynb)
-| `2301.10226v4` [A Watermark for Large Language Models](http://arxiv.org/abs/2301.10226v4) | John Kirchenbauer, Jonas Geiping, Yuxin Wen,  et al. | 2023&#8209;01&#8209;24 | `API:` [langchain_community...OCIModelDeploymentTGI](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.oci_data_science_model_deployment_endpoint.OCIModelDeploymentTGI.html#langchain_community.llms.oci_data_science_model_deployment_endpoint.OCIModelDeploymentTGI), [langchain_huggingface...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint), [langchain_community...HuggingFaceTextGenInference](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference.html#langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference), [langchain_community...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint)
-| `2212.10496v1` [Precise Zero-Shot Dense Retrieval without Relevance Labels](http://arxiv.org/abs/2212.10496v1) | Luyu Gao, Xueguang Ma, Jimmy Lin,  et al. | 2022&#8209;12&#8209;20 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts), `API:` [langchain...HypotheticalDocumentEmbedder](https://api.python.langchain.com/en/latest/chains/langchain.chains.hyde.base.HypotheticalDocumentEmbedder.html#langchain.chains.hyde.base.HypotheticalDocumentEmbedder), `Template:` [hyde](https://python.langchain.com/docs/templates/hyde), `Cookbook:` [Hypothetical Document Embeddings](https://github.com/langchain-ai/langchain/blob/master/cookbook/hypothetical_document_embeddings.ipynb)
-| `2212.08073v1` [Constitutional AI: Harmlessness from AI Feedback](http://arxiv.org/abs/2212.08073v1) | Yuntao Bai, Saurav Kadavath, Sandipan Kundu,  et al. | 2022&#8209;12&#8209;15 | `Docs:` [docs/versions/migrating_chains/constitutional_chain](https://python.langchain.com/docs/versions/migrating_chains/constitutional_chain)
-| `2212.07425v3` [Robust and Explainable Identification of Logical Fallacies in Natural Language Arguments](http://arxiv.org/abs/2212.07425v3) | Zhivar Sourati, Vishnu Priya Prasanna Venkatesh, Darshan Deshpande,  et al. | 2022&#8209;12&#8209;12 | `API:` [langchain_experimental.fallacy_removal](https://python.langchain.com/api_reference/experimental/fallacy_removal.html)
-| `2211.13892v2` [Complementary Explanations for Effective In-Context Learning](http://arxiv.org/abs/2211.13892v2) | Xi Ye, Srinivasan Iyer, Asli Celikyilmaz,  et al. | 2022&#8209;11&#8209;25 | `API:` [langchain_core...MaxMarginalRelevanceExampleSelector](https://api.python.langchain.com/en/latest/example_selectors/langchain_core.example_selectors.semantic_similarity.MaxMarginalRelevanceExampleSelector.html#langchain_core.example_selectors.semantic_similarity.MaxMarginalRelevanceExampleSelector)
-| `2211.10435v2` [PAL: Program-aided Language Models](http://arxiv.org/abs/2211.10435v2) | Luyu Gao, Aman Madaan, Shuyan Zhou,  et al. | 2022&#8209;11&#8209;18 | `API:` [langchain_experimental.pal_chain](https://python.langchain.com/api_reference/experimental/pal_chain.html), [langchain_experimental...PALChain](https://api.python.langchain.com/en/latest/pal_chain/langchain_experimental.pal_chain.base.PALChain.html#langchain_experimental.pal_chain.base.PALChain), `Cookbook:` [Program Aided Language Model](https://github.com/langchain-ai/langchain/blob/master/cookbook/program_aided_language_model.ipynb)
-| `2210.11934v2` [An Analysis of Fusion Functions for Hybrid Retrieval](http://arxiv.org/abs/2210.11934v2) | Sebastian Bruch, Siyu Gai, Amir Ingber | 2022&#8209;10&#8209;21 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts)
-| `2210.03629v3` [ReAct: Synergizing Reasoning and Acting in Language Models](http://arxiv.org/abs/2210.03629v3) | Shunyu Yao, Jeffrey Zhao, Dian Yu,  et al. | 2022&#8209;10&#8209;06 | `Docs:` [docs/integrations/tools/ionic_shopping](https://python.langchain.com/docs/integrations/tools/ionic_shopping), [docs/integrations/providers/cohere](https://python.langchain.com/docs/integrations/providers/cohere), [docs/concepts](https://python.langchain.com/docs/concepts), `API:` [langchain...create_react_agent](https://api.python.langchain.com/en/latest/agents/langchain.agents.react.agent.create_react_agent.html#langchain.agents.react.agent.create_react_agent), [langchain...TrajectoryEvalChain](https://api.python.langchain.com/en/latest/evaluation/langchain.evaluation.agents.trajectory_eval_chain.TrajectoryEvalChain.html#langchain.evaluation.agents.trajectory_eval_chain.TrajectoryEvalChain)
-| `2209.10785v2` [Deep Lake: a Lakehouse for Deep Learning](http://arxiv.org/abs/2209.10785v2) | Sasun Hambardzumyan, Abhinav Tuli, Levon Ghukasyan,  et al. | 2022&#8209;09&#8209;22 | `Docs:` [docs/integrations/providers/activeloop_deeplake](https://python.langchain.com/docs/integrations/providers/activeloop_deeplake)
-| `2205.13147v4` [Matryoshka Representation Learning](http://arxiv.org/abs/2205.13147v4) | Aditya Kusupati, Gantavya Bhatt, Aniket Rege,  et al. | 2022&#8209;05&#8209;26 | `Docs:` [docs/integrations/providers/snowflake](https://python.langchain.com/docs/integrations/providers/snowflake)
-| `2205.12654v1` [Bitext Mining Using Distilled Sentence Representations for Low-Resource Languages](http://arxiv.org/abs/2205.12654v1) | Kevin Heffernan, Onur Çelebi, Holger Schwenk | 2022&#8209;05&#8209;25 | `API:` [langchain_community...LaserEmbeddings](https://api.python.langchain.com/en/latest/embeddings/langchain_community.embeddings.laser.LaserEmbeddings.html#langchain_community.embeddings.laser.LaserEmbeddings)
-| `2204.00498v1` [Evaluating the Text-to-SQL Capabilities of Large Language Models](http://arxiv.org/abs/2204.00498v1) | Nitarshan Rajkumar, Raymond Li, Dzmitry Bahdanau | 2022&#8209;03&#8209;15 | `Docs:` [docs/tutorials/sql_qa](https://python.langchain.com/docs/tutorials/sql_qa), `API:` [langchain_community...SQLDatabase](https://api.python.langchain.com/en/latest/utilities/langchain_community.utilities.sql_database.SQLDatabase.html#langchain_community.utilities.sql_database.SQLDatabase), [langchain_community...SparkSQL](https://api.python.langchain.com/en/latest/utilities/langchain_community.utilities.spark_sql.SparkSQL.html#langchain_community.utilities.spark_sql.SparkSQL)
-| `2202.00666v5` [Locally Typical Sampling](http://arxiv.org/abs/2202.00666v5) | Clara Meister, Tiago Pimentel, Gian Wiher,  et al. | 2022&#8209;02&#8209;01 | `API:` [langchain_huggingface...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint), [langchain_community...HuggingFaceTextGenInference](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference.html#langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference), [langchain_community...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint)
-| `2112.01488v3` [ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction](http://arxiv.org/abs/2112.01488v3) | Keshav Santhanam, Omar Khattab, Jon Saad-Falcon,  et al. | 2021&#8209;12&#8209;02 | `Docs:` [docs/integrations/retrievers/ragatouille](https://python.langchain.com/docs/integrations/retrievers/ragatouille), [docs/integrations/providers/ragatouille](https://python.langchain.com/docs/integrations/providers/ragatouille), [docs/concepts](https://python.langchain.com/docs/concepts)
-| `2103.00020v1` [Learning Transferable Visual Models From Natural Language Supervision](http://arxiv.org/abs/2103.00020v1) | Alec Radford, Jong Wook Kim, Chris Hallacy,  et al. | 2021&#8209;02&#8209;26 | `API:` [langchain_experimental.open_clip](https://python.langchain.com/api_reference/experimental/open_clip.html)
-| `2005.14165v4` [Language Models are Few-Shot Learners](http://arxiv.org/abs/2005.14165v4) | Tom B. Brown, Benjamin Mann, Nick Ryder,  et al. | 2020&#8209;05&#8209;28 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts)
-| `2005.11401v4` [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](http://arxiv.org/abs/2005.11401v4) | Patrick Lewis, Ethan Perez, Aleksandra Piktus,  et al. | 2020&#8209;05&#8209;22 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts)
-| `1909.05858v2` [CTRL: A Conditional Transformer Language Model for Controllable Generation](http://arxiv.org/abs/1909.05858v2) | Nitish Shirish Keskar, Bryan McCann, Lav R. Varshney,  et al. | 2019&#8209;09&#8209;11 | `API:` [langchain_huggingface...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint), [langchain_community...HuggingFaceTextGenInference](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference.html#langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference), [langchain_community...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint)
+| `2403.14403v2` [Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity](http://arxiv.org/abs/2403.14403v2) | Soyeong Jeong, Jinheon Baek, Sukmin Cho,  et al. | 2024&#8209;03&#8209;21 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts) |
+| `2402.03620v1` [Self-Discover: Large Language Models Self-Compose Reasoning Structures](http://arxiv.org/abs/2402.03620v1) | Pei Zhou, Jay Pujara, Xiang Ren,  et al. | 2024&#8209;02&#8209;06 | `Cookbook:` [Self-Discover](https://github.com/langchain-ai/langchain/blob/master/cookbook/self-discover.ipynb) |
+| `2402.03367v2` [RAG-Fusion: a New Take on Retrieval-Augmented Generation](http://arxiv.org/abs/2402.03367v2) | Zackary Rackauckas | 2024&#8209;01&#8209;31 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts) |
+| `2401.18059v1` [RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval](http://arxiv.org/abs/2401.18059v1) | Parth Sarthi, Salman Abdullah, Aditi Tuli,  et al. | 2024&#8209;01&#8209;31 | `Cookbook:` [Raptor](https://github.com/langchain-ai/langchain/blob/master/cookbook/RAPTOR.ipynb) |
+| `2401.15884v2` [Corrective Retrieval Augmented Generation](http://arxiv.org/abs/2401.15884v2) | Shi-Qi Yan, Jia-Chen Gu, Yun Zhu,  et al. | 2024&#8209;01&#8209;29 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts), `Cookbook:` [Langgraph Crag](https://github.com/langchain-ai/langchain/blob/master/cookbook/langgraph_crag.ipynb) |
+| `2401.08500v1` [Code Generation with AlphaCodium: From Prompt Engineering to Flow Engineering](http://arxiv.org/abs/2401.08500v1) | Tal Ridnik, Dedy Kredo, Itamar Friedman | 2024&#8209;01&#8209;16 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts) |
+| `2401.04088v1` [Mixtral of Experts](http://arxiv.org/abs/2401.04088v1) | Albert Q. Jiang, Alexandre Sablayrolles, Antoine Roux,  et al. | 2024&#8209;01&#8209;08 | `Cookbook:` [Together Ai](https://github.com/langchain-ai/langchain/blob/master/cookbook/together_ai.ipynb) |
+| `2312.06648v2` [Dense X Retrieval: What Retrieval Granularity Should We Use?](http://arxiv.org/abs/2312.06648v2) | Tong Chen, Hongwei Wang, Sihao Chen,  et al. | 2023&#8209;12&#8209;11 | `Template:` [propositional-retrieval](https://python.langchain.com/docs/templates/propositional-retrieval) |
+| `2311.09210v1` [Chain-of-Note: Enhancing Robustness in Retrieval-Augmented Language Models](http://arxiv.org/abs/2311.09210v1) | Wenhao Yu, Hongming Zhang, Xiaoman Pan,  et al. | 2023&#8209;11&#8209;15 | `Template:` [chain-of-note-wiki](https://python.langchain.com/docs/templates/chain-of-note-wiki) |
+| `2310.11511v1` [Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection](http://arxiv.org/abs/2310.11511v1) | Akari Asai, Zeqiu Wu, Yizhong Wang,  et al. | 2023&#8209;10&#8209;17 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts), `Cookbook:` [Langgraph Self Rag](https://github.com/langchain-ai/langchain/blob/master/cookbook/langgraph_self_rag.ipynb) |
+| `2310.06117v2` [Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models](http://arxiv.org/abs/2310.06117v2) | Huaixiu Steven Zheng, Swaroop Mishra, Xinyun Chen,  et al. | 2023&#8209;10&#8209;09 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts), `Template:` [stepback-qa-prompting](https://python.langchain.com/docs/templates/stepback-qa-prompting), `Cookbook:` [Stepback-Qa](https://github.com/langchain-ai/langchain/blob/master/cookbook/stepback-qa.ipynb) |
+| `2307.15337v3` [Skeleton-of-Thought: Prompting LLMs for Efficient Parallel Generation](http://arxiv.org/abs/2307.15337v3) | Xuefei Ning, Zinan Lin, Zixuan Zhou,  et al. | 2023&#8209;07&#8209;28 | `Template:` [skeleton-of-thought](https://python.langchain.com/docs/templates/skeleton-of-thought) |
+| `2307.09288v2` [Llama 2: Open Foundation and Fine-Tuned Chat Models](http://arxiv.org/abs/2307.09288v2) | Hugo Touvron, Louis Martin, Kevin Stone,  et al. | 2023&#8209;07&#8209;18 | `Cookbook:` [Semi Structured Rag](https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_Structured_RAG.ipynb) |
+| `2307.03172v3` [Lost in the Middle: How Language Models Use Long Contexts](http://arxiv.org/abs/2307.03172v3) | Nelson F. Liu, Kevin Lin, John Hewitt,  et al. | 2023&#8209;07&#8209;06 | `Docs:` [docs/how_to/long_context_reorder](https://python.langchain.com/docs/how_to/long_context_reorder) |
+| `2305.14283v3` [Query Rewriting for Retrieval-Augmented Large Language Models](http://arxiv.org/abs/2305.14283v3) | Xinbei Ma, Yeyun Gong, Pengcheng He,  et al. | 2023&#8209;05&#8209;23 | `Template:` [rewrite-retrieve-read](https://python.langchain.com/docs/templates/rewrite-retrieve-read), `Cookbook:` [Rewrite](https://github.com/langchain-ai/langchain/blob/master/cookbook/rewrite.ipynb) |
+| `2305.08291v1` [Large Language Model Guided Tree-of-Thought](http://arxiv.org/abs/2305.08291v1) | Jieyi Long | 2023&#8209;05&#8209;15 | `API:` [langchain_experimental.tot](https://python.langchain.com/api_reference/experimental/tot.html), `Cookbook:` [Tree Of Thought](https://github.com/langchain-ai/langchain/blob/master/cookbook/tree_of_thought.ipynb) |
+| `2305.04091v3` [Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models](http://arxiv.org/abs/2305.04091v3) | Lei Wang, Wanyu Xu, Yihuai Lan,  et al. | 2023&#8209;05&#8209;06 | `Cookbook:` [Plan And Execute Agent](https://github.com/langchain-ai/langchain/blob/master/cookbook/plan_and_execute_agent.ipynb) |
+| `2305.02156v1` [Zero-Shot Listwise Document Reranking with a Large Language Model](http://arxiv.org/abs/2305.02156v1) | Xueguang Ma, Xinyu Zhang, Ronak Pradeep,  et al. | 2023&#8209;05&#8209;03 | `Docs:` [docs/how_to/contextual_compression](https://python.langchain.com/docs/how_to/contextual_compression), `API:` [langchain...LLMListwiseRerank](https://python.langchain.com/api_reference/langchain/retrievers/langchain.retrievers.document_compressors.listwise_rerank.LLMListwiseRerank.html#) |
+| `2304.08485v2` [Visual Instruction Tuning](http://arxiv.org/abs/2304.08485v2) | Haotian Liu, Chunyuan Li, Qingyang Wu,  et al. | 2023&#8209;04&#8209;17 | `Cookbook:` [Semi Structured Multi Modal Rag Llama2](https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_structured_multi_modal_RAG_LLaMA2.ipynb), [Semi Structured And Multi Modal Rag](https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_structured_and_multi_modal_RAG.ipynb) |
+| `2304.03442v2` [Generative Agents: Interactive Simulacra of Human Behavior](http://arxiv.org/abs/2304.03442v2) | Joon Sung Park, Joseph C. O'Brien, Carrie J. Cai,  et al. | 2023&#8209;04&#8209;07 | `Cookbook:` [Generative Agents Interactive Simulacra Of Human Behavior](https://github.com/langchain-ai/langchain/blob/master/cookbook/generative_agents_interactive_simulacra_of_human_behavior.ipynb), [Multiagent Bidding](https://github.com/langchain-ai/langchain/blob/master/cookbook/multiagent_bidding.ipynb) |
+| `2303.17760v2` [CAMEL: Communicative Agents for "Mind" Exploration of Large Language Model Society](http://arxiv.org/abs/2303.17760v2) | Guohao Li, Hasan Abed Al Kader Hammoud, Hani Itani,  et al. | 2023&#8209;03&#8209;31 | `Cookbook:` [Camel Role Playing](https://github.com/langchain-ai/langchain/blob/master/cookbook/camel_role_playing.ipynb) |
+| `2303.17580v4` [HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face](http://arxiv.org/abs/2303.17580v4) | Yongliang Shen, Kaitao Song, Xu Tan,  et al. | 2023&#8209;03&#8209;30 | `API:` [langchain_experimental.autonomous_agents](https://python.langchain.com/api_reference/experimental/autonomous_agents.html), `Cookbook:` [Hugginggpt](https://github.com/langchain-ai/langchain/blob/master/cookbook/hugginggpt.ipynb) |
+| `2301.10226v4` [A Watermark for Large Language Models](http://arxiv.org/abs/2301.10226v4) | John Kirchenbauer, Jonas Geiping, Yuxin Wen,  et al. | 2023&#8209;01&#8209;24 | `API:` [langchain_community...OCIModelDeploymentTGI](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.oci_data_science_model_deployment_endpoint.OCIModelDeploymentTGI.html#langchain_community.llms.oci_data_science_model_deployment_endpoint.OCIModelDeploymentTGI), [langchain_huggingface...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint), [langchain_community...HuggingFaceTextGenInference](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference.html#langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference), [langchain_community...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint) |
+| `2212.10496v1` [Precise Zero-Shot Dense Retrieval without Relevance Labels](http://arxiv.org/abs/2212.10496v1) | Luyu Gao, Xueguang Ma, Jimmy Lin,  et al. | 2022&#8209;12&#8209;20 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts), `API:` [langchain...HypotheticalDocumentEmbedder](https://api.python.langchain.com/en/latest/chains/langchain.chains.hyde.base.HypotheticalDocumentEmbedder.html#langchain.chains.hyde.base.HypotheticalDocumentEmbedder), `Template:` [hyde](https://python.langchain.com/docs/templates/hyde), `Cookbook:` [Hypothetical Document Embeddings](https://github.com/langchain-ai/langchain/blob/master/cookbook/hypothetical_document_embeddings.ipynb) |
+| `2212.08073v1` [Constitutional AI: Harmlessness from AI Feedback](http://arxiv.org/abs/2212.08073v1) | Yuntao Bai, Saurav Kadavath, Sandipan Kundu,  et al. | 2022&#8209;12&#8209;15 | `Docs:` [docs/versions/migrating_chains/constitutional_chain](https://python.langchain.com/docs/versions/migrating_chains/constitutional_chain) |
+| `2212.07425v3` [Robust and Explainable Identification of Logical Fallacies in Natural Language Arguments](http://arxiv.org/abs/2212.07425v3) | Zhivar Sourati, Vishnu Priya Prasanna Venkatesh, Darshan Deshpande,  et al. | 2022&#8209;12&#8209;12 | `API:` [langchain_experimental.fallacy_removal](https://python.langchain.com/api_reference/experimental/fallacy_removal.html) |
+| `2211.13892v2` [Complementary Explanations for Effective In-Context Learning](http://arxiv.org/abs/2211.13892v2) | Xi Ye, Srinivasan Iyer, Asli Celikyilmaz,  et al. | 2022&#8209;11&#8209;25 | `API:` [langchain_core...MaxMarginalRelevanceExampleSelector](https://api.python.langchain.com/en/latest/example_selectors/langchain_core.example_selectors.semantic_similarity.MaxMarginalRelevanceExampleSelector.html#langchain_core.example_selectors.semantic_similarity.MaxMarginalRelevanceExampleSelector) |
+| `2211.10435v2` [PAL: Program-aided Language Models](http://arxiv.org/abs/2211.10435v2) | Luyu Gao, Aman Madaan, Shuyan Zhou,  et al. | 2022&#8209;11&#8209;18 | `API:` [langchain_experimental.pal_chain](https://python.langchain.com/api_reference/experimental/pal_chain.html), [langchain_experimental...PALChain](https://api.python.langchain.com/en/latest/pal_chain/langchain_experimental.pal_chain.base.PALChain.html#langchain_experimental.pal_chain.base.PALChain), `Cookbook:` [Program Aided Language Model](https://github.com/langchain-ai/langchain/blob/master/cookbook/program_aided_language_model.ipynb) |
+| `2210.11934v2` [An Analysis of Fusion Functions for Hybrid Retrieval](http://arxiv.org/abs/2210.11934v2) | Sebastian Bruch, Siyu Gai, Amir Ingber | 2022&#8209;10&#8209;21 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts) |
+| `2210.03629v3` [ReAct: Synergizing Reasoning and Acting in Language Models](http://arxiv.org/abs/2210.03629v3) | Shunyu Yao, Jeffrey Zhao, Dian Yu,  et al. | 2022&#8209;10&#8209;06 | `Docs:` [docs/integrations/tools/ionic_shopping](https://python.langchain.com/docs/integrations/tools/ionic_shopping), [docs/integrations/providers/cohere](https://python.langchain.com/docs/integrations/providers/cohere), [docs/concepts](https://python.langchain.com/docs/concepts), `API:` [langchain...create_react_agent](https://api.python.langchain.com/en/latest/agents/langchain.agents.react.agent.create_react_agent.html#langchain.agents.react.agent.create_react_agent), [langchain...TrajectoryEvalChain](https://api.python.langchain.com/en/latest/evaluation/langchain.evaluation.agents.trajectory_eval_chain.TrajectoryEvalChain.html#langchain.evaluation.agents.trajectory_eval_chain.TrajectoryEvalChain) |
+| `2209.10785v2` [Deep Lake: a Lakehouse for Deep Learning](http://arxiv.org/abs/2209.10785v2) | Sasun Hambardzumyan, Abhinav Tuli, Levon Ghukasyan,  et al. | 2022&#8209;09&#8209;22 | `Docs:` [docs/integrations/providers/activeloop_deeplake](https://python.langchain.com/docs/integrations/providers/activeloop_deeplake) |
+| `2205.13147v4` [Matryoshka Representation Learning](http://arxiv.org/abs/2205.13147v4) | Aditya Kusupati, Gantavya Bhatt, Aniket Rege,  et al. | 2022&#8209;05&#8209;26 | `Docs:` [docs/integrations/providers/snowflake](https://python.langchain.com/docs/integrations/providers/snowflake) |
+| `2205.12654v1` [Bitext Mining Using Distilled Sentence Representations for Low-Resource Languages](http://arxiv.org/abs/2205.12654v1) | Kevin Heffernan, Onur Çelebi, Holger Schwenk | 2022&#8209;05&#8209;25 | `API:` [langchain_community...LaserEmbeddings](https://api.python.langchain.com/en/latest/embeddings/langchain_community.embeddings.laser.LaserEmbeddings.html#langchain_community.embeddings.laser.LaserEmbeddings) |
+| `2204.00498v1` [Evaluating the Text-to-SQL Capabilities of Large Language Models](http://arxiv.org/abs/2204.00498v1) | Nitarshan Rajkumar, Raymond Li, Dzmitry Bahdanau | 2022&#8209;03&#8209;15 | `Docs:` [docs/tutorials/sql_qa](https://python.langchain.com/docs/tutorials/sql_qa), `API:` [langchain_community...SQLDatabase](https://api.python.langchain.com/en/latest/utilities/langchain_community.utilities.sql_database.SQLDatabase.html#langchain_community.utilities.sql_database.SQLDatabase), [langchain_community...SparkSQL](https://api.python.langchain.com/en/latest/utilities/langchain_community.utilities.spark_sql.SparkSQL.html#langchain_community.utilities.spark_sql.SparkSQL) |
+| `2202.00666v5` [Locally Typical Sampling](http://arxiv.org/abs/2202.00666v5) | Clara Meister, Tiago Pimentel, Gian Wiher,  et al. | 2022&#8209;02&#8209;01 | `API:` [langchain_huggingface...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint), [langchain_community...HuggingFaceTextGenInference](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference.html#langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference), [langchain_community...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint) |
+| `2112.01488v3` [ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction](http://arxiv.org/abs/2112.01488v3) | Keshav Santhanam, Omar Khattab, Jon Saad-Falcon,  et al. | 2021&#8209;12&#8209;02 | `Docs:` [docs/integrations/retrievers/ragatouille](https://python.langchain.com/docs/integrations/retrievers/ragatouille), [docs/integrations/providers/ragatouille](https://python.langchain.com/docs/integrations/providers/ragatouille), [docs/concepts](https://python.langchain.com/docs/concepts) |
+| `2103.00020v1` [Learning Transferable Visual Models From Natural Language Supervision](http://arxiv.org/abs/2103.00020v1) | Alec Radford, Jong Wook Kim, Chris Hallacy,  et al. | 2021&#8209;02&#8209;26 | `API:` [langchain_experimental.open_clip](https://python.langchain.com/api_reference/experimental/open_clip.html) |
+| `2005.14165v4` [Language Models are Few-Shot Learners](http://arxiv.org/abs/2005.14165v4) | Tom B. Brown, Benjamin Mann, Nick Ryder,  et al. | 2020&#8209;05&#8209;28 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts) |
+| `2005.11401v4` [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](http://arxiv.org/abs/2005.11401v4) | Patrick Lewis, Ethan Perez, Aleksandra Piktus,  et al. | 2020&#8209;05&#8209;22 | `Docs:` [docs/concepts](https://python.langchain.com/docs/concepts) |
+| `1909.05858v2` [CTRL: A Conditional Transformer Language Model for Controllable Generation](http://arxiv.org/abs/1909.05858v2) | Nitish Shirish Keskar, Bryan McCann, Lav R. Varshney,  et al. | 2019&#8209;09&#8209;11 | `API:` [langchain_huggingface...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint), [langchain_community...HuggingFaceTextGenInference](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference.html#langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference), [langchain_community...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint) |
 
 ## Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity
 
-- **Authors:** Soyeong Jeong, Jinheon Baek, Sukmin Cho,  et al.
-- **arXiv id:** [2403.14403v2](http://arxiv.org/abs/2403.14403v2)  **Published Date:** 2024-03-21
+- **作者:** Soyeong Jeong, Jinheon Baek, Sukmin Cho,  et al.
+- **arXiv id:** [2403.14403v2](http://arxiv.org/abs/2403.14403v2)  **发布日期:** 2024-03-21
 - **LangChain:**
 
-   - **Documentation:** [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/concepts](https://python.langchain.com/docs/concepts)
 
-**Abstract:** Retrieval-Augmented Large Language Models (LLMs), which incorporate the
-non-parametric knowledge from external knowledge bases into LLMs, have emerged
-as a promising approach to enhancing response accuracy in several tasks, such
-as Question-Answering (QA). However, even though there are various approaches
-dealing with queries of different complexities, they either handle simple
-queries with unnecessary computational overhead or fail to adequately address
-complex multi-step queries; yet, not all user requests fall into only one of
-the simple or complex categories. In this work, we propose a novel adaptive QA
-framework, that can dynamically select the most suitable strategy for
-(retrieval-augmented) LLMs from the simplest to the most sophisticated ones
-based on the query complexity. Also, this selection process is operationalized
-with a classifier, which is a smaller LM trained to predict the complexity
-level of incoming queries with automatically collected labels, obtained from
-actual predicted outcomes of models and inherent inductive biases in datasets.
-This approach offers a balanced strategy, seamlessly adapting between the
-iterative and single-step retrieval-augmented LLMs, as well as the no-retrieval
-methods, in response to a range of query complexities. We validate our model on
-a set of open-domain QA datasets, covering multiple query complexities, and
-show that ours enhances the overall efficiency and accuracy of QA systems,
-compared to relevant baselines including the adaptive retrieval approaches.
-Code is available at: https://github.com/starsuzi/Adaptive-RAG.
+**摘要:** 检索增强大型语言模型 (LLMs) 将来自外部知识库的非参数知识融入 LLMs，已成为在问答 (QA) 等任务中提高响应准确性的一种有前景的方法。然而，尽管有各种方法可以处理不同复杂度的查询，但它们要么对简单查询带有不必要的计算开销，要么无法充分解决复杂的、多步骤的查询；但是，并非所有用户请求都只属于简单或复杂类别。在这项工作中，我们提出了一种新颖的自适应 QA 框架，该框架可以根据查询复杂度动态地为（检索增强型）LLMs 选择最合适的策略，从最简单到最复杂。此外，该选择过程由一个分类器实现，该分类器是一个较小的 LM，它经过训练，可以从实际模型预测结果和数据集固有的归纳偏差中获得的自动收集的标签中预测传入查询的复杂性级别。这种方法提供了一种平衡的策略，能够根据各种查询复杂度在迭代和单步检索增强型 LLMs 以及无检索方法之间无缝适应。我们在涵盖多种查询复杂度的一系列开放域 QA 数据集上验证了我们的模型，并表明与包括自适应检索方法在内的相关基线相比，我们的模型提高了 QA 系统的整体效率和准确性。代码可在：https://github.com/starsuzi/Adaptive-RAG 获取。
                 
 ## Self-Discover: Large Language Models Self-Compose Reasoning Structures
 
-- **Authors:** Pei Zhou, Jay Pujara, Xiang Ren,  et al.
-- **arXiv id:** [2402.03620v1](http://arxiv.org/abs/2402.03620v1)  **Published Date:** 2024-02-06
+- **作者:** Pei Zhou, Jay Pujara, Xiang Ren,  et al.
+- **arXiv id:** [2402.03620v1](http://arxiv.org/abs/2402.03620v1)  **发布日期:** 2024-02-06
 - **LangChain:**
 
    - **Cookbook:** [self-discover](https://github.com/langchain-ai/langchain/blob/master/cookbook/self-discover.ipynb)
 
-**Abstract:** We introduce SELF-DISCOVER, a general framework for LLMs to self-discover the
-task-intrinsic reasoning structures to tackle complex reasoning problems that
-are challenging for typical prompting methods. Core to the framework is a
-self-discovery process where LLMs select multiple atomic reasoning modules such
-as critical thinking and step-by-step thinking, and compose them into an
-explicit reasoning structure for LLMs to follow during decoding. SELF-DISCOVER
-substantially improves GPT-4 and PaLM 2's performance on challenging reasoning
-benchmarks such as BigBench-Hard, grounded agent reasoning, and MATH, by as
-much as 32% compared to Chain of Thought (CoT). Furthermore, SELF-DISCOVER
-outperforms inference-intensive methods such as CoT-Self-Consistency by more
-than 20%, while requiring 10-40x fewer inference compute. Finally, we show that
-the self-discovered reasoning structures are universally applicable across
-model families: from PaLM 2-L to GPT-4, and from GPT-4 to Llama2, and share
-commonalities with human reasoning patterns.
+**摘要:** 我们介绍了 SELF-DISCOVER，这是一个通用框架，用于让 LLM 自我发现任务内在的推理结构，以解决对典型提示方法来说具有挑战性的复杂推理问题。该框架的核心是自我发现过程，在该过程中，LLMs 选择多个原子推理模块（如批判性思维和逐步思维），并将它们组合成一个显式的推理结构，供 LLMs 在解码过程中遵循。与思维链 (CoT) 相比，SELF-DISCOVER 在 BigBench-Hard、基础代理推理和 MATH 等挑战性推理基准上显著提高了 GPT-4 和 PaLM 2 的性能，最高可提高 32%。此外，SELF-DISCOVER 的性能比 CoT-Self-Consistency 等推理密集型方法高出 20% 以上，同时需要 10-40 倍的推理计算量。最后，我们表明，自我发现的推理结构在模型系列之间具有普遍适用性：从 PaLM 2-L 到 GPT-4，以及从 GPT-4 到 Llama2，并且与人类推理模式具有共同点。
                 
 ## RAG-Fusion: a New Take on Retrieval-Augmented Generation
 
-- **Authors:** Zackary Rackauckas
-- **arXiv id:** [2402.03367v2](http://arxiv.org/abs/2402.03367v2)  **Published Date:** 2024-01-31
+- **作者:** Zackary Rackauckas
+- **arXiv id:** [2402.03367v2](http://arxiv.org/abs/2402.03367v2)  **发布日期:** 2024-01-31
 - **LangChain:**
 
-   - **Documentation:** [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/concepts](https://python.langchain.com/docs/concepts)
 
-**Abstract:** Infineon has identified a need for engineers, account managers, and customers
-to rapidly obtain product information. This problem is traditionally addressed
-with retrieval-augmented generation (RAG) chatbots, but in this study, I
-evaluated the use of the newly popularized RAG-Fusion method. RAG-Fusion
-combines RAG and reciprocal rank fusion (RRF) by generating multiple queries,
-reranking them with reciprocal scores and fusing the documents and scores.
-Through manually evaluating answers on accuracy, relevance, and
-comprehensiveness, I found that RAG-Fusion was able to provide accurate and
-comprehensive answers due to the generated queries contextualizing the original
-query from various perspectives. However, some answers strayed off topic when
-the generated queries' relevance to the original query is insufficient. This
-research marks significant progress in artificial intelligence (AI) and natural
-language processing (NLP) applications and demonstrates transformations in a
-global and multi-industry context.
+**摘要:** Infineon 发现工程师、客户经理和客户需要快速获取产品信息。这个问题传统上通过检索增强生成 (RAG) 聊天机器人来解决，但在本研究中，我评估了新近流行的 RAG-Fusion 方法的使用。RAG-Fusion 通过生成多个查询，并使用倒数排名融合 (RRF) 对其进行重新排名，然后融合文档和分数来结合 RAG 和倒数排名融合 (RRF)。通过手动评估答案的准确性、相关性和全面性，我发现由于生成的查询从不同角度对此类查询进行了语境化，RAG-Fusion 能够提供准确且全面的答案。然而，当生成的查询与原始查询的相关性不足时，某些答案会偏离主题。这项研究标志着人工智能 (AI) 和自然语言处理 (NLP) 应用取得了重大进展，并展示了全球和跨行业背景下的转型。
                 
 ## RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval
 
-- **Authors:** Parth Sarthi, Salman Abdullah, Aditi Tuli,  et al.
-- **arXiv id:** [2401.18059v1](http://arxiv.org/abs/2401.18059v1)  **Published Date:** 2024-01-31
+- **作者:** Parth Sarthi, Salman Abdullah, Aditi Tuli,  et al.
+- **arXiv id:** [2401.18059v1](http://arxiv.org/abs/2401.18059v1)  **发布日期:** 2024-01-31
 - **LangChain:**
 
    - **Cookbook:** [RAPTOR](https://github.com/langchain-ai/langchain/blob/master/cookbook/RAPTOR.ipynb)
 
-**Abstract:** Retrieval-augmented language models can better adapt to changes in world
-state and incorporate long-tail knowledge. However, most existing methods
-retrieve only short contiguous chunks from a retrieval corpus, limiting
-holistic understanding of the overall document context. We introduce the novel
-approach of recursively embedding, clustering, and summarizing chunks of text,
-constructing a tree with differing levels of summarization from the bottom up.
-At inference time, our RAPTOR model retrieves from this tree, integrating
-information across lengthy documents at different levels of abstraction.
-Controlled experiments show that retrieval with recursive summaries offers
-significant improvements over traditional retrieval-augmented LMs on several
-tasks. On question-answering tasks that involve complex, multi-step reasoning,
-we show state-of-the-art results; for example, by coupling RAPTOR retrieval
-with the use of GPT-4, we can improve the best performance on the QuALITY
-benchmark by 20% in absolute accuracy.
+**摘要:** 检索增强语言模型可以更好地适应世界状态的变化并融入长尾知识。然而，大多数现有方法仅从检索语料库中检索短的连续块，这限制了对整个文档上下文的整体理解。我们引入了一种新颖的方法，通过递归嵌入、聚类和总结文本块，从底层向上构建具有不同级别摘要的树。在推理时，我们的 RAPTOR 模型可以从该树中检索信息，并在不同抽象级别上集成跨长文档的信息。对照实验表明，与传统的检索增强型 LM 相比，使用递归摘要进行检索在多项任务上提供了显著的改进；例如，通过将 RAPTOR 检索与 GPT-4 的使用相结合，我们在 QuALITY 基准上的最佳准确率提高了 20%。
                 
 ## Corrective Retrieval Augmented Generation
 
-- **Authors:** Shi-Qi Yan, Jia-Chen Gu, Yun Zhu,  et al.
-- **arXiv id:** [2401.15884v2](http://arxiv.org/abs/2401.15884v2)  **Published Date:** 2024-01-29
+- **作者:** Shi-Qi Yan, Jia-Chen Gu, Yun Zhu,  et al.
+- **arXiv id:** [2401.15884v2](http://arxiv.org/abs/2401.15884v2)  **发布日期:** 2024-01-29
 - **LangChain:**
 
-   - **Documentation:** [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/concepts](https://python.langchain.com/docs/concepts)
    - **Cookbook:** [langgraph_crag](https://github.com/langchain-ai/langchain/blob/master/cookbook/langgraph_crag.ipynb)
 
-**Abstract:** Large language models (LLMs) inevitably exhibit hallucinations since the
-accuracy of generated texts cannot be secured solely by the parametric
-knowledge they encapsulate. Although retrieval-augmented generation (RAG) is a
-practicable complement to LLMs, it relies heavily on the relevance of retrieved
-documents, raising concerns about how the model behaves if retrieval goes
-wrong. To this end, we propose the Corrective Retrieval Augmented Generation
-(CRAG) to improve the robustness of generation. Specifically, a lightweight
-retrieval evaluator is designed to assess the overall quality of retrieved
-documents for a query, returning a confidence degree based on which different
-knowledge retrieval actions can be triggered. Since retrieval from static and
-limited corpora can only return sub-optimal documents, large-scale web searches
-are utilized as an extension for augmenting the retrieval results. Besides, a
-decompose-then-recompose algorithm is designed for retrieved documents to
-selectively focus on key information and filter out irrelevant information in
-them. CRAG is plug-and-play and can be seamlessly coupled with various
-RAG-based approaches. Experiments on four datasets covering short- and
-long-form generation tasks show that CRAG can significantly improve the
-performance of RAG-based approaches.
+**摘要:** 大型语言模型 (LLM) 不可避免地会出现幻觉，因为生成文本的准确性无法仅通过它们所封装的参数化知识来保证。尽管检索增强生成 (RAG) 是 LLM 的可行补充，但它在很大程度上依赖于检索文档的相关性，这引起了人们对模型在检索失败时如何表现的担忧。为此，我们提出了纠错检索增强生成 (CRAG) 来提高生成鲁棒性。具体来说，设计了一个轻量级的检索评估器来评估检索到的文档对查询的整体质量，并根据此返回一个置信度等级，以触发不同的知识检索操作。由于从静态和有限语料库检索只能返回次优文档，因此利用大规模网络搜索来增强检索结果。此外，还设计了一种用于检索文档的分解-重组算法，以选择性地关注关键信息并过滤掉其中的无关信息。CRAG 是即插即用的，可以无缝地与各种基于 RAG 的方法相结合。在涵盖短文本和长文本生成任务的四个数据集上进行的实验表明，CRAG 可以显著提高基于 RAG 方法的性能。
                 
 ## Code Generation with AlphaCodium: From Prompt Engineering to Flow Engineering
 
-- **Authors:** Tal Ridnik, Dedy Kredo, Itamar Friedman
-- **arXiv id:** [2401.08500v1](http://arxiv.org/abs/2401.08500v1)  **Published Date:** 2024-01-16
+- **作者:** Tal Ridnik, Dedy Kredo, Itamar Friedman
+- **arXiv id:** [2401.08500v1](http://arxiv.org/abs/2401.08500v1)  **发布日期:** 2024-01-16
 - **LangChain:**
 
-   - **Documentation:** [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/concepts](https://python.langchain.com/docs/concepts)
 
-**Abstract:** Code generation problems differ from common natural language problems - they
-require matching the exact syntax of the target language, identifying happy
-paths and edge cases, paying attention to numerous small details in the problem
-spec, and addressing other code-specific issues and requirements. Hence, many
-of the optimizations and tricks that have been successful in natural language
-generation may not be effective for code tasks. In this work, we propose a new
-approach to code generation by LLMs, which we call AlphaCodium - a test-based,
-multi-stage, code-oriented iterative flow, that improves the performances of
-LLMs on code problems. We tested AlphaCodium on a challenging code generation
-dataset called CodeContests, which includes competitive programming problems
-from platforms such as Codeforces. The proposed flow consistently and
-significantly improves results. On the validation set, for example, GPT-4
-accuracy (pass@5) increased from 19% with a single well-designed direct prompt
-to 44% with the AlphaCodium flow. Many of the principles and best practices
-acquired in this work, we believe, are broadly applicable to general code
-generation tasks. Full implementation is available at:
-https://github.com/Codium-ai/AlphaCodium
+**摘要:** 代码生成问题与常见的自然语言问题不同——它们需要匹配目标语言的确切语法、识别正常路径和边缘情况、关注问题规范中的众多细节以及解决其他特定于代码的问题和要求。因此，许多在自然语言生成领域取得成功的优化和技巧可能对代码任务无效。在这项工作中，我们提出了一种使用 LLM 进行代码生成的新方法，我们称之为 AlphaCodium——一种基于测试、多阶段、面向代码的迭代流程，可提高 LLM 在代码问题上的性能。我们在一个具有挑战性的代码生成数据集 CodeContests 上测试了 AlphaCodium，该数据集包含来自 Codeforces 等平台的竞争性编程问题。所提出的流程一致且显著地提高了结果。例如，在验证集上，GPT-4 的准确率 (pass@5) 从单个精心设计的直接提示的 19% 提高到 AlphaCodium 流程的 44%。我们认为，在这项工作中获得许多原则和最佳实践可以广泛应用于一般代码生成任务。完整实现可在：https://github.com/Codium-ai/AlphaCodium 获取。
                 
 ## Mixtral of Experts
 
-- **Authors:** Albert Q. Jiang, Alexandre Sablayrolles, Antoine Roux,  et al.
-- **arXiv id:** [2401.04088v1](http://arxiv.org/abs/2401.04088v1)  **Published Date:** 2024-01-08
+- **作者:** Albert Q. Jiang, Alexandre Sablayrolles, Antoine Roux,  et al.
+- **arXiv id:** [2401.04088v1](http://arxiv.org/abs/2401.04088v1)  **发布日期:** 2024-01-08
 - **LangChain:**
 
    - **Cookbook:** [together_ai](https://github.com/langchain-ai/langchain/blob/master/cookbook/together_ai.ipynb)
 
-**Abstract:** We introduce Mixtral 8x7B, a Sparse Mixture of Experts (SMoE) language model.
-Mixtral has the same architecture as Mistral 7B, with the difference that each
-layer is composed of 8 feedforward blocks (i.e. experts). For every token, at
-each layer, a router network selects two experts to process the current state
-and combine their outputs. Even though each token only sees two experts, the
-selected experts can be different at each timestep. As a result, each token has
-access to 47B parameters, but only uses 13B active parameters during inference.
-Mixtral was trained with a context size of 32k tokens and it outperforms or
-matches Llama 2 70B and GPT-3.5 across all evaluated benchmarks. In particular,
-Mixtral vastly outperforms Llama 2 70B on mathematics, code generation, and
-multilingual benchmarks. We also provide a model fine-tuned to follow
-instructions, Mixtral 8x7B - Instruct, that surpasses GPT-3.5 Turbo,
-Claude-2.1, Gemini Pro, and Llama 2 70B - chat model on human benchmarks. Both
-the base and instruct models are released under the Apache 2.0 license.
+**摘要:** 我们介绍了 Mixtral 8x7B，一个稀疏专家混合 (SMoE) 语言模型。Mixtral 具有与 Mistral 7B 相同的架构，区别在于每层由 8 个前馈块（即专家）组成。对于每个 token，在每层，路由器网络会选择两个专家来处理当前状态并组合它们的输出。尽管每个 token 只看到两个专家，但选择的专家可以在每个时间步不同。因此，每个 token 都可以访问 47B 个参数，但在推理过程中只使用 13B 个活动参数。Mixtral 使用 32k token 的上下文长度进行了训练，并且在所有评估的基准测试中，其性能优于或等于 Llama 2 70B 和 GPT-3.5。特别是，Mixtral 在数学、代码生成和多语言基准测试中的性能远远优于 Llama 2 70B。我们还提供了一个针对指令遵循进行微调的模型 Mixtral 8x7B - Instruct，该模型在人类基准测试中的表现优于 GPT-3.5 Turbo、Claude-2.1、Gemini Pro 和 Llama 2 70B - 聊天模型。基础模型和指令模型均根据 Apache 2.0 许可证发布。
                 
 ## Dense X Retrieval: What Retrieval Granularity Should We Use?
 
-- **Authors:** Tong Chen, Hongwei Wang, Sihao Chen,  et al.
-- **arXiv id:** [2312.06648v2](http://arxiv.org/abs/2312.06648v2)  **Published Date:** 2023-12-11
+- **作者:** Tong Chen, Hongwei Wang, Sihao Chen,  et al.
+- **arXiv id:** [2312.06648v2](http://arxiv.org/abs/2312.06648v2)  **发布日期:** 2023-12-11
 - **LangChain:**
 
    - **Template:** [propositional-retrieval](https://python.langchain.com/docs/templates/propositional-retrieval)
 
-**Abstract:** Dense retrieval has become a prominent method to obtain relevant context or
-world knowledge in open-domain NLP tasks. When we use a learned dense retriever
-on a retrieval corpus at inference time, an often-overlooked design choice is
-the retrieval unit in which the corpus is indexed, e.g. document, passage, or
-sentence. We discover that the retrieval unit choice significantly impacts the
-performance of both retrieval and downstream tasks. Distinct from the typical
-approach of using passages or sentences, we introduce a novel retrieval unit,
-proposition, for dense retrieval. Propositions are defined as atomic
-expressions within text, each encapsulating a distinct factoid and presented in
-a concise, self-contained natural language format. We conduct an empirical
-comparison of different retrieval granularity. Our results reveal that
-proposition-based retrieval significantly outperforms traditional passage or
-sentence-based methods in dense retrieval. Moreover, retrieval by proposition
-also enhances the performance of downstream QA tasks, since the retrieved texts
-are more condensed with question-relevant information, reducing the need for
-lengthy input tokens and minimizing the inclusion of extraneous, irrelevant
-information.
+**摘要:** 在开放域 NLP 任务中，密集检索已成为获取相关上下文或世界知识的主要方法。当我们在推理时在检索语料库上使用学习到的密集检索器时，一个经常被忽视的设计选择是语料库被索引的检索单元，例如文档、段落或句子。我们发现检索单元的选择对检索和下游任务的性能有显著影响。与使用段落或句子等传统方法不同，我们引入了一种新颖的检索单元——命题，用于密集检索。命题被定义为文本中的原子表达式，每个命题都包含一个明确的事实，并以简洁、自包含的自然语言格式呈现。我们对不同检索粒度进行了实证比较。我们的结果表明，基于命题的检索在密集检索中显著优于传统的基于段落或句子的方法。此外，命题检索也可以提高下游 QA 任务的性能，因为检索到的文本更浓缩了与问题相关的信息，减少了对长输入 token 的需求，并最大限度地减少了不相关信息的包含。
                 
 ## Chain-of-Note: Enhancing Robustness in Retrieval-Augmented Language Models
 
-- **Authors:** Wenhao Yu, Hongming Zhang, Xiaoman Pan,  et al.
-- **arXiv id:** [2311.09210v1](http://arxiv.org/abs/2311.09210v1)  **Published Date:** 2023-11-15
+- **作者:** Wenhao Yu, Hongming Zhang, Xiaoman Pan,  et al.
+- **arXiv id:** [2311.09210v1](http://arxiv.org/abs/2311.09210v1)  **发布日期:** 2023-11-15
 - **LangChain:**
 
    - **Template:** [chain-of-note-wiki](https://python.langchain.com/docs/templates/chain-of-note-wiki)
 
-**Abstract:** Retrieval-augmented language models (RALMs) represent a substantial
-advancement in the capabilities of large language models, notably in reducing
-factual hallucination by leveraging external knowledge sources. However, the
-reliability of the retrieved information is not always guaranteed. The
-retrieval of irrelevant data can lead to misguided responses, and potentially
-causing the model to overlook its inherent knowledge, even when it possesses
-adequate information to address the query. Moreover, standard RALMs often
-struggle to assess whether they possess adequate knowledge, both intrinsic and
-retrieved, to provide an accurate answer. In situations where knowledge is
-lacking, these systems should ideally respond with "unknown" when the answer is
-unattainable. In response to these challenges, we introduces Chain-of-Noting
-(CoN), a novel approach aimed at improving the robustness of RALMs in facing
-noisy, irrelevant documents and in handling unknown scenarios. The core idea of
-CoN is to generate sequential reading notes for retrieved documents, enabling a
-thorough evaluation of their relevance to the given question and integrating
-this information to formulate the final answer. We employed ChatGPT to create
-training data for CoN, which was subsequently trained on an LLaMa-2 7B model.
-Our experiments across four open-domain QA benchmarks show that RALMs equipped
-with CoN significantly outperform standard RALMs. Notably, CoN achieves an
-average improvement of +7.9 in EM score given entirely noisy retrieved
-documents and +10.5 in rejection rates for real-time questions that fall
-outside the pre-training knowledge scope.
+**摘要:** 检索增强语言模型 (RALM) 代表了大型语言模型能力的一项重大进步，特别是在通过利用外部知识源来减少事实性幻觉方面。然而，检索信息的可靠性并非总是得到保证。检索到的不相关数据会导致回答错误，并可能导致模型忽略其内在知识，即使它拥有足够的信息来解决查询。此外，标准的 RALM 通常难以评估它们是否拥有足够的信息（内在和检索到的）来提供准确的答案。在知识不足的情况下，这些系统理想情况下应该在答案无法获得时响应“未知”。为了应对这些挑战，我们引入了 Chain-of-Noting (CoN)，这是一种旨在提高 RALM 在面对嘈杂、不相关的文档以及处理未知场景时的鲁棒性的新方法。CoN 的核心思想是为检索到的文档生成顺序阅读笔记，从而能够彻底评估它们与给定问题的相关性，并整合这些信息来形成最终答案。我们使用了 ChatGPT 来创建 CoN 的训练数据，然后在一台 LLaMa-2 7B 模型上进行了训练。我们在四个开放域 QA 基准上的实验表明，配备 CoN 的 RALM 的性能明显优于标准 RALM。值得注意的是，在检索到的文档完全嘈杂的情况下，CoN 在 EM 分数上平均提高了 +7.9，而在实时问题中（这些问题超出了预训练知识范围），拒绝率提高了 +10.5。
                 
 ## Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection
 
-- **Authors:** Akari Asai, Zeqiu Wu, Yizhong Wang,  et al.
-- **arXiv id:** [2310.11511v1](http://arxiv.org/abs/2310.11511v1)  **Published Date:** 2023-10-17
+- **作者:** Akari Asai, Zeqiu Wu, Yizhong Wang,  et al.
+- **arXiv id:** [2310.11511v1](http://arxiv.org/abs/2310.11511v1)  **发布日期:** 2023-10-17
 - **LangChain:**
 
-   - **Documentation:** [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/concepts](https://python.langchain.com/docs/concepts)
    - **Cookbook:** [langgraph_self_rag](https://github.com/langchain-ai/langchain/blob/master/cookbook/langgraph_self_rag.ipynb)
 
-**Abstract:** Despite their remarkable capabilities, large language models (LLMs) often
-produce responses containing factual inaccuracies due to their sole reliance on
-the parametric knowledge they encapsulate. Retrieval-Augmented Generation
-(RAG), an ad hoc approach that augments LMs with retrieval of relevant
-knowledge, decreases such issues. However, indiscriminately retrieving and
-incorporating a fixed number of retrieved passages, regardless of whether
-retrieval is necessary, or passages are relevant, diminishes LM versatility or
-can lead to unhelpful response generation. We introduce a new framework called
-Self-Reflective Retrieval-Augmented Generation (Self-RAG) that enhances an LM's
-quality and factuality through retrieval and self-reflection. Our framework
-trains a single arbitrary LM that adaptively retrieves passages on-demand, and
-generates and reflects on retrieved passages and its own generations using
-special tokens, called reflection tokens. Generating reflection tokens makes
-the LM controllable during the inference phase, enabling it to tailor its
-behavior to diverse task requirements. Experiments show that Self-RAG (7B and
-13B parameters) significantly outperforms state-of-the-art LLMs and
-retrieval-augmented models on a diverse set of tasks. Specifically, Self-RAG
-outperforms ChatGPT and retrieval-augmented Llama2-chat on Open-domain QA,
-reasoning and fact verification tasks, and it shows significant gains in
-improving factuality and citation accuracy for long-form generations relative
-to these models.
+**摘要:** 尽管大型语言模型 (LLM) 具有卓越的能力，但由于它们仅依赖于其参数中包含的参数化知识，它们经常产生包含事实不准确性的响应。检索增强生成 (RAG) 是一种通过检索相关知识来增强 LM 的临时方法，可以减少此类问题。但是，无论是否需要检索或检索到的片段是否相关，都会无差别地检索和合并固定数量的检索到的片段，这会降低 LM 的通用性或可能导致无用的响应生成。我们引入了一种名为 Self-Reflective Retrieval-Augmented Generation (Self-RAG) 的新框架，该框架通过检索和自我反思来提高 LM 的质量和事实性。我们的框架训练了一个单一的任意 LM，该 LM 可以按需自适应地检索片段，并使用特殊标记（称为反思标记）来生成和反思检索到的片段及其自身的生成。生成反思标记使得 LM 在推理阶段可控，能够根据各种任务需求定制其行为。实验表明，Self-RAG（7B 和 13B 参数）在各种任务上显著优于最先进的 LLM 和检索增强模型。具体来说，Self-在开放域 QA、推理和事实验证任务上，Self-RAG 的性能优于 ChatGPT 和检索增强的 Llama2-chat，并在长文本生成的准确性和引用准确性方面相对于这些模型有了显著提高。
                 
 ## Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models
 
-- **Authors:** Huaixiu Steven Zheng, Swaroop Mishra, Xinyun Chen,  et al.
-- **arXiv id:** [2310.06117v2](http://arxiv.org/abs/2310.06117v2)  **Published Date:** 2023-10-09
+- **作者:** Huaixiu Steven Zheng, Swaroop Mishra, Xinyun Chen,  et al.
+- **arXiv id:** [2310.06117v2](http://arxiv.org/abs/2310.06117v2)  **发布日期:** 2023-10-09
 - **LangChain:**
 
-   - **Documentation:** [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/concepts](https://python.langchain.com/docs/concepts)
    - **Template:** [stepback-qa-prompting](https://python.langchain.com/docs/templates/stepback-qa-prompting)
    - **Cookbook:** [stepback-qa](https://github.com/langchain-ai/langchain/blob/master/cookbook/stepback-qa.ipynb)
 
-**Abstract:** We present Step-Back Prompting, a simple prompting technique that enables
-LLMs to do abstractions to derive high-level concepts and first principles from
-instances containing specific details. Using the concepts and principles to
-guide reasoning, LLMs significantly improve their abilities in following a
-correct reasoning path towards the solution. We conduct experiments of
-Step-Back Prompting with PaLM-2L, GPT-4 and Llama2-70B models, and observe
-substantial performance gains on various challenging reasoning-intensive tasks
-including STEM, Knowledge QA, and Multi-Hop Reasoning. For instance, Step-Back
-Prompting improves PaLM-2L performance on MMLU (Physics and Chemistry) by 7%
-and 11% respectively, TimeQA by 27%, and MuSiQue by 7%.
+**摘要:** 我们提出了循序渐进提示 (Step-Back Prompting)，这是一种简单的提示技术，它使 LLM 能够通过抽象化从包含具体细节的实例中提取出高级概念和第一原理。利用概念和原理来指导推理，LLM 显著提高了它们遵循正确推理路径以获得解决方案的能力。我们将循序渐进提示与 PaLM-2L、GPT-4 和 Llama2-70B 模型进行了实验，并在各种具有挑战性的推理密集型任务（包括 STEM、知识 QA 和多步推理）上观察到了显著的性能提升。例如，循序渐进提示分别将 PaLM-2L 在 MMLU（物理和化学）上的性能提高了 7% 和 11%，将 TimeQA 提高了 27%，将 MuSiQue 提高了 7%。
                 
 ## Skeleton-of-Thought: Prompting LLMs for Efficient Parallel Generation
 
-- **Authors:** Xuefei Ning, Zinan Lin, Zixuan Zhou,  et al.
-- **arXiv id:** [2307.15337v3](http://arxiv.org/abs/2307.15337v3)  **Published Date:** 2023-07-28
+- **作者:** Xuefei Ning, Zinan Lin, Zixuan Zhou,  et al.
+- **arXiv id:** [2307.15337v3](http://arxiv.org/abs/2307.15337v3)  **发布日期:** 2023-07-28
 - **LangChain:**
 
    - **Template:** [skeleton-of-thought](https://python.langchain.com/docs/templates/skeleton-of-thought)
 
-**Abstract:** This work aims at decreasing the end-to-end generation latency of large
-language models (LLMs). One of the major causes of the high generation latency
-is the sequential decoding approach adopted by almost all state-of-the-art
-LLMs. In this work, motivated by the thinking and writing process of humans, we
-propose Skeleton-of-Thought (SoT), which first guides LLMs to generate the
-skeleton of the answer, and then conducts parallel API calls or batched
-decoding to complete the contents of each skeleton point in parallel. Not only
-does SoT provide considerable speed-ups across 12 LLMs, but it can also
-potentially improve the answer quality on several question categories. SoT is
-an initial attempt at data-centric optimization for inference efficiency, and
-showcases the potential of eliciting high-quality answers by explicitly
-planning the answer structure in language.
+**摘要:** 本文旨在降低大型语言模型 (LLM) 的端到端生成延迟。高生成延迟的主要原因之一是几乎所有最先进的 LLM 都采用的顺序解码方法。在这项工作中，受到人类思考和写作过程的启发，我们提出了思维骨架 (SoT)，它首先引导 LLM 生成答案的骨架，然后进行并行的 API 调用或批处理解码，以并行完成每个骨架点的内容。SoT 不仅在 12 种 LLM 中提供了显著的加速，而且还有可能提高某些类别问题的答案质量。SoT 是数据中心优化推理效率的初步尝试，并通过在语言中显式规划答案结构来展示获得高质量答案的潜力。
                 
 ## Llama 2: Open Foundation and Fine-Tuned Chat Models
 
-- **Authors:** Hugo Touvron, Louis Martin, Kevin Stone,  et al.
-- **arXiv id:** [2307.09288v2](http://arxiv.org/abs/2307.09288v2)  **Published Date:** 2023-07-18
+- **作者:** Hugo Touvron, Louis Martin, Kevin Stone,  et al.
+- **arXiv id:** [2307.09288v2](http://arxiv.org/abs/2307.09288v2)  **发布日期:** 2023-07-18
 - **LangChain:**
 
    - **Cookbook:** [Semi_Structured_RAG](https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_Structured_RAG.ipynb)
 
-**Abstract:** In this work, we develop and release Llama 2, a collection of pretrained and
-fine-tuned large language models (LLMs) ranging in scale from 7 billion to 70
-billion parameters. Our fine-tuned LLMs, called Llama 2-Chat, are optimized for
-dialogue use cases. Our models outperform open-source chat models on most
-benchmarks we tested, and based on our human evaluations for helpfulness and
-safety, may be a suitable substitute for closed-source models. We provide a
-detailed description of our approach to fine-tuning and safety improvements of
-Llama 2-Chat in order to enable the community to build on our work and
-contribute to the responsible development of LLMs.
+**摘要:** 在这项工作中，我们开发并发布了 Llama 2，这是一个包含从 70 亿到 700 亿参数的大型语言模型 (LLM) 的集合，包括预训练和微调模型。我们的微调 LLM（称为 Llama 2-Chat）针对对话用例进行了优化。我们的模型在大多数我们测试过的基准测试中表现优于开源聊天模型，并且根据我们对有用性和安全性的评估，可以作为闭源模型的替代品来使用。我们详细描述了 Llama 2-Chat 的微调和安全改进方法，以使社区能够在此基础上进行构建，并为 LLM 的负责任开发做出贡献。
                 
 ## Lost in the Middle: How Language Models Use Long Contexts
 
-- **Authors:** Nelson F. Liu, Kevin Lin, John Hewitt,  et al.
-- **arXiv id:** [2307.03172v3](http://arxiv.org/abs/2307.03172v3)  **Published Date:** 2023-07-06
+- **作者:** Nelson F. Liu, Kevin Lin, John Hewitt,  et al.
+- **arXiv id:** [2307.03172v3](http://arxiv.org/abs/2307.03172v3)  **发布日期:** 2023-07-06
 - **LangChain:**
 
-   - **Documentation:** [docs/how_to/long_context_reorder](https://python.langchain.com/docs/how_to/long_context_reorder)
+   - **文档:** [docs/how_to/long_context_reorder](https://python.langchain.com/docs/how_to/long_context_reorder)
 
-**Abstract:** While recent language models have the ability to take long contexts as input,
-relatively little is known about how well they use longer context. We analyze
-the performance of language models on two tasks that require identifying
-relevant information in their input contexts: multi-document question answering
-and key-value retrieval. We find that performance can degrade significantly
-when changing the position of relevant information, indicating that current
-language models do not robustly make use of information in long input contexts.
-In particular, we observe that performance is often highest when relevant
-information occurs at the beginning or end of the input context, and
-significantly degrades when models must access relevant information in the
-middle of long contexts, even for explicitly long-context models. Our analysis
-provides a better understanding of how language models use their input context
-and provides new evaluation protocols for future long-context language models.
+**摘要:** 虽然最近的语言模型能够接受长上下文输入，但关于它们如何有效利用长上下文的了解相对较少。我们分析了语言模型在两个需要识别输入上下文中的相关信息的任务上的表现：多文档问答和键值检索。我们发现，更改相关信息的位置会显着降低性能，这表明当前的语言模型不能有效地利用长输入上下文中的信息。特别是，我们观察到当相关信息出现在输入上下文的开头或结尾时，性能通常最高，并且即使对于明确的长上下文模型，当模型必须访问长上下文中间的相关信息时，性能也会显着下降.我们的分析提供了对语言模型如何使用其输入上下文的更好理解，并为未来的长上下文语言模型提供了新的评估协议。
                 
 ## Query Rewriting for Retrieval-Augmented Large Language Models
 
-- **Authors:** Xinbei Ma, Yeyun Gong, Pengcheng He,  et al.
-- **arXiv id:** [2305.14283v3](http://arxiv.org/abs/2305.14283v3)  **Published Date:** 2023-05-23
+- **作者:** Xinbei Ma, Yeyun Gong, Pengcheng He,  et al.
+- **arXiv id:** [2305.14283v3](http://arxiv.org/abs/2305.14283v3)  **发布日期:** 2023-05-23
 - **LangChain:**
 
    - **Template:** [rewrite-retrieve-read](https://python.langchain.com/docs/templates/rewrite-retrieve-read)
    - **Cookbook:** [rewrite](https://github.com/langchain-ai/langchain/blob/master/cookbook/rewrite.ipynb)
 
-**Abstract:** Large Language Models (LLMs) play powerful, black-box readers in the
-retrieve-then-read pipeline, making remarkable progress in knowledge-intensive
-tasks. This work introduces a new framework, Rewrite-Retrieve-Read instead of
-the previous retrieve-then-read for the retrieval-augmented LLMs from the
-perspective of the query rewriting. Unlike prior studies focusing on adapting
-either the retriever or the reader, our approach pays attention to the
-adaptation of the search query itself, for there is inevitably a gap between
-the input text and the needed knowledge in retrieval. We first prompt an LLM to
-generate the query, then use a web search engine to retrieve contexts.
-Furthermore, to better align the query to the frozen modules, we propose a
-trainable scheme for our pipeline. A small language model is adopted as a
-trainable rewriter to cater to the black-box LLM reader. The rewriter is
-trained using the feedback of the LLM reader by reinforcement learning.
-Evaluation is conducted on downstream tasks, open-domain QA and multiple-choice
-QA. Experiments results show consistent performance improvement, indicating
-that our framework is proven effective and scalable, and brings a new framework
-for retrieval-augmented LLM.
+**摘要:** 大型语言模型 (LLM) 在检索后读取的流程中扮演着强大的黑盒读取器，在知识密集型任务中取得了显著进展。这项工作从查询重写角度引入了一种新的框架——重写-检索-读取，而不是之前的检索-读取，用于检索增强型 LLM。与以往专注于调整检索器或读取器的研究不同，我们的方法关注搜索查询本身的调整，因为在检索中输入文本和所需知识之间不可避免地存在差距。我们首先提示 LLM 生成查询，然后使用网络搜索引擎检索上下文。此外，为了更好地将查询与冻结的模块对齐，我们提出了一种可训练的方案。采用小型语言模型作为可训练重写器，通过强化学习根据 LLM 读取器的反馈进行训练。在下游任务（开放域 QA 和多项选择 QA）上进行了评估。实验结果表明性能持续提高，表明我们的框架已被证明是有效且可扩展的，并为检索增强型 LLM 带来了新框架。
                 
 ## Large Language Model Guided Tree-of-Thought
 
-- **Authors:** Jieyi Long
-- **arXiv id:** [2305.08291v1](http://arxiv.org/abs/2305.08291v1)  **Published Date:** 2023-05-15
+- **作者:** Jieyi Long
+- **arXiv id:** [2305.08291v1](http://arxiv.org/abs/2305.08291v1)  **发布日期:** 2023-05-15
 - **LangChain:**
 
    - **API Reference:** [langchain_experimental.tot](https://python.langchain.com/api_reference/experimental/tot.html)
    - **Cookbook:** [tree_of_thought](https://github.com/langchain-ai/langchain/blob/master/cookbook/tree_of_thought.ipynb)
 
-**Abstract:** In this paper, we introduce the Tree-of-Thought (ToT) framework, a novel
-approach aimed at improving the problem-solving capabilities of auto-regressive
-large language models (LLMs). The ToT technique is inspired by the human mind's
-approach for solving complex reasoning tasks through trial and error. In this
-process, the human mind explores the solution space through a tree-like thought
-process, allowing for backtracking when necessary. To implement ToT as a
-software system, we augment an LLM with additional modules including a prompter
-agent, a checker module, a memory module, and a ToT controller. In order to
-solve a given problem, these modules engage in a multi-round conversation with
-the LLM. The memory module records the conversation and state history of the
-problem solving process, which allows the system to backtrack to the previous
-steps of the thought-process and explore other directions from there. To verify
-the effectiveness of the proposed technique, we implemented a ToT-based solver
-for the Sudoku Puzzle. Experimental results show that the ToT framework can
-significantly increase the success rate of Sudoku puzzle solving. Our
-implementation of the ToT-based Sudoku solver is available on [GitHub](https://github.com/jieyilong/tree-of-thought-puzzle-solver).
+**摘要:** 在本文中，我们介绍了思维树 (ToT) 框架，这是一种旨在提高自动回归大型语言模型 (LLM) 的问题解决能力的新颖方法。ToT 技术受到人类通过试错来解决复杂推理任务的思想方式的启发。在这个过程中，人类通过类似树状的思考过程探索解空间，允许在必要时回溯。为了将 ToT 实现为软件系统，我们用包括提示代理、检查模块、内存模块和 ToT 控制器在内的附加模块来增强 LLM。为了解决给定问题，这些模块与 LLM 进行多轮对话。内存模块记录问题解决过程的对话和状态历史，这允许系统回溯到思考过程的先前步骤并从中探索其他方向。为了验证所提出技术的效果，我们实现了一个基于 ToT 的数独求解器。实验结果表明，ToT 框架可以显著提高数独求解的成功率。我们基于 ToT 的数独求解器的实现可在 [GitHub](https://github.com/jieyilong/tree-of-thought-puzzle-solver) 上获取。
                 
 ## Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models
 
-- **Authors:** Lei Wang, Wanyu Xu, Yihuai Lan,  et al.
-- **arXiv id:** [2305.04091v3](http://arxiv.org/abs/2305.04091v3)  **Published Date:** 2023-05-06
+- **作者:** Lei Wang, Wanyu Xu, Yihuai Lan,  et al.
+- **arXiv id:** [2305.04091v3](http://arxiv.org/abs/2305.04091v3)  **发布日期:** 2023-05-06
 - **LangChain:**
 
    - **Cookbook:** [plan_and_execute_agent](https://github.com/langchain-ai/langchain/blob/master/cookbook/plan_and_execute_agent.ipynb)
 
-**Abstract:** Large language models (LLMs) have recently been shown to deliver impressive
-performance in various NLP tasks. To tackle multi-step reasoning tasks,
-few-shot chain-of-thought (CoT) prompting includes a few manually crafted
-step-by-step reasoning demonstrations which enable LLMs to explicitly generate
-reasoning steps and improve their reasoning task accuracy. To eliminate the
-manual effort, Zero-shot-CoT concatenates the target problem statement with
-"Let's think step by step" as an input prompt to LLMs. Despite the success of
-Zero-shot-CoT, it still suffers from three pitfalls: calculation errors,
-missing-step errors, and semantic misunderstanding errors. To address the
-missing-step errors, we propose Plan-and-Solve (PS) Prompting. It consists of
-two components: first, devising a plan to divide the entire task into smaller
-subtasks, and then carrying out the subtasks according to the plan. To address
-the calculation errors and improve the quality of generated reasoning steps, we
-extend PS prompting with more detailed instructions and derive PS+ prompting.
-We evaluate our proposed prompting strategy on ten datasets across three
-reasoning problems. The experimental results over GPT-3 show that our proposed
-zero-shot prompting consistently outperforms Zero-shot-CoT across all datasets
-by a large margin, is comparable to or exceeds Zero-shot-Program-of-Thought
-Prompting, and has comparable performance with 8-shot CoT prompting on the math
-reasoning problem. The code can be found at
-https://github.com/AGI-Edgerunners/Plan-and-Solve-Prompting.
+**摘要:** 大型语言模型 (LLM) 最近在各种 NLP 任务中表现出了令人印象深刻的性能。为了解决多步推理任务，少样本思维链 (CoT) 提示包含一些手动制作的逐步推理演示，这些演示使 LLM 能够明确生成推理步骤并提高其推理任务的准确性。为了消除手动工作，零样本 CoT 将目标问题陈述与“让我们一步一步思考”连接起来作为输入提示给 LLM。尽管零样本 CoT 取得了成功，但它仍然存在三个缺点：计算错误、缺失步骤错误和语义误解错误。为了解决缺失步骤错误，我们提出了计划与解决 (PS) 提示。它由两个组件组成：首先，制定一项计划将整个任务分解为子任务，然后根据计划执行子任务。为了解决计算错误并提高生成推理步骤的质量，我们扩展了 PS 提示并提供了更详细的指令，并得出了 PS+ 提示。我们在三个推理问题上的十个数据集上评估了我们提出的提示策略。GPT-3 的实验结果表明，我们的零样本提示在所有数据集上的表现始终优于零样本 CoT，并且在数学推理问题上与 8 样本 CoT 提示相当或性能更好。代码可在 https://github.com/AGI-Edgerunners/Plan-and-Solve-Prompting 获取。
                 
 ## Zero-Shot Listwise Document Reranking with a Large Language Model
 
-- **Authors:** Xueguang Ma, Xinyu Zhang, Ronak Pradeep,  et al.
-- **arXiv id:** [2305.02156v1](http://arxiv.org/abs/2305.02156v1)  **Published Date:** 2023-05-03
+- **作者:** Xueguang Ma, Xinyu Zhang, Ronak Pradeep,  et al.
+- **arXiv id:** [2305.02156v1](http://arxiv.org/abs/2305.02156v1)  **发布日期:** 2023-05-03
 - **LangChain:**
 
-   - **Documentation:** [docs/how_to/contextual_compression](https://python.langchain.com/docs/how_to/contextual_compression)
+   - **文档:** [docs/how_to/contextual_compression](https://python.langchain.com/docs/how_to/contextual_compression)
    - **API Reference:** [langchain...LLMListwiseRerank](https://python.langchain.com/api_reference/langchain/retrievers/langchain.retrievers.document_compressors.listwise_rerank.LLMListwiseRerank.html#)
 
-**Abstract:** Supervised ranking methods based on bi-encoder or cross-encoder architectures
-have shown success in multi-stage text ranking tasks, but they require large
-amounts of relevance judgments as training data. In this work, we propose
-Listwise Reranker with a Large Language Model (LRL), which achieves strong
-reranking effectiveness without using any task-specific training data.
-Different from the existing pointwise ranking methods, where documents are
-scored independently and ranked according to the scores, LRL directly generates
-a reordered list of document identifiers given the candidate documents.
-Experiments on three TREC web search datasets demonstrate that LRL not only
-outperforms zero-shot pointwise methods when reranking first-stage retrieval
-results, but can also act as a final-stage reranker to improve the top-ranked
-results of a pointwise method for improved efficiency. Additionally, we apply
-our approach to subsets of MIRACL, a recent multilingual retrieval dataset,
-with results showing its potential to generalize across different languages.
+**摘要:** 基于双编码器或交叉编码器的监督排序方法在多阶段文本排序任务中取得了成功，但它们需要大量的相关性判断作为训练数据。在这项工作中，我们提出了使用大型语言模型进行列表式重排 (LRL)，该模型在不使用任何特定任务训练数据的情况下实现了强大的重排效果。与现有逐点排序方法（其中文档被独立评分并根据分数排序）不同，LRL 在给定候选文档时直接生成重排后的文档标识符列表。在三个 TREC 网络搜索数据集上的实验表明，LRL 不仅在重排第一阶段检索结果时优于零样本逐点方法，而且还可以作为最终阶段重排器来改进逐点方法的排名靠前结果以提高效率。此外，我们将我们的方法应用于 MIRACL 的子集，这是一个最近的多语言检索数据集，结果表明它在不同语言之间具有泛化潜力。
                 
 ## Visual Instruction Tuning
 
-- **Authors:** Haotian Liu, Chunyuan Li, Qingyang Wu,  et al.
-- **arXiv id:** [2304.08485v2](http://arxiv.org/abs/2304.08485v2)  **Published Date:** 2023-04-17
+- **作者:** Haotian Liu, Chunyuan Li, Qingyang Wu,  et al.
+- **arXiv id:** [2304.08485v2](http://arxiv.org/abs/2304.08485v2)  **发布日期:** 2023-04-17
 - **LangChain:**
 
    - **Cookbook:** [Semi_structured_multi_modal_RAG_LLaMA2](https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_structured_multi_modal_RAG_LLaMA2.ipynb), [Semi_structured_and_multi_modal_RAG](https://github.com/langchain-ai/langchain/blob/master/cookbook/Semi_structured_and_multi_modal_RAG.ipynb)
 
-**Abstract:** Instruction tuning large language models (LLMs) using machine-generated
-instruction-following data has improved zero-shot capabilities on new tasks,
-but the idea is less explored in the multimodal field. In this paper, we
-present the first attempt to use language-only GPT-4 to generate multimodal
-language-image instruction-following data. By instruction tuning on such
-generated data, we introduce LLaVA: Large Language and Vision Assistant, an
-end-to-end trained large multimodal model that connects a vision encoder and
-LLM for general-purpose visual and language understanding.Our early experiments
-show that LLaVA demonstrates impressive multimodel chat abilities, sometimes
-exhibiting the behaviors of multimodal GPT-4 on unseen images/instructions, and
-yields a 85.1% relative score compared with GPT-4 on a synthetic multimodal
-instruction-following dataset. When fine-tuned on Science QA, the synergy of
-LLaVA and GPT-4 achieves a new state-of-the-art accuracy of 92.53%. We make
-GPT-4 generated visual instruction tuning data, our model and code base
-publicly available.
+**摘要:** 使用机器生成的指令遵循数据对指令进行微调大型语言模型 (LLM) 能够提高对新任务的零样本能力，但在多模态领域对此的探索较少。在本文中，我们首次尝试使用仅限语言的 GPT-4 来生成多模态语言图像指令遵循数据。通过对此类生成数据进行指令微调，我们引入了 LLaVA：大型语言和视觉助手，这是一个端到端训练的大型多模态模型，它将视觉编码器和 LLM 连接起来，以实现通用视觉和语言理解。我们的早期实验表明，LLaVA 展示了令人印象深刻的多模态聊天能力，有时在未见过的图像/指令上表现出多模态 GPT-4 的行为，并在合成多模态指令遵循数据集上相对于 GPT-4 实现了 85.1% 的相对分数。在 Science QA 上进行微调后，LLaVA 和 GPT-4 的协同作用达到了新的最先进精度 92.53%。我们公开了 GPT-4 生成的视觉指令微调数据、我们的模型和代码库。
                 
 ## Generative Agents: Interactive Simulacra of Human Behavior
 
-- **Authors:** Joon Sung Park, Joseph C. O'Brien, Carrie J. Cai,  et al.
-- **arXiv id:** [2304.03442v2](http://arxiv.org/abs/2304.03442v2)  **Published Date:** 2023-04-07
+- **作者:** Joon Sung Park, Joseph C. O'Brien, Carrie J. Cai,  et al.
+- **arXiv id:** [2304.03442v2](http://arxiv.org/abs/2304.03442v2)  **发布日期:** 2023-04-07
 - **LangChain:**
 
    - **Cookbook:** [generative_agents_interactive_simulacra_of_human_behavior](https://github.com/langchain-ai/langchain/blob/master/cookbook/generative_agents_interactive_simulacra_of_human_behavior.ipynb), [multiagent_bidding](https://github.com/langchain-ai/langchain/blob/master/cookbook/multiagent_bidding.ipynb)
 
-**Abstract:** Believable proxies of human behavior can empower interactive applications
-ranging from immersive environments to rehearsal spaces for interpersonal
-communication to prototyping tools. In this paper, we introduce generative
-agents--computational software agents that simulate believable human behavior.
-Generative agents wake up, cook breakfast, and head to work; artists paint,
-while authors write; they form opinions, notice each other, and initiate
-conversations; they remember and reflect on days past as they plan the next
-day. To enable generative agents, we describe an architecture that extends a
-large language model to store a complete record of the agent's experiences
-using natural language, synthesize those memories over time into higher-level
-reflections, and retrieve them dynamically to plan behavior. We instantiate
-generative agents to populate an interactive sandbox environment inspired by
-The Sims, where end users can interact with a small town of twenty five agents
-using natural language. In an evaluation, these generative agents produce
-believable individual and emergent social behaviors: for example, starting with
-only a single user-specified notion that one agent wants to throw a Valentine's
-Day party, the agents autonomously spread invitations to the party over the
-next two days, make new acquaintances, ask each other out on dates to the
-party, and coordinate to show up for the party together at the right time. We
-demonstrate through ablation that the components of our agent
-architecture--observation, planning, and reflection--each contribute critically
-to the believability of agent behavior. By fusing large language models with
-computational, interactive agents, this work introduces architectural and
-interaction patterns for enabling believable simulations of human behavior.
+**摘要:** 可信的人类行为代理可以为从沉浸式环境到人际沟通排练空间再到原型工具的交互式应用程序提供动力。在本文中，我们介绍了生成式代理——模拟可信人类行为的计算软件代理。生成式代理会醒来，做早餐，然后去上班；艺术家绘画，作家写作；它们形成观点，注意到彼此，并且主动发起对话；它们会记住并反思过去的某一天，同时规划第二天。为了实现生成式代理，我们描述了一个扩展大型语言模型以使用自然语言存储代理的完整经验记录、随着时间的推移将这些记忆综合成更高级别的反思，并动态检索它们来规划行为的架构。我们实例化了生成代理，以填充一个受《模拟人生》启发的交互式沙盒环境，用户可以在其中使用自然语言与大约二十五个代理组成的小镇进行交互。在一次评估中，这些生成代理产生了可信的个体和社会涌现行为：例如，从代理希望举办情人节派对的单一用户指定概念开始，代理在接下来的两天内自主传播派对邀请，结识新朋友，邀请彼此参加派对，并协调一起按时参加派对。我们通过消融研究证明了我们代理架构的每个组件——观察、规划和反思——都对代理行为的可信度至关重要。通过将大型语言模型与计算性交互代理相结合，这项工作引入了代理架构和交互模式，以实现可信的人类行为模拟。
                 
 ## CAMEL: Communicative Agents for "Mind" Exploration of Large Language Model Society
 
-- **Authors:** Guohao Li, Hasan Abed Al Kader Hammoud, Hani Itani,  et al.
-- **arXiv id:** [2303.17760v2](http://arxiv.org/abs/2303.17760v2)  **Published Date:** 2023-03-31
+- **作者:** Guohao Li, Hasan Abed Al Kader Hammoud, Hani Itani,  et al.
+- **arXiv id:** [2303.17760v2](http://arxiv.org/abs/2303.17760v2)  **发布日期:** 2023-03-31
 - **LangChain:**
 
    - **Cookbook:** [camel_role_playing](https://github.com/langchain-ai/langchain/blob/master/cookbook/camel_role_playing.ipynb)
 
-**Abstract:** The rapid advancement of chat-based language models has led to remarkable
-progress in complex task-solving. However, their success heavily relies on
-human input to guide the conversation, which can be challenging and
-time-consuming. This paper explores the potential of building scalable
-techniques to facilitate autonomous cooperation among communicative agents, and
-provides insight into their "cognitive" processes. To address the challenges of
-achieving autonomous cooperation, we propose a novel communicative agent
-framework named role-playing. Our approach involves using inception prompting
-to guide chat agents toward task completion while maintaining consistency with
-human intentions. We showcase how role-playing can be used to generate
-conversational data for studying the behaviors and capabilities of a society of
-agents, providing a valuable resource for investigating conversational language
-models. In particular, we conduct comprehensive studies on
-instruction-following cooperation in multi-agent settings. Our contributions
-include introducing a novel communicative agent framework, offering a scalable
-approach for studying the cooperative behaviors and capabilities of multi-agent
-systems, and open-sourcing our library to support research on communicative
-agents and beyond: https://github.com/camel-ai/camel.
+**摘要:** 聊天式语言模型的快速发展带来了复杂的任务解决能力。然而，它们的成功在很大程度上依赖于人类的输入来指导对话，这可能既耗时又困难。本文探讨了构建可扩展的技术以促进交流 агента 之间的自主协作的可能性，并深入了解它们的“认知”过程。为了解决实现自主协作的挑战，我们提出了一种名为角色扮演的新型交流代理框架。我们的方法涉及使用初始提示来指导聊天代理完成任务，同时保持与人类意图的一致性。我们展示了角色扮演如何用于生成对话数据，以研究代理社会的行为和能力，为研究对话语言模型提供宝贵的资源。特别是，我们在多代理设置中对指令遵循协作进行了全面的研究。我们的贡献包括引入一种新颖的交流代理框架；提供一种研究多代理系统协作行为和能力的可扩展方法；并开源我们的库以支持交流代理及其他方面的研究：https://github.com/camel-ai/camel。
                 
 ## HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face
 
-- **Authors:** Yongliang Shen, Kaitao Song, Xu Tan,  et al.
-- **arXiv id:** [2303.17580v4](http://arxiv.org/abs/2303.17580v4)  **Published Date:** 2023-03-30
+- **作者:** Yongliang Shen, Kaitao Song, Xu Tan,  et al.
+- **arXiv id:** [2303.17580v4](http://arxiv.org/abs/2303.17580v4)  **发布日期:** 2023-03-30
 - **LangChain:**
 
    - **API Reference:** [langchain_experimental.autonomous_agents](https://python.langchain.com/api_reference/experimental/autonomous_agents.html)
    - **Cookbook:** [hugginggpt](https://github.com/langchain-ai/langchain/blob/master/cookbook/hugginggpt.ipynb)
 
-**Abstract:** Solving complicated AI tasks with different domains and modalities is a key
-step toward artificial general intelligence. While there are numerous AI models
-available for various domains and modalities, they cannot handle complicated AI
-tasks autonomously. Considering large language models (LLMs) have exhibited
-exceptional abilities in language understanding, generation, interaction, and
-reasoning, we advocate that LLMs could act as a controller to manage existing
-AI models to solve complicated AI tasks, with language serving as a generic
-interface to empower this. Based on this philosophy, we present HuggingGPT, an
-LLM-powered agent that leverages LLMs (e.g., ChatGPT) to connect various AI
-models in machine learning communities (e.g., Hugging Face) to solve AI tasks.
-Specifically, we use ChatGPT to conduct task planning when receiving a user
-request, select models according to their function descriptions available in
-Hugging Face, execute each subtask with the selected AI model, and summarize
-the response according to the execution results. By leveraging the strong
-language capability of ChatGPT and abundant AI models in Hugging Face,
-HuggingGPT can tackle a wide range of sophisticated AI tasks spanning different
-modalities and domains and achieve impressive results in language, vision,
-speech, and other challenging tasks, which paves a new way towards the
-realization of artificial general intelligence.
+**摘要:** 解决具有不同领域和模态的复杂 AI 任务是实现通用人工智能的关键一步。虽然存在针对各种领域和模态的大量 AI 模型，但它们无法自主处理复杂的 AI 任务。考虑到大型语言模型 (LLM) 在语言理解、生成、交互和推理方面展现出的卓越能力，我们认为 LLM 可以充当控制器，管理现有的 AI 模型来解决复杂的 AI 任务，并以语言作为实现这一目标的通用接口。基于这一理念，我们提出了 HuggingGPT，这是一个由 LLM 驱动的代理，它利用 LLM（如 ChatGPT）来连接机器学习社区（如 Hugging Face）中的各种 AI 模型来解决 AI 任务。具体来说，我们使用 ChatGPT 在接收用户请求时进行任务规划，根据 Hugging Face 中可用的功能描述选择模型，使用选定的 AI 模型执行每个子任务，并根据执行结果总结响应。通过利用 ChatGPT 强大的语言能力和 Hugging Face 中丰富的 AI 模型，HuggingGPT 可以处理跨越不同模态和领域的广泛复杂 AI 任务，并在语言、视觉、语音和其他挑战性任务中取得令人印象深刻的成果，从而为实现通用人工智能铺平了道路。
                 
 ## A Watermark for Large Language Models
 
-- **Authors:** John Kirchenbauer, Jonas Geiping, Yuxin Wen,  et al.
-- **arXiv id:** [2301.10226v4](http://arxiv.org/abs/2301.10226v4)  **Published Date:** 2023-01-24
+- **作者:** John Kirchenbauer, Jonas Geiping, Yuxin Wen,  et al.
+- **arXiv id:** [2301.10226v4](http://arxiv.org/abs/2301.10226v4)  **发布日期:** 2023-01-24
 - **LangChain:**
 
    - **API Reference:** [langchain_community...OCIModelDeploymentTGI](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.oci_data_science_model_deployment_endpoint.OCIModelDeploymentTGI.html#langchain_community.llms.oci_data_science_model_deployment_endpoint.OCIModelDeploymentTGI), [langchain_huggingface...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint), [langchain_community...HuggingFaceTextGenInference](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference.html#langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference), [langchain_community...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint)
 
-**Abstract:** Potential harms of large language models can be mitigated by watermarking
-model output, i.e., embedding signals into generated text that are invisible to
-humans but algorithmically detectable from a short span of tokens. We propose a
-watermarking framework for proprietary language models. The watermark can be
-embedded with negligible impact on text quality, and can be detected using an
-efficient open-source algorithm without access to the language model API or
-parameters. The watermark works by selecting a randomized set of "green" tokens
-before a word is generated, and then softly promoting use of green tokens
-during sampling. We propose a statistical test for detecting the watermark with
-interpretable p-values, and derive an information-theoretic framework for
-analyzing the sensitivity of the watermark. We test the watermark using a
-multi-billion parameter model from the Open Pretrained Transformer (OPT)
-family, and discuss robustness and security.
+**摘要:** 大型语言模型的潜在危害可以通过水印模型输出来缓解，即在生成的文本中嵌入对人类来说是不可见的信号，但可以通过一小段 token 进行算法检测。我们提出了一种用于专有语言模型的水印框架。该水印可以嵌入且对文本质量的影响微乎其微，并且可以使用高效的开源算法进行检测，而无需访问语言模型 API 或参数。该水印的工作原理是在生成单词之前选择一组随机化的“绿色”token，然后通过采样过程软性地鼓励使用绿色 token。我们提出了一种用于解释 p 值的水印检测统计检验，并推导了一个信息论框架来分析水印的灵敏度。我们使用来自 Open Pretrained Transformer (OPT) 系列的多十亿参数模型测试了该水印，并讨论了其鲁棒性和安全性。
                 
 ## Precise Zero-Shot Dense Retrieval without Relevance Labels
 
-- **Authors:** Luyu Gao, Xueguang Ma, Jimmy Lin,  et al.
-- **arXiv id:** [2212.10496v1](http://arxiv.org/abs/2212.10496v1)  **Published Date:** 2022-12-20
+- **作者:** Luyu Gao, Xueguang Ma, Jimmy Lin,  et al.
+- **arXiv id:** [2212.10496v1](http://arxiv.org/abs/2212.10496v1)  **发布日期:** 2022-12-20
 - **LangChain:**
 
-   - **Documentation:** [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/concepts](https://python.langchain.com/docs/concepts)
    - **API Reference:** [langchain...HypotheticalDocumentEmbedder](https://api.python.langchain.com/en/latest/chains/langchain.chains.hyde.base.HypotheticalDocumentEmbedder.html#langchain.chains.hyde.base.HypotheticalDocumentEmbedder)
    - **Template:** [hyde](https://python.langchain.com/docs/templates/hyde)
    - **Cookbook:** [hypothetical_document_embeddings](https://github.com/langchain-ai/langchain/blob/master/cookbook/hypothetical_document_embeddings.ipynb)
 
-**Abstract:** While dense retrieval has been shown effective and efficient across tasks and
-languages, it remains difficult to create effective fully zero-shot dense
-retrieval systems when no relevance label is available. In this paper, we
-recognize the difficulty of zero-shot learning and encoding relevance. Instead,
-we propose to pivot through Hypothetical Document Embeddings~(HyDE). Given a
-query, HyDE first zero-shot instructs an instruction-following language model
-(e.g. InstructGPT) to generate a hypothetical document. The document captures
-relevance patterns but is unreal and may contain false details. Then, an
-unsupervised contrastively learned encoder~(e.g. Contriever) encodes the
-document into an embedding vector. This vector identifies a neighborhood in the
-corpus embedding space, where similar real documents are retrieved based on
-vector similarity. This second step ground the generated document to the actual
-corpus, with the encoder's dense bottleneck filtering out the incorrect
-details. Our experiments show that HyDE significantly outperforms the
-state-of-the-art unsupervised dense retriever Contriever and shows strong
-performance comparable to fine-tuned retrievers, across various tasks (e.g. web
-search, QA, fact verification) and languages~(e.g. sw, ko, ja).
+**摘要:** 虽然密集检索已被证明在各种任务和语言中有效且高效，但在没有相关性标签的情况下，创建有效的完全零样本密集检索系统仍然很困难。在本文中，我们认识到零样本学习和编码相关的难度。相反，我们提出通过假设文档嵌入 (HyDE) 进行转换。给定一个查询，HyDE 首先通过零样本指令来指导指令遵循语言模型（例如 InstructGPT）生成一个假设文档。该文档捕捉了相关性模式，但它不是真实的，并可能包含错误细节。然后，一个无监督对比学习编码器（例如 Contriever）将文档编码为嵌入向量。该向量识别语料库嵌入空间中的一个邻域，其中基于向量相似性检索相似的真实文档。此第二个步骤将生成的文档与实际语料库关联起来，编码器的密集瓶颈筛选掉不正确的细节。我们的实验表明，HyDE 显著优于最先进的无监督密集检索器 Contriever，并在各种任务（例如网络搜索、QA、事实验证）和语言（例如 sw、ko、ja）中展现出与微调检索器相当的强大性能。
                 
 ## Constitutional AI: Harmlessness from AI Feedback
 
-- **Authors:** Yuntao Bai, Saurav Kadavath, Sandipan Kundu,  et al.
-- **arXiv id:** [2212.08073v1](http://arxiv.org/abs/2212.08073v1)  **Published Date:** 2022-12-15
+- **作者:** Yuntao Bai, Saurav Kadavath, Sandipan Kundu,  et al.
+- **arXiv id:** [2212.08073v1](http://arxiv.org/abs/2212.08073v1)  **发布日期:** 2022-12-15
 - **LangChain:**
 
-   - **Documentation:** [docs/versions/migrating_chains/constitutional_chain](https://python.langchain.com/docs/versions/migrating_chains/constitutional_chain)
+   - **文档:** [docs/versions/migrating_chains/constitutional_chain](https://python.langchain.com/docs/versions/migrating_chains/constitutional_chain)
 
-**Abstract:** As AI systems become more capable, we would like to enlist their help to
-supervise other AIs. We experiment with methods for training a harmless AI
-assistant through self-improvement, without any human labels identifying
-harmful outputs. The only human oversight is provided through a list of rules
-or principles, and so we refer to the method as 'Constitutional AI'. The
-process involves both a supervised learning and a reinforcement learning phase.
-In the supervised phase we sample from an initial model, then generate
-self-critiques and revisions, and then finetune the original model on revised
-responses. In the RL phase, we sample from the finetuned model, use a model to
-evaluate which of the two samples is better, and then train a preference model
-from this dataset of AI preferences. We then train with RL using the preference
-model as the reward signal, i.e. we use 'RL from AI Feedback' (RLAIF). As a
-result we are able to train a harmless but non-evasive AI assistant that
-engages with harmful queries by explaining its objections to them. Both the SL
-and RL methods can leverage chain-of-thought style reasoning to improve the
-human-judged performance and transparency of AI decision making. These methods
-make it possible to control AI behavior more precisely and with far fewer human
-labels.
+**摘要:** 随着人工智能系统的能力越来越强，我们希望利用它们的帮助来监管其他人工智能。我们尝试通过自我改进来训练一个无害的 AI 助手的方法，而无需任何识别有害输出的人类标签。唯一的人工监督是通过一系列规则或原则提供的，因此我们将这种方法称为“宪法 AI”。该过程同时涉及监督学习和强化学习阶段。在监督阶段，我们从初始模型进行采样，然后生成自我批评和修订，最后在修订后的响应上微调原始模型。在 RL 阶段，我们从微调模型进行采样，使用模型来评估哪个样本更好，然后从该 AI 偏好数据集中训练一个偏好模型。然后我们使用偏好模型作为奖励信号进行 RL 训练，即我们使用“来自 AI 反馈的 RL”（RLAIF）。结果是我们能够训练一个无害但不回避的 AI 助手，它通过解释其对有害查询的反对意见来回应。SL 和 RL 方法都可以利用思维链式推理来提高人类评估的性能和 AI 决策过程的透明度。这些方法使得能够更精确地控制 AI 行为，并且需要更少的人类标签。
                 
 ## Robust and Explainable Identification of Logical Fallacies in Natural Language Arguments
 
-- **Authors:** Zhivar Sourati, Vishnu Priya Prasanna Venkatesh, Darshan Deshpande,  et al.
-- **arXiv id:** [2212.07425v3](http://arxiv.org/abs/2212.07425v3)  **Published Date:** 2022-12-12
+- **作者:** Zhivar Sourati, Vishnu Priya Prasanna Venkatesh, Darshan Deshpande,  et al.
+- **arXiv id:** [2212.07425v3](http://arxiv.org/abs/2212.07425v3)  **发布日期:** 2022-12-12
 - **LangChain:**
 
    - **API Reference:** [langchain_experimental.fallacy_removal](https://python.langchain.com/api_reference/experimental/fallacy_removal.html)
 
-**Abstract:** The spread of misinformation, propaganda, and flawed argumentation has been
-amplified in the Internet era. Given the volume of data and the subtlety of
-identifying violations of argumentation norms, supporting information analytics
-tasks, like content moderation, with trustworthy methods that can identify
-logical fallacies is essential. In this paper, we formalize prior theoretical
-work on logical fallacies into a comprehensive three-stage evaluation framework
-of detection, coarse-grained, and fine-grained classification. We adapt
-existing evaluation datasets for each stage of the evaluation. We employ three
-families of robust and explainable methods based on prototype reasoning,
-instance-based reasoning, and knowledge injection. The methods combine language
-models with background knowledge and explainable mechanisms. Moreover, we
-address data sparsity with strategies for data augmentation and curriculum
-learning. Our three-stage framework natively consolidates prior datasets and
-methods from existing tasks, like propaganda detection, serving as an
-overarching evaluation testbed. We extensively evaluate these methods on our
-datasets, focusing on their robustness and explainability. Our results provide
-insight into the strengths and weaknesses of the methods on different
-components and fallacy classes, indicating that fallacy identification is a
-challenging task that may require specialized forms of reasoning to capture
-various classes. We share our open-source code and data on GitHub to support
-further work on logical fallacy identification.
+**摘要:** 在互联网时代，错误信息、宣传和有缺陷的论证的传播得到了放大。考虑到数据量和识别论证规范违规行为的微妙性，支持信息分析任务（如内容审核）需要能够识别逻辑谬误的可靠方法至关重要。在本文中，我们将先前的关于逻辑谬误的理论工作形式化为一个全面的三阶段检测、粗粒度和细粒度分类评估框架。我们为每个评估阶段改编现有的评估数据集。我们采用了基于原型推理、实例推理和知识注入的三种稳健且可解释的方法。这些方法将语言模型与背景知识和可解释机制相结合。此外，我们通过数据增强和课程学习策略来解决数据稀疏性问题。我们的三阶段框架本身就整合了先前任务（如宣传检测）的数据集和方法，作为一个总括性的评估测试平台。我们在数据集上广泛评估了这些方法，重点关注它们的鲁棒性和可解释性。我们的结果为这些方法在不同组件和谬误类别上的优缺点提供了见解，表明谬误识别是一项具有挑战性的任务，可能需要专门的推理形式来捕捉各种谬误类别。我们将在 GitHub 上分享我们的开源代码和数据，以支持逻辑谬误识别的进一步工作。
                 
 ## Complementary Explanations for Effective In-Context Learning
 
-- **Authors:** Xi Ye, Srinivasan Iyer, Asli Celikyilmaz,  et al.
-- **arXiv id:** [2211.13892v2](http://arxiv.org/abs/2211.13892v2)  **Published Date:** 2022-11-25
+- **作者:** Xi Ye, Srinivasan Iyer, Asli Celikyilmaz,  et al.
+- **arXiv id:** [2211.13892v2](http://arxiv.org/abs/2211.13892v2)  **发布日期:** 2022-11-25
 - **LangChain:**
 
    - **API Reference:** [langchain_core...MaxMarginalRelevanceExampleSelector](https://api.python.langchain.com/en/latest/example_selectors/langchain_core.example_selectors.semantic_similarity.MaxMarginalRelevanceExampleSelector.html#langchain_core.example_selectors.semantic_similarity.MaxMarginalRelevanceExampleSelector)
 
-**Abstract:** Large language models (LLMs) have exhibited remarkable capabilities in
-learning from explanations in prompts, but there has been limited understanding
-of exactly how these explanations function or why they are effective. This work
-aims to better understand the mechanisms by which explanations are used for
-in-context learning. We first study the impact of two different factors on the
-performance of prompts with explanations: the computation trace (the way the
-solution is decomposed) and the natural language used to express the prompt. By
-perturbing explanations on three controlled tasks, we show that both factors
-contribute to the effectiveness of explanations. We further study how to form
-maximally effective sets of explanations for solving a given test query. We
-find that LLMs can benefit from the complementarity of the explanation set:
-diverse reasoning skills shown by different exemplars can lead to better
-performance. Therefore, we propose a maximal marginal relevance-based exemplar
-selection approach for constructing exemplar sets that are both relevant as
-well as complementary, which successfully improves the in-context learning
-performance across three real-world tasks on multiple LLMs.
+**摘要:** 大型语言模型 (LLM) 在从提示中的解释中学习方面表现出非凡的能力，但对于这些解释是如何起作用的或为什么它们有效，人们的理解仍然有限。这项工作旨在更好地理解解释用于上下文学习的机制。我们首先研究了两个不同因素对带有解释的提示性能的影响：计算轨迹（解决方案的分解方式）以及用于表达提示的自然语言。通过在三个受控任务上扰动解释，我们表明这两个因素都对解释的有效性有所贡献。我们进一步研究了如何形成最有效的解释集来解决给定的测试查询。我们发现 LLM 可以从解释集的互补性中受益：不同示例者展示的多样化推理技能可以带来更好的性能。因此，我们提出了一种最大边际相关性驱动的示例选择方法，用于构建既相关又互补的示例集，该方法在多个 LLM 的三个真实世界任务中成功地提高了上下文学习性能。
                 
 ## PAL: Program-aided Language Models
 
-- **Authors:** Luyu Gao, Aman Madaan, Shuyan Zhou,  et al.
-- **arXiv id:** [2211.10435v2](http://arxiv.org/abs/2211.10435v2)  **Published Date:** 2022-11-18
+- **作者:** Luyu Gao, Aman Madaan, Shuyan Zhou,  et al.
+- **arXiv id:** [2211.10435v2](http://arxiv.org/abs/2211.10435v2)  **发布日期:** 2022-11-18
 - **LangChain:**
 
    - **API Reference:** [langchain_experimental.pal_chain](https://python.langchain.com/api_reference/experimental/pal_chain.html), [langchain_experimental...PALChain](https://api.python.langchain.com/en/latest/pal_chain/langchain_experimental.pal_chain.base.PALChain.html#langchain_experimental.pal_chain.base.PALChain)
    - **Cookbook:** [program_aided_language_model](https://github.com/langchain-ai/langchain/blob/master/cookbook/program_aided_language_model.ipynb)
 
-**Abstract:** Large language models (LLMs) have recently demonstrated an impressive ability
-to perform arithmetic and symbolic reasoning tasks, when provided with a few
-examples at test time ("few-shot prompting"). Much of this success can be
-attributed to prompting methods such as "chain-of-thought'', which employ LLMs
-for both understanding the problem description by decomposing it into steps, as
-well as solving each step of the problem. While LLMs seem to be adept at this
-sort of step-by-step decomposition, LLMs often make logical and arithmetic
-mistakes in the solution part, even when the problem is decomposed correctly.
-In this paper, we present Program-Aided Language models (PAL): a novel approach
-that uses the LLM to read natural language problems and generate programs as
-the intermediate reasoning steps, but offloads the solution step to a runtime
-such as a Python interpreter. With PAL, decomposing the natural language
-problem into runnable steps remains the only learning task for the LLM, while
-solving is delegated to the interpreter. We demonstrate this synergy between a
-neural LLM and a symbolic interpreter across 13 mathematical, symbolic, and
-algorithmic reasoning tasks from BIG-Bench Hard and other benchmarks. In all
-these natural language reasoning tasks, generating code using an LLM and
-reasoning using a Python interpreter leads to more accurate results than much
-larger models. For example, PAL using Codex achieves state-of-the-art few-shot
-accuracy on the GSM8K benchmark of math word problems, surpassing PaLM-540B
-which uses chain-of-thought by absolute 15% top-1. Our code and data are
-publicly available at http://reasonwithpal.com/ .
+**摘要:** 大型语言模型 (LLM) 最近在提供少量测试示例（“少样本提示”）时，在执行算术和符号推理任务方面表现出了令人印象深刻的能力。这种成功很大程度上归功于诸如“思维链”之类的提示方法，它利用 LLM 来理解问题描述并将其分解为步骤，以及解决问题的每个步骤。虽然 LLM 在这种逐步分解方面似乎很擅长，但 LLM 经常在解决方案部分犯逻辑和算术错误，即使问题被正确分解了。在本文中，我们提出了程序辅助语言模型 (PAL)：一种新颖的方法，它使用 LLM 读取自然语言问题并生成程序作为中间推理步骤，但将解决方案步骤外包给 Python 解释器等运行时环境中。通过 PAL，将自然语言问题分解为可运行的步骤仍然是 LLM 唯一的学习任务，而解决方案则委托给解释器。我们在来自 BIG-Bench Hard 和其他基准的 13 个数学、符号和算法推理任务中展示了神经 LLM 和符号解释器之间的协同作用。在所有这些自然语言推理任务中，使用 Codex 生成代码并通过 Python 解释器进行推理，可以获得比大得多的模型更准确的结果。例如，使用 Codex 的 PAL 在数学应用题的 GSM8K 基准测试中取得了最先进的少样本准确率，在顶尖 1 上比使用思维链的 PaLM-540B 高出绝对 15%。我们的代码和数据可在 http://reasonwithpal.com/ 获取。
                 
 ## An Analysis of Fusion Functions for Hybrid Retrieval
 
-- **Authors:** Sebastian Bruch, Siyu Gai, Amir Ingber
-- **arXiv id:** [2210.11934v2](http://arxiv.org/abs/2210.11934v2)  **Published Date:** 2022-10-21
+- **作者:** Sebastian Bruch, Siyu Gai, Amir Ingber
+- **arXiv id:** [2210.11934v2](http://arxiv.org/abs/2210.11934v2)  **发布日期:** 2022-10-21
 - **LangChain:**
 
-   - **Documentation:** [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/concepts](https://python.langchain.com/docs/concepts)
 
-**Abstract:** We study hybrid search in text retrieval where lexical and semantic search
-are fused together with the intuition that the two are complementary in how
-they model relevance. In particular, we examine fusion by a convex combination
-(CC) of lexical and semantic scores, as well as the Reciprocal Rank Fusion
-(RRF) method, and identify their advantages and potential pitfalls. Contrary to
-existing studies, we find RRF to be sensitive to its parameters; that the
-learning of a CC fusion is generally agnostic to the choice of score
-normalization; that CC outperforms RRF in in-domain and out-of-domain settings;
-and finally, that CC is sample efficient, requiring only a small set of
-training examples to tune its only parameter to a target domain.
+**摘要:** 我们研究了文本检索中的混合搜索，其中词汇搜索和语义搜索被融合在一起，其直觉是这两种方法在建模相关性方面是互补的。特别是，我们研究了通过词汇和语义分数的凸组合 (CC) 以及倒数排名融合 (RRF) 方法进行的融合，并确定了它们的优点和潜在的陷阱。与现有研究相反，我们发现 RRF 对其参数敏感；学习 CC 融合通常与分数归一化的选择无关；CC 在模型内部和模型外部设置中都优于 RRF；最后，CC 样本效率高，只需要少量训练示例即可将唯一的参数调整到目标域。
                 
 ## ReAct: Synergizing Reasoning and Acting in Language Models
 
-- **Authors:** Shunyu Yao, Jeffrey Zhao, Dian Yu,  et al.
-- **arXiv id:** [2210.03629v3](http://arxiv.org/abs/2210.03629v3)  **Published Date:** 2022-10-06
+- **作者:** Shunyu Yao, Jeffrey Zhao, Dian Yu,  et al.
+- **arXiv id:** [2210.03629v3](http://arxiv.org/abs/2210.03629v3)  **发布日期:** 2022-10-06
 - **LangChain:**
 
-   - **Documentation:** [docs/integrations/tools/ionic_shopping](https://python.langchain.com/docs/integrations/tools/ionic_shopping), [docs/integrations/providers/cohere](https://python.langchain.com/docs/integrations/providers/cohere), [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/integrations/tools/ionic_shopping](https://python.langchain.com/docs/integrations/tools/ionic_shopping), [docs/integrations/providers/cohere](https://python.langchain.com/docs/integrations/providers/cohere), [docs/concepts](https://python.langchain.com/docs/concepts)
    - **API Reference:** [langchain...create_react_agent](https://api.python.langchain.com/en/latest/agents/langchain.agents.react.agent.create_react_agent.html#langchain.agents.react.agent.create_react_agent), [langchain...TrajectoryEvalChain](https://api.python.langchain.com/en/latest/evaluation/langchain.evaluation.agents.trajectory_eval_chain.TrajectoryEvalChain.html#langchain.evaluation.agents.trajectory_eval_chain.TrajectoryEvalChain)
 
-**Abstract:** While large language models (LLMs) have demonstrated impressive capabilities
-across tasks in language understanding and interactive decision making, their
-abilities for reasoning (e.g. chain-of-thought prompting) and acting (e.g.
-action plan generation) have primarily been studied as separate topics. In this
-paper, we explore the use of LLMs to generate both reasoning traces and
-task-specific actions in an interleaved manner, allowing for greater synergy
-between the two: reasoning traces help the model induce, track, and update
-action plans as well as handle exceptions, while actions allow it to interface
-with external sources, such as knowledge bases or environments, to gather
-additional information. We apply our approach, named ReAct, to a diverse set of
-language and decision making tasks and demonstrate its effectiveness over
-state-of-the-art baselines, as well as improved human interpretability and
-trustworthiness over methods without reasoning or acting components.
-Concretely, on question answering (HotpotQA) and fact verification (Fever),
-ReAct overcomes issues of hallucination and error propagation prevalent in
-chain-of-thought reasoning by interacting with a simple Wikipedia API, and
-generates human-like task-solving trajectories that are more interpretable than
-baselines without reasoning traces. On two interactive decision making
-benchmarks (ALFWorld and WebShop), ReAct outperforms imitation and
-reinforcement learning methods by an absolute success rate of 34% and 10%
-respectively, while being prompted with only one or two in-context examples.
-Project site with code: https://react-lm.github.io
+**摘要:** 虽然大型语言模型 (LLM) 在语言理解和交互式决策制定等任务中展现了令人印象深刻的能力，但它们进行推理（例如，思维链提示）和行动（例如，动作规划生成）的能力主要被作为独立主题进行研究。在本文中，我们探索了使用 LLM 以交错方式同时生成推理痕迹和特定任务动作的方法，从而实现两者之间更大的协同作用：推理痕迹有助于模型归纳、跟踪和更新动作计划以及处理异常，而动作允许它与外部源（例如知识库或环境）进行接口以收集额外信息。我们将我们的方法命名为 ReAct，应用于各种语言和决策制定任务，并证明其在最先进的基线之上是有效的，并且与没有推理或行动组件的方法相比，提高了人类的可解释性和可信度。具体而言，在问答（HotpotQA）和事实验证（Fever）任务上，ReAct 通过与简单的 Wikipedia API 交互，克服了思维链推理中普遍存在的幻觉和错误传播问题，并生成类似人类的任务解决轨迹，这些轨迹比没有推理痕迹的方法更具可解释性。在两个交互式决策制定基准（ALFWorld 和 WebShop）上，ReAct 的成功率分别比模仿和强化学习方法高出 34% 和 10%，而仅使用了少量的上下文示例作为提示。项目网站和代码：https://react-lm.github.io
                 
 ## Deep Lake: a Lakehouse for Deep Learning
 
-- **Authors:** Sasun Hambardzumyan, Abhinav Tuli, Levon Ghukasyan,  et al.
-- **arXiv id:** [2209.10785v2](http://arxiv.org/abs/2209.10785v2)  **Published Date:** 2022-09-22
+- **作者:** Sasun Hambardzumyan, Abhinav Tuli, Levon Ghukasyan,  et al.
+- **arXiv id:** [2209.10785v2](http://arxiv.org/abs/2209.10785v2)  **发布日期:** 2022-09-22
 - **LangChain:**
 
-   - **Documentation:** [docs/integrations/providers/activeloop_deeplake](https://python.langchain.com/docs/integrations/providers/activeloop_deeplake)
+   - **文档:** [docs/integrations/providers/activeloop_deeplake](https://python.langchain.com/docs/integrations/providers/activeloop_deeplake)
 
-**Abstract:** Traditional data lakes provide critical data infrastructure for analytical
-workloads by enabling time travel, running SQL queries, ingesting data with
-ACID transactions, and visualizing petabyte-scale datasets on cloud storage.
-They allow organizations to break down data silos, unlock data-driven
-decision-making, improve operational efficiency, and reduce costs. However, as
-deep learning usage increases, traditional data lakes are not well-designed for
-applications such as natural language processing (NLP), audio processing,
-computer vision, and applications involving non-tabular datasets. This paper
-presents Deep Lake, an open-source lakehouse for deep learning applications
-developed at Activeloop. Deep Lake maintains the benefits of a vanilla data
-lake with one key difference: it stores complex data, such as images, videos,
-annotations, as well as tabular data, in the form of tensors and rapidly
-streams the data over the network to (a) Tensor Query Language, (b) in-browser
-visualization engine, or (c) deep learning frameworks without sacrificing GPU
-utilization. Datasets stored in Deep Lake can be accessed from PyTorch,
-TensorFlow, JAX, and integrate with numerous MLOps tools.
+**摘要:** 传统数据湖通过提供时间旅行、运行 SQL 查询、通过 ACID 事务摄取数据以及可视化云存储上的 PB 级数据集等功能，为分析工作负载提供关键数据基础设施。它们使组织能够打破数据孤岛，实现数据驱动的决策，提高运营效率并降低成本。然而，随着深度学习使用的增加，传统数据湖对于自然语言处理 (NLP)、音频处理、计算机视觉以及涉及非表格数据集的应用等应用来说并非设计得当。本文介绍了 Deep Lake，一个由 Activeloop 开发的用于深度学习应用的开源湖仓。Deep Lake 保持了普通数据湖的优点，但有一个关键区别：它以张量的形式存储图像、视频、注释以及表格数据等复杂数据，并通过网络快速流式传输数据到 (a) 张量查询语言、(b) 浏览器内可视化引擎或 (c) 深度学习框架，而不会牺牲 GPU 利用率。存储在 Deep Lake 中的数据集可以从 PyTorch、TensorFlow、JAX 中访问，并与大量的 MLOps 工具集成。
                 
 ## Matryoshka Representation Learning
 
-- **Authors:** Aditya Kusupati, Gantavya Bhatt, Aniket Rege,  et al.
-- **arXiv id:** [2205.13147v4](http://arxiv.org/abs/2205.13147v4)  **Published Date:** 2022-05-26
+- **作者:** Aditya Kusupati, Gantavya Bhatt, Aniket Rege,  et al.
+- **arXiv id:** [2205.13147v4](http://arxiv.org/abs/2205.13147v4)  **发布日期:** 2022-05-26
 - **LangChain:**
 
-   - **Documentation:** [docs/integrations/providers/snowflake](https://python.langchain.com/docs/integrations/providers/snowflake)
+   - **文档:** [docs/integrations/providers/snowflake](https://python.langchain.com/docs/integrations/providers/snowflake)
 
-**Abstract:** Learned representations are a central component in modern ML systems, serving
-a multitude of downstream tasks. When training such representations, it is
-often the case that computational and statistical constraints for each
-downstream task are unknown. In this context rigid, fixed capacity
-representations can be either over or under-accommodating to the task at hand.
-This leads us to ask: can we design a flexible representation that can adapt to
-multiple downstream tasks with varying computational resources? Our main
-contribution is Matryoshka Representation Learning (MRL) which encodes
-information at different granularities and allows a single embedding to adapt
-to the computational constraints of downstream tasks. MRL minimally modifies
-existing representation learning pipelines and imposes no additional cost
-during inference and deployment. MRL learns coarse-to-fine representations that
-are at least as accurate and rich as independently trained low-dimensional
-representations. The flexibility within the learned Matryoshka Representations
-offer: (a) up to 14x smaller embedding size for ImageNet-1K classification at
-the same level of accuracy; (b) up to 14x real-world speed-ups for large-scale
-retrieval on ImageNet-1K and 4K; and (c) up to 2% accuracy improvements for
-long-tail few-shot classification, all while being as robust as the original
-representations. Finally, we show that MRL extends seamlessly to web-scale
-datasets (ImageNet, JFT) across various modalities -- vision (ViT, ResNet),
-vision + language (ALIGN) and language (BERT). MRL code and pretrained models
-are open-sourced at https://github.com/RAIVNLab/MRL.
+**摘要:** 学习到的表示是现代机器学习系统的重要组成部分，服务于多种下游任务。在训练此类表示时，每个下游任务的计算和统计约束通常是未知的。在此背景下，僵化的、固定容量的表示可能对当前任务过于 أو 容纳不足。这使我们思考：我们能否设计一种灵活的表示，能够适应具有不同计算资源的多个下游任务？我们的主要贡献是 Matryoshka Representation Learning (MRL)，它以不同的粒度编码信息，并允许单个嵌入适应下游任务的计算约束。MRL 对现有的表示学习管道进行了最小的修改，并且在推理和部署过程中不增加额外成本。MRL 学习了粗粒度到细粒度的表示，其准确性和丰富性至少与独立训练的低维表示相当。学习到的 Matryoshka 表示的灵活性提供：(a) 在相同的准确性水平下，将 ImageNet-1K 分类的嵌入大小减小高达 14 倍；(b) 在 ImageNet-1K 和 4K 上进行大规模检索时，实际速度提高高达 14 倍；以及 (c) 在长尾少样本分类中准确率提高高达 2%，同时保持与原始表示相同的稳健性。最后，我们展示了 MRL 如何无缝扩展到跨多种模态的 Web 规模数据集（ImageNet、JFT）——视觉（ViT、ResNet）、视觉+语言（ALIGN）和语言（BERT）。MRL 的代码和预训练模型均已开源，网址为 https://github.com/RAIVNLab/MRL。
                 
 ## Bitext Mining Using Distilled Sentence Representations for Low-Resource Languages
 
-- **Authors:** Kevin Heffernan, Onur Çelebi, Holger Schwenk
-- **arXiv id:** [2205.12654v1](http://arxiv.org/abs/2205.12654v1)  **Published Date:** 2022-05-25
+- **作者:** Kevin Heffernan, Onur Çelebi, Holger Schwenk
+- **arXiv id:** [2205.12654v1](http://arxiv.org/abs/2205.12654v1)  **发布日期:** 2022-05-25
 - **LangChain:**
 
    - **API Reference:** [langchain_community...LaserEmbeddings](https://api.python.langchain.com/en/latest/embeddings/langchain_community.embeddings.laser.LaserEmbeddings.html#langchain_community.embeddings.laser.LaserEmbeddings)
 
-**Abstract:** Scaling multilingual representation learning beyond the hundred most frequent
-languages is challenging, in particular to cover the long tail of low-resource
-languages. A promising approach has been to train one-for-all multilingual
-models capable of cross-lingual transfer, but these models often suffer from
-insufficient capacity and interference between unrelated languages. Instead, we
-move away from this approach and focus on training multiple language (family)
-specific representations, but most prominently enable all languages to still be
-encoded in the same representational space. To achieve this, we focus on
-teacher-student training, allowing all encoders to be mutually compatible for
-bitext mining, and enabling fast learning of new languages. We introduce a new
-teacher-student training scheme which combines supervised and self-supervised
-training, allowing encoders to take advantage of monolingual training data,
-which is valuable in the low-resource setting.
-  Our approach significantly outperforms the original LASER encoder. We study
-very low-resource languages and handle 50 African languages, many of which are
-not covered by any other model. For these languages, we train sentence
-encoders, mine bitexts, and validate the bitexts by training NMT systems.
+**摘要:** 将多语言表示学习扩展到前一百种最常用语言之外是一个挑战，特别是要覆盖低资源语言的长尾。一种有前途的方法是训练一种“包罗万象”的多语言模型，该模型能够跨语言迁移，但这些模型通常缺乏足够的容量，并且不同语言之间会相互干扰。相反，我们放弃了这种方法，转而专注于训练多种语言（或语系）特定的表示，但最重要的是使所有语言都能在相同的表示空间中进行编码。为了实现这一点，我们专注于教师-学生训练，使所有编码器都能相互兼容以进行位文本挖掘，并支持快速学习新语言。我们引入了一种新的教师-学生训练方案，该方案结合了监督和自监督训练，使编码器能够利用单语训练数据，这在低资源设置中非常宝贵。
+我们的方法显著优于原始的 LASER 编码器。我们研究了极低资源语言，并处理了 50 种非洲语言，其中许多语言没有其他模型覆盖。对于这些语言，我们训练了句子编码器，挖掘了位文本，并通过训练 NMT 系统验证了位文本。
                 
 ## Evaluating the Text-to-SQL Capabilities of Large Language Models
 
-- **Authors:** Nitarshan Rajkumar, Raymond Li, Dzmitry Bahdanau
-- **arXiv id:** [2204.00498v1](http://arxiv.org/abs/2204.00498v1)  **Published Date:** 2022-03-15
+- **作者:** Nitarshan Rajkumar, Raymond Li, Dzmitry Bahdanau
+- **arXiv id:** [2204.00498v1](http://arxiv.org/abs/2204.00498v1)  **发布日期:** 2022-03-15
 - **LangChain:**
 
-   - **Documentation:** [docs/tutorials/sql_qa](https://python.langchain.com/docs/tutorials/sql_qa)
+   - **文档:** [docs/tutorials/sql_qa](https://python.langchain.com/docs/tutorials/sql_qa)
    - **API Reference:** [langchain_community...SQLDatabase](https://api.python.langchain.com/en/latest/utilities/langchain_community.utilities.sql_database.SQLDatabase.html#langchain_community.utilities.sql_database.SQLDatabase), [langchain_community...SparkSQL](https://api.python.langchain.com/en/latest/utilities/langchain_community.utilities.spark_sql.SparkSQL.html#langchain_community.utilities.spark_sql.SparkSQL)
 
-**Abstract:** We perform an empirical evaluation of Text-to-SQL capabilities of the Codex
-language model. We find that, without any finetuning, Codex is a strong
-baseline on the Spider benchmark; we also analyze the failure modes of Codex in
-this setting. Furthermore, we demonstrate on the GeoQuery and Scholar
-benchmarks that a small number of in-domain examples provided in the prompt
-enables Codex to perform better than state-of-the-art models finetuned on such
-few-shot examples.
+**摘要:** 我们对 Codex 语言模型的 Text-to-SQL 能力进行了实证评估。我们发现，在没有任何微调的情况下，Codex 在 Spider 基准上是一个强大的基线；我们还分析了 Codex 在此设置下的失败模式。此外，我们在 GeoQuery 和 Scholar 基准上证明，在提示中提供少量特定领域示例可以使 Codex 的表现优于在这些少样本示例上进行微调的最先进模型。
                 
 ## Locally Typical Sampling
 
-- **Authors:** Clara Meister, Tiago Pimentel, Gian Wiher,  et al.
-- **arXiv id:** [2202.00666v5](http://arxiv.org/abs/2202.00666v5)  **Published Date:** 2022-02-01
+- **作者:** Clara Meister, Tiago Pimentel, Gian Wiher,  et al.
+- **arXiv id:** [2202.00666v5](http://arxiv.org/abs/2202.00666v5)  **发布日期:** 2022-02-01
 - **LangChain:**
 
    - **API Reference:** [langchain_huggingface...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint), [langchain_community...HuggingFaceTextGenInference](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference.html#langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference), [langchain_community...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint)
 
-**Abstract:** Today's probabilistic language generators fall short when it comes to
-producing coherent and fluent text despite the fact that the underlying models
-perform well under standard metrics, e.g., perplexity. This discrepancy has
-puzzled the language generation community for the last few years. In this work,
-we posit that the abstraction of natural language generation as a discrete
-stochastic process--which allows for an information-theoretic analysis--can
-provide new insights into the behavior of probabilistic language generators,
-e.g., why high-probability texts can be dull or repetitive. Humans use language
-as a means of communicating information, aiming to do so in a simultaneously
-efficient and error-minimizing manner; in fact, psycholinguistics research
-suggests humans choose each word in a string with this subconscious goal in
-mind. We formally define the set of strings that meet this criterion: those for
-which each word has an information content close to the expected information
-content, i.e., the conditional entropy of our model. We then propose a simple
-and efficient procedure for enforcing this criterion when generating from
-probabilistic models, which we call locally typical sampling. Automatic and
-human evaluations show that, in comparison to nucleus and top-k sampling,
-locally typical sampling offers competitive performance (in both abstractive
-summarization and story generation) in terms of quality while consistently
-reducing degenerate repetitions.
+**摘要:** 尽管基础模型在标准指标（例如困惑度）下表现良好，但当今的概率语言生成器在生成连贯流畅的文本方面仍然不尽人意。这种差异令语言生成社区感到困惑已有数年。在这项工作中，我们认为将自然语言生成抽象化为一个离散随机过程——这允许进行信息论分析——可以提供对概率语言生成器行为的新见解，例如，为什么高概率文本可能乏味或重复。人类使用语言作为交流信息的手段，旨在以一种同时高效且最小化错误的方式进行；事实上，心理语言学研究表明，人类在潜意识中以这个目标来选择字符串中的每个单词。我们正式定义了满足此标准的字符串集：那些其中每个单词的信息含量接近预期信息含量，即我们模型的条件熵。然后，我们提出了一种在从概率模型生成时强制执行此标准的简单有效的方法，我们称之为局部典型采样。自动和人工评估表明，与 nucleus 采样和 top-k 采样相比，局部典型采样在质量方面提供了具有竞争力的性能（在摘要和故事生成方面），同时持续减少了退化性重复。
                 
 ## ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction
 
-- **Authors:** Keshav Santhanam, Omar Khattab, Jon Saad-Falcon,  et al.
-- **arXiv id:** [2112.01488v3](http://arxiv.org/abs/2112.01488v3)  **Published Date:** 2021-12-02
+- **作者:** Keshav Santhanam, Omar Khattab, Jon Saad-Falcon,  et al.
+- **arXiv id:** [2112.01488v3](http://arxiv.org/abs/2112.01488v3)  **发布日期:** 2021-12-02
 - **LangChain:**
 
-   - **Documentation:** [docs/integrations/retrievers/ragatouille](https://python.langchain.com/docs/integrations/retrievers/ragatouille), [docs/integrations/providers/ragatouille](https://python.langchain.com/docs/integrations/providers/ragatouille), [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/integrations/retrievers/ragatouille](https://python.langchain.com/docs/integrations/retrievers/ragatouille), [docs/integrations/providers/ragatouille](https://python.langchain.com/docs/integrations/providers/ragatouille), [docs/concepts](https://python.langchain.com/docs/concepts)
 
-**Abstract:** Neural information retrieval (IR) has greatly advanced search and other
-knowledge-intensive language tasks. While many neural IR methods encode queries
-and documents into single-vector representations, late interaction models
-produce multi-vector representations at the granularity of each token and
-decompose relevance modeling into scalable token-level computations. This
-decomposition has been shown to make late interaction more effective, but it
-inflates the space footprint of these models by an order of magnitude. In this
-work, we introduce ColBERTv2, a retriever that couples an aggressive residual
-compression mechanism with a denoised supervision strategy to simultaneously
-improve the quality and space footprint of late interaction. We evaluate
-ColBERTv2 across a wide range of benchmarks, establishing state-of-the-art
-quality within and outside the training domain while reducing the space
-footprint of late interaction models by 6--10$\times$.
+**摘要:** 神经信息检索 (IR) 已极大地推进了搜索和其他知识密集型语言任务。虽然许多神经 IR 方法将查询和文档编码为单个向量表示，但后期交互模型会以每个 token 的粒度生成多向量表示，并将相关性建模分解为可扩展的 token 级计算。这种分解已被证明可以使后期交互更有效，但它将这些模型的空间占用量增加了十倍。在这项工作中，我们介绍了 ColBERTv2，这是一种检索器，它将积极的残差压缩机制与去噪监督策略相结合，同时提高后期交互的质量和空间占用量。我们在广泛的基准上评估了 ColBERTv2，在训练域内外建立了最先进的质量，同时将后期交互模型的空间占用量减少了 6-10 倍。
                 
 ## Learning Transferable Visual Models From Natural Language Supervision
 
-- **Authors:** Alec Radford, Jong Wook Kim, Chris Hallacy,  et al.
-- **arXiv id:** [2103.00020v1](http://arxiv.org/abs/2103.00020v1)  **Published Date:** 2021-02-26
+- **作者:** Alec Radford, Jong Wook Kim, Chris Hallacy,  et al.
+- **arXiv id:** [2103.00020v1](http://arxiv.org/abs/2103.00020v1)  **发布日期:** 2021-02-26
 - **LangChain:**
 
    - **API Reference:** [langchain_experimental.open_clip](https://python.langchain.com/api_reference/experimental/open_clip.html)
 
-**Abstract:** State-of-the-art computer vision systems are trained to predict a fixed set
-of predetermined object categories. This restricted form of supervision limits
-their generality and usability since additional labeled data is needed to
-specify any other visual concept. Learning directly from raw text about images
-is a promising alternative which leverages a much broader source of
-supervision. We demonstrate that the simple pre-training task of predicting
-which caption goes with which image is an efficient and scalable way to learn
-SOTA image representations from scratch on a dataset of 400 million (image,
-text) pairs collected from the internet. After pre-training, natural language
-is used to reference learned visual concepts (or describe new ones) enabling
-zero-shot transfer of the model to downstream tasks. We study the performance
-of this approach by benchmarking on over 30 different existing computer vision
-datasets, spanning tasks such as OCR, action recognition in videos,
-geo-localization, and many types of fine-grained object classification. The
-model transfers non-trivially to most tasks and is often competitive with a
-fully supervised baseline without the need for any dataset specific training.
-For instance, we match the accuracy of the original ResNet-50 on ImageNet
-zero-shot without needing to use any of the 1.28 million training examples it
-was trained on. We release our code and pre-trained model weights at
-https://github.com/OpenAI/CLIP.
+**摘要:** 最先进的计算机视觉系统经过训练，可以预测预先确定的固定对象类别集。这种受限的监督形式限制了它们的通用性和可用性，因为需要额外的标记数据来指定任何其他视觉概念。直接从关于图像的文本中学习是一种有前途的替代方案，它利用了更广泛的监督来源。我们证明，通过预测哪个标题与哪个图像匹配的简单预训练任务，是在 4 亿个（图像，文本）对的数据集上从头开始学习 SOTA 图像表示的有效且可扩展的方法，这些对是从互联网上收集的。预训练后，即可使用自然语言引用学习到的视觉概念（或描述新概念），从而实现模型到下游任务的零样本迁移。我们通过在超过 30 个不同的现有计算机视觉数据集上的基准测试来研究此方法的性能，这些数据集涵盖了 OCR、视频中的动作识别、地理定位和多种细粒度对象分类等任务。该模型可以非平凡地迁移到大多数任务，并且通常与完全监督基线具有竞争力，而无需任何特定数据集的训练。例如，在 ImageNet 上零样本的准确率为 1.28M 训练样本的实际情况，而无需使用其中任何一个。我们将在 https://github.com/OpenAI/CLIP 上发布我们的代码和预训练模型权重。
                 
 ## Language Models are Few-Shot Learners
 
-- **Authors:** Tom B. Brown, Benjamin Mann, Nick Ryder,  et al.
-- **arXiv id:** [2005.14165v4](http://arxiv.org/abs/2005.14165v4)  **Published Date:** 2020-05-28
+- **作者:** Tom B. Brown, Benjamin Mann, Nick Ryder,  et al.
+- **arXiv id:** [2005.14165v4](http://arxiv.org/abs/2005.14165v4)  **发布日期:** 2020-05-28
 - **LangChain:**
 
-   - **Documentation:** [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/concepts](https://python.langchain.com/docs/concepts)
 
-**Abstract:** Recent work has demonstrated substantial gains on many NLP tasks and
-benchmarks by pre-training on a large corpus of text followed by fine-tuning on
-a specific task. While typically task-agnostic in architecture, this method
-still requires task-specific fine-tuning datasets of thousands or tens of
-thousands of examples. By contrast, humans can generally perform a new language
-task from only a few examples or from simple instructions - something which
-current NLP systems still largely struggle to do. Here we show that scaling up
-language models greatly improves task-agnostic, few-shot performance, sometimes
-even reaching competitiveness with prior state-of-the-art fine-tuning
-approaches. Specifically, we train GPT-3, an autoregressive language model with
-175 billion parameters, 10x more than any previous non-sparse language model,
-and test its performance in the few-shot setting. For all tasks, GPT-3 is
-applied without any gradient updates or fine-tuning, with tasks and few-shot
-demonstrations specified purely via text interaction with the model. GPT-3
-achieves strong performance on many NLP datasets, including translation,
-question-answering, and cloze tasks, as well as several tasks that require
-on-the-fly reasoning or domain adaptation, such as unscrambling words, using a
-novel word in a sentence, or performing 3-digit arithmetic. At the same time,
-we also identify some datasets where GPT-3's few-shot learning still struggles,
-as well as some datasets where GPT-3 faces methodological issues related to
-training on large web corpora. Finally, we find that GPT-3 can generate samples
-of news articles which human evaluators have difficulty distinguishing from
-articles written by humans. We discuss broader societal impacts of this finding
-and of GPT-3 in general.
+**摘要:** 最近的研究表明，通过在大规模文本语料库上进行预训练，然后在特定任务上进行微调，可以在许多 NLP 任务和基准测试中取得显著的进步。虽然架构通常是任务无关的，但这种方法仍然需要数千或数万个示例的任务特定微调数据集。相比之下，人类通常只需几个示例或简单的指令即可执行新的语言任务——而这是当前 NLP 系统仍然很大程度上难以实现的。在这里，我们表明，通过大规模扩展语言模型可以显著提高任务无关的少样本性能，有时甚至能与先前最先进的微调方法相媲美。具体来说，我们训练了 GPT-3，这是一个拥有 1750 亿参数的自回归语言模型，比以往任何非稀疏语言模型都多 10 倍，并在少样本设置下测试了它的性能。对于所有任务，GPT-3 都仅通过文本与模型进行交互来指定任务和少样本演示，而无需进行任何梯度更新或微调。GPT-3 在许多 NLP 数据集上都取得了强大的性能，包括翻译、问答和完形填空任务，以及一些需要即时推理或领域适应的任务，例如对单词进行重新排序、在句子中使用新颖的单词或执行 3 位算术。同时，我们也发现了一些 GPT-3 的少样本学习仍然存在困难的数据集，以及一些 GPT-3 在训练时遇到方法论问题的包含大规模网络语料库的数据集。最后，我们发现 GPT-3 可以生成新闻文章样本，而人类评估者难以区分其与人类撰写的文章。我们讨论了这一发现以及 GPT-3 的更广泛社会影响。
                 
 ## Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
 
-- **Authors:** Patrick Lewis, Ethan Perez, Aleksandra Piktus,  et al.
-- **arXiv id:** [2005.11401v4](http://arxiv.org/abs/2005.11401v4)  **Published Date:** 2020-05-22
+- **作者:** Patrick Lewis, Ethan Perez, Aleksandra Piktus,  et al.
+- **arXiv id:** [2005.11401v4](http://arxiv.org/abs/2005.11401v4)  **发布日期:** 2020-05-22
 - **LangChain:**
 
-   - **Documentation:** [docs/concepts](https://python.langchain.com/docs/concepts)
+   - **文档:** [docs/concepts](https://python.langchain.com/docs/concepts)
 
-**Abstract:** Large pre-trained language models have been shown to store factual knowledge
-in their parameters, and achieve state-of-the-art results when fine-tuned on
-downstream NLP tasks. However, their ability to access and precisely manipulate
-knowledge is still limited, and hence on knowledge-intensive tasks, their
-performance lags behind task-specific architectures. Additionally, providing
-provenance for their decisions and updating their world knowledge remain open
-research problems. Pre-trained models with a differentiable access mechanism to
-explicit non-parametric memory can overcome this issue, but have so far been
-only investigated for extractive downstream tasks. We explore a general-purpose
-fine-tuning recipe for retrieval-augmented generation (RAG) -- models which
-combine pre-trained parametric and non-parametric memory for language
-generation. We introduce RAG models where the parametric memory is a
-pre-trained seq2seq model and the non-parametric memory is a dense vector index
-of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG
-formulations, one which conditions on the same retrieved passages across the
-whole generated sequence, the other can use different passages per token. We
-fine-tune and evaluate our models on a wide range of knowledge-intensive NLP
-tasks and set the state-of-the-art on three open domain QA tasks, outperforming
-parametric seq2seq models and task-specific retrieve-and-extract architectures.
-For language generation tasks, we find that RAG models generate more specific,
-diverse and factual language than a state-of-the-art parametric-only seq2seq
-baseline.
+**摘要:** 大型预训练语言模型已被证明能够将事实知识存储在其参数中，并在针对下游 NLP 任务进行微调时取得最先进的结果。然而，它们访问和精确操纵知识的能力仍然有限，因此在知识密集型任务上，它们的性能落后于特定任务的架构。此外，为其决策提供出处和更新其世界知识仍然是开放的研究问题。具有可微分访问显式非参数内存的预训练模型可以解决此问题，但到目前为止仅针对提取式下游任务进行了研究。我们探索了一个通用的微调方法，用于检索增强生成 (RAG)——结合了预训练的参数记忆和非参数记忆以实现语言生成的模型。我们介绍了 RAG 模型，其中参数记忆是一个预训练的序列到序列模型，非参数记忆是 Wikipedia 的密集向量索引，并使用预训练的神经检索器进行访问。我们比较了两种 RAG 公式，一种在整个生成序列中以相同的检索段落为条件，另一种可以为每个 token 使用不同的段落。我们在广泛的知识密集型 NLP 任务上微调和评估了我们的模型，并在三个开放域 QA 任务上设定了最先进的水平，其性能优于参数序列到序列模型和特定任务的检索-提取架构。对于语言生成任务，我们发现 RAG 模型比仅参数序列到序列的基线生成更具体、更多样化和更真实语言。
                 
 ## CTRL: A Conditional Transformer Language Model for Controllable Generation
 
-- **Authors:** Nitish Shirish Keskar, Bryan McCann, Lav R. Varshney,  et al.
-- **arXiv id:** [1909.05858v2](http://arxiv.org/abs/1909.05858v2)  **Published Date:** 2019-09-11
+- **作者:** Nitish Shirish Keskar, Bryan McCann, Lav R. Varshney,  et al.
+- **arXiv id:** [1909.05858v2](http://arxiv.org/abs/1909.05858v2)  **发布日期:** 2019-09-11
 - **LangChain:**
 
    - **API Reference:** [langchain_huggingface...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_huggingface.llms.huggingface_endpoint.HuggingFaceEndpoint), [langchain_community...HuggingFaceTextGenInference](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference.html#langchain_community.llms.huggingface_text_gen_inference.HuggingFaceTextGenInference), [langchain_community...HuggingFaceEndpoint](https://api.python.langchain.com/en/latest/llms/langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint.html#langchain_community.llms.huggingface_endpoint.HuggingFaceEndpoint)
 
-**Abstract:** Large-scale language models show promising text generation capabilities, but
-users cannot easily control particular aspects of the generated text. We
-release CTRL, a 1.63 billion-parameter conditional transformer language model,
-trained to condition on control codes that govern style, content, and
-task-specific behavior. Control codes were derived from structure that
-naturally co-occurs with raw text, preserving the advantages of unsupervised
-learning while providing more explicit control over text generation. These
-codes also allow CTRL to predict which parts of the training data are most
-likely given a sequence. This provides a potential method for analyzing large
-amounts of data via model-based source attribution. We have released multiple
-full-sized, pretrained versions of CTRL at https://github.com/salesforce/ctrl.
-                
+**摘要:** 大型语言模型展现出有希望的文本生成能力，但用户无法轻松控制生成文本的特定方面。我们发布了 CTRL，这是一个 16.3 亿参数的条件 Transformer 语言模型，经过训练以根据控制代码进行条件化，这些代码控制风格、内容和特定任务的行为。控制代码源自与原始文本自然共现的结构，保留了无监督学习的优点，同时提供了对文本生成的更明确控制。这些代码还允许 CTRL 预测给定序列最可能的训练数据部分。这提供了一种通过基于模型的来源归属来分析大量数据的方法。我们在 https://github.com/salesforce/ctrl 上发布了 CTRL 的多个完整尺寸的预训练版本。

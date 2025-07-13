@@ -1,37 +1,37 @@
 # Valthera
 
-> [Valthera](https://github.com/valthera/valthera) is an open-source framework that empowers LLM Agents to drive meaningful, context-aware user engagement. It evaluates user motivation and ability in real time, ensuring that notifications and actions are triggered only when users are most receptive.
-> 
-> **langchain-valthera** integrates Valthera with LangChain, enabling developers to build smarter, behavior-driven engagement systems that deliver personalized interactions.
+> [Valthera](https://github.com/valthera/valthera) 是一个开源框架，旨在赋能 LLM Agent，驱动有意义、有上下文感知能力的用户互动。它实时评估用户的动机和能力，确保仅在用户最易接受时触发通知和操作。
+>
+> **langchain-valthera** 将 Valthera 与 LangChain 集成，使开发者能够构建更智能、由行为驱动的互动系统，提供个性化体验。
 
-## Installation and Setup
+## 安装与设置
 
-### Install langchain-valthera
+### 安装 langchain-valthera
 
-Install the LangChain Valthera package via pip:
+通过 pip 安装 LangChain Valthera 包：
 
 ```bash
 pip install -U langchain-valthera
 ```
 
-Import the ValtheraTool:
+导入 ValtheraTool：
 
 ```python
 from langchain_valthera.tools import ValtheraTool
 ```
 
-### Example: Initializing the ValtheraTool for LangChain
+### 示例：为 LangChain 初始化 ValtheraTool
 
-This example shows how to initialize the ValtheraTool using a `DataAggregator` and configuration for motivation and ability scoring.
+此示例展示了如何使用 `DataAggregator` 和动机（motivation）及能力（ability）评分的配置来初始化 ValtheraTool。
 
 ```python
 import os
 from langchain_openai import ChatOpenAI
 from valthera.aggregator import DataAggregator
-from mocks import hubspot, posthog, snowflake  # Replace these with your actual connector implementations
+from mocks import hubspot, posthog, snowflake  # 用您实际的连接器实现替换这些
 from langchain_valthera.tools import ValtheraTool
 
-# Initialize the DataAggregator with your data connectors
+# 使用您的数据连接器初始化 DataAggregator
 data_aggregator = DataAggregator(
     connectors={
         "hubspot": hubspot(),
@@ -40,7 +40,7 @@ data_aggregator = DataAggregator(
     }
 )
 
-# Initialize the ValtheraTool with your scoring configurations
+# 使用您的评分配置初始化 ValtheraTool
 valthera_tool = ValtheraTool(
     data_aggregator=data_aggregator,
     motivation_config=[
@@ -56,8 +56,7 @@ valthera_tool = ValtheraTool(
     ]
 )
 
-print("✅ ValtheraTool successfully initialized for LangChain integration!")
+print("✅ ValtheraTool 已成功初始化以进行 LangChain 集成！")
 ```
 
-
-The langchain-valthera integration allows you to assess user behavior and decide on the best course of action for engagement, ensuring that interactions are both timely and relevant within your LangChain applications.
+langchain-valthera 集成允许您评估用户行为，并决定最佳的互动策略，确保在您的 LangChain 应用中实现的互动既及时又相关。

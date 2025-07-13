@@ -1,79 +1,79 @@
-# Prompt Templates
+# Prompt 模板
 
-Prompt templates help to translate user input and parameters into instructions for a language model.
-This can be used to guide a model's response, helping it understand the context and generate relevant and coherent language-based output.
+Prompt 模板有助于将用户输入和参数转换为语言模型的指令。
+这可用于指导模型的响应，帮助它理解上下文并生成相关且连贯的基于语言的输出。
 
-Prompt Templates take as input a dictionary, where each key represents a variable in the prompt template to fill in.
+Prompt 模板接受一个字典作为输入，其中每个键代表要填写的提示模板中的变量。
 
-Prompt Templates output a PromptValue. This PromptValue can be passed to an LLM or a ChatModel, and can also be cast to a string or a list of messages.
-The reason this PromptValue exists is to make it easy to switch between strings and messages.
+Prompt 模板输出一个 PromptValue。此 PromptValue 可以传递给 LLM 或 ChatModel，也可以转换为字符串或消息列表。
+创建此 PromptValue 的原因是为了方便在字符串和消息之间切换。
 
-There are a few different types of prompt templates:
+有几种不同类型的提示模板：
 
-## String PromptTemplates
+## 字符串 PromptTemplates
 
-These prompt templates are used to format a single string, and generally are used for simpler inputs.
-For example, a common way to construct and use a PromptTemplate is as follows:
+这些提示模板用于格式化单个字符串，通常用于更简单的输入。
+例如，构造和使用 PromptTemplate 的一种常见方法如下：
 
 ```python
 from langchain_core.prompts import PromptTemplate
 
-prompt_template = PromptTemplate.from_template("Tell me a joke about {topic}")
+prompt_template = PromptTemplate.from_template("给我讲个关于 {topic} 的笑话")
 
-prompt_template.invoke({"topic": "cats"})
+prompt_template.invoke({"topic": "猫"})
 ```
 
 ## ChatPromptTemplates
 
-These prompt templates are used to format a list of messages. These "templates" consist of a list of templates themselves.
-For example, a common way to construct and use a ChatPromptTemplate is as follows:
+这些提示模板用于格式化消息列表。这些“模板”由一系列模板本身组成。
+例如，构造和使用 ChatPromptTemplate 的一种常见方法如下：
 
 ```python
 from langchain_core.prompts import ChatPromptTemplate
 
 prompt_template = ChatPromptTemplate([
-    ("system", "You are a helpful assistant"),
-    ("user", "Tell me a joke about {topic}")
+    ("system", "你是一个乐于助人的助手"),
+    ("user", "给我讲个关于 {topic} 的笑话")
 ])
 
-prompt_template.invoke({"topic": "cats"})
+prompt_template.invoke({"topic": "猫"})
 ```
 
-In the above example, this ChatPromptTemplate will construct two messages when called.
-The first is a system message, that has no variables to format.
-The second is a HumanMessage, and will be formatted by the `topic` variable the user passes in.
+在上面的示例中，此 ChatPromptTemplate 在被调用时将构造两条消息。
+第一条是系统消息，没有要格式化的变量。
+第二条是 HumanMessage，它将由用户传入的 `topic`变量进行格式化。
 
 ## MessagesPlaceholder
 <span data-heading-keywords="messagesplaceholder"></span>
 
-This prompt template is responsible for adding a list of messages in a particular place.
-In the above ChatPromptTemplate, we saw how we could format two messages, each one a string.
-But what if we wanted the user to pass in a list of messages that we would slot into a particular spot?
-This is how you use MessagesPlaceholder.
+此提示模板负责在特定位置添加消息列表。
+在上面的 ChatPromptTemplate 中，我们看到了如何格式化两条消息，每条消息都是一个字符串。
+但是如果我们希望用户传入一个消息列表并将其插入到特定位置呢？
+这就是 MessagesPlaceholder 的用法。
 
 ```python
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import HumanMessage
 
 prompt_template = ChatPromptTemplate([
-    ("system", "You are a helpful assistant"),
+    ("system", "你是一个乐于助人的助手"),
     MessagesPlaceholder("msgs")
 ])
 
-prompt_template.invoke({"msgs": [HumanMessage(content="hi!")]})
+prompt_template.invoke({"msgs": [HumanMessage(content="你好！")]})
 ```
 
-This will produce a list of two messages, the first one being a system message, and the second one being the HumanMessage we passed in.
-If we had passed in 5 messages, then it would have produced 6 messages in total (the system message plus the 5 passed in).
-This is useful for letting a list of messages be slotted into a particular spot.
+这将生成一个包含两条消息的列表，第一条是系统消息，第二条是我们传入的 HumanMessage。
+如果我们传入了 5 条消息，总共就会生成 6 条消息（系统消息加上传入的 5 条）。
+这对于将消息列表插入到特定位置非常有用。
 
-An alternative way to accomplish the same thing without using the `MessagesPlaceholder` class explicitly is:
+另一种无需显式使用 `MessagesPlaceholder` 类即可完成相同操作的方法是：
 
 ```python
 prompt_template = ChatPromptTemplate([
-    ("system", "You are a helpful assistant"),
-    ("placeholder", "{msgs}") # <-- This is the changed part
+    ("system", "你是一个乐于助人的助手"),
+    ("placeholder", "{msgs}") # <-- 这是更改的部分
 ])
 ```
 
-For specifics on how to use prompt templates, see the [relevant how-to guides here](/docs/how_to/#prompt-templates).
+有关如何使用提示模板的详细信息，请参阅[此处相关的操作指南](/docs/how_to/#prompt-templates)。

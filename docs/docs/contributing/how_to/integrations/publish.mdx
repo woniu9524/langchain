@@ -3,29 +3,29 @@ pagination_prev: contributing/how_to/integrations/standard_tests
 pagination_next: null
 ---
 
-# Publishing your package
+# 发布你的包
 
-Now that your package is implemented and tested, you can:
+现在你的包已经实现并测试完毕，你可以：
 
-1. Publish your package to PyPi
-2. Add documentation for your package to the LangChain Monorepo
+1. 将你的包发布到 PyPi
+2. 为你的包添加文档到 LangChain Monorepo
 
-## Publishing your package to PyPi
+## 将你的包发布到 PyPi
 
-This guide assumes you have already implemented your package and written tests for it. If you haven't done that yet, please refer to the [implementation guide](../package) and the [testing guide](../standard_tests).
+本指南假设你已经实现了你的包并为其编写了测试。如果你还没有这样做，请参考[实现指南](../package)和[测试指南](../standard_tests)。
 
-Note that Poetry is not required to publish a package to PyPi, and we're using it in this guide end-to-end for convenience.
-You are welcome to publish your package using any other method you prefer.
+请注意，Poetry 不是发布包到 PyPi 的必需品，在本指南中我们为了方便而端到端地使用它。
+你可以选择使用任何你偏好的其他方法来发布你的包。
 
-First, make sure you have a PyPi account and have logged in with Poetry:
+首先，确保你有一个 PyPi 账户并通过 Poetry 登录：
 
 <details>
-    <summary>How to create a PyPi Token</summary>
+    <summary>如何创建 PyPi Token</summary>
 
-1. Go to the [PyPi website](https://pypi.org/) and create an account.
-2. Verify your email address by clicking the link that PyPi emails to you.
-3. Go to your account settings and click "Generate Recovery Codes" to enable 2FA. To generate an API token, you **must** have 2FA enabled currently.
-4. Go to your account settings and [generate a new API token](https://pypi.org/manage/account/token/).
+1. 前往 [PyPi 网站](https://pypi.org/)并创建一个账户。
+2. 点击 PyPi 发送给你的链接以验证你的电子邮件地址。
+3. 前往你的账户设置并点击“生成恢复码”以启用 2FA。要生成 API token，你**必须**当前已启用 2FA。
+4. 前往你的账户设置并[生成新的 API token](https://pypi.org/manage/account/token/)。
 
 </details>
 
@@ -33,59 +33,59 @@ First, make sure you have a PyPi account and have logged in with Poetry:
 poetry config pypi-token.pypi <your-pypi-token>
 ```
 
-Next, build your package:
+接下来，构建你的包：
 
 ```bash
 poetry build
 ```
 
-Finally, publish your package to PyPi:
+最后，将你的包发布到 PyPi：
 
 ```bash
 poetry publish
 ```
 
-You're all set! Your package is now available on PyPi and can be installed with `pip install langchain-parrot-link`.
+你已准备就绪！你的包现在可以在 PyPi 上找到，并可以使用 `pip install langchain-parrot-link` 进行安装。
 
-## Adding documentation to the LangChain Monorepo
+## 为 LangChain Monorepo 添加文档
 
-To add documentation for your package to the LangChain Monorepo, you will need to:
+要为你的包添加文档到 LangChain Monorepo，你需要：
 
-1. Fork and clone the LangChain Monorepo
-2. Make a "Provider Page" at `docs/docs/integrations/providers/<your-package-name>.ipynb`
-3. Make "Component Pages" at `docs/docs/integrations/<component-type>/<your-package-name>.ipynb`
-4. Register your package in `libs/packages.yml`
-5. Submit a PR with **only these changes** to the LangChain Monorepo
+1. Fork 并克隆 LangChain Monorepo
+2. 在 `docs/docs/integrations/providers/<your-package-name>.ipynb` 创建一个“Provider Page”。
+3. 在 `docs/docs/integrations/<component-type>/<your-package-name>.ipynb` 创建“Component Pages”。
+4. 在 `libs/packages.yml` 注册你的包。
+5. 提交一个只包含**这些更改**的 PR 到 LangChain Monorepo。
 
-### Fork and clone the LangChain Monorepo
+### Fork 并克隆 LangChain Monorepo
 
-First, fork the [LangChain Monorepo](https://github.com/langchain-ai/langchain) to your GitHub account.
+首先，将 [LangChain Monorepo](https://github.com/langchain-ai/langchain) Fork 到你的 GitHub 账户。
 
-Next, clone the repository to your local machine:
+接下来，将仓库克隆到你的本地机器：
 
 ```bash
 git clone https://github.com/<your-username>/langchain.git
 ```
 
-You're now ready to make your PR!
+现在你已准备好进行 PR 了！
 
-### Bootstrap your documentation pages with the langchain-cli (recommended)
+### 使用 langchain-cli 引导你的文档页面（推荐）
 
-To make it easier to create the necessary documentation pages, you can use the `langchain-cli` to bootstrap them for you.
+为了更方便地创建必要的文档页面，你可以使用 `langchain-cli` 来为你引导它们。
 
-First, install the latest version of the `langchain-cli` package:
+首先，安装最新版本的 `langchain-cli` 包：
 
 ```bash
 pip install --upgrade langchain-cli
 ```
 
-To see the available commands to bootstrap your documentation pages, run:
+要查看可用于引导你的文档页面的命令，请运行：
 
 ```bash
 langchain-cli integration create-doc --help
 ```
 
-Let's bootstrap a provider page from the root of the monorepo:
+让我们从 monorepo 的根目录引导一个 Provider 页面：
 
 ```bash
 langchain-cli integration create-doc \
@@ -95,7 +95,7 @@ langchain-cli integration create-doc \
     --name-class ParrotLink
 ```
 
-And a chat model component page:
+以及一个 Chat Model 组件页面：
 
 ```bash
 langchain-cli integration create-doc \
@@ -105,7 +105,7 @@ langchain-cli integration create-doc \
     --name-class ParrotLink
 ```
 
-And a vector store component page:
+以及一个 Vector Store 组件页面：
 
 ```bash
 langchain-cli integration create-doc \
@@ -115,22 +115,21 @@ langchain-cli integration create-doc \
     --name-class ParrotLink
 ```
 
-These commands will create the following 3 files, which you should fill out with information about your package:
+这些命令将创建以下 3 个文件，你应该用关于你的包的信息来填充它们：
 
 - `docs/docs/integrations/providers/parrot_link.ipynb`
 - `docs/docs/integrations/chat/parrot_link.ipynb`
 - `docs/docs/integrations/vectorstores/parrot_link.ipynb`
 
-### Manually create your documentation pages (if you prefer)
+### 手动创建你的文档页面（如果你倾向于这样做）
 
-If you prefer to create the documentation pages manually, you can create the same files listed
-above and fill them out with information about your package.
+如果你更喜欢手动创建文档页面，你可以创建上面列出的相同文件，并用关于你的包的信息来填充它们。
 
-You can view the templates that the CLI uses to create these files [here](https://github.com/langchain-ai/langchain/tree/master/libs/cli/langchain_cli/integration_template/docs) if helpful!
+如果你觉得有帮助，可以在[这里](https://github.com/langchain-ai/langchain/tree/master/libs/cli/langchain_cli/integration_template/docs)查看 CLI 用于创建这些文件的模板！
 
-### Register your package in `libs/packages.yml`
+### 在 `libs/packages.yml` 注册你的包
 
-Finally, add your package to the end of the `libs/packages.yml` file in the LangChain Monorepo.
+最后，将你的包添加到 LangChain Monorepo 的 `libs/packages.yml` 文件末尾。
 
 ```yaml
 packages:
@@ -139,12 +138,12 @@ packages:
     path: .
 ```
 
-For `path`, you can use `.` if your package is in the root of your repository, or specify a subdirectory (e.g. `libs/parrot-link`) if it is in a subdirectory.
+对于 `path`，如果你的包在你的仓库根目录，你可以使用 `.`，或者如果它在一个子目录中，可以指定一个子目录（例如 `libs/parrot-link`）。
 
-If you followed the [package bootstrapping guide](../package), then your path is `.`.
+如果你遵循了[包引导指南](../package)，那么你的路径是 `.`。
 
-### Submit a PR with your changes
+### 提交包含你更改的 PR
 
-Once you have completed these steps, you can submit a PR to the LangChain Monorepo with **only these changes**.
+完成以上步骤后，你就可以向 LangChain Monorepo 提交一个只包含**这些更改**的 PR 了。
 
-If you have additional changes to request, please submit them in a separate PR.
+如果你有额外的更改要请求，请在单独的 PR 中提交。

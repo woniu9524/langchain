@@ -1,34 +1,34 @@
 # Dataherald
 
->[Dataherald](https://www.dataherald.com) is a natural language-to-SQL.
+>[Dataherald](https://www.dataherald.com) 是一个自然语言到 SQL 的工具。
 
-This page covers how to use the `Dataherald API` within LangChain.
+此页面涵盖了如何在 LangChain 中使用 `Dataherald API`。
 
-## Installation and Setup
-- Install requirements with 
+## 安装与设置
+- 使用以下命令安装所需库
 ```bash
 pip install dataherald
 ```
-- Go to dataherald and sign up [here](https://www.dataherald.com)
-- Create an app and get your `API KEY`
-- Set your `API KEY` as an environment variable `DATAHERALD_API_KEY`
+- 前往 dataherald [此处](https://www.dataherald.com) 注册账号
+- 创建一个应用并获取您的 `API KEY`
+- 将您的 `API KEY` 设置为环境变量 `DATAHERALD_API_KEY`
 
 
-## Wrappers
+## 封装器
 
-### Utility
+### 工具类
 
-There exists a DataheraldAPIWrapper utility which wraps this API. To import this utility:
+存在一个名为 `DataheraldAPIWrapper` 的工具类，它封装了此 API。导入此类：
 
 ```python
 from langchain_community.utilities.dataherald import DataheraldAPIWrapper
 ```
 
-For a more detailed walkthrough of this wrapper, see [this notebook](/docs/integrations/tools/dataherald).
+有关此封装器的更详细教程，请参阅 [此笔记本](/docs/integrations/tools/dataherald)。
 
-### Tool
+### 工具
 
-You can use the tool in an agent like this:
+您可以在 Agent 中像这样使用此工具：
 ```python
 from langchain_community.utilities.dataherald import DataheraldAPIWrapper
 from langchain_community.tools.dataherald.tool import DataheraldTextToSQL
@@ -45,13 +45,13 @@ agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, handle_pa
 agent_executor.invoke({"input":"Return the sql for this question: How many employees are in the company?"})
 ```
 
-Output
+输出
 ```shell
 > Entering new AgentExecutor chain...
-I need to use a tool that can convert this question into SQL.
+我需要使用一个能将问题转换为 SQL 的工具。
 Action: dataherald
 Action Input: How many employees are in the company?Answer: SELECT
-    COUNT(*) FROM employeesI now know the final answer
+    COUNT(*) FROM employees我现在知道最终答案了
 Final Answer: SELECT
     COUNT(*)
 FROM
@@ -61,4 +61,4 @@ FROM
 {'input': 'Return the sql for this question: How many employees are in the company?', 'output': "SELECT \n    COUNT(*)\nFROM \n    employees"}
 ```
 
-For more information on tools, see [this page](/docs/how_to/tools_builtin).
+有关工具的更多信息，请参阅 [此页面](/docs/how_to/tools_builtin)。

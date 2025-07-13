@@ -1,39 +1,25 @@
 # Dappier
 
-[Dappier](https://dappier.com) connects any LLM or your Agentic AI to
-real-time, rights-cleared, proprietary data from trusted sources,
-making your AI an expert in anything. Our specialized models include
-Real-Time Web Search, News, Sports, Financial Stock Market Data,
-Crypto Data, and exclusive content from premium publishers. Explore a
-wide range of data models in our marketplace at
-[marketplace.dappier.com](https://marketplace.dappier.com).
+[Dappier](https://dappier.com) 将任何大型语言模型 (LLM) 或您的 Agentic AI 连接到来自可信来源的实时、已获授权的专有数据，让您的 AI 在任何领域都成为专家。我们专门的模型包括实时网络搜索、新闻、体育、金融股市数据、加密货币数据，以及来自优质出版商的独家内容。请访问 [marketplace.dappier.com](https://marketplace.dappier.com) 探索我们市场中的各种数据模型。
 
-[Dappier](https://dappier.com) delivers enriched, prompt-ready, and
-contextually relevant data strings, optimized for seamless integration
-with LangChain. Whether you're building conversational AI, recommendation
-engines, or intelligent search, Dappier's LLM-agnostic RAG models ensure
-your AI has access to verified, up-to-date data—without the complexity of
-building and managing your own retrieval pipeline.
+[Dappier](https://dappier.com) 提供经过优化以无缝集成 LangChain 的、经过丰富处理的、可用于 prompt 的、并且与上下文相关的字符串数据。无论您是在构建对话式 AI、推荐引擎还是智能搜索，Dappier 的 LLM-agnostic RAG 模型都能确保您的 AI 访问经过验证、最新数据—无需构建和管理您自己的检索管道的复杂性。
 
-## Installation and Setup
+## 安装和设置
 
-Install ``langchain-dappier`` and set environment variable
-``DAPPIER_API_KEY``.
+安装 ``langchain-dappier`` 并设置环境变量 ``DAPPIER_API_KEY``。
 
 ```bash
 pip install -U langchain-dappier
 export DAPPIER_API_KEY="your-api-key"
 ```
 
-We also need to set our Dappier API credentials, which can be generated at
-the [Dappier site.](https://platform.dappier.com/profile/api-keys).
+我们还需要设置我们的 Dappier API 凭据，这些凭据可以在 [Dappier 网站](https://platform.dappier.com/profile/api-keys) 上生成。
 
-We can find the supported data models by heading over to the 
-[Dappier marketplace.](https://platform.dappier.com/marketplace)
+我们可以通过访问 [Dappier 市场](https://platform.dappier.com/marketplace) 来查找支持的数据模型。
 
 ## Chat models
 
-See a [usage example](/docs/integrations/chat/dappier).
+请参阅 [用法示例](/docs/integrations/chat/dappier)。
 
 ```python
 from langchain_community.chat_models import ChatDappierAI
@@ -41,7 +27,7 @@ from langchain_community.chat_models import ChatDappierAI
 
 ## Retriever
 
-See a [usage example](/docs/integrations/retrievers/dappier).
+请参阅 [用法示例](/docs/integrations/retrievers/dappier)。
 
 ```python
 from langchain_dappier import DappierRetriever
@@ -49,7 +35,7 @@ from langchain_dappier import DappierRetriever
 
 ## Tool
 
-See a [usage example](/docs/integrations/tools/dappier).
+请参阅 [用法示例](/docs/integrations/tools/dappier)。
 
 ```python
 from langchain_dappier import (

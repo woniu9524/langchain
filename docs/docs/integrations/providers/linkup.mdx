@@ -1,11 +1,11 @@
 # Linkup
 
-> [Linkup](https://www.linkup.so/) provides an API to connect LLMs to the web and the Linkup Premium Partner sources.
+> [Linkup](https://www.linkup.so/) 提供了一个 API，用于将 LLM 连接到网络和 Linkup Premium Partner 资源。
 
-## Installation and Setup
+## 安装和设置
 
-To use the Linkup provider, you first need a valid API key, which you can find by signing-up [here](https://app.linkup.so/sign-up).
-You will also need the `langchain-linkup` package, which you can install using pip:
+要使用 Linkup 提供程序，您首先需要一个有效的 API 密钥，您可以通过在此处 [注册](https://app.linkup.so/sign-up) 找到。
+您还需要 `langchain-linkup` 包，可以使用 pip 安装：
 
 ```bash
 pip install langchain-linkup
@@ -13,27 +13,27 @@ pip install langchain-linkup
 
 ## Retriever
 
-See a [usage example](/docs/integrations/retrievers/linkup_search).
+请参阅 [使用示例](/docs/integrations/retrievers/linkup_search)。
 
 ```python
 from langchain_linkup import LinkupSearchRetriever
 
 retriever = LinkupSearchRetriever(
-    depth="deep",  # "standard" or "deep"
-    linkup_api_key=None,  # API key can be passed here or set as the LINKUP_API_KEY environment variable
+    depth="deep",  # "standard" 或 "deep"
+    linkup_api_key=None,  # API 密钥可以在此处传递，或设置为 LINKUP_API_KEY 环境变量
 )
 ```
 
 ## Tools
 
-See a [usage example](/docs/integrations/tools/linkup_search).
+请参阅 [使用示例](/docs/integrations/tools/linkup_search)。
 
 ```python
 from langchain_linkup import LinkupSearchTool
 
 tool = LinkupSearchTool(
-    depth="deep",  # "standard" or "deep"
-    output_type="searchResults",  # "searchResults", "sourcedAnswer" or "structured"
-    linkup_api_key=None,  # API key can be passed here or set as the LINKUP_API_KEY environment variable
+    depth="deep",  # "standard" 或 "deep"
+    output_type="searchResults",  # "searchResults", "sourcedAnswer" 或 "structured"
+    linkup_api_key=None,  # API 密钥可以在此处传递，或设置为 LINKUP_API_KEY 环境变量
 )
 ```

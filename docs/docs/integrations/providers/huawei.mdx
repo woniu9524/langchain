@@ -1,36 +1,34 @@
 # Huawei
 
->[Huawei Technologies Co., Ltd.](https://www.huawei.com/) is a Chinese multinational 
+>[Huawei Technologies Co., Ltd.](https://www.huawei.com/) is a Chinese multinational  
 > digital communications technology corporation.
 > 
->[Huawei Cloud](https://www.huaweicloud.com/intl/en-us/product/) provides a comprehensive suite of 
-> global cloud computing services. 
- 
+>[Huawei Cloud](https://www.huaweicloud.com/intl/en-us/product/) provides a comprehensive suite of  
+> global cloud computing services.
+>
+## 安装与设置
 
-## Installation and Setup
+要访问 `Huawei Cloud`，您需要一个访问令牌。
 
-To access the `Huawei Cloud`, you need an access token.
-
-You also have to install a python library:
+您还必须安装一个 Python 库：
 
 ```bash
 pip install -U esdk-obs-python
 ```
 
+## 文档加载器
 
-## Document Loader
+### Huawei OBS 目录
 
-### Huawei OBS Directory
-
-See a [usage example](/docs/integrations/document_loaders/huawei_obs_directory).
+请参阅 [使用示例](/docs/integrations/document_loaders/huawei_obs_directory)。
 
 ```python
 from langchain_community.document_loaders import OBSDirectoryLoader
 ```
 
-### Huawei OBS File
+### Huawei OBS 文件
 
-See a [usage example](/docs/integrations/document_loaders/huawei_obs_file).
+请参阅 [使用示例](/docs/integrations/document_loaders/huawei_obs_file)。
 
 ```python
 from langchain_community.document_loaders.obs_file import OBSFileLoader

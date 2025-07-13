@@ -1,150 +1,142 @@
 # LangChain v0.3
 
-*Last updated: 09.16.24*
+*最后更新：24.09.16*
 
-## What's changed
+## 更新内容
 
-* All packages have been upgraded from Pydantic 1 to Pydantic 2 internally. Use of Pydantic 2 in user code is fully supported with all packages without the need for bridges like `langchain_core.pydantic_v1` or `pydantic.v1`.
-* Pydantic 1 will no longer be supported as it reached its end-of-life in June 2024.
-* Python 3.8 will no longer be supported as its end-of-life is October 2024.
+* 所有包已从 Pydantic 1 内部升级到 Pydantic 2。用户代码中完全支持 Pydantic 2 及所有包，无需 `langchain_core.pydantic_v1` 或 `pydantic.v1` 等桥接器。
+* Pydantic 1 将不再受支持，因为它已于 2024 年 6 月达到生命周期终点。
+* Python 3.8 将不再受支持，因为它将于 2024 年 10 月达到生命周期终点。
 
-**These are the only breaking changes.**
+**这些是唯一的破坏性更改。**
 
-## What’s new
+## 新增内容
 
-The following features have been added during the development of 0.2.x:
+在 0.2.x 开发期间添加了以下功能：
 
-- Moved more integrations from `langchain-community` to their own `langchain-x` packages. This is a non-breaking change, as the legacy implementations are left in `langchain-community` and marked as deprecated. This allows us to better manage the dependencies of, test, and version these integrations. You can see all the latest integration packages in the [API reference](https://python.langchain.com/v0.2/api_reference/reference.html#integrations).
-- Simplified tool definition and usage. Read more [here](https://blog.langchain.dev/improving-core-tool-interfaces-and-docs-in-langchain/).
-- Added utilities for interacting with chat models: [universal model constructor](https://python.langchain.com/v0.2/docs/how_to/chat_models_universal_init/), [rate limiter](https://python.langchain.com/v0.2/docs/how_to/chat_model_rate_limiting/), [message utilities](https://python.langchain.com/v0.2/docs/how_to/#messages),
-- Added the ability to [dispatch custom events](https://python.langchain.com/v0.2/docs/how_to/callbacks_custom_events/).
-- Revamped integration docs and API reference. Read more [here](https://blog.langchain.dev/langchain-integration-docs-revamped/).
-- Marked as deprecated a number of legacy chains and added migration guides for all of them. These are slated for removal in `langchain` 1.0.0. See the deprecated chains and associated [migration guides here](https://python.langchain.com/v0.2/docs/versions/migrating_chains/).
+- 将更多集成从 `langchain-community` 迁移到其自己的 `langchain-x` 包。这是一个非破坏性更改，因为旧的实现保留在 `langchain-community` 中并标记为已弃用。这使我们能够更好地管理这些集成的依赖项、测试和版本控制。您可以在[API 参考](https://python.langchain.com/v0.2/api_reference/reference.html#integrations)中查看所有最新的集成包。
+- 简化了工具的定义和使用。在此处了解更多信息：[blog.langchain.dev/improving-core-tool-interfaces-and-docs-in-langchain/](https://blog.langchain.dev/improving-core-tool-interfaces-and-docs-in-langchain/)。
+- 添加了用于与聊天模型交互的实用工具：[通用模型构造函数](https://python.langchain.com/v0.2/docs/how_to/chat_models_universal_init/)、[速率限制器](https://python.langchain.com/v0.2/docs/how_to/chat_model_rate_limiting/)、[消息实用工具](https://python.langchain.com/v0.2/docs/how_to/#messages)。
+- 添加了[派发自定义事件](https://python.langchain.com/v0.2/docs/how_to/callbacks_custom_events/)的能力。
+- 重新设计了集成文档和 API 参考。在此处了解更多信息：[blog.langchain.dev/langchain-integration-docs-revamped/](https://blog.langchain.dev/langchain-integration-docs-revamped/)。
+- 标记了许多旧链为已弃用，并为所有已弃用链添加了迁移指南。这些链计划在 `langchain` 1.0.0 中移除。在此处查看已弃用的链和相关的[迁移指南](https://python.langchain.com/v0.2/docs/versions/migrating_chains/)。
 
-## How to update your code
+## 如何更新您的代码
 
-If you're using `langchain` / `langchain-community` / `langchain-core` 0.0 or 0.1, we recommend that you first [upgrade to 0.2](https://python.langchain.com/v0.2/docs/versions/v0_2/).
+如果您使用的是 `langchain` / `langchain-community` / `langchain-core` 0.0 或 0.1，我们建议您首先[升级到 0.2](https://python.langchain.com/v0.2/docs/versions/v0_2/)。
 
-If you're using `langgraph`, upgrade to `langgraph>=0.2.20,<0.3`. This will work with either 0.2 or 0.3 versions of all the base packages.
+如果您使用的是 `langgraph`，请升级到 `langgraph>=0.2.20,<0.3`。这将兼容所有基础包的 0.2 或 0.3 版本。
 
-Here is a complete list of all packages that have been released and what we recommend upgrading your version constraints to.
-Any package that now requires `langchain-core` 0.3 had a minor version bump.
-Any package that is now compatible with both `langchain-core` 0.2 and 0.3 had a patch version bump.
+以下是已发布的所有软件包的完整列表以及我们建议您升级的版本约束。
+任何新需要 `langchain-core` 0.3 的软件包都有次要版本号的更新。
+任何现在兼容 `langchain-core` 0.2 和 0.3 的软件包都有补丁版本号的更新。
 
-You can use the `langchain-cli` to update deprecated imports automatically.
-The CLI will handle updating deprecated imports that were introduced in LangChain 0.0.x and LangChain 0.1, as
-well as updating the `langchain_core.pydantic_v1` and `langchain.pydantic_v1` imports.
+您可以使用 `langchain-cli` 自动更新已弃用的导入。
+CLI 将处理 LangChain 0.0.x 和 LangChain 0.1 中引入的已弃用导入的更新，以及 `langchain_core.pydantic_v1` 和 `langchain.pydantic_v1` 导入的更新。
 
 
-### Base packages
+### 基础包
 
-| Package                  | Latest | Recommended constraint |
-|--------------------------|--------|------------------------|
-| langchain                | 0.3.0  | >=0.3,&lt;0.4             |
-| langchain-community      | 0.3.0  | >=0.3,&lt;0.4             |
-| langchain-text-splitters | 0.3.0  | >=0.3,&lt;0.4             |
-| langchain-core           | 0.3.0  | >=0.3,&lt;0.4             |
-| langchain-experimental   | 0.3.0  | >=0.3,&lt;0.4             |
+| 包                  | 最新版本 | 推荐约束 |
+|----------------------|--------|------------------------|
+| langchain                | `0.3.0`  | `>=0.3,<0.4`             |
+| langchain-community      | `0.3.0`  | `>=0.3,<0.4`             |
+| langchain-text-splitters | `0.3.0`  | `>=0.3,<0.4`             |
+| langchain-core           | `0.3.0`  | `>=0.3,<0.4`             |
+| langchain-experimental   | `0.3.0`  | `>=0.3,<0.4`             |
 
-### Downstream packages
+### 后续包
 
-| Package   | Latest | Recommended constraint |
-|-----------|--------|------------------------|
-| langgraph | 0.2.20 | >=0.2.20,&lt;0.3          |
-| langserve | 0.3.0  | >=0.3,&lt;0.4             |
+| 包   | 最新版本 | 推荐约束 |
+|---|--------|------------------------|
+| langgraph | `0.2.20` | `>=0.2.20,<0.3`          |
+| langserve | `0.3.0`  | `>=0.3,<0.4`             |
 
-### Integration packages
+### 集成包
 
-| Package                                | Latest  | Recommended constraint     |
+| 包                                | 最新版本  | 推荐约束     |
 | -------------------------------------- | ------- | -------------------------- |
-| langchain-ai21                         | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-aws                          | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-anthropic                    | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-astradb                      | 0.4.1   | >=0.4.1,&lt;0.5               |
-| langchain-azure-dynamic-sessions       | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-box                          | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-chroma                       | 0.1.4   | >=0.1.4,&lt;0.2               |
-| langchain-cohere                       | 0.3.0   | >=0.3,&lt;0.4                 |
-| langchain-elasticsearch                | 0.3.0   | >=0.3,&lt;0.4                 |
-| langchain-exa                          | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-fireworks                    | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-groq                         | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-google-community             | 2.0.0   | >=2,&lt;3                     |
-| langchain-google-genai                 | 2.0.0   | >=2,&lt;3                     |
-| langchain-google-vertexai              | 2.0.0   | >=2,&lt;3                     |
-| langchain-huggingface                  | 0.1.0   | >=0.1,&lt;0.2                 |
-| langchain-ibm                          | 0.3.0   | >=0.3,&lt;0.4                 |
-| langchain-milvus                       | 0.1.6   | >=0.1.6,&lt;0.2               |
-| langchain-mistralai                    | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-mongodb                      | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-nomic                        | 0.1.3   | >=0.1.3,&lt;0.2               |
-| langchain-nvidia                       | 0.3.0   | >=0.3,&lt;0.4                 |
-| langchain-ollama                       | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-openai                       | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-pinecone                     | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-postgres                     | 0.0.13  | >=0.0.13,&lt;0.1              |
-| langchain-prompty                      | 0.1.0   | >=0.1,&lt;0.2                 |
-| langchain-qdrant                       | 0.1.4   | >=0.1.4,&lt;0.2               |
-| langchain-redis                        | 0.1.0   | >=0.1,&lt;0.2                 |
-| langchain-sema4                        | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-together                     | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-unstructured                 | 0.1.4   | >=0.1.4,&lt;0.2               |
-| langchain-upstage                      | 0.3.0   | >=0.3,&lt;0.4                 |
-| langchain-voyageai                     | 0.2.0   | >=0.2,&lt;0.3                 |
-| langchain-weaviate                     | 0.0.3   | >=0.0.3,&lt;0.1               |
+| langchain-ai21                         | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-aws                          | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-anthropic                    | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-astradb                      | `0.4.1`   | `>=0.4.1,<0.5`               |
+| langchain-azure-dynamic-sessions       | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-box                          | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-chroma                       | `0.1.4`   | `>=0.1.4,<0.2`               |
+| langchain-cohere                       | `0.3.0`   | `>=0.3,<0.4`                 |
+| langchain-elasticsearch                | `0.3.0`   | `>=0.3,<0.4`                 |
+| langchain-exa                          | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-fireworks                    | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-groq                         | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-google-community             | `2.0.0`   | `>=2,<3`                     |
+| langchain-google-genai                 | `2.0.0`   | `>=2,<3`                     |
+| langchain-google-vertexai              | `2.0.0`   | `>=2,<3`                     |
+| langchain-huggingface                  | `0.1.0`   | `>=0.1,<0.2`                 |
+| langchain-ibm                          | `0.3.0`   | `>=0.3,<0.4`                 |
+| langchain-milvus                       | `0.1.6`   | `>=0.1.6,<0.2`               |
+| langchain-mistralai                    | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-mongodb                      | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-nomic                        | `0.1.3`   | `>=0.1.3,<0.2`               |
+| langchain-nvidia                       | `0.3.0`   | `>=0.3,<0.4`                 |
+| langchain-ollama                       | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-openai                       | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-pinecone                     | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-postgres                     | `0.0.13`  | `>=0.0.13,<0.1`              |
+| langchain-prompty                      | `0.1.0`   | `>=0.1,<0.2`                 |
+| langchain-qdrant                       | `0.1.4`   | `>=0.1.4,<0.2`               |
+| langchain-redis                        | `0.1.0`   | `>=0.1,<0.2`                 |
+| langchain-sema4                        | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-together                     | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-unstructured                 | `0.1.4`   | `>=0.1.4,<0.2`               |
+| langchain-upstage                      | `0.3.0`   | `>=0.3,<0.4`                 |
+| langchain-voyageai                     | `0.2.0`   | `>=0.2,<0.3`                 |
+| langchain-weaviate                     | `0.0.3`   | `>=0.0.3,<0.1`               |
 
-Once you've updated to recent versions of the packages, you may need to address the following issues stemming from the internal switch from Pydantic v1 to Pydantic v2:
+更新包到最新版本后，您可能需要解决由于内部从 Pydantic v1 切换到 Pydantic v2 而引起的一些问题：
 
-- If your code depends on Pydantic aside from LangChain, you will need to upgrade your pydantic version constraints to be `pydantic>=2,<3`.  See [Pydantic’s migration guide](https://docs.pydantic.dev/latest/migration/) for help migrating your non-LangChain code to Pydantic v2 if you use pydantic v1.
-- There are a number of side effects to LangChain components caused by the internal switch from Pydantic v1 to v2. We have listed some of the common cases below together with the recommended solutions.
+- 如果您的代码除了 LangChain 之外还依赖于 Pydantic，您需要将 Pydantic 版本约束升级为 `pydantic>=2,<3`。如果您的非 LangChain 代码使用 pydantic v1 并需要迁移到 Pydantic v2，请参阅[Pydantic 的迁移指南](https://docs.pydantic.dev/latest/migration/)寻求帮助。
+- 由于内部从 Pydantic v1 切换到 v2，LangChain 组件会产生一些副作用。我们已列出以下一些常见情况以及建议的解决方案。
 
-## Common issues when transitioning to Pydantic 2
+## 过渡到 Pydantic 2 时的常见问题
 
-### 1. Do not use the `langchain_core.pydantic_v1` namespace
+### 1. 不要使用 `langchain_core.pydantic_v1` 命名空间
 
-Replace any usage of `langchain_core.pydantic_v1` or `langchain.pydantic_v1` with
-direct imports from `pydantic`.
+将任何对 `langchain_core.pydantic_v1` 或 `langchain.pydantic_v1` 的使用替换为直接从 `pydantic` 导入。
 
-For example,
+例如，
 
 ```python
 from langchain_core.pydantic_v1 import BaseModel
 ```
 
-to:
+改为：
 
 ```python
 from pydantic import BaseModel
 ```
 
-This may require you to make additional updates to your Pydantic code given that there are a number of breaking changes in Pydantic 2. See the [Pydantic Migration](https://docs.pydantic.dev/latest/migration/) for how to upgrade your code from Pydantic 1 to 2.
+鉴于 Pydantic 2 中存在许多破坏性更改，这可能需要您对 Pydantic 代码进行其他更新。请参阅[Pydantic 迁移](https://docs.pydantic.dev/latest/migration/)了解如何将您的代码从 Pydantic 1 升级到 2。
 
-### 2. Passing Pydantic objects to LangChain APIs
+### 2. 将 Pydantic 对象传递给 LangChain API
 
-Users using the following APIs:
+使用以下 API 的用户：
 
 * `BaseChatModel.bind_tools`
 * `BaseChatModel.with_structured_output`
 * `Tool.from_function`
 * `StructuredTool.from_function`
 
-should ensure that they are passing Pydantic 2 objects to these APIs rather than
-Pydantic 1 objects (created via the `pydantic.v1` namespace of pydantic 2).
+应确保将 Pydantic 2 对象传递给这些 API，而不是 Pydantic 1 对象（通过 Pydantic 2 的 `pydantic.v1` 命名空间创建）。
 
 :::caution
-While `v1` objects may be accepted by some of these APIs, users are advised to
-use Pydantic 2 objects to avoid future issues.
+虽然某些 API 可能接受 `v1` 对象，但建议用户使用 Pydantic 2 对象以避免未来出现问题。
 :::
 
-### 3. Sub-classing LangChain models
+### 3. 继承 LangChain 模型
 
-Any sub-classing from existing LangChain models (e.g., `BaseTool`, `BaseChatModel`, `LLM`)
-should upgrade to use Pydantic 2 features.
+任何对现有 LangChain 模型（例如 `BaseTool`、`BaseChatModel`、`LLM`）的子类化都应升级以使用 Pydantic 2 功能。
 
-For example, any user code that's relying on Pydantic 1 features (e.g., `validator`) should
-be updated to the Pydantic 2 equivalent (e.g., `field_validator`), and any references to
-`pydantic.v1`, `langchain_core.pydantic_v1`, `langchain.pydantic_v1` should be replaced
-with imports from `pydantic`.
+例如，任何依赖 Pydantic 1 功能（例如 `validator`）的用户代码应更新为 Pydantic 2 等效项（例如 `field_validator`），并且任何对 `pydantic.v1`、`langchain_core.pydantic_v1`、`langchain.pydantic_v1` 的引用都应替换为从 `pydantic` 导入。
 
 ```python
 from pydantic.v1 import validator, Field # if pydantic 2 is installed
@@ -164,7 +156,7 @@ class CustomTool(BaseTool): # BaseTool is v1 code
         return 1
 ```
 
-Should change to:
+应更改为：
 
 ```python
 from pydantic import Field, field_validator # pydantic v2
@@ -191,10 +183,9 @@ CustomTool(
 
 ### 4. model_rebuild()
 
-When sub-classing from LangChain models, users may need to add relevant imports
-to the file and rebuild the model.
+在从 LangChain 模型进行子类化时，用户可能需要在文件中添加相关导入并重建模型。
 
-You can read more about `model_rebuild` [here](https://docs.pydantic.dev/latest/concepts/models/#rebuilding-model-schema).
+您可以在此处了解有关 `model_rebuild` 的更多信息：[docs.pydantic.dev/latest/concepts/models/#rebuilding-model-schema](https://docs.pydantic.dev/latest/concepts/models/#rebuilding-model-schema)。
 
 ```python
 from langchain_core.output_parsers import BaseOutputParser
@@ -204,7 +195,7 @@ class FooParser(BaseOutputParser):
     ...
 ```
 
-New code:
+新代码：
 
 ```python
 from typing import Optional as Optional
@@ -217,56 +208,54 @@ class FooParser(BaseOutputParser):
 FooParser.model_rebuild()
 ```
 
-## Migrate using langchain-cli
+## 使用 langchain-cli 进行迁移
 
-The `langchain-cli` can help update deprecated LangChain imports in your code automatically.
+`langchain-cli` 可以帮助自动更新代码中已弃用的 LangChain 导入。
 
-Please note that the `langchain-cli` only handles deprecated LangChain imports and cannot
-help to upgrade your code from pydantic 1 to pydantic 2.
+请注意，`langchain-cli` 只处理已弃用的 LangChain 导入，而不能帮助将您的代码从 pydantic 1 迁移到 pydantic 2。
 
-For help with the Pydantic 1 to 2 migration itself please refer to the [Pydantic Migration Guidelines](https://docs.pydantic.dev/latest/migration/).
+有关 Pydantic 1 到 2 迁移本身的帮助，请参阅[Pydantic 迁移指南](https://docs.pydantic.dev/latest/migration/)。
 
-As of 0.0.31, the `langchain-cli` relies on [gritql](https://about.grit.io/) for applying code mods.
+从 0.0.31 开始，`langchain-cli` 依赖于 [gritql](https://about.grit.io/) 来应用代码修改。
 
-### Installation
+### 安装
 
 ```bash
 pip install -U langchain-cli
 langchain-cli --version # <-- Make sure the version is at least 0.0.31
 ```
 
-### Usage
+### 使用方法
 
-Given that the migration script is not perfect, you should make sure you have a backup of your code first (e.g., using version control like `git`).
+考虑到迁移脚本并非完美，您应该确保首先备份您的代码（例如，使用 `git` 等版本控制）。
 
-The `langchain-cli` will handle the `langchain_core.pydantic_v1` deprecation introduced in LangChain 0.3 as well
-as older deprecations (e.g.,`from langchain.chat_models import ChatOpenAI` which should be `from langchain_openai import ChatOpenAI`),
+`langchain-cli` 将处理 LangChain 0.3 中引入的 `langchain_core.pydantic_v1` 弃用以及更早的弃用（例如，`from langchain.chat_models import ChatOpenAI` 应该改为 `from langchain_openai import ChatOpenAI`），
 
-You will need to run the migration script **twice** as it only applies one import replacement per run.
+您需要**两次**运行迁移脚本，因为它每次只应用一个导入替换。
 
-For example, say that your code is still using the old import `from langchain.chat_models import ChatOpenAI`:
+例如，假设您的代码仍在使用的旧导入是 `from langchain.chat_models import ChatOpenAI`：
 
-After the first run, you’ll get: `from langchain_community.chat_models import ChatOpenAI`
-After the second run, you’ll get: `from langchain_openai import ChatOpenAI`
+第一次运行后，您将得到：`from langchain_community.chat_models import ChatOpenAI`
+第二次运行后，您将得到：`from langchain_openai import ChatOpenAI`
 
 ```bash
-# Run a first time
-# Will replace from langchain.chat_models import ChatOpenAI
+# 运行第一次
+# 将替换 from langchain.chat_models import ChatOpenAI
 langchain-cli migrate --help [path to code] # Help
 langchain-cli migrate [path to code] # Apply
 
-# Run a second time to apply more import replacements
+# 再次运行以应用更多导入替换
 langchain-cli migrate --diff [path to code] # Preview
 langchain-cli migrate [path to code] # Apply
 ```
 
-### Other options
+### 其他选项
 
 ```bash
-# See help menu
+# 查看帮助菜单
 langchain-cli migrate --help
-# Preview Changes without applying
+# 无需应用即可预览更改
 langchain-cli migrate --diff [path to code]
-# Approve changes interactively
+# 交互式批准更改
 langchain-cli migrate --interactive [path to code]
 ```

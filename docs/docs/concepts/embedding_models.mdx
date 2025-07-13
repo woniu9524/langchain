@@ -1,62 +1,62 @@
-# Embedding models
+# 嵌入模型
 <span data-heading-keywords="embedding,embeddings"></span>
 
-:::info[Prerequisites]
+:::info[先决条件]
 
-* [Documents](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html)
+* [文档](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html)
 
 :::
 
-:::info[Note]
+:::info[注意]
 This conceptual overview focuses on text-based embedding models.
 
-Embedding models can also be [multimodal](/docs/concepts/multimodality) though such models are not currently supported by LangChain.
+Embedding models can also be[multimodal](/docs/concepts/multimodality) though such models are not currently supported by LangChain.
 :::
 
-Imagine being able to capture the essence of any text - a tweet, document, or book - in a single, compact representation.
-This is the power of embedding models, which lie at the heart of many retrieval systems.
-Embedding models transform human language into a format that machines can understand and compare with speed and accuracy. 
-These models take text as input and produce a fixed-length array of numbers, a numerical fingerprint of the text's semantic meaning.
-Embeddings allow search system to find relevant documents not just based on keyword matches, but on semantic understanding. 
+想象一下能够将任何文本——一条推文、一份文档或一本书——捕捉成一种单一、紧凑的表示形式。
+这就是嵌入模型的强大之处，它们是许多检索系统的核心。
+嵌入模型将人类语言转化为机器能够理解并快速准确地进行比较的一种格式。
+这些模型接收文本作为输入，并输出一个固定长度的数字数组，这是文本语义意义的数字指纹。
+嵌入使得搜索系统不仅可以基于关键词匹配，还可以基于语义理解来查找相关文档。
 
-## Key concepts
+## 关键概念
 
 ![Conceptual Overview](/img/embeddings_concept.png)
 
-(1) **Embed text as a vector**: Embeddings transform text into a numerical vector representation.
+(1) **将文本嵌入为向量**: 嵌入将文本转换为数值向量表示。
 
-(2) **Measure similarity**: Embedding vectors can be compared using simple mathematical operations.
+(2) **衡量相似度**: 可以使用简单的数学运算来比较嵌入向量。
 
-## Embedding 
+## 嵌入
 
-### Historical context 
+### 历史背景
 
-The landscape of embedding models has evolved significantly over the years. 
-A pivotal moment came in 2018 when Google introduced [BERT (Bidirectional Encoder Representations from Transformers)](https://www.nvidia.com/en-us/glossary/bert/). 
-BERT applied transformer models to embed text as a simple vector representation, which lead to unprecedented performance across various NLP tasks.
-However, BERT wasn't optimized for generating sentence embeddings efficiently. 
-This limitation spurred the creation of [SBERT (Sentence-BERT)](https://www.sbert.net/examples/training/sts/README.html), which adapted the BERT architecture to generate semantically rich sentence embeddings, easily comparable via similarity metrics like cosine similarity, dramatically reduced the computational overhead for tasks like finding similar sentences.
-Today, the embedding model ecosystem is diverse, with numerous providers offering their own implementations. 
-To navigate this variety, researchers and practitioners often turn to benchmarks like the Massive Text Embedding Benchmark (MTEB) [here](https://huggingface.co/blog/mteb) for objective comparisons.
+多年来，嵌入模型领域取得了显著的进步。
+2018年，Google推出了[BERT（Bidirectional Encoder Representations from Transformers）](https://www.nvidia.com/en-us/glossary/bert/)，这是一个重要的里程碑。
+BERT将Transformer模型应用于文本嵌入，生成简单的向量表示，在各种自然语言处理任务中取得了前所未有的性能。
+然而，BERT在高效生成句子嵌入方面并非最优。
+这一限制促生了[SBERT（Sentence-BERT）](https://www.sbert.net/examples/training/sts/README.html)的诞生，它对BERT架构进行了调整，以生成语义丰富的句子嵌入，这些嵌入可以通过余弦相似度等相似性指标轻松进行比较，极大地降低了查找相似句子等任务的计算开销。
+如今，嵌入模型生态系统非常多样化，众多提供商都推出了自己的实现。
+为了在这些模型中进行导航，研究人员和实践者经常转向诸如Massive Text Embedding Benchmark（MTEB）[此处](https://huggingface.co/blog/mteb)这样的基准测试来进行客观比较。
 
-:::info[Further reading]
+:::info[延伸阅读]
 
-* See the [seminal BERT paper](https://arxiv.org/abs/1810.04805).
-* See Cameron Wolfe's [excellent review](https://cameronrwolfe.substack.com/p/the-basics-of-ai-powered-vector-search?utm_source=profile&utm_medium=reader2) of embedding models.
-* See the [Massive Text Embedding Benchmark (MTEB)](https://huggingface.co/blog/mteb) leaderboard for a comprehensive overview of embedding models.
+* 请参阅[经典的BERT论文](https://arxiv.org/abs/1810.04805)。
+* 请参阅Cameron Wolfe[精彩的评论](https://cameronrwolfe.substack.com/p/the-basics-of-ai-powered-vector-search?utm_source=profile&utm_medium=reader2)，了解基于AI的向量搜索基础知识。
+* 请参阅[Massive Text Embedding Benchmark (MTEB)](https://huggingface.co/blog/mteb)排行榜，全面了解各种嵌入模型。
 
 :::
 
-### Interface
+### 接口
 
-LangChain provides a universal interface for working with them, providing standard methods for common operations.
-This common interface simplifies interaction with various embedding providers through two central methods:
+LangChain提供了一个通用的接口来处理它们，为常用操作提供了标准方法。
+这个通用接口通过两个核心方法简化了与各种嵌入提供商的交互：
 
-- `embed_documents`: For embedding multiple texts (documents)
-- `embed_query`: For embedding a single text (query)
+- `embed_documents`: 用于嵌入多个文本（文档）
+- `embed_query`: 用于嵌入单个文本（查询）
 
-This distinction is important, as some providers employ different embedding strategies for documents (which are to be searched) versus queries (the search input itself).
-To illustrate, here's a practical example using LangChain's `.embed_documents` method to embed a list of strings:
+这种区分很重要，因为一些提供商对要搜索的文档和搜索输入本身（查询）采用了不同的嵌入策略。
+为了说明这一点，这里有一个使用LangChain的`.embed_documents`方法嵌入字符串列表的实际示例：
 
 ```python
 from langchain_openai import OpenAIEmbeddings
@@ -74,38 +74,38 @@ len(embeddings), len(embeddings[0])
 (5, 1536)
 ```
 
-For convenience, you can also use the `embed_query` method to embed a single text:
+为了方便起见，您还可以使用`embed_query`方法来嵌入单个文本：
 
 ```python
 query_embedding = embeddings_model.embed_query("What is the meaning of life?")
 ```
 
-:::info[Further reading]
+:::info[延伸阅读]
 
-* See the full list of [LangChain embedding model integrations](/docs/integrations/text_embedding/).
-* See these [how-to guides](/docs/how_to/embed_text) for working with embedding models.
+* 请参阅LangChain嵌入模型集成的[完整列表](/docs/integrations/text_embedding/)。
+* 请参阅这些[操作指南](/docs/how_to/embed_text)，了解如何使用嵌入模型。
 
 :::
 
-### Integrations
+### 集成
 
-LangChain offers many embedding model integrations which you can find [on the embedding models](/docs/integrations/text_embedding/) integrations page.
+LangChain提供了许多嵌入模型的集成，您可以在[嵌入模型](/docs/integrations/text_embedding/)集成页面上找到它们。
 
-## Measure similarity
+## 衡量相似度
 
-Each embedding is essentially a set of coordinates, often in a high-dimensional space. 
-In this space, the position of each point (embedding) reflects the meaning of its corresponding text.
-Just as similar words might be close to each other in a thesaurus, similar concepts end up close to each other in this embedding space. 
-This allows for intuitive comparisons between different pieces of text.
-By reducing text to these numerical representations, we can use simple mathematical operations to quickly measure how alike two pieces of text are, regardless of their original length or structure.
-Some common similarity metrics include:
+每个嵌入本质上是一组坐标，通常位于高维空间中。
+在这个空间中，每个点（嵌入）的位置反映了其对应文本的含义。
+就像相似的词在词汇表中彼此靠近一样，相似的概念在这个嵌入空间中也彼此靠近。
+这使得对不同文本片段进行直观的比较成为可能。
+通过将文本简化为这些数值表示，我们可以使用简单的数学运算来快速衡量两段文本的相似程度，而无论它们原始的长度或结构如何。
+一些常见的相似性度量包括：
 
-- **Cosine Similarity**: Measures the cosine of the angle between two vectors.
-- **Euclidean Distance**: Measures the straight-line distance between two points.
-- **Dot Product**: Measures the projection of one vector onto another.
+- **余弦相似度 (Cosine Similarity)**：测量两个向量之间夹角的余弦值。
+- **欧几里得距离 (Euclidean Distance)**：测量两点之间的直线距离。
+- **点积 (Dot Product)**：测量一个向量在另一个向量上的投影。
 
-The choice of similarity metric should be chosen based on the model.
-As an example, [OpenAI suggests cosine similarity for their embeddings](https://platform.openai.com/docs/guides/embeddings/which-distance-function-should-i-use), which can be easily implemented:
+相似性度量的选择应基于所使用的模型。
+例如，[OpenAI在其嵌入中建议使用余弦相似度](https://platform.openai.com/docs/guides/embeddings/which-distance-function-should-i-use)，这可以轻松实现：
 
 ```python
 import numpy as np
@@ -118,13 +118,13 @@ def cosine_similarity(vec1, vec2):
 
 similarity = cosine_similarity(query_result, document_result)
 print("Cosine Similarity:", similarity)
-```  
+```
 
-:::info[Further reading]
+:::info[延伸阅读]
 
-* See Simon Willison’s [nice blog post and video](https://simonwillison.net/2023/Oct/23/embeddings/) on embeddings and similarity metrics.
-* See [this documentation](https://developers.google.com/machine-learning/clustering/dnn-clustering/supervised-similarity) from Google on similarity metrics to consider with embeddings.
-* See Pinecone's [blog post](https://www.pinecone.io/learn/vector-similarity/) on similarity metrics.
-* See OpenAI's [FAQ](https://platform.openai.com/docs/guides/embeddings/faq) on what similarity metric to use with OpenAI embeddings.
+* 请参阅Simon Willison关于嵌入和相似性度量的[精彩博文和视频](https://simonwillison.net/2023/Oct/23/embeddings/)。
+* 请参阅Google关于嵌入相似性度量选择的[这篇文档](https://developers.google.com/machine-learning/clustering/dnn-clustering/supervised-similarity)。
+* 请参阅Pinecone关于相似性度量的[博文](https://www.pinecone.io/learn/vector-similarity/)。
+* 请参阅OpenAI关于与OpenAI嵌入选择何种相似性度量的[常见问题](https://platform.openai.com/docs/guides/embeddings/faq)。
 
-::: 
+:::

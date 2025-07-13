@@ -1,73 +1,64 @@
-# Callbacks
+# 回调
 
-:::note Prerequisites
-- [Runnable interface](/docs/concepts/runnables)
+:::note 前提条件
+- [可运行接口](/docs/concepts/runnables)
 :::
 
-LangChain provides a callback system that allows you to hook into the various stages of your LLM application. This is useful for logging, monitoring, streaming, and other tasks.
+LangChain 提供了一个回调系统，允许您挂接到 LLM 应用程序的各个阶段。这对于日志记录、监控、流式传输和其他任务非常有用。
 
-You can subscribe to these events by using the `callbacks` argument available throughout the API. This argument is a list of handler objects, which are expected to implement one or more of the methods described below in more detail.
+您可以通过 API 中提供的 `callbacks` 参数进行订阅。此参数是处理程序对象的列表，这些对象应实现下面更详细描述的一个或多个方法。
 
-## Callback events
+## 回调事件
 
-| Event            | Event Trigger                               | Associated Method     |
-|------------------|---------------------------------------------|-----------------------|
-| Chat model start | When a chat model starts                    | `on_chat_model_start` |
-| LLM start        | When a llm starts                           | `on_llm_start`        |
-| LLM new token    | When an llm OR chat model emits a new token | `on_llm_new_token`    |
-| LLM ends         | When an llm OR chat model ends              | `on_llm_end`          |
-| LLM errors       | When an llm OR chat model errors            | `on_llm_error`        |
-| Chain start      | When a chain starts running                 | `on_chain_start`      |
-| Chain end        | When a chain ends                           | `on_chain_end`        |
-| Chain error      | When a chain errors                         | `on_chain_error`      |
-| Tool start       | When a tool starts running                  | `on_tool_start`       |
-| Tool end         | When a tool ends                            | `on_tool_end`         |
-| Tool error       | When a tool errors                          | `on_tool_error`       |
-| Agent action     | When an agent takes an action               | `on_agent_action`     |
-| Agent finish     | When an agent ends                          | `on_agent_finish`     |
-| Retriever start  | When a retriever starts                     | `on_retriever_start`  |
-| Retriever end    | When a retriever ends                       | `on_retriever_end`    |
-| Retriever error  | When a retriever errors                     | `on_retriever_error`  |
-| Text             | When arbitrary text is run                  | `on_text`             |
-| Retry            | When a retry event is run                   | `on_retry`            |
+| 事件            | 事件触发                                    | 关联方法          |
+|---------------|-------------------------------------------|-----------------|
+| Chat model start | 当一个聊天模型开始时                        | `on_chat_model_start` |
+| LLM start        | 当一个 LLM 开始时                           | `on_llm_start`    |
+| LLM new token    | 当一个 LLM 或聊天模型发出新 token 时          | `on_llm_new_token`  |
+| LLM ends         | 当一个 LLM 或聊天模型结束时                 | `on_llm_end`      |
+| LLM errors       | 当一个 LLM 或聊天模型出错时                 | `on_llm_error`    |
+| Chain start      | 当一个链开始运行时                          | `on_chain_start`  |
+| Chain end        | 当一个链结束时                              | `on_chain_end`    |
+| Chain error      | 当一个链出错时                              | `on_chain_error`  |
+| Tool start       | 当一个工具开始运行时                        | `on_tool_start`   |
+| Tool end         | 当一个工具结束时                            | `on_tool_end`     |
+| Tool error       | 当一个工具出错时                            | `on_tool_error`   |
+| Agent action     | 当一个代理采取行动时                        | `on_agent_action` |
+| Agent finish     | 当一个代理结束时                            | `on_agent_finish` |
+| Retriever start  | 当一个检索器开始时                          | `on_retriever_start` |
+| Retriever end    | 当一个检索器结束时                          | `on_retriever_end`  |
+| Retriever error  | 当一个检索器出错时                          | `on_retriever_error` |
+| Text             | 当任意文本运行时                            | `on_text`         |
+| Retry            | 当一个重试事件运行时                        | `on_retry`        |
 
-## Callback handlers
+## 回调处理程序
 
-Callback handlers can either be `sync` or `async`:
+回调处理程序可以是 `sync` 或 `async`：
 
-* Sync callback handlers implement the [BaseCallbackHandler](https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.base.BaseCallbackHandler.html) interface.
-* Async callback handlers implement the [AsyncCallbackHandler](https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.base.AsyncCallbackHandler.html) interface.
+* 同步回调处理程序实现 [BaseCallbackHandler](https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.base.BaseCallbackHandler.html) 接口。
+* 异步回调处理程序实现 [AsyncCallbackHandler](https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.base.AsyncCallbackHandler.html) 接口。
 
-During run-time LangChain configures an appropriate callback manager (e.g., [CallbackManager](https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.manager.CallbackManager.html) or [AsyncCallbackManager](https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.manager.AsyncCallbackManager.html) which will be responsible for calling the appropriate method on each "registered" callback handler when the event is triggered.
+在运行时，LangChain 会配置一个合适的回调管理器（例如 [CallbackManager](https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.manager.CallbackManager.html) 或 [AsyncCallbackManager](https://python.langchain.com/api_reference/core/callbacks/langchain_core.callbacks.manager.AsyncCallbackManager.html)），该管理器负责在触发事件时调用每个“已注册”回调处理程序上的相应方法。
 
-## Passing callbacks
+## 传递回调
 
-The `callbacks` property is available on most objects throughout the API (Models, Tools, Agents, etc.) in two different places:
+`callbacks` 属性在 API 的大多数对象（模型、工具、代理等）中都有两个不同的位置可用：
 
-- **Request time callbacks**: Passed at the time of the request in addition to the input data.
-Available on all standard `Runnable` objects. These callbacks are INHERITED by all children
-of the object they are defined on. For example, `chain.invoke({"number": 25}, {"callbacks": [handler]})`.
-- **Constructor callbacks**: `chain = TheNameOfSomeChain(callbacks=[handler])`. These callbacks
-are passed as arguments to the constructor of the object. The callbacks are scoped
-only to the object they are defined on, and are **not** inherited by any children of the object.
+- **请求时回调**：在请求时与输入数据一起传递。
+在所有标准的 `Runnable` 对象上均可用。这些回调由其定义的对象的**所有子对象继承**。例如，`chain.invoke({"number": 25}, {"callbacks": [handler]})`。
+- **构造函数回调**：`chain = TheNameOfSomeChain(callbacks=[handler])`。这些回调作为参数传递给对象的构造函数。这些回调仅限于其定义的**对象本身**，**不会**被其任何子对象继承。
 
 :::warning
-Constructor callbacks are scoped only to the object they are defined on. They are **not** inherited by children
-of the object.
+构造函数回调仅限于其定义的**对象本身**。它们**不会**被子对象继承。
 :::
 
-If you're creating a custom chain or runnable, you need to remember to propagate request time
-callbacks to any child objects.
+如果您正在创建自定义链或可运行对象，则需要记住将请求时回调传播到任何子对象。
 
-:::important Async in Python&lt;=3.10
+:::important Python&lt;=3.10 中的异步
 
-Any `RunnableLambda`, a `RunnableGenerator`, or `Tool` that invokes other runnables
-and is running `async` in python&lt;=3.10, will have to propagate callbacks to child
-objects manually. This is because LangChain cannot automatically propagate
-callbacks to child objects in this case.
+任何 `RunnableLambda`、`RunnableGenerator` 或调用其他可运行对象的 `Tool`，并且在 Python&lt;=3.10 中以 `async` 模式运行，都必须手动将回调传播到子对象。这是因为 LangChain 在这种情况下无法自动将回调传播到子对象。
 
-This is a common reason why you may fail to see events being emitted from custom
-runnables or tools.
+这是您可能无法从自定义可运行对象或工具中看到事件发出的常见原因。
 :::
 
-For specifics on how to use callbacks, see the [relevant how-to guides here](/docs/how_to/#callbacks).
+有关如何使用回调的详细信息，请参阅[此处的相关操作指南](/docs/how_to/#callbacks)。

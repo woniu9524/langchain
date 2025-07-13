@@ -1,168 +1,164 @@
-# Chat models
+# Chat 模型
 
-## Overview
+## 概览
 
-Large Language Models (LLMs) are advanced machine learning models that excel in a wide range of language-related tasks such as text generation, translation, summarization, question answering, and more, without needing task-specific fine tuning for every scenario.
+大型语言模型 (LLMs) 是先进的机器学习模型，它们在广泛的语言相关任务中表现出色，例如文本生成、翻译、摘要、问答等等，而无需针对每种场景进行特定的任务微调。
 
-Modern LLMs are typically accessed through a chat model interface that takes a list of [messages](/docs/concepts/messages) as input and returns a [message](/docs/concepts/messages) as output.
+现代 LLM 通常通过一个聊天模型接口进行访问，该接口接收一系列 [消息](/docs/concepts/messages) 作为输入，并返回一个 [消息](/docs/concepts/messages) 作为输出。
 
-The newest generation of chat models offer additional capabilities:
+最新一代的聊天模型提供了额外的功能：
 
-* [Tool calling](/docs/concepts/tool_calling): Many popular chat models offer a native [tool calling](/docs/concepts/tool_calling) API. This API allows developers to build rich applications that enable LLMs to interact with external services, APIs, and databases. Tool calling can also be used to extract structured information from unstructured data and perform various other tasks.
-* [Structured output](/docs/concepts/structured_outputs): A technique to make a chat model respond in a structured format, such as JSON that matches a given schema.
-* [Multimodality](/docs/concepts/multimodality): The ability to work with data other than text; for example, images, audio, and video.
+* [工具调用](/docs/concepts/tool_calling)：许多流行的聊天模型提供了原生的 [工具调用](/docs/concepts/tool_calling) API。此 API 使开发人员能够构建丰富的应用程序，使 LLM 能够与外部服务、API 和数据库进行交互。工具调用也可用于从非结构化数据中提取结构化信息并执行各种其他任务。
+* [结构化输出](/docs/concepts/structured_outputs)：一种使聊天模型以结构化格式（例如匹配给定模式的 JSON）进行响应的技术。
+* [多模态](/docs/concepts/multimodality)：处理文本以外数据的能力；例如图像、音频和视频。
 
-## Features
+## 功能
 
-LangChain provides a consistent interface for working with chat models from different providers while offering additional features for monitoring, debugging, and optimizing the performance of applications that use LLMs.
+LangChain 提供了一个统一的接口，用于处理来自不同提供商的聊天模型，同时还提供其他功能，用于监控、调试和优化使用 LLM 的应用程序的性能。
 
-* Integrations with many chat model providers (e.g., Anthropic, OpenAI, Ollama, Microsoft Azure, Google Vertex, Amazon Bedrock, Hugging Face, Cohere, Groq). Please see [chat model integrations](/docs/integrations/chat/) for an up-to-date list of supported models.
-* Use either LangChain's [messages](/docs/concepts/messages) format or OpenAI format.
-* Standard [tool calling API](/docs/concepts/tool_calling): standard interface for binding tools to models, accessing tool call requests made by models, and sending tool results back to the model.
-* Standard API for [structuring outputs](/docs/concepts/structured_outputs/#structured-output-method) via the `with_structured_output` method.
-* Provides support for [async programming](/docs/concepts/async), [efficient batching](/docs/concepts/runnables/#optimized-parallel-execution-batch), [a rich streaming API](/docs/concepts/streaming).
-* Integration with [LangSmith](https://docs.smith.langchain.com) for monitoring and debugging production-grade applications based on LLMs.
-* Additional features like standardized [token usage](/docs/concepts/messages/#aimessage), [rate limiting](#rate-limiting), [caching](#caching) and more.
+* 与许多聊天模型提供商集成（例如，Anthropic、OpenAI、Ollama、Microsoft Azure、Google Vertex、Amazon Bedrock、Hugging Face、Cohere、Groq）。请参阅 [聊天模型集成](/docs/integrations/chat/) 以获取支持模型的最新列表。
+* 使用 LangChain 的 [消息](/docs/concepts/messages) 格式或 OpenAI 格式。
+* 标准 [工具调用 API](/docs/concepts/tool_calling)：用于将工具绑定到模型、访问模型发起的工具调用请求以及将工具结果发送回模型的标准接口。
+* 通过 `with_structured_output` 方法用于 [结构化输出](/docs/concepts/structured_outputs/#structured-output-method) 的标准 API。
+* 支持 [异步编程](/docs/concepts/async)、[高效批处理](/docs/concepts/runnables/#optimized-parallel-execution-batch)、[丰富的流式 API](/docs/concepts/streaming)。
+* 与 [LangSmith](https://docs.smith.langchain.com) 集成，用于监控和调试基于 LLM 的生产级应用程序。
+* 其他功能，如标准化的 [Token 使用量](/docs/concepts/messages/#aimessage)、[速率限制](#rate-limiting)、[缓存](#caching) 等。
 
-## Integrations
+## 集成
 
-LangChain has many chat model integrations that allow you to use a wide variety of models from different providers.
+LangChain 拥有许多聊天模型集成，允许您使用来自不同提供商的各种模型。
 
-These integrations are one of two types:
+这些集成分为两种类型：
 
-1. **Official models**: These are models that are officially supported by LangChain and/or model provider. You can find these models in the `langchain-<provider>` packages.
-2. **Community models**: There are models that are mostly contributed and supported by the community. You can find these models in the `langchain-community` package.
+1. **官方模型**：这些是由 LangChain 和/或模型提供商官方支持的模型。您可以在 `langchain-<provider>` 包中找到这些模型。
+2. **社区模型**：这些模型主要是由社区贡献和支持的。您可以在 `langchain-community` 包中找到这些模型。
 
-LangChain chat models are named with a convention that prefixes "Chat" to their class names (e.g., `ChatOllama`, `ChatAnthropic`, `ChatOpenAI`, etc.).
+LangChain 聊天模型的命名约定是在类名前加上“Chat”（例如，`ChatOllama`、`ChatAnthropic`、`ChatOpenAI` 等）。
 
-Please review the [chat model integrations](/docs/integrations/chat/) for a list of supported models.
-
-:::note
-Models that do **not** include the prefix "Chat" in their name or include "LLM" as a suffix in their name typically refer to older models that do not follow the chat model interface and instead use an interface that takes a string as input and returns a string as output.
-:::
-
-
-## Interface
-
-LangChain chat models implement the [BaseChatModel](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.chat_models.BaseChatModel.html) interface. Because `BaseChatModel` also implements the [Runnable Interface](/docs/concepts/runnables), chat models support a [standard streaming interface](/docs/concepts/streaming), [async programming](/docs/concepts/async), optimized [batching](/docs/concepts/runnables/#optimized-parallel-execution-batch), and more. Please see the [Runnable Interface](/docs/concepts/runnables) for more details.
-
-Many of the key methods of chat models operate on [messages](/docs/concepts/messages) as input and return messages as output.
-
-Chat models offer a standard set of parameters that can be used to configure the model. These parameters are typically used to control the behavior of the model, such as the temperature of the output, the maximum number of tokens in the response, and the maximum time to wait for a response. Please see the [standard parameters](#standard-parameters) section for more details.
+请查阅 [聊天模型集成](/docs/integrations/chat/) 以获取支持模型的列表。
 
 :::note
-In documentation, we will often use the terms "LLM" and "Chat Model" interchangeably. This is because most modern LLMs are exposed to users via a chat model interface.
-
-However, LangChain also has implementations of older LLMs that do not follow the chat model interface and instead use an interface that takes a string as input and returns a string as output. These models are typically named without the "Chat" prefix (e.g., `Ollama`, `Anthropic`, `OpenAI`, etc.).
-These models implement the [BaseLLM](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.llms.BaseLLM.html#langchain_core.language_models.llms.BaseLLM) interface and may be named with the "LLM" suffix (e.g., `OllamaLLM`, `AnthropicLLM`, `OpenAILLM`, etc.). Generally, users should not use these models.
+名称中不包含“Chat”前缀或名称后缀为“LLM”的模型通常指的是不遵循聊天模型接口的旧模型，而是使用接受字符串输入并返回字符串输出的接口。
 :::
 
-### Key methods
+## 接口
 
-The key methods of a chat model are:
+LangChain 聊天模型实现了 [BaseChatModel](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.chat_models.BaseChatModel.html) 接口。由于 `BaseChatModel` 也实现了 [Runnable 接口](/docs/concepts/runnables)，因此聊天模型支持 [标准流式接口](/docs/concepts/streaming)、[异步编程](/docs/concepts/async)、优化的 [批处理](/docs/concepts/runnables/#optimized-parallel-execution-batch) 等。请参阅 [Runnable 接口](/docs/concepts/runnables) 以获取更多详细信息。
 
-1. **invoke**: The primary method for interacting with a chat model. It takes a list of [messages](/docs/concepts/messages) as input and returns a list of messages as output.
-2. **stream**: A method that allows you to stream the output of a chat model as it is generated.
-3. **batch**: A method that allows you to batch multiple requests to a chat model together for more efficient processing.
-4. **bind_tools**: A method that allows you to bind a tool to a chat model for use in the model's execution context.
-5. **with_structured_output**: A wrapper around the `invoke` method for models that natively support [structured output](/docs/concepts/structured_outputs).
+聊天模型的许多关键方法都操作基于 [消息](/docs/concepts/messages) 的输入并返回消息作为输出。
 
-Other important methods can be found in the [BaseChatModel API Reference](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.chat_models.BaseChatModel.html).
+聊天模型提供了一组标准参数，可用于配置模型。这些参数通常用于控制模型的行为，例如输出的温度、响应中的最大 Token 数以及等待响应的最大时间。有关更多详细信息，请参阅 [标准参数](#standard-parameters) 部分。
 
-### Inputs and outputs
+:::note
+在文档中，我们经常互换使用“LLM”和“聊天模型”这两个术语。这是因为大多数现代 LLM 都通过聊天模型接口暴露给用户。
 
-Modern LLMs are typically accessed through a chat model interface that takes [messages](/docs/concepts/messages) as input and returns [messages](/docs/concepts/messages) as output. Messages are typically associated with a role (e.g., "system", "human", "assistant") and one or more content blocks that contain text or potentially multimodal data (e.g., images, audio, video).
+然而，LangChain 还实现了不遵循聊天模型接口的旧 LLM 的实例，而是使用接受字符串输入并返回字符串输出的接口。这些模型通常在名称中不带“Chat”前缀（例如，`Ollama`、`Anthropic`、`OpenAI` 等）。
+这些模型实现了 [BaseLLM](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.llms.BaseLLM.html#langchain_core.language_models.llms.BaseLLM) 接口，并且可能带有“LLM”后缀（例如，`OllamaLLM`、`AnthropicLLM`、`OpenAILLM` 等）。通常情况下，用户不应使用这些模型。
+:::
 
-LangChain supports two message formats to interact with chat models:
+### 主要方法
 
-1. **LangChain Message Format**: LangChain's own message format, which is used by default and is used internally by LangChain.
-2. **OpenAI's Message Format**: OpenAI's message format.
+聊天模型的主要方法是：
 
-### Standard parameters
+1. **invoke**：与聊天模型交互的主要方法。它接收一系列 [消息](/docs/concepts/messages) 作为输入，并返回一系列消息作为输出。
+2. **stream**：一个允许您在聊天模型生成输出时进行流式传输的方法。
+3. **batch**：一个允许您将多个请求批量处理到聊天模型中以进行更有效处理的方法。
+4. **bind_tools**：一个允许您将工具绑定到聊天模型以在模型执行上下文中使用的 API。
+5. **with_structured_output**：一个包装 `invoke` 方法的包装器，适用于原生支持 [结构化输出](/docs/concepts/structured_outputs) 的模型。
 
-Many chat models have standardized parameters that can be used to configure the model:
+您可以在 [BaseChatModel API 参考](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.chat_models.BaseChatModel.html) 中找到其他重要方法。
 
-| Parameter      | Description                                                                                                                                                                                                                                                                                                    |
-|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `model`        | The name or identifier of the specific AI model you want to use (e.g., `"gpt-3.5-turbo"` or `"gpt-4"`).                                                                                                                                                                                                        |
-| `temperature`  | Controls the randomness of the model's output. A higher value (e.g., 1.0) makes responses more creative, while a lower value (e.g., 0.0) makes them more deterministic and focused.                                                                                                                            |
-| `timeout`      | The maximum time (in seconds) to wait for a response from the model before canceling the request. Ensures the request doesn’t hang indefinitely.                                                                                                                                                               |
-| `max_tokens`   | Limits the total number of tokens (words and punctuation) in the response. This controls how long the output can be.                                                                                                                                                                                           |
-| `stop`         | Specifies stop sequences that indicate when the model should stop generating tokens. For example, you might use specific strings to signal the end of a response.                                                                                                                                              |
-| `max_retries`  | The maximum number of attempts the system will make to resend a request if it fails due to issues like network timeouts or rate limits.                                                                                                                                                                        |
-| `api_key`      | The API key required for authenticating with the model provider. This is usually issued when you sign up for access to the model.                                                                                                                                                                              |
-| `base_url`     | The URL of the API endpoint where requests are sent. This is typically provided by the model's provider and is necessary for directing your requests.                                                                                                                                                          |
-| `rate_limiter` | An optional [BaseRateLimiter](https://python.langchain.com/api_reference/core/rate_limiters/langchain_core.rate_limiters.BaseRateLimiter.html#langchain_core.rate_limiters.BaseRateLimiter) to space out requests to avoid exceeding rate limits.  See [rate-limiting](#rate-limiting) below for more details. |
+### 输入和输出
 
-Some important things to note:
+现代 LLM 通常通过聊天模型接口进行访问，该接口接收 [消息](/docs/concepts/messages) 作为输入，并返回 [消息](/docs/concepts/messages) 作为输出。消息通常与一个角色（例如，“system”、“human”、“assistant”）和一个或多个内容块相关联，这些内容块包含文本或潜在的多模态数据（例如，图像、音频、视频）。
 
-- Standard parameters only apply to model providers that expose parameters with the intended functionality. For example, some providers do not expose a configuration for maximum output tokens, so max_tokens can't be supported on these.
-- Standard parameters are currently only enforced on integrations that have their own integration packages (e.g. `langchain-openai`, `langchain-anthropic`, etc.), they're not enforced on models in `langchain-community`.
+LangChain 支持两种消息格式来与聊天模型进行交互：
 
-Chat models also accept other parameters that are specific to that integration. To find all the parameters supported by a Chat model head to the their respective [API reference](https://python.langchain.com/api_reference/) for that model.
+1. **LangChain 消息格式**：LangChain 自有的消息格式，默认使用，并在 LangChain 内部使用。
+2. **OpenAI 消息格式**：OpenAI 的消息格式。
 
-## Tool calling
+### 标准参数
 
-Chat models can call [tools](/docs/concepts/tools) to perform tasks such as fetching data from a database, making API requests, or running custom code. Please
-see the [tool calling](/docs/concepts/tool_calling) guide for more information.
+许多聊天模型具有可用于配置模型的标准化参数：
 
-## Structured outputs
+| 参数       | 描述                                                                                                                                                                                                                                                                                                                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `model`    | 您想使用的特定 AI 模型的名称或标识符（例如，“gpt-3.5-turbo”或“gpt-4”）。                                                                                                                                                                                                                                                                                                                                                         |
+| `temperature` | 控制模型输出的随机性。较高的值（例如 1.0）使响应更具创意，而较低的值（例如 0.0）使其更具确定性和专注性。                                                                                                                                                                                                                                                                                                                                                        |
+| `timeout`  | 在取消请求之前等待模型响应的最大时间（以秒为单位）。确保请求不会无限期挂起。                                                                                                                                                                                                                                                                                                                                                     |
+| `max_tokens` | 限制响应中的总 Token 数（单词和标点符号）。这控制输出的长度。                                                                                                                                                                                                                                                                                                                                                           |
+| `stop`     | 指定停止生成 Token 的停止序列。例如，您可以使用特定字符串来指示响应的结束。                                                                                                                                                                                                                                                                                                                                                     |
+| `max_retries`| 系统在因网络超时或速率限制等问题导致请求失败时尝试重新发送请求的最大次数。                                                                                                                                                                                                                                                                                                                                                         |
+| `api_key`  | 访问模型提供商进行身份验证所需的 API 密钥。通常在您注册模型访问权限时发放。                                                                                                                                                                                                                                                                                                                                                       |
+| `base_url` | 发送请求的 API 端点的 URL。这通常由模型提供商提供，对于定向到您的请求至关重要。                                                                                                                                                                                                                                                                                                                                                   |
+| `rate_limiter` | 一个可选的 [BaseRateLimiter](https://python.langchain.com/api_reference/core/rate_limiters/langchain_core.rate_limiters.BaseRateLimiter.html#langchain_core.rate_limiters.BaseRateLimiter)，用于错开请求以避免超出速率限制。有关更多详细信息，请参见下文的 [速率限制](#rate-limiting)。 |
 
-Chat models can be requested to respond in a particular format (e.g., JSON or matching a particular schema). This feature is extremely
-useful for information extraction tasks. Please read more about
-the technique in the [structured outputs](/docs/concepts/structured_outputs) guide.
+一些需要注意的重要事项：
 
-## Multimodality
+- 标准参数仅适用于公开了具有预期功能的参数的模型提供商。例如，某些提供商不公开最大输出 Token 的配置，因此在这些提供商上不支持 `max_tokens`。
+- 标准参数目前仅在具有自己集成包（例如 `langchain-openai`、`langchain-anthropic` 等）的集成中强制执行，在 `langchain-community` 中的模型上不强制执行。
 
-Large Language Models (LLMs) are not limited to processing text. They can also be used to process other types of data, such as images, audio, and video. This is known as [multimodality](/docs/concepts/multimodality).
+聊天模型还接受特定于该集成的其他参数。要查找聊天模型支持的所有参数，请前往其相应的 [API 参考](https://python.langchain.com/api_reference/)。
 
-Currently, only some LLMs support multimodal inputs, and almost none support multimodal outputs. Please consult the specific model documentation for details.
+## 工具调用
 
-## Context window
+聊天模型可以调用 [工具](/docs/concepts/tools) 来执行任务，例如从数据库检索数据、发出 API 请求或运行自定义代码。请参阅 [工具调用](/docs/concepts/tool_calling) 指南了解更多信息。
 
-A chat model's context window refers to the maximum size of the input sequence the model can process at one time. While the context windows of modern LLMs are quite large, they still present a limitation that developers must keep in mind when working with chat models.
+## 结构化输出
 
-If the input exceeds the context window, the model may not be able to process the entire input and could raise an error. In conversational applications, this is especially important because the context window determines how much information the model can "remember" throughout a conversation. Developers often need to manage the input within the context window to maintain a coherent dialogue without exceeding the limit. For more details on handling memory in conversations, refer to the [memory](https://langchain-ai.github.io/langgraph/concepts/memory/).
+可以要求聊天模型以特定格式（例如 JSON 或匹配特定模式）进行响应。此功能对于信息提取任务非常有用。请在 [结构化输出](/docs/concepts/structured_outputs) 指南中了解更多关于此技术的信息。
 
-The size of the input is measured in [tokens](/docs/concepts/tokens) which are the unit of processing that the model uses.
+## 多模态
 
-## Advanced topics
+大型语言模型 (LLMs) 不仅限于处理文本。它们还可以用于处理其他类型的数据，例如图像、音频和视频。这被称为 [多模态](/docs/concepts/multimodality)。
+
+目前，只有部分 LLM 支持多模态输入，几乎没有 LLM 支持多模态输出。有关详细信息，请咨询特定模型文档。
+
+## 上下文窗口
+
+聊天模型的上下文窗口是指模型一次可以处理的最大输入序列大小。虽然现代 LLM 的上下文窗口非常大，但它们仍然是开发人员在处理聊天模型时必须牢记的限制。
+
+如果输入超过上下文窗口，模型可能无法处理整个输入并可能引发错误。在对话应用程序中，这一点尤为重要，因为上下文窗口决定了模型在整个对话中可以“记住”多少信息。开发人员通常需要将输入管理在上下文窗口内，以在不超出限制的情况下保持连贯的对话。有关处理对话中记忆的更多详细信息，请参阅 [记忆](https://langchain-ai.github.io/langgraph/concepts/memory/)。
+
+输入的大小以 [Token](/docs/concepts/tokens) 为单位，Token 是模型使用的处理单元。
+
+## 高级主题
  
-### Rate-limiting
+### 速率限制
 
-Many chat model providers impose a limit on the number of requests that can be made in a given time period.
+许多聊天模型提供商对在给定时间段内可以发出的请求数量设置了限制。
 
-If you hit a rate limit, you will typically receive a rate limit error response from the provider, and will need to wait before making more requests.
+如果您达到速率限制，通常会收到提供商的速率限制错误响应，并且需要等待一段时间才能发出更多请求。
 
-You have a few options to deal with rate limits:
+您有几种选择来处理速率限制：
 
-1. Try to avoid hitting rate limits by spacing out requests: Chat models accept a `rate_limiter` parameter that can be provided during initialization. This parameter is used to control the rate at which requests are made to the model provider. Spacing out the requests to a given model is a particularly useful strategy when benchmarking models to evaluate their performance. Please see the [how to handle rate limits](/docs/how_to/chat_model_rate_limiting/) for more information on how to use this feature.
-2. Try to recover from rate limit errors: If you receive a rate limit error, you can wait a certain amount of time before retrying the request. The amount of time to wait can be increased with each subsequent rate limit error. Chat models have a `max_retries` parameter that can be used to control the number of retries. See the [standard parameters](#standard-parameters) section for more information.
-3. Fallback to another chat model: If you hit a rate limit with one chat model, you can switch to another chat model that is not rate-limited.
+1. 尝试通过错开请求来避免触发速率限制：聊天模型在初始化时接受一个 `rate_limiter` 参数。此参数用于控制请求发送到模型提供商的速率。错开对给定模型的请求是评估其性能的基准测试模型的特别有用的策略。有关如何使用此功能的更多信息，请参阅 [如何处理速率限制](/docs/how_to/chat_model_rate_limiting/)。
+2. 尝试从速率限制错误中恢复：如果您收到速率限制错误，您可以在重试请求之前等待一段时间。等待时间可以随着后续速率限制错误的出现而增加。聊天模型具有一个 `max_retries` 参数，可用于控制重试次数。有关更多信息，请参阅 [标准参数](#standard-parameters) 部分。
+3. 切换到另一个聊天模型：如果您在某一个聊天模型上遇到了速率限制，您可以切换到另一个没有速率限制的聊天模型。
 
-### Caching
+### 缓存
 
-Chat model APIs can be slow, so a natural question is whether to cache the results of previous conversations. Theoretically, caching can help improve performance by reducing the number of requests made to the model provider. In practice, caching chat model responses is a complex problem and should be approached with caution.
+聊天模型 API 可能很慢，因此自然会想到是否要缓存先前对话的结果。理论上，缓存可以通过减少向模型提供商发出的请求数量来提高性能。在实践中，缓存聊天模型响应是一个复杂的问题，应谨慎处理。
 
-The reason is that getting a cache hit is unlikely after the first or second interaction in a conversation if relying on caching the **exact** inputs into the model. For example, how likely do you think that multiple conversations start with the exact same message? What about the exact same three messages?
+原因是在对话中您可能不太可能在第一次或第二次交互后命中缓存，特别是如果您依赖缓存**精确的**输入到模型中。例如，您认为有多少次对话会以完全相同的消息开始？有多少次对话会以完全相同的三个消息开始？
 
-An alternative approach is to use semantic caching, where you cache responses based on the meaning of the input rather than the exact input itself. This can be effective in some situations, but not in others.
+一种替代方法是使用语义缓存，即根据输入的含义而不是精确输入来缓存响应。这在某些情况下可能有效，但在其他情况下可能无效。
 
-A semantic cache introduces a dependency on another model on the critical path of your application (e.g., the semantic cache may rely on an [embedding model](/docs/concepts/embedding_models) to convert text to a vector representation), and it's not guaranteed to capture the meaning of the input accurately.
+语义缓存会在您的应用程序的关键路径中引入对另一个模型的依赖（例如，语义缓存可能依赖于一个 [嵌入模型](/docs/concepts/embedding_models) 将文本转换为向量表示），并且不能保证准确捕获输入的含义。
 
-However, there might be situations where caching chat model responses is beneficial. For example, if you have a chat model that is used to answer frequently asked questions, caching responses can help reduce the load on the model provider, costs, and improve response times.
+但是，在某些情况下缓存聊天模型响应可能是有益的。例如，如果您有一个用于回答常见问题的聊天模型，缓存响应可以帮助减少模型提供商的负载、降低成本并提高响应时间。
 
-Please see the [how to cache chat model responses](/docs/how_to/chat_model_caching/) guide for more details.
+有关更多详细信息，请参阅 [如何缓存聊天模型响应](/docs/how_to/chat_model_caching/) 指南。
 
-## Related resources
+## 相关资源
 
-* How-to guides on using chat models: [how-to guides](/docs/how_to/#chat-models).
-* List of supported chat models: [chat model integrations](/docs/integrations/chat/).
+* 关于使用聊天模型的指南：[指南](/docs/how_to/#chat-models)。
+* 支持的聊天模型列表：[聊天模型集成](/docs/integrations/chat/)。
 
-### Conceptual guides
+### 概念指南
 
-* [Messages](/docs/concepts/messages)
-* [Tool calling](/docs/concepts/tool_calling)
-* [Multimodality](/docs/concepts/multimodality)
-* [Structured outputs](/docs/concepts/structured_outputs)
-* [Tokens](/docs/concepts/tokens)
+* [消息](/docs/concepts/messages)
+* [工具调用](/docs/concepts/tool_calling)
+* [多模态](/docs/concepts/multimodality)
+* [结构化输出](/docs/concepts/structured_outputs)
+* [Token](/docs/concepts/tokens)

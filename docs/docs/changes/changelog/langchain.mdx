@@ -2,11 +2,11 @@
 
 ## 0.2.0
 
-### Deleted
+### 已删除
 
-As of release 0.2.0, `langchain` is required to be integration-agnostic. This means that code in `langchain`  should not by default instantiate any specific chat models, llms, embedding models, vectorstores etc; instead, the user will be required to specify those explicitly.
+从 0.2.0 版本开始，`langchain` 需要与集成无关。这意味着 `langchain` 中的代码默认不应实例化任何特定的聊天模型、LLM、嵌入模型、向量存储等；相反，用户需要显式指定它们。
 
-The following functions and classes require an explicit LLM to be passed as an argument:
+以下函数和类要求将显式的 LLM 作为参数传递：
 
 - `langchain.agents.agent_toolkits.vectorstore.toolkit.VectorStoreToolkit`
 - `langchain.agents.agent_toolkits.vectorstore.toolkit.VectorStoreRouterToolkit`
@@ -17,77 +17,77 @@ The following functions and classes require an explicit LLM to be passed as an a
 - `langchain.indexes.VectorStoreIndexWrapper.aquery_with_sources`
 - `langchain.chains.flare.FlareChain`
 
-The following classes now require passing an explicit Embedding model as an argument:
+以下类现在要求将显式的 Embedding 模型作为参数传递：
 
 - `langchain.indexes.VectostoreIndexCreator`
 
-The following code has been removed:
+以下代码已被删除：
 
-- `langchain.natbot.NatBotChain.from_default` removed in favor of the `from_llm` class method.
+- `langchain.natbot.NatBotChain.from_default` 已被 `from_llm` 类方法取代。
 
-### Deprecated
+### 已弃用
 
-We have two main types of deprecations:
+我们有两种主要的弃用类型：
 
-1. Code that was moved from `langchain` into another package (e.g, `langchain-community`)
+1.  代码已从 `langchain` 移动到另一个包（例如 `langchain-community`）
 
-If you try to import it from `langchain`, the import will keep on working, but will raise a deprecation warning. The warning will provide a replacement import statement.
+    如果您尝试从 `langchain` 导入它，导入仍然可以工作，但会引发弃用警告。该警告将提供一个替换的导入语句。
 
-```python
-python -c "from langchain.document_loaders.markdown import UnstructuredMarkdownLoader"
+    ```python
+    python -c "from langchain.document_loaders.markdown import UnstructuredMarkdownLoader"
 
-```
+    ```
 
-```python
-LangChainDeprecationWarning: Importing UnstructuredMarkdownLoader from langchain.document_loaders is deprecated. Please replace deprecated imports:
+    ```python
+    LangChainDeprecationWarning: Importing UnstructuredMarkdownLoader from langchain.document_loaders is deprecated. Please replace deprecated imports:
 
->> from langchain.document_loaders import UnstructuredMarkdownLoader
+    >> from langchain.document_loaders import UnstructuredMarkdownLoader
 
-with new imports of:
+    with new imports of:
 
->> from langchain_community.document_loaders import UnstructuredMarkdownLoader
-```
+    >> from langchain_community.document_loaders import UnstructuredMarkdownLoader
+    ```
 
-We will continue supporting the imports in `langchain` until release 0.4 as long as the relevant package where the code lives is installed. (e.g., as long as `langchain_community` is installed.)
+    只要相关包已安装（例如，只要安装了 `langchain_community`），我们将继续支持 `langchain` 中的导入，直到 0.4 版本。
 
-However, we advise for users to not rely on these imports and instead migrate to the new imports. To help with this process, we’re releasing a migration script via the LangChain CLI. See further instructions in migration guide.
+    但是，我们建议用户不要依赖这些导入，而是迁移到新的导入。为了帮助完成此过程，我们通过 LangChain CLI 发布了一个迁移脚本。请参阅迁移指南中的进一步说明。
 
-1. Code that has better alternatives available and will eventually be removed, so there’s only a single way to do things. (e.g., `predict_messages` method in ChatModels has been deprecated in favor of `invoke`).
+2.  存在更好的可用替代方案，并且代码最终将被移除的代码（例如，ChatModels 中的 `predict_messages` 方法已被弃用，以 `invoke` 为优先）。
 
-Many of these were marked for removal in 0.2. We have bumped the removal to 0.3.
+    其中许多已标记为将在 0.2 版本中移除。我们已将移除时间推迟到 0.3 版本。
 
 
-## 0.1.0 (Jan 5, 2024)
+## 0.1.0 (2024 年 1 月 5 日)
 
-### Deleted
+### 已删除
 
-No deletions.
+无删除内容。
 
-### Deprecated
+### 已弃用
 
-Deprecated classes and methods will be removed in 0.2.0
+弃用的类和方法将在 0.2.0 版本中删除
 
-| Deprecated                      | Alternative                       | Reason                                         |
+| 已弃用                      | 替代方案                       | 原因                                         |
 |---------------------------------|-----------------------------------|------------------------------------------------|
-| ChatVectorDBChain               | ConversationalRetrievalChain      | More general to all retrievers                 |
-| create_ernie_fn_chain           | create_ernie_fn_runnable          | Use LCEL under the hood                        |
-| created_structured_output_chain | create_structured_output_runnable | Use LCEL under the hood                        |
-| NatBotChain                     |                                   | Not used                                       |
-| create_openai_fn_chain          | create_openai_fn_runnable         | Use LCEL under the hood                        |
-| create_structured_output_chain  | create_structured_output_runnable | Use LCEL under the hood                        |
-| load_query_constructor_chain    | load_query_constructor_runnable   | Use LCEL under the hood                        |
-| VectorDBQA                      | RetrievalQA                       | More general to all retrievers                 |
-| Sequential Chain                | LCEL                              | Obviated by LCEL                               |
-| SimpleSequentialChain           | LCEL                              | Obviated by LCEL                               |
-| TransformChain                  | LCEL/RunnableLambda               | Obviated by LCEL                               |
-| create_tagging_chain            | create_structured_output_runnable | Use LCEL under the hood                        |
-| ChatAgent                       | create_react_agent                | Use LCEL builder over a class                  |
-| ConversationalAgent             | create_react_agent                | Use LCEL builder over a class                  |
-| ConversationalChatAgent         | create_json_chat_agent            | Use LCEL builder over a class                  |
-| initialize_agent                | Individual create agent methods   | Individual create agent methods are more clear |
-| ZeroShotAgent                   | create_react_agent                | Use LCEL builder over a class                  |
-| OpenAIFunctionsAgent            | create_openai_functions_agent     | Use LCEL builder over a class                  |
-| OpenAIMultiFunctionsAgent       | create_openai_tools_agent         | Use LCEL builder over a class                  |
-| SelfAskWithSearchAgent          | create_self_ask_with_search       | Use LCEL builder over a class                  |
-| StructuredChatAgent             | create_structured_chat_agent      | Use LCEL builder over a class                  |
-| XMLAgent                        | create_xml_agent                  | Use LCEL builder over a class                  |
+| ChatVectorDBChain               | ConversationalRetrievalChain      | 对所有检索器更为通用                         |
+| create_ernie_fn_chain           | create_ernie_fn_runnable          | 在后台使用 LCEL                        |
+| created_structured_output_chain | create_structured_output_runnable | 在后台使用 LCEL                        |
+| NatBotChain                     |                                   | 未使用                                       |
+| create_openai_fn_chain          | create_openai_fn_runnable         | 在后台使用 LCEL                        |
+| create_structured_output_chain  | create_structured_output_runnable | 在后台使用 LCEL                        |
+| load_query_constructor_chain    | load_query_constructor_runnable   | 在后台使用 LCEL                        |
+| VectorDBQA                      | RetrievalQA                       | 对所有检索器更为通用                         |
+| Sequential Chain                | LCEL                              | 被 LCEL 取代                               |
+| SimpleSequentialChain           | LCEL                              | 被 LCEL 取代                               |
+| TransformChain                  | LCEL/RunnableLambda               | 被 LCEL 取代                               |
+| create_tagging_chain            | create_structured_output_runnable | 在后台使用 LCEL                        |
+| ChatAgent                       | create_react_agent                | 使用 LCEL 构建器而非类                  |
+| ConversationalAgent             | create_react_agent                | 使用 LCEL 构建器而非类                  |
+| ConversationalChatAgent         | create_json_chat_agent            | 使用 LCEL 构建器而非类                  |
+| initialize_agent                | Individual create agent methods   | 单独的 create agent 方法更清晰           |
+| ZeroShotAgent                   | create_react_agent                | 使用 LCEL 构建器而非类                  |
+| OpenAIFunctionsAgent            | create_openai_functions_agent     | 使用 LCEL 构建器而非类                      |
+| OpenAIMultiFunctionsAgent       | create_openai_tools_agent         | 使用 LCEL 构建器而非类                      |
+| SelfAskWithSearchAgent          | create_self_ask_with_search       | 使用 LCEL 构建器而非类                      |
+| StructuredChatAgent             | create_structured_chat_agent      | 使用 LCEL 构建器而非类                      |
+| XMLAgent                        | create_xml_agent                  | 使用 LCEL 构建器而非类                      |

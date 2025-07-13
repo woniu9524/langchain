@@ -1,38 +1,38 @@
 # PromptLayer
 
->[PromptLayer](https://docs.promptlayer.com/introduction) is a platform for prompt engineering. 
-> It also helps with the LLM observability to visualize requests, version prompts, and track usage.
+>[PromptLayer](https://docs.promptlayer.com/introduction) 是一个用于提示工程的平台。
+> 它还提供 LLM 可观测性功能，用于可视化请求、版本化提示和跟踪使用情况。
 >
->While `PromptLayer` does have LLMs that integrate directly with LangChain (e.g. 
-> [`PromptLayerOpenAI`](https://docs.promptlayer.com/languages/langchain)), 
-> using a callback is the recommended way to integrate `PromptLayer` with LangChain.
+>虽然 `PromptLayer` 确实有与 LangChain 直接集成的 LLM（例如
+> [`PromptLayerOpenAI`](https://docs.promptlayer.com/languages/langchain)），
+> 但使用回调是集成 `PromptLayer` 与 LangChain 的推荐方式。
 
-## Installation and Setup
+## 安装和设置
 
-To work with `PromptLayer`, we have to:
-- Create a `PromptLayer` account
-- Create an api token and set it as an environment variable (`PROMPTLAYER_API_KEY`)
+要使用 `PromptLayer`，我们需要：
+- 创建一个 `PromptLayer` 账户
+- 创建一个 API 令牌并将其设置为环境变量 (`PROMPTLAYER_API_KEY`)
 
-Install a Python package:
+安装 Python 包：
 
 ```bash
 pip install promptlayer
 ```
 
 
-## Callback
+## 回调
 
-See a [usage example](/docs/integrations/callbacks/promptlayer).
+请参阅[用法示例](/docs/integrations/callbacks/promptlayer)。
 
 ```python
-import promptlayer  # Don't forget this import!
+import promptlayer  # 别忘了导入！
 from langchain.callbacks import PromptLayerCallbackHandler
 ```
 
 
 ## LLM
 
-See a [usage example](/docs/integrations/llms/promptlayer_openai).
+请参阅[用法示例](/docs/integrations/llms/promptlayer_openai)。
 
 ```python
 from langchain_community.llms import PromptLayerOpenAI
@@ -41,9 +41,8 @@ from langchain_community.llms import PromptLayerOpenAI
 
 ## Chat Models
 
-See a [usage example](/docs/integrations/chat/promptlayer_chatopenai).
+请参阅[用法示例](/docs/integrations/chat/promptlayer_chatopenai)。
 
 ```python
 from langchain_community.chat_models import PromptLayerChatOpenAI
 ```
-

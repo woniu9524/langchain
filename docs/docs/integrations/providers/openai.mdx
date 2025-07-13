@@ -4,120 +4,115 @@ keywords: [openai]
 
 # OpenAI
 
-All functionality related to OpenAI
+所有与 OpenAI 相关的功能
 
-> [OpenAI](https://en.wikipedia.org/wiki/OpenAI) is American artificial intelligence (AI) research laboratory
-> consisting of the non-profit **OpenAI Incorporated**
-> and its for-profit subsidiary corporation **OpenAI Limited Partnership**.
-> **OpenAI** conducts AI research with the declared intention of promoting and developing a friendly AI.
-> **OpenAI** systems run on an **Azure**-based supercomputing platform from **Microsoft**.
+> [OpenAI](https://en.wikipedia.org/wiki/OpenAI) 是位于美国的人工智能（AI）研究实验室，
+> 由非营利组织 **OpenAI Incorporated** 及其营利性子公司 **OpenAI Limited Partnership** 组成。
+> **OpenAI** 的宗旨是促进和发展友好的 AI。
+> **OpenAI** 的系统运行在 **Microsoft** 的 **Azure** 超级计算平台上。
 >
-> The [OpenAI API](https://platform.openai.com/docs/models) is powered by a diverse set of models with different capabilities and price points.
-> 
-> [ChatGPT](https://chat.openai.com) is the Artificial Intelligence (AI) chatbot developed by `OpenAI`.
+> [OpenAI API](https://platform.openai.com/docs/models) 由一套功能和价格各异的模型提供支持。
+>
+> [ChatGPT](https://chat.openai.com) 是由 `OpenAI` 开发的人工智能（AI）聊天机器人。
 
-## Installation and Setup
+## 安装与设置
 
-Install the integration package with
+使用以下命令安装集成包
 ```bash
 pip install langchain-openai
 ```
 
-Get an OpenAI api key and set it as an environment variable (`OPENAI_API_KEY`)
+获取 OpenAI API 密钥并将其设置为环境变量（`OPENAI_API_KEY`）
 
-## Chat model
+## Chat model (聊天模型)
 
-See a [usage example](/docs/integrations/chat/openai).
+请参阅 [使用示例](/docs/integrations/chat/openai)。
 
 ```python
 from langchain_openai import ChatOpenAI
 ```
 
-If you are using a model hosted on `Azure`, you should use different wrapper for that:
+如果您使用的是托管在 `Azure` 上的模型，则应使用不同的包装器：
 ```python
 from langchain_openai import AzureChatOpenAI
 ```
-For a more detailed walkthrough of the `Azure` wrapper, see [here](/docs/integrations/chat/azure_chat_openai).
+有关 `Azure` 包装器的更详细的教程，请参阅 [此处](/docs/integrations/chat/azure_chat_openai)。
 
 ## LLM
 
-See a [usage example](/docs/integrations/llms/openai).
+请参阅 [使用示例](/docs/integrations/llms/openai)。
 
 ```python
 from langchain_openai import OpenAI
 ```
 
-If you are using a model hosted on `Azure`, you should use different wrapper for that:
+如果您使用的是托管在 `Azure` 上的模型，则应使用不同的包装器：
 ```python
 from langchain_openai import AzureOpenAI
 ```
-For a more detailed walkthrough of the `Azure` wrapper, see [here](/docs/integrations/llms/azure_openai).
+有关 `Azure` 包装器的更详细的教程，请参阅 [此处](/docs/integrations/llms/azure_openai)。
 
-## Embedding Model
+## Embedding Model (嵌入模型)
 
-See a [usage example](/docs/integrations/text_embedding/openai)
+请参阅 [使用示例](/docs/integrations/text_embedding/openai)
 
 ```python
 from langchain_openai import OpenAIEmbeddings
 ```
 
-## Document Loader
+## Document Loader (文档加载器)
 
-See a [usage example](/docs/integrations/document_loaders/chatgpt_loader).
+请参阅 [使用示例](/docs/integrations/document_loaders/chatgpt_loader)。
 
 ```python
 from langchain_community.document_loaders.chatgpt import ChatGPTLoader
 ```
 
-## Retriever
+## Retriever (检索器)
 
-See a [usage example](/docs/integrations/retrievers/chatgpt-plugin).
+请参阅 [使用示例](/docs/integrations/retrievers/chatgpt-plugin)。
 
 ```python
 from langchain.retrievers import ChatGPTPluginRetriever
 ```
 
-## Tools
+## Tools (工具)
 
-### Dall-E Image Generator
+### Dall-E Image Generator (Dall-E 图像生成器)
 
->[OpenAI Dall-E](https://openai.com/dall-e-3) are text-to-image models developed by `OpenAI` 
-> using deep learning methodologies to generate digital images from natural language descriptions, 
-> called "prompts".
+>[OpenAI Dall-E](https://openai.com/dall-e-3) 是 `OpenAI` 开发的文本到图像模型，
+>它使用深度学习方法，根据自然语言描述（称为“提示”）生成数字图像。
 
 
-See a [usage example](/docs/integrations/tools/dalle_image_generator).
+请参阅 [使用示例](/docs/integrations/tools/dalle_image_generator)。
 
 ```python
 from langchain_community.utilities.dalle_image_generator import DallEAPIWrapper
 ```
 
-## Adapter
+## Adapter (适配器)
 
-See a [usage example](/docs/integrations/adapters/openai).
+请参阅 [使用示例](/docs/integrations/adapters/openai)。
 
 ```python
 from langchain.adapters import openai as lc_openai
 ```
 
-## Tokenizer
+## Tokenizer (分词器)
 
-There are several places you can use the `tiktoken` tokenizer. By default, it is used to count tokens
-for OpenAI LLMs.
+您可以在多个地方使用 `tiktoken` 分词器。默认情况下，它用于计算 OpenAI LLM 的 token 数量。
 
-You can also use it to count tokens when splitting documents with 
+您还可以使用它在分割文档时计算 token 数量
 ```python
 from langchain.text_splitter import CharacterTextSplitter
 CharacterTextSplitter.from_tiktoken_encoder(...)
 ```
-For a more detailed walkthrough of this, see [this notebook](/docs/how_to/split_by_token/#tiktoken)
+有关此功能的更详细教程，请参阅 [此笔记本](/docs/how_to/split_by_token/#tiktoken)
 
-## Chain
+## Chain (链)
 
-See a [usage example](https://python.langchain.com/v0.1/docs/guides/productionization/safety/moderation).
+请参阅 [使用示例](https://python.langchain.com/v0.1/docs/guides/productionization/safety/moderation)。
 
 ```python
 from langchain.chains import OpenAIModerationChain
 ```
-
-

@@ -1,39 +1,38 @@
 # Fireworks AI
 
->[Fireworks AI](https://fireworks.ai) is a generative AI inference platform to run and 
-> customize models with industry-leading speed and production-readiness.
+>[Fireworks AI](https://fireworks.ai) 是一个生成式 AI 推理平台，可提供行业领先的速度和生产就绪性来运行和定制模型。
 
 
 
-## Installation and setup
+## 安装和设置
 
-- Install the Fireworks integration package.
+- 安装 Fireworks 集成包。
 
   ```
   pip install langchain-fireworks
   ```
 
-- Get a Fireworks API key by signing up at [fireworks.ai](https://fireworks.ai).
-- Authenticate by setting the FIREWORKS_API_KEY environment variable.
+- 通过在 [fireworks.ai](https://fireworks.ai) 注册来获取 Fireworks API 密钥。
+- 通过设置 FIREWORKS_API_KEY 环境变量进行身份验证。
 
-### Authentication
+### 身份验证
 
-There are two ways to authenticate using your Fireworks API key:
+您可以通过以下两种方式使用您的 Fireworks API 密钥进行身份验证：
 
-1.  Setting the `FIREWORKS_API_KEY` environment variable.
+1. 设置 `FIREWORKS_API_KEY` 环境变量。
 
     ```python
     os.environ["FIREWORKS_API_KEY"] = "<KEY>"
     ```
 
-2.  Setting `api_key` field in the Fireworks LLM module.
+2. 在 Fireworks LLM 模块中设置 `api_key` 字段。
 
     ```python
     llm = Fireworks(api_key="<KEY>")
     ```
 ## Chat models
 
-See a [usage example](/docs/integrations/chat/fireworks).
+请参阅 [使用示例](/docs/integrations/chat/fireworks)。
 
 ```python
 from langchain_fireworks import ChatFireworks
@@ -41,16 +40,16 @@ from langchain_fireworks import ChatFireworks
 
 ## LLMs
 
-See a [usage example](/docs/integrations/llms/fireworks).
+请参阅 [使用示例](/docs/integrations/llms/fireworks)。
 
 ```python
-from langchain_fireworks import Fireworks 
+from langchain_fireworks import Fireworks
 ```
 
 ## Embedding models
 
-See a [usage example](/docs/integrations/text_embedding/fireworks).
+请参阅 [使用示例](/docs/integrations/text_embedding/fireworks)。
 
 ```python
-from langchain_fireworks import FireworksEmbeddings 
+from langchain_fireworks import FireworksEmbeddings
 ```

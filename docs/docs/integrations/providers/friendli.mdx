@@ -1,23 +1,20 @@
 # Friendli AI
 
-> [FriendliAI](https://friendli.ai/) enhances AI application performance and optimizes
-> cost savings with scalable, efficient deployment options, tailored for high-demand AI workloads.
+> [ फ्रेंडलीएआई](https://friendli.ai/) 凭借可扩展、高效的部署选项，为高需求的 AI 工作负载量身定制，从而提高 AI 应用程序性能并优化成本节约。
 
-## Installation and setup
+## 安装和设置
 
-Install the `friendli-client` python package.
+安装 `friendli-client` Python 包。
 
 ```bash
 pip install -U langchain_community friendli-client
 ```
 
-Sign in to [Friendli Suite](https://suite.friendli.ai/) to create a Personal Access Token,
-and set it as the `FRIENDLI_TOKEN` environment variable.
+登录 [Friendli Suite](https://suite.friendli.ai/) 以创建个人访问令牌，并将其设置为 `FRIENDLI_TOKEN` 环境变量。
 
+## 聊天模型
 
-## Chat models
-
-See a [usage example](/docs/integrations/chat/friendli).
+请参阅[用法示例](/docs/integrations/chat/friendli)。
 
 ```python
 from langchain_community.chat_models.friendli import ChatFriendli
@@ -30,7 +27,7 @@ for m in chat.stream("Tell me fun things to do in NYC"):
 
 ## LLMs
 
-See a [usage example](/docs/integrations/llms/friendli).
+请参阅[用法示例](/docs/integrations/llms/friendli)。
 
 ```python
 from langchain_community.llms.friendli import Friendli

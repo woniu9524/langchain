@@ -1,22 +1,20 @@
 # AnalyticDB
 
 >[AnalyticDB for PostgreSQL](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/product-introduction-overview) 
-> is a massively parallel processing (MPP) data warehousing service 
-> from [Alibaba Cloud](https://www.alibabacloud.com/)
->that is designed to analyze large volumes of data online.
+> 是来自[阿里云](https://www.alibabacloud.com/)的**海量并行处理**（MPP）数据仓库服务，
+> 旨在在线分析海量数据。
 
->`AnalyticDB for PostgreSQL` is developed based on the open-source `Greenplum Database` 
-> project and is enhanced with in-depth extensions by `Alibaba Cloud`. AnalyticDB 
-> for PostgreSQL is compatible with the ANSI SQL 2003 syntax and the PostgreSQL and 
-> Oracle database ecosystems. AnalyticDB for PostgreSQL also supports row store and 
-> column store. AnalyticDB for PostgreSQL processes petabytes of data offline at a 
-> high performance level and supports highly concurrent.
+>`AnalyticDB for PostgreSQL` 基于开源的 `Greenplum Database` 
+> 项目开发，并经过阿里云的深度扩展。AnalyticDB 
+> for PostgreSQL 支持 ANSI SQL 2003 语法，并与 PostgreSQL 和 
+> Oracle 数据库生态系统兼容。AnalyticDB for PostgreSQL 同时支持行存储和
+> 列存储。AnalyticDB for PostgreSQL 以高性能处理 PB 级别的数据离线分析，并支持高并发。
 
-This page covers how to use the AnalyticDB ecosystem within LangChain.
+本页面介绍如何在 LangChain 中使用 AnalyticDB 生态系统。
 
-## Installation and Setup
+## 安装和设置
 
-You need to install the `sqlalchemy` python package.
+您需要安装 `sqlalchemy` python 包。
 
 ```bash
 pip install sqlalchemy
@@ -24,7 +22,7 @@ pip install sqlalchemy
 
 ## VectorStore
 
-See a [usage example](/docs/integrations/vectorstores/analyticdb).
+请参阅[用法示例](/docs/integrations/vectorstores/analyticdb)。
 
 ```python
 from langchain_community.vectorstores import AnalyticDB

@@ -2,20 +2,19 @@
 pagination_next: null
 pagination_prev: null
 ---
-## How to add a community integration (not recommended)
+## 如何添加社区集成（不推荐）
 
 :::danger
 
-We recommend following the [main integration guide](./index.mdx) to add new integrations instead.
+我们建议遵循[主集成指南](./index.mdx)来添加新集成。
 
-If you follow this guide, there is a high likelihood we will close your PR with the above
-guide linked without much discussion.
+如果遵循本指南，我们很有可能会在不作太多讨论的情况下关闭您的拉取请求，并附上上述指南的链接。
 
 :::
 
-The `langchain-community` package is in `libs/community`.
+`langchain-community` 包位于 `libs/community`。
 
-It can be installed with `pip install langchain-community`, and exported members can be imported with code like 
+可以使用 `pip install langchain-community` 进行安装，并且可以像下面这样的代码导入导出的成员
 
 ```python
 from langchain_community.chat_models import ChatParrotLink
@@ -23,18 +22,17 @@ from langchain_community.llms import ParrotLinkLLM
 from langchain_community.vectorstores import ParrotLinkVectorStore
 ```
 
-The `community` package relies on manually-installed dependent packages, so you will see errors 
-if you try to import a package that is not installed. In our fake example, if you tried to import `ParrotLinkLLM` without installing `parrot-link-sdk`, you will see an `ImportError` telling you to install it when trying to use it.
+`community` 包依赖于手动安装的依赖包，因此如果您尝试导入未安装的包，将会看到错误。在我们虚构的例子中，如果您尝试在未安装 `parrot-link-sdk` 的情况下导入 `ParrotLinkLLM`，当您尝试使用它时，会看到一个 `ImportError`，提示您安装它。
 
-Let's say we wanted to implement a chat model for Parrot Link AI. We would create a new file in `libs/community/langchain_community/chat_models/parrot_link.py` with the following code:
+假设我们想为 Parrot Link AI 实现一个聊天模型。我们将在 `libs/community/langchain_community/chat_models/parrot_link.py` 中创建一个新文件，其中包含以下代码：
 
 ```python
 from langchain_core.language_models.chat_models import BaseChatModel
 
 class ChatParrotLink(BaseChatModel):
-    """ChatParrotLink chat model.
+    """ParrotLink 聊天模型。
 
-    Example:
+    示例：
         .. code-block:: python
 
             from langchain_community.chat_models import ChatParrotLink
@@ -45,11 +43,11 @@ class ChatParrotLink(BaseChatModel):
     ...
 ```
 
-And we would write tests in:
+我们将在以下位置编写测试：
 
-- Unit tests: `libs/community/tests/unit_tests/chat_models/test_parrot_link.py`
-- Integration tests: `libs/community/tests/integration_tests/chat_models/test_parrot_link.py`
+- 单元测试：`libs/community/tests/unit_tests/chat_models/test_parrot_link.py`
+- 集成测试：`libs/community/tests/integration_tests/chat_models/test_parrot_link.py`
 
-And add documentation to:
+并将文档添加到：
 
 - `docs/docs/integrations/chat/parrot_link.ipynb`

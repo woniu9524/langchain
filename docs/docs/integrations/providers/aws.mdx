@@ -1,14 +1,14 @@
 # AWS
 
-The `LangChain` integrations related to [Amazon AWS](https://aws.amazon.com/) platform.
+与 [Amazon AWS](https://aws.amazon.com/) 平台相关的 `LangChain` 集成。
 
-First-party AWS integrations are available in the `langchain_aws` package.
+第一方 AWS 集成可在 `langchain_aws` 包中找到。
 
 ```bash
 pip install langchain-aws
 ```
 
-And there are also some community integrations available in the `langchain_community` package with the `boto3` optional dependency.
+此外，在 `langchain_community` 包中也有一些社区集成可用，它们依赖于可选的 `boto3`。
 
 ```bash
 pip install langchain-community boto3
@@ -18,35 +18,24 @@ pip install langchain-community boto3
 
 ### Bedrock Chat
 
->[Amazon Bedrock](https://aws.amazon.com/bedrock/) is a fully managed service that offers a choice of 
-> high-performing foundation models (FMs) from leading AI companies like `AI21 Labs`, `Anthropic`, `Cohere`, 
-> `Meta`, `Stability AI`, and `Amazon` via a single API, along with a broad set of capabilities you need to 
-> build generative AI applications with security, privacy, and responsible AI. Using `Amazon Bedrock`, 
-> you can easily experiment with and evaluate top FMs for your use case, privately customize them with 
-> your data using techniques such as fine-tuning and `Retrieval Augmented Generation` (`RAG`), and build 
-> agents that execute tasks using your enterprise systems and data sources. Since `Amazon Bedrock` is 
-> serverless, you don't have to manage any infrastructure, and you can securely integrate and deploy 
-> generative AI capabilities into your applications using the AWS services you are already familiar with.
+>[Amazon Bedrock](https://aws.amazon.com/bedrock/) 是一项完全托管的服务，通过单一 API 提供领先 AI 公司（如 `AI21 Labs`、`Anthropic`、`Cohere`、`Meta`、`Stability AI` 和 `Amazon`）的高性能基础模型 (FM) 选项，以及构建生成式 AI 应用所需的广泛能力，同时确保安全、隐私和负责任的 AI。通过使用 `Amazon Bedrock`，您可以轻松地为您的用例试验和评估顶级 FM，通过微调和`检索增强生成` (`RAG`) 等技术使用您自己的数据私有化定制它们，并构建可以使用您的企业系统和数据源执行任务的代理。由于 `Amazon Bedrock` 是无服务器的，您无需管理任何基础设施，并且可以使用您熟悉的 AWS 服务安全地将生成式 AI 能力集成到您的应用程序中并进行部署。
 
-See a [usage example](/docs/integrations/chat/bedrock).
+请参阅 [使用示例](/docs/integrations/chat/bedrock)。
 
 ```python
 from langchain_aws import ChatBedrock
 ```
 
 ### Bedrock Converse
-AWS Bedrock maintains a [Converse API](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html)
-that provides a unified conversational interface for Bedrock models. This API does not
-yet support custom models. You can see a list of all
-[models that are supported here](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html).
+AWS Bedrock 维护着一个 [Converse API](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html)，为 Bedrock 模型提供统一的对话接口。此 API 目前尚不支持自定义模型。您可以在此处查看所有[支持的模型列表](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html)。
 
 :::info
 
-We recommend the Converse API for users who do not need to use custom models. It can be accessed using [ChatBedrockConverse](https://python.langchain.com/api_reference/aws/chat_models/langchain_aws.chat_models.bedrock_converse.ChatBedrockConverse.html).
+我们推荐不需使用自定义模型的用户使用 Converse API。您可以使用 [ChatBedrockConverse](https://python.langchain.com/api_reference/aws/chat_models/langchain_aws.chat_models.bedrock_converse.ChatBedrockConverse.html) 进行访问。
 
 :::
 
-See a [usage example](/docs/integrations/chat/bedrock).
+请参阅 [使用示例](/docs/integrations/chat/bedrock)。
 
 ```python
 from langchain_aws import ChatBedrockConverse
@@ -56,7 +45,7 @@ from langchain_aws import ChatBedrockConverse
 
 ### Bedrock
  
-See a [usage example](/docs/integrations/llms/bedrock).
+请参阅 [使用示例](/docs/integrations/llms/bedrock)。
 
 ```python
 from langchain_aws import BedrockLLM
@@ -64,19 +53,11 @@ from langchain_aws import BedrockLLM
 
 ### Amazon API Gateway
 
->[Amazon API Gateway](https://aws.amazon.com/api-gateway/) is a fully managed service that makes it easy for 
-> developers to create, publish, maintain, monitor, and secure APIs at any scale. APIs act as the "front door" 
-> for applications to access data, business logic, or functionality from your backend services. Using 
-> `API Gateway`, you can create RESTful APIs and WebSocket APIs that enable real-time two-way communication 
-> applications. `API Gateway` supports containerized and serverless workloads, as well as web applications.
+>[Amazon API Gateway](https://aws.amazon.com/api-gateway/) 是一项完全托管的服务，使开发人员能够轻松地创建、发布、维护、监控和保护任何规模的 API。API 作为应用程序访问后端服务中的数据、业务逻辑或功能的“前门”。通过使用 `API Gateway`，您可以创建 RESTful API 和 WebSocket API，从而实现支持实时双向通信的应用程序。`API Gateway` 支持容器化和无服务器工作负载以及 Web 应用程序。
 > 
-> `API Gateway` handles all the tasks involved in accepting and processing up to hundreds of thousands of 
-> concurrent API calls, including traffic management, CORS support, authorization and access control, 
-> throttling, monitoring, and API version management. `API Gateway` has no minimum fees or startup costs. 
-> You pay for the API calls you receive and the amount of data transferred out and, with the `API Gateway` 
-> tiered pricing model, you can reduce your cost as your API usage scales.
+> `API Gateway` 负责处理接受和处理多达数十万并发 API 调用所需的所有任务，包括流量管理、CORS 支持、授权和访问控制、限流、监控以及 API 版本管理。`API Gateway` 没有最低费用或启动成本。您只需为收到的 API 调用以及传输的数据量付费，并且通过 `API Gateway` 的分层定价模式，您可以随着 API 使用量的扩展而降低成本。
 
-See a [usage example](/docs/integrations/llms/amazon_api_gateway).
+请参阅 [使用示例](/docs/integrations/llms/amazon_api_gateway)。
 
 ```python
 from langchain_community.llms import AmazonAPIGateway
@@ -84,12 +65,11 @@ from langchain_community.llms import AmazonAPIGateway
 
 ### SageMaker Endpoint
 
->[Amazon SageMaker](https://aws.amazon.com/sagemaker/) is a system that can build, train, and deploy 
-> machine learning (ML) models with fully managed infrastructure, tools, and workflows.
+>[Amazon SageMaker](https://aws.amazon.com/sagemaker/) 是一个可以通过完全托管的基础设施、工具和工作流来构建、训练和部署机器学习 (ML) 模型的系统。
 
-We use `SageMaker` to host our model and expose it as the `SageMaker Endpoint`.
+我们使用 `SageMaker` 来托管我们的模型并将其公开为 `SageMaker Endpoint`。
 
-See a [usage example](/docs/integrations/llms/sagemaker).
+请参阅 [使用示例](/docs/integrations/llms/sagemaker)。
 
 ```python
 from langchain_aws import SagemakerEndpoint
@@ -99,14 +79,14 @@ from langchain_aws import SagemakerEndpoint
 
 ### Bedrock
 
-See a [usage example](/docs/integrations/text_embedding/bedrock).
+请参阅 [使用示例](/docs/integrations/text_embedding/bedrock)。
 ```python
 from langchain_aws import BedrockEmbeddings
 ```
 
 ### SageMaker Endpoint
 
-See a [usage example](/docs/integrations/text_embedding/sagemaker-endpoint).
+请参阅 [使用示例](/docs/integrations/text_embedding/sagemaker-endpoint)。
 ```python
 from langchain_community.embeddings import SagemakerEndpointEmbeddings
 from langchain_community.llms.sagemaker_endpoint import ContentHandlerBase
@@ -116,14 +96,14 @@ from langchain_community.llms.sagemaker_endpoint import ContentHandlerBase
 
 ### AWS S3 Directory and File
 
->[Amazon Simple Storage Service (Amazon S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html)
-> is an object storage service.
->[AWS S3 Directory](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html)
->[AWS S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html)
+>[Amazon Simple Storage Service (Amazon S3)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html) 
+> 是一种对象存储服务。
+>[AWS S3 目录](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html)
+>[AWS S3 存储桶](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html)
 
-See a [usage example for S3DirectoryLoader](/docs/integrations/document_loaders/aws_s3_directory).
+请参阅 [S3DirectoryLoader 的使用示例](/docs/integrations/document_loaders/aws_s3_directory)。
 
-See a [usage example for S3FileLoader](/docs/integrations/document_loaders/aws_s3_file).
+请参阅 [S3FileLoader 的使用示例](/docs/integrations/document_loaders/aws_s3_file)。
 
 ```python
 from langchain_community.document_loaders import S3DirectoryLoader, S3FileLoader
@@ -131,10 +111,9 @@ from langchain_community.document_loaders import S3DirectoryLoader, S3FileLoader
 
 ### Amazon Textract
 
->[Amazon Textract](https://docs.aws.amazon.com/managedservices/latest/userguide/textract.html) is a machine 
-> learning (ML) service that automatically extracts text, handwriting, and data from scanned documents.
+>[Amazon Textract](https://aws.amazon.com/managedservices/latest/userguide/textract.html) 是一项机器学习 (ML) 服务，可自动从扫描文档中提取文本、手写内容和数据。
 
-See a [usage example](/docs/integrations/document_loaders/amazon_textract).
+请参阅 [使用示例](/docs/integrations/document_loaders/amazon_textract)。
 
 ```python
 from langchain_community.document_loaders import AmazonTextractPDFLoader
@@ -142,10 +121,9 @@ from langchain_community.document_loaders import AmazonTextractPDFLoader
 
 ### Amazon Athena
 
->[Amazon Athena](https://aws.amazon.com/athena/) is a serverless, interactive analytics service built
->on open-source frameworks, supporting open-table and file formats.
+>[Amazon Athena](https://aws.amazon.com/athena/) 是一个无服务器的交互式分析服务，构建在开源框架之上，支持开放表和文件格式。
 
-See a [usage example](/docs/integrations/document_loaders/athena).
+请参阅 [使用示例](/docs/integrations/document_loaders/athena)。
 
 ```python
 from langchain_community.document_loaders.athena import AthenaLoader
@@ -153,13 +131,9 @@ from langchain_community.document_loaders.athena import AthenaLoader
 
 ### AWS Glue
 
->The [AWS Glue Data Catalog](https://docs.aws.amazon.com/en_en/glue/latest/dg/catalog-and-crawler.html) is a centralized metadata 
-> repository that allows you to manage, access, and share metadata about 
-> your data stored in AWS. It acts as a metadata store for your data assets, 
-> enabling various AWS services and your applications to query and connect 
-> to the data they need efficiently.
+> [AWS Glue Data Catalog](https://docs.aws.amazon.com/zh_cn/glue/latest/dg/catalog-and-crawler.html) 是一个集中的元数据存储库，允许您管理、访问和共享有关存储在 AWS 中的数据的元数据。它充当数据资产的元数据存储，使各种 AWS 服务和您的应用程序能够高效地查询和连接它们所需的数据。
 
-See a [usage example](/docs/integrations/document_loaders/glue_catalog).
+请参阅 [使用示例](/docs/integrations/document_loaders/glue_catalog)。
 
 ```python
 from langchain_community.document_loaders.glue_catalog import GlueCatalogLoader
@@ -169,20 +143,15 @@ from langchain_community.document_loaders.glue_catalog import GlueCatalogLoader
 
 ### Amazon OpenSearch Service
 
-> [Amazon OpenSearch Service](https://aws.amazon.com/opensearch-service/) performs 
-> interactive log analytics, real-time application monitoring, website search, and more. `OpenSearch` is 
-> an open source, 
-> distributed search and analytics suite derived from `Elasticsearch`. `Amazon OpenSearch Service` offers the 
-> latest versions of `OpenSearch`, support for many versions of `Elasticsearch`, as well as 
-> visualization capabilities powered by `OpenSearch Dashboards` and `Kibana`.
+> [Amazon OpenSearch Service](https://aws.amazon.com/opensearch-service/) 可执行交互式日志分析、实时应用程序监控、网站搜索等。`OpenSearch` 是一个源自 `Elasticsearch` 的开源分布式搜索和分析套件。`Amazon OpenSearch Service` 提供最新版本的 `OpenSearch`，支持多个版本的 `Elasticsearch`，以及由 `OpenSearch Dashboards` 和 `Kibana` 提供支持的可视化功能。
 
-We need to install several python libraries.
+我们需要安装几个 Python 库。
 
 ```bash
 pip install boto3 requests requests-aws4auth
 ```
 
-See a [usage example](/docs/integrations/vectorstores/opensearch#using-aos-amazon-opensearch-service).
+请参阅 [使用示例](/docs/integrations/vectorstores/opensearch#using-aos-amazon-opensearch-service)。
 
 ```python
 from langchain_community.vectorstores import OpenSearchVectorSearch
@@ -190,36 +159,35 @@ from langchain_community.vectorstores import OpenSearchVectorSearch
 
 ### Amazon DocumentDB Vector Search
 
->[Amazon DocumentDB (with MongoDB Compatibility)](https://docs.aws.amazon.com/documentdb/) makes it easy to set up, operate, and scale MongoDB-compatible databases in the cloud.
-> With Amazon DocumentDB, you can run the same application code and use the same drivers and tools that you use with MongoDB.
-> Vector search for Amazon DocumentDB combines the flexibility and rich querying capability of a JSON-based document database with the power of vector search.
+>[Amazon DocumentDB (with MongoDB Compatibility)](https://docs.aws.amazon.com/documentdb/) 使在云中设置、操作和扩展兼容 MongoDB 的数据库变得容易。
+> 使用 Amazon DocumentDB，您可以运行与使用 MongoDB 相同的应用程序代码，并使用与 MongoDB 相同的驱动程序和工具。
+> Amazon DocumentDB 的向量搜索结合了基于 JSON 的文档数据库的灵活性和丰富的查询能力与向量搜索的强大功能。
 
-#### Installation and Setup
+#### 安装和设置
 
-See [detail configuration instructions](/docs/integrations/vectorstores/documentdb).
+请参阅 [详细的配置说明](/docs/integrations/vectorstores/documentdb)。
 
-We need to install the `pymongo` python package.
+我们需要安装 `pymongo` Python 库。
 
 ```bash
 pip install pymongo
 ```
 
-#### Deploy DocumentDB on AWS
+#### 在 AWS 上部署 DocumentDB
 
-[Amazon DocumentDB (with MongoDB Compatibility)](https://docs.aws.amazon.com/documentdb/) is a fast, reliable, and fully managed database service. Amazon DocumentDB makes it easy to set up, operate, and scale MongoDB-compatible databases in the cloud.
+[Amazon DocumentDB (with MongoDB Compatibility)](https://docs.aws.amazon.com/documentdb/) 是一项快速、可靠且完全托管的数据库服务。Amazon DocumentDB 使在云中设置、操作和扩展兼容 MongoDB 的数据库变得容易。
 
-AWS offers services for computing, databases, storage, analytics, and other functionality. For an overview of all AWS services, see [Cloud Computing with Amazon Web Services](https://aws.amazon.com/what-is-aws/).
+AWS 提供计算、数据库、存储、分析和其他功能的各种服务。有关所有 AWS 服务的概述，请参阅 [Amazon Web Services 云计算](https://aws.amazon.com/what-is-aws/)。
 
-See a [usage example](/docs/integrations/vectorstores/documentdb).
+请参阅 [使用示例](/docs/integrations/vectorstores/documentdb)。
 
 ```python
 from langchain_community.vectorstores import DocumentDBVectorSearch
 ```
 ### Amazon MemoryDB 
-[Amazon MemoryDB](https://aws.amazon.com/memorydb/) is a durable, in-memory database service that delivers ultra-fast performance. MemoryDB is compatible with Redis OSS, a popular open source data store, 
-enabling you to quickly build applications using the same flexible and friendly Redis OSS APIs, and commands that they already use today. 
+[Amazon MemoryDB](https://aws.amazon.com/memorydb/) 是一项耐用的内存数据库服务，可提供超快的性能。MemoryDB 与流行的开源数据存储 Redis OSS 兼容，使您能够使用与当前相同的灵活且友好的 Redis OSS API 和命令快速构建应用程序。
 
-InMemoryVectorStore class provides a vectorstore to connect with Amazon MemoryDB.
+InMemoryVectorStore 类提供了一个用于连接 Amazon MemoryDB 的向量存储。
 
 ```python
 from langchain_aws.vectorstores.inmemorydb import InMemoryVectorStore
@@ -232,29 +200,23 @@ vds = InMemoryVectorStore.from_documents(
             index_name=INDEX_NAME,
         )
 ```
-See a [usage example](/docs/integrations/vectorstores/memorydb).
+请参阅 [使用示例](/docs/integrations/vectorstores/memorydb)。
 
 ## Retrievers
 
 ### Amazon Kendra
 
-> [Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/what-is-kendra.html) is an intelligent search service 
-> provided by `Amazon Web Services` (`AWS`). It utilizes advanced natural language processing (NLP) and machine 
-> learning algorithms to enable powerful search capabilities across various data sources within an organization. 
-> `Kendra` is designed to help users find the information they need quickly and accurately, 
-> improving productivity and decision-making.
+> [Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/what-is-kendra.html) 是由 `Amazon Web Services` (`AWS`) 提供的一项智能搜索服务。它利用先进的自然语言处理 (NLP) 和机器学习算法，在组织内的各种数据源中实现强大的搜索功能。`Kendra` 旨在帮助用户快速准确地找到他们所需的信息，从而提高生产力和决策能力。
 
-> With `Kendra`, we can search across a wide range of content types, including documents, FAQs, knowledge bases, 
-> manuals, and websites. It supports multiple languages and can understand complex queries, synonyms, and 
-> contextual meanings to provide highly relevant search results.
+> 通过 `Kendra`，我们可以搜索各种内容类型，包括文档、常见问题解答、知识库、手册和网站。它支持多种语言，并能理解复杂的查询、同义词和上下文含义，从而提供高度相关的搜索结果。
 
-We need to install the `langchain-aws` library.
+我们需要安装 `langchain-aws` 库。
 
 ```bash
 pip install langchain-aws
 ```
 
-See a [usage example](/docs/integrations/retrievers/amazon_kendra_retriever).
+请参阅 [使用示例](/docs/integrations/retrievers/amazon_kendra_retriever)。
 
 ```python
 from langchain_aws import AmazonKendraRetriever
@@ -262,17 +224,15 @@ from langchain_aws import AmazonKendraRetriever
 
 ### Amazon Bedrock (Knowledge Bases)
 
-> [Knowledge bases for Amazon Bedrock](https://aws.amazon.com/bedrock/knowledge-bases/) is an 
-> `Amazon Web Services` (`AWS`) offering which lets you quickly build RAG applications by using your 
-> private data to customize foundation model response.
+> [Knowledge bases for Amazon Bedrock](https://aws.amazon.com/bedrock/knowledge-bases/) 是 `Amazon Web Services` (`AWS`) 提供的一项产品，让您可以利用自己的私有数据自定义基础模型的响应，从而快速构建 RAG 应用程序。
 
-We need to install the `langchain-aws` library.
+我们需要安装 `langchain-aws` 库。
 
 ```bash
 pip install langchain-aws
 ```
 
-See a [usage example](/docs/integrations/retrievers/bedrock).
+请参阅 [使用示例](/docs/integrations/retrievers/bedrock)。
 
 ```python
 from langchain_aws import AmazonKnowledgeBasesRetriever
@@ -282,36 +242,32 @@ from langchain_aws import AmazonKnowledgeBasesRetriever
 
 ### AWS Lambda
 
->[`Amazon AWS Lambda`](https://aws.amazon.com/pm/lambda/) is a serverless computing service provided by 
-> `Amazon Web Services` (`AWS`). It helps developers to build and run applications and services without 
-> provisioning or managing servers. This serverless architecture enables you to focus on writing and 
-> deploying code, while AWS automatically takes care of scaling, patching, and managing the 
-> infrastructure required to run your applications.
+> [`Amazon AWS Lambda`](https://aws.amazon.com/pm/lambda/) 是由 `Amazon Web Services` (`AWS`) 提供的一项无服务器计算服务。它帮助开发人员在不预配或管理服务器的情况下构建和运行应用程序及服务。这种无服务器架构使您能够专注于编写和部署代码，而 AWS 会自动处理运行应用程序所需的基础设施的扩展、修补和管理。
 
-We need to install `boto3` python library.
+我们需要安装 `boto3` Python 库。
 
 ```bash
 pip install boto3
 ```
 
-See a [usage example](/docs/integrations/tools/awslambda).
+请参阅 [使用示例](/docs/integrations/tools/awslambda)。
 
 ## Memory
 
 ### AWS DynamoDB
 
 >[AWS DynamoDB](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/dynamodb/index.html) 
-> is a fully managed `NoSQL` database service that provides fast and predictable performance with seamless scalability.
+> 是一项完全托管的 `NoSQL` 数据库服务，可提供快速可预测的性能和无缝的可扩展性。
  
-We have to configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). 
+我们需要配置 [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)。 
 
-We need to install the `boto3` library.
+我们需要安装 `boto3` 库。
 
 ```bash
 pip install boto3
 ```
 
-See a [usage example](/docs/integrations/memory/aws_dynamodb).
+请参阅 [使用示例](/docs/integrations/memory/aws_dynamodb)。
 
 ```python
 from langchain_community.chat_message_histories import DynamoDBChatMessageHistory
@@ -321,10 +277,10 @@ from langchain_community.chat_message_histories import DynamoDBChatMessageHistor
 
 ### Amazon Neptune
 
->[Amazon Neptune](https://aws.amazon.com/neptune/)
-> is a high-performance graph analytics and serverless database for superior scalability and availability.
+>[Amazon Neptune](https://aws.amazon.com/neptune/) 
+> 是一种高性能图形分析和无服务器数据库，可提供卓越的可扩展性和可用性。
 
-For the Cypher and SPARQL integrations below, we need to install the `langchain-aws` library.
+对于下面的 Cypher 和 SPARQL 集成，我们需要安装 `langchain-aws` 库。
 
 ```bash
 pip install langchain-aws
@@ -332,7 +288,7 @@ pip install langchain-aws
 
 ### Amazon Neptune with Cypher
 
-See a [usage example](/docs/integrations/graphs/amazon_neptune_open_cypher).
+请参阅 [使用示例](/docs/integrations/graphs/amazon_neptune_open_cypher)。
 
 ```python
 from langchain_aws.graphs import NeptuneGraph
@@ -342,7 +298,7 @@ from langchain_aws.chains import create_neptune_opencypher_qa_chain
 
 ### Amazon Neptune with SPARQL
 
-See a [usage example](/docs/integrations/graphs/amazon_neptune_sparql).
+请参阅 [使用示例](/docs/integrations/graphs/amazon_neptune_sparql)。
 
 ```python
 from langchain_aws.graphs import NeptuneRdfGraph
@@ -361,20 +317,17 @@ from langchain_community.callbacks.bedrock_anthropic_callback import BedrockAnth
 
 ### SageMaker Tracking
 
->[Amazon SageMaker](https://aws.amazon.com/sagemaker/) is a fully managed service that is used to quickly 
-> and easily build, train and deploy machine learning (ML) models.
+>[Amazon SageMaker](https://aws.amazon.com/sagemaker/) 是一项完全托管的服务，用于快速轻松地构建、训练和部署机器学习 (ML) 模型。
 
->[Amazon SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html) is a capability 
-> of `Amazon SageMaker` that lets you organize, track, 
-> compare and evaluate ML experiments and model versions.
+>[Amazon SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html) 是 `Amazon SageMaker` 的一项功能，允许您组织、跟踪、比较和评估 ML 实验和模型版本。
  
-We need to install several python libraries.
+我们需要安装几个 Python 库。
 
 ```bash
 pip install google-search-results sagemaker
 ```
 
-See a [usage example](/docs/integrations/callbacks/sagemaker_tracking).
+请参阅 [使用示例](/docs/integrations/callbacks/sagemaker_tracking)。
 
 ```python
 from langchain_community.callbacks import SageMakerCallbackHandler
@@ -384,17 +337,16 @@ from langchain_community.callbacks import SageMakerCallbackHandler
 
 ### Amazon Comprehend Moderation Chain
 
->[Amazon Comprehend](https://aws.amazon.com/comprehend/) is a natural-language processing (NLP) service that 
-> uses machine learning to uncover valuable insights and connections in text.
+>[Amazon Comprehend](https://aws.amazon.com/comprehend/) 是一项自然语言处理 (NLP) 服务，它利用机器学习来揭示文本中有价值的见解和联系。
 
 
-We need to install the `boto3` and `nltk` libraries.
+我们需要安装 `boto3` 和 `nltk` 库。
 
 ```bash
 pip install boto3 nltk
 ```
 
-See a [usage example](https://python.langchain.com/v0.1/docs/guides/productionization/safety/amazon_comprehend_chain/).
+请参阅 [使用示例](https://python.langchain.com/v0.1/docs/guides/productionization/safety/amazon_comprehend_chain/)。
 
 ```python
 from langchain_experimental.comprehend_moderation import AmazonComprehendModerationChain

@@ -1,26 +1,23 @@
 # GooseAI
 
->[GooseAI](https://goose.ai) makes deploying NLP services easier and more accessible. 
-> `GooseAI` is a fully managed inference service delivered via API. 
-> With feature parity to other well known APIs, `GooseAI` delivers a plug-and-play solution 
-> for serving open source language models at the industry's best economics by simply 
-> changing 2 lines in your code.
+>[GooseAI](https://goose.ai) 让部署 NLP 服务更轻松、更易于访问。
+> `GooseAI` 是一个通过 API 交付的完全托管的推理服务。
+> `GooseAI` 具有与其他知名 API 的功能对等性，通过简单地更改代码中的两行内容，为服务开源语言模型提供了即插即用的解决方案，并实现了业界最优的经济效益。
 
-## Installation and Setup
+## 安装和设置
 
-- Install the Python SDK with `pip install openai`
-- Get your GooseAI api key from this link [here](https://goose.ai/).
-- Set the environment variable (`GOOSEAI_API_KEY`).
+- 使用 `pip install openai` 安装 Python SDK
+- 从此链接 [here](https://goose.ai/) 获取您的 GooseAI api 密钥。
+- 设置环境变量 (`GOOSEAI_API_KEY`)。
 
 ```python
 import os
 os.environ["GOOSEAI_API_KEY"] = "YOUR_API_KEY"
 ```
 
-
 ## LLMs
 
-See a [usage example](/docs/integrations/llms/gooseai).
+请参阅 [使用示例](/docs/integrations/llms/gooseai)。
 
 ```python
 from langchain_community.llms import GooseAI

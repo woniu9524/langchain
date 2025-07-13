@@ -1,56 +1,56 @@
-# Text splitters
+# 文本分割器
 <span data-heading-keywords="text splitter,text splitting"></span>
 
-:::info[Prerequisites]
+:::info[必备条件]
 
-* [Documents](./retrievers.mdx)
-* [Tokenization](./tokens.mdx)
+* [文档](./retrievers.mdx)
+* [分词](./tokens.mdx)
 :::
 
-## Overview
+## 概述
 
-Document splitting is often a crucial preprocessing step for many applications.
-It involves breaking down large texts into smaller, manageable chunks.
-This process offers several benefits, such as ensuring consistent processing of varying document lengths, overcoming input size limitations of models, and improving the quality of text representations used in retrieval systems.
-There are several strategies for splitting documents, each with its own advantages.
+文档分割通常是许多应用程序的关键预处理步骤。
+它涉及将大型文本分解成更小、更易于管理的数据块。
+此过程具有多项优势，例如确保不同文档长度的一致处理、克服模型的输入大小限制，以及提高检索系统中使用的文本表示的质量。
+有几种分割文档的策略，每种都有其优点。
 
-## Key concepts
+## 关键概念
 
-![Conceptual Overview](/img/text_splitters.png)
+![概念概述](/img/text_splitters.png)
 
-Text splitters split documents into smaller chunks for use in downstream applications.
+文本分割器会将文档分割成更小的数据块，供下游应用程序使用。
 
-## Why split documents?
+## 为什么要分割文档？
 
-There are several reasons to split documents:
+分割文档有几个原因：
 
-- **Handling non-uniform document lengths**: Real-world document collections often contain texts of varying sizes. Splitting ensures consistent processing across all documents.
-- **Overcoming model limitations**: Many embedding models and language models have maximum input size constraints. Splitting allows us to process documents that would otherwise exceed these limits.
-- **Improving representation quality**: For longer documents, the quality of embeddings or other representations may degrade as they try to capture too much information. Splitting can lead to more focused and accurate representations of each section.
-- **Enhancing retrieval precision**: In information retrieval systems, splitting can improve the granularity of search results, allowing for more precise matching of queries to relevant document sections.
-- **Optimizing computational resources**: Working with smaller chunks of text can be more memory-efficient and allow for better parallelization of processing tasks.
+- **处理不均匀的文档长度**：真实世界的文档集合通常包含不同大小的文本。分割可确保所有文档的一致处理。
+- **克服模型限制**：许多嵌入模型和语言模型都有最大输入大小限制。分割使我们能够处理否则会超出这些限制的文档。
+- **提高表示质量**：对于较长的文档，嵌入或其他表示的质量可能会随着它们试图捕获过多的信息而下降。分割可以导致对每个部分进行更专注、更准确的表示。
+- **增强检索精度**：在信息检索系统中，分割可以提高搜索结果的粒度，从而更精确地将查询匹配到相关的文档部分。
+- **优化计算资源**：处理小文本块在内存方面更有效，并允许更好地并行化处理任务。
 
-Now, the next question is *how* to split the documents into chunks! There are several strategies, each with its own advantages.
+现在，下一个问题是如何将文档分割成数据块！有几种策略，每种都有其优点。
 
-:::info[Further reading]
-* See Greg Kamradt's [chunkviz](https://chunkviz.up.railway.app/) to visualize different splitting strategies discussed below.
+:::info[深入阅读]
+* 请参阅 Greg Kamradt 的 [chunkviz](https://chunkviz.up.railway.app/) 来可视化下面讨论的不同分割策略。
 :::
 
-## Approaches
+## 方法
 
-### Length-based
+### 基于长度
 
-The most intuitive strategy is to split documents based on their length. This simple yet effective approach ensures that each chunk doesn't exceed a specified size limit.
-Key benefits of length-based splitting:
-- Straightforward implementation
-- Consistent chunk sizes
-- Easily adaptable to different model requirements
+最直观的策略是根据文本长度来分割文档。这种简单而有效的方法可确保每个数据块不会超过指定的尺寸限制。
+基于长度分割的关键优点：
+- 实现简单
+- 数据块大小一致
+- 可轻松适应不同的模型要求
 
-Types of length-based splitting:
-- **Token-based**: Splits text based on the number of tokens, which is useful when working with language models.
-- **Character-based**: Splits text based on the number of characters, which can be more consistent across different types of text.
+基于长度分割的类型：
+- **基于标记 (Token-based)**：根据标记的数量分割文本，这在处理语言模型时很有用。
+- **基于字符 (Character-based)**：根据字符的数量分割文本，这在不同类型的文本中可能更一致。
 
-Example implementation using LangChain's `CharacterTextSplitter` with token-based splitting:
+使用 LangChain 的 `CharacterTextSplitter` 和基于标记分割的示例实现：
 
 ```python
 from langchain_text_splitters import CharacterTextSplitter
@@ -60,23 +60,23 @@ text_splitter = CharacterTextSplitter.from_tiktoken_encoder(
 texts = text_splitter.split_text(document)
 ```
 
-:::info[Further reading]
+:::info[深入阅读]
 
-* See the how-to guide for [token-based](/docs/how_to/split_by_token/) splitting.
-* See the how-to guide for [character-based](/docs/how_to/character_text_splitter/) splitting.
+* 请参阅 [基于标记分割](/docs/how_to/split_by_token/) 的操作指南。
+* 请参阅 [基于字符分割](/docs/how_to/character_text_splitter/) 的操作指南。
 
 :::
 
-### Text-structured based
+### 基于文本结构
 
-Text is naturally organized into hierarchical units such as paragraphs, sentences, and words. 
-We can leverage this inherent structure to inform our splitting strategy, creating split that maintain natural language flow, maintain semantic coherence within split, and adapts to varying levels of text granularity.
-LangChain's [`RecursiveCharacterTextSplitter`](/docs/how_to/recursive_text_splitter/) implements this concept:
-- The `RecursiveCharacterTextSplitter` attempts to keep larger units (e.g., paragraphs) intact.
-- If a unit exceeds the chunk size, it moves to the next level (e.g., sentences).
-- This process continues down to the word level if necessary.
+文本自然地组织成句子、段落和单词等层次结构单位。
+我们可以利用这种固有的结构来指导我们的分割策略，创建能够保持自然语言流畅性、在数据块内保持语义连贯性并适应不同级别的文本粒度的分割。
+LangChain 的 [`RecursiveCharacterTextSplitter`](/docs/how_to/recursive_text_splitter/) 体现了这一理念：
+- `RecursiveCharacterTextSplitter` 会尝试将更大的单元（例如段落）保持不变。
+- 如果一个单元的大小超过了数据块的大小限制，它会移动到下一个级别（例如句子）。
+- 如果有必要，这个过程会一直持续到单词级别。
 
-Here is example usage:
+这是用法示例：
 
 ```python
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -84,52 +84,52 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=0)
 texts = text_splitter.split_text(document)
 ```
 
-:::info[Further reading]
+:::info[深入阅读]
 
-* See the how-to guide for [recursive text splitting](/docs/how_to/recursive_text_splitter/).
-
-:::
-
-### Document-structured based
-
-Some documents have an inherent structure, such as HTML, Markdown, or JSON files. 
-In these cases, it's beneficial to split the document based on its structure, as it often naturally groups semantically related text.
-Key benefits of structure-based splitting:
-- Preserves the logical organization of the document
-- Maintains context within each chunk
-- Can be more effective for downstream tasks like retrieval or summarization
-
-Examples of structure-based splitting:
-- **Markdown**: Split based on headers (e.g., #, ##, ###)
-- **HTML**: Split using tags
-- **JSON**: Split by object or array elements
-- **Code**: Split by functions, classes, or logical blocks
-
-:::info[Further reading]
-
-* See the how-to guide for [Markdown splitting](/docs/how_to/markdown_header_metadata_splitter/).
-* See the how-to guide for [Recursive JSON splitting](/docs/how_to/recursive_json_splitter/).
-* See the how-to guide for [Code splitting](/docs/how_to/code_splitter/).
-* See the how-to guide for [HTML splitting](/docs/how_to/split_html/).
+* 请参阅 [递归文本分割](/docs/how_to/recursive_text_splitter/) 的操作指南。
 
 :::
 
-### Semantic meaning based
+### 基于文档结构
 
-Unlike the previous methods, semantic-based splitting actually considers the *content* of the text. 
-While other approaches use document or text structure as proxies for semantic meaning, this method directly analyzes the text's semantics.
-There are several ways to implement this, but conceptually the approach is split text when there are significant changes in text *meaning*.
-As an example, we can use a sliding window approach to generate embeddings, and compare the embeddings to find significant differences:
+某些文档具有固有的结构，例如 HTML、Markdown 或 JSON 文件。
+在这些情况下，根据文档的结构进行分割会很有益，因为它通常能自然地将语义相关的文本分组。
+基于结构分割的关键优点：
+- 保持文档的逻辑组织结构
+- 在每个数据块内保持上下文
+- 对于检索或摘要等下游任务可能更有效
 
-- Start with the first few sentences and generate an embedding.
-- Move to the next group of sentences and generate another embedding (e.g., using a sliding window approach).
-- Compare the embeddings to find significant differences, which indicate potential "break points" between semantic sections.
+基于结构分割的示例：
+- **Markdown**：根据标题（例如 #、##、###）进行分割
+- **HTML**：使用标签进行分割
+- **JSON**：按对象或数组元素进行分割
+- **代码**：按函数、类或逻辑块进行分割
 
-This technique helps create chunks that are more semantically coherent, potentially improving the quality of downstream tasks like retrieval or summarization.
+:::info[深入阅读]
 
-:::info[Further reading]
+* 请参阅 [Markdown 分割](/docs/how_to/markdown_header_metadata_splitter/) 的操作指南。
+* 请参阅 [递归 JSON 分割](/docs/how_to/recursive_json_splitter/) 的操作指南。
+* 请参阅 [代码分割](/docs/how_to/code_splitter/) 的操作指南。
+* 请参阅 [HTML 分割](/docs/how_to/split_html/) 的操作指南。
 
-* See the how-to guide for [splitting text based on semantic meaning](/docs/how_to/semantic-chunker/).
-* See Greg Kamradt's [notebook](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb) showcasing semantic splitting.
+:::
+
+### 基于语义含义
+
+与前几种方法不同，基于语义的分割实际上会考虑文本的*内容*。
+虽然其他方法使用文档或文本结构作为语义含义的代理，但此方法直接分析文本的语义。
+有几种方法可以实现这一点，但概念上，这种方法是在文本意义发生重大变化时分割文本。
+例如，我们可以使用滑动窗口方法来生成嵌入，并比较嵌入以查找显著差异：
+
+- 从前几句话开始并生成嵌入。
+- 移动到下一组句子并生成另一个嵌入（例如，使用滑动窗口方法）。
+- 比较嵌入以查找显著差异，这表明语义部分之间可能存在“断点”。
+
+这项技术有助于创建更具语义连贯性的数据块，从而可能提高检索或摘要等下游任务的质量。
+
+:::info[深入阅读]
+
+* 请参阅 [基于语义含义分割文本](/docs/how_to/semantic-chunker/) 的操作指南。
+* 请参阅 Greg Kamradt 的 [笔记本](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/main/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb) 来展示语义分割。
 
 :::

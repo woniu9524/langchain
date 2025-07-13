@@ -1,21 +1,17 @@
 # Pebblo
 
-[Pebblo](https://www.daxa.ai/pebblo) enables developers to safely load and retrieve data to promote their Gen AI app to deployment without
-worrying about the organization’s compliance and security requirements. The Pebblo SafeLoader identifies semantic topics and entities found in the
-loaded data and the Pebblo SafeRetriever enforces identity and semantic controls on the retrieved context. The results are
-summarized on the UI or a PDF report.
+[Pebblo](https://www.daxa.ai/pebblo) 使开发者能够安全地加载和检索数据，以便其 Gen AI 应用能够顺利部署，而无需担心组织的合规性和安全要求。Pebblo SafeLoader 用于识别加载数据中的语义主题和实体，而 Pebblo SafeRetriever 则对检索到的上下文强制执行身份和语义控制。结果会显示在 UI 上或生成 PDF 报告。
 
+## Pebblo 概述：
 
-## Pebblo Overview:
+`Pebblo` 为 Gen AI 应用提供了一种安全加载和检索数据的方式。
+它包括：
+1. **身份感知安全加载器 (Identity-aware Safe Loader)**，用于加载数据并识别语义主题和实体。
+2. **安全检索 (SafeRetrieval)**，用于对检索到的上下文强制执行身份和语义控制。
+3. **用户数据报告 (User Data Report)**，用于总结已加载和检索的数据。
 
-`Pebblo` provides a safe way to load and retrieve data for Gen AI applications. 
-It includes:
-1. **Identity-aware Safe Loader** that loads data and identifies semantic topics and entities.
-2. **SafeRetrieval**  that enforces identity and semantic controls on the retrieved context.
-3. **User Data Report** that summarizes the data loaded and retrieved.
+## 示例 Notebooks
 
-## Example Notebooks
-
-For a more detailed examples of using Pebblo, see the following notebooks:
-* [PebbloSafeLoader](/docs/integrations/document_loaders/pebblo) shows how to use Pebblo loader to safely load data.
-* [PebbloRetrievalQA](/docs/integrations/providers/pebblo/pebblo_retrieval_qa) shows how to use Pebblo retrieval QA chain to safely retrieve data.
+有关使用 Pebblo 的更详细示例，请参阅以下 Notebooks：
+* [PebbloSafeLoader](/docs/integrations/document_loaders/pebblo) 展示了如何使用 Pebblo 加载器安全地加载数据。
+* [PebbloRetrievalQA](/docs/integrations/providers/pebblo/pebblo_retrieval_qa) 展示了如何使用 Pebblo 检索 QA 链安全地检索数据。

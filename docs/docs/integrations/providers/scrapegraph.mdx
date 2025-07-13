@@ -1,41 +1,40 @@
 # ScrapeGraph AI
 
->[ScrapeGraph AI](https://scrapegraphai.com) is a service that provides AI-powered web scraping capabilities.
->It offers tools for extracting structured data, converting webpages to markdown, and processing local HTML content
->using natural language prompts.
+>[ScrapeGraph AI](https://scrapegraphai.com) 是一项提供 AI 驱动的网络抓取功能的ｻｰﾋﾞｽです。
+>它提供用于提取结构化数据、将网页转换为 markdown 以及使用自然语言提示处理本地 HTML 内容的工具。
 
-## Installation and Setup
+## 安装与设置
 
-Install the required packages:
+安装所需的包：
 
 ```bash
 pip install langchain-scrapegraph
 ```
 
-Set up your API key:
+设置您的 API 密钥：
 
 ```bash
 export SGAI_API_KEY="your-scrapegraph-api-key"
 ```
 
-## Tools
+## 工具
 
-See a [usage example](/docs/integrations/tools/scrapegraph).
+请参阅[用法示例](/docs/integrations/tools/scrapegraph)。
 
-There are four tools available:
+有四种可用工具：
 
 ```python
 from langchain_scrapegraph.tools import (
-    SmartScraperTool,    # Extract structured data from websites
-    MarkdownifyTool,     # Convert webpages to markdown
-    LocalScraperTool,    # Process local HTML content
-    GetCreditsTool,      # Check remaining API credits
+    SmartScraperTool,    # 从网站提取结构化数据
+    MarkdownifyTool,     # 将网页转换为 markdown
+    LocalScraperTool,    # 处理本地 HTML 内容
+    GetCreditsTool,      # 检查剩余 API 积分
 )
 ```
 
-Each tool serves a specific purpose:
+每種工具都有特定的用途：
 
-- `SmartScraperTool`: Extract structured data from websites given a URL, prompt and optional output schema
-- `MarkdownifyTool`: Convert any webpage to clean markdown format
-- `LocalScraperTool`: Extract structured data from a local HTML file given a prompt and optional output schema
-- `GetCreditsTool`: Check your remaining ScrapeGraph AI credits 
+- `SmartScraperTool`: 根据 URL、提示和可选输出模式从网站提取结构化数据
+- `MarkdownifyTool`: 将任何网页转换为简洁的 markdown 格式
+- `LocalScraperTool`: 根据提示和可选输出模式从本地 HTML 文件提取结构化数据
+- `GetCreditsTool`: 检查您剩余的 ScrapeGraph AI 积分

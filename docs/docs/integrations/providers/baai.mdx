@@ -1,22 +1,16 @@
 # BAAI
 
->[Beijing Academy of Artificial Intelligence (BAAI) (Wikipedia)](https://en.wikipedia.org/wiki/Beijing_Academy_of_Artificial_Intelligence), 
-> also known as `Zhiyuan Institute`, is a Chinese non-profit artificial 
-> intelligence (AI) research laboratory. `BAAI` conducts AI research 
-> and is dedicated to promoting collaboration among academia and industry, 
-> as well as fostering top talent and a focus on long-term research on 
-> the fundamentals of AI technology. As a collaborative hub, BAAI's founding 
-> members include leading AI companies, universities, and research institutes.
+>[北京人工智能研究院（BAAI）(Wikipedia)](https://en.wikipedia.org/wiki/Beijing_Academy_of_Artificial_Intelligence) 
+> , 也被称为 `Zhiyuan Institute`，是中国的一家非营利性人工智能（AI）研究实验室。 `BAAI` 从事人工智能研究，致力于促进学术界与工业界的合作，培养顶尖人才，并专注于人工智能技术基础的长期研究。作为一个协作中心，BAAI 的创始成员包括领先的人工智能公司、大学和研究机构。
 
 
 ## Embedding Models
 
 ### HuggingFaceBgeEmbeddings
 
->[BGE models on the HuggingFace](https://huggingface.co/BAAI/bge-large-en-v1.5) 
-> are one of [the best open-source embedding models](https://huggingface.co/spaces/mteb/leaderboard).
+>[BGE 模型在 HuggingFace 上](https://huggingface.co/BAAI/bge-large-en-v1.5) 是 [最好的开源嵌入模型](https://huggingface.co/spaces/mteb/leaderboard) 之一。
 
-See a [usage example](/docs/integrations/text_embedding/bge_huggingface).
+参阅[使用示例](/docs/integrations/text_embedding/bge_huggingface)。
 
 ```python
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
@@ -24,12 +18,10 @@ from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 
 ### IpexLLMBgeEmbeddings
 
->[IPEX-LLM](https://github.com/intel-analytics/ipex-llm) is a PyTorch 
-> library for running LLM on Intel CPU and GPU (e.g., local PC with iGPU, 
-> discrete GPU such as Arc, Flex and Max) with very low latency.
+>[IPEX-LLM](https://github.com/intel-analytics/ipex-llm) 是一个 PyTorch 库，用于在英特尔 CPU 和 GPU（例如，配备 iGPU 的本地 PC、Arc、Flex 和 Max 等独立 GPU）上以非常低的延迟运行 LLM。
 
-See a [usage example running model on Intel CPU](/docs/integrations/text_embedding/ipex_llm).
-See a [usage example running model on Intel GPU](/docs/integrations/text_embedding/ipex_llm_gpu).
+参阅[在英特尔 CPU 上运行模型的示例](/docs/integrations/text_embedding/ipex_llm)。
+参阅[在英特尔 GPU 上运行模型的示例](/docs/integrations/text_embedding/ipex_llm_gpu)。
 
 ```python
 from langchain_community.embeddings import IpexLLMBgeEmbeddings
@@ -37,7 +29,7 @@ from langchain_community.embeddings import IpexLLMBgeEmbeddings
 
 ### QuantizedBgeEmbeddings
 
-See a [usage example](/docs/integrations/text_embedding/itrex).
+参阅[使用示例](/docs/integrations/text_embedding/itrex)。
 
 ```python
 from langchain_community.embeddings import QuantizedBgeEmbeddings

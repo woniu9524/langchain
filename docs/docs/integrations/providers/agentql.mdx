@@ -1,10 +1,10 @@
 # AgentQL
 
-[AgentQL](https://www.agentql.com/) provides web interaction and structured data extraction from any web page using an [AgentQL query](https://docs.agentql.com/agentql-query) or a Natural Language prompt. AgentQL can be used across multiple languages and web pages without breaking over time and change.
+[AgentQL](https://www.agentql.com/) 通过 [AgentQL 查询](https://docs.agentql.com/agentql-query) 或自然语言提示，提供网页交互和从任何网页中提取结构化数据。AgentQL 可用于多种语言和网页，并且随着时间的推移和变化不会被破坏。
 
-## Installation and Setup
+## 安装和设置
 
-Install the integration package:
+安装集成包：
 
 ```bash
 pip install langchain-agentql
@@ -12,24 +12,24 @@ pip install langchain-agentql
 
 ## API Key
 
-Get an API Key from our [Dev Portal](https://dev.agentql.com/) and add it to your environment variables:
+从我们的 [开发者门户](https://dev.agentql.com/) 获取 API Key，并将其添加到您的环境变量中：
 ```
 export AGENTQL_API_KEY="your-api-key-here"
 ```
 
 ## DocumentLoader
-AgentQL's document loader provides structured data extraction from any web page using an AgentQL query.
+AgentQL 的文档加载器通过 AgentQL 查询从任何网页提取结构化数据。
 
 ```python
 from langchain_agentql.document_loaders import AgentQLLoader
 ```
-See our [document loader documentation and usage example](/docs/integrations/document_loaders/agentql).
+请参阅我们的[文档加载器文档和用法示例](/docs/integrations/document_loaders/agentql)。
 
-## Tools and Toolkits
-AgentQL tools provides web interaction and structured data extraction from any web page using an AgentQL query or a Natural Language prompt.
+## Tools 和 Toolkits
+AgentQL 工具通过 AgentQL 查询或自然语言提示，提供网页交互和从任何网页中提取结构化数据。
 
 ```python
 from langchain_agentql.tools import ExtractWebDataTool, ExtractWebDataBrowserTool, GetWebElementBrowserTool
 from langchain_agentql import AgentQLBrowserToolkit
 ```
-See our [tools documentation and usage example](/docs/integrations/tools/agentql).
+请参阅我们的[工具文档和用法示例](/docs/integrations/tools/agentql)。

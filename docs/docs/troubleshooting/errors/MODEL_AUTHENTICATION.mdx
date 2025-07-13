@@ -1,18 +1,18 @@
-# MODEL_AUTHENTICATION
+# 模型认证
 
-Your model provider is denying you access to their service.
+你的模型提供商拒绝提供服务。
 
-## Troubleshooting
+## 排查
 
-The following may help resolve this error:
+以下方法可能有助于解决此错误：
 
-- Confirm that your API key or other credentials are correct.
-- If you are relying on an environment variable to authenticate, confirm that the variable name is correct and that it has a value set.
-  - Note that environment variables can also be set by packages like `dotenv`.
-  - For models, you can try explicitly passing an `api_key` parameter to rule out any environment variable issues like this:
+- 确认你的 API 密钥或其他凭据是否正确。
+- 如果你依赖环境变量进行身份验证，请确认变量名是否正确以及已设置值。
+  - 请注意，环境变量也可以由像 `dotenv` 这样的包设置。
+  - 对于模型，你可以尝试显式传递 `api_key` 参数来排除任何类似环境变量的问题：
 
 ```python
 model = ChatOpenAI(api_key="YOUR_KEY_HERE")
 ```
 
-- If you are using a proxy or other custom endpoint, make sure that your custom provider does not expect an alternative authentication scheme.
+- 如果你正在使用代理或其他自定义终端，请确保你的自定义提供商不期望替代的身份验证方案。

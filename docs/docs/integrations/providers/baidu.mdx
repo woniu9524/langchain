@@ -1,19 +1,16 @@
-# Baidu
+# 百度
 
->[Baidu Cloud](https://cloud.baidu.com/) is a cloud service provided by `Baidu, Inc.`, 
-> headquartered in Beijing. It offers a cloud storage service, client software, 
-> file management, resource sharing, and Third Party Integration.
+>[百度云](https://cloud.baidu.com/) 是由总部位于北京的`百度公司`提供的云服务。它提供云存储服务、客户端软件、文件管理、资源共享和第三方集成。
 
+## 安装与设置
 
-## Installation and Setup
-
-Register and get the `Qianfan` `AK` and `SK` keys [here](https://cloud.baidu.com/product/wenxinworkshop).
+在此处注册并获取`Qianfan`的`AK`和`SK`密钥：[https://cloud.baidu.com/product/wenxinworkshop](https://cloud.baidu.com/product/wenxinworkshop)。
 
 ## LLMs
 
-### Baidu Qianfan
+### 百度千帆
 
-See a [usage example](/docs/integrations/llms/baidu_qianfan_endpoint).
+请参阅[使用示例](/docs/integrations/llms/baidu_qianfan_endpoint)。
 
 ```python
 from langchain_community.llms import QianfanLLMEndpoint
@@ -21,10 +18,10 @@ from langchain_community.llms import QianfanLLMEndpoint
 
 ## Chat models
 
-### Qianfan Chat Endpoint
+### 千帆 Chat Endpoint
 
-See a [usage example](/docs/integrations/chat/baidu_qianfan_endpoint).
-See another [usage example](/docs/integrations/chat/ernie).
+请参阅[使用示例](/docs/integrations/chat/baidu_qianfan_endpoint)。
+请参阅另一个[使用示例](/docs/integrations/chat/ernie)。
 
 ```python
 from langchain_community.chat_models import QianfanChatEndpoint
@@ -32,10 +29,10 @@ from langchain_community.chat_models import QianfanChatEndpoint
 
 ## Embedding models
 
-### Baidu Qianfan
+### 百度千帆
 
-See a [usage example](/docs/integrations/text_embedding/baidu_qianfan_endpoint).
-See another [usage example](/docs/integrations/text_embedding/ernie).
+请参阅[使用示例](/docs/integrations/text_embedding/baidu_qianfan_endpoint)。
+请参阅另一个[使用示例](/docs/integrations/text_embedding/ernie)。
 
 ```python
 from langchain_community.embeddings import QianfanEmbeddingsEndpoint
@@ -43,13 +40,13 @@ from langchain_community.embeddings import QianfanEmbeddingsEndpoint
 
 ## Document loaders
 
-### Baidu BOS Directory Loader
+### 百度 BOS 目录加载器
 
 ```python
 from langchain_community.document_loaders.baiducloud_bos_directory import BaiduBOSDirectoryLoader
 ```
 
-### Baidu BOS File Loader
+### 百度 BOS 文件加载器
 
 ```python
 from langchain_community.document_loaders.baiducloud_bos_file import BaiduBOSFileLoader
@@ -57,17 +54,17 @@ from langchain_community.document_loaders.baiducloud_bos_file import BaiduBOSFil
 
 ## Vector stores
 
-### Baidu Cloud ElasticSearch VectorSearch
+### 百度云 ElasticSearch VectorSearch
 
-See a [usage example](/docs/integrations/vectorstores/baiducloud_vector_search).
+请参阅[使用示例](/docs/integrations/vectorstores/baiducloud_vector_search)。
 
 ```python
 from langchain_community.vectorstores import BESVectorStore
 ```
 
-### Baidu VectorDB
+### 百度 VectorDB
 
-See a [usage example](/docs/integrations/vectorstores/baiduvectordb).
+请参阅[使用示例](/docs/integrations/vectorstores/baiduvectordb)。
 
 ```python
 from langchain_community.vectorstores import BaiduVectorDB

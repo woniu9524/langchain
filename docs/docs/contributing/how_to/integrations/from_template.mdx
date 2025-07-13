@@ -3,36 +3,33 @@ pagination_next: null
 pagination_prev: null
 ---
 
-# How to publish an integration package from a template
+# 如何从模板发布集成包
 
 :::danger
-This guide is a work-in-progress.
+本指南仍在编写中。
 :::
 
-First, duplicate this template repository: https://github.com/langchain-ai/integration-repo-template
+首先，复制此模板存储库：https://github.com/langchain-ai/integration-repo-template
 
-In this guide, we will create a `libs/langchain-parrot-link` folder, simulating the creation
-of a partner package for a fake company, "Parrot Link AI".
+在本指南中，我们将创建一个 `libs/langchain-parrot-link` 文件夹，模拟为一家名为“Parrot Link AI”的虚构公司创建一个合作伙伴包。
 
-A package is 
-installed by users with `pip install langchain-{partner}`, and the package members 
-can be imported with code like:
+用户通过 `pip install langchain-{partner}` 安装包，并且可以通过类似以下的代码导入包成员：
 
 ```python
 from langchain_{partner} import X
 ```
 
-## Set up a new package
+## 设置新包
 
-To set up a new partner package, use the latest version of the LangChain CLI. You can install or update it with:
+要设置新的合作伙伴包，请使用最新版本的 LangChain CLI。您可以使用以下命令安装或更新它：
 
 ```bash
 pip install -U langchain-cli
 ```
 
-Let's say you want to create a new partner package working for a company called Parrot Link AI.
+假设您想为一家名为 Parrot Link AI 的公司创建一个新的合作伙伴包。
 
-Then, run the following command to create a new partner package:
+然后，运行以下命令创建一个新的合作伙伴包：
 
 ```bash
 mkdir libs
@@ -42,96 +39,91 @@ langchain-cli integration new
 > Name of integration in PascalCase [ParrotLink]: ParrotLink
 ```
 
-This will create a new package in `libs/parrot-link` with the following structure:
+这将在 `libs/parrot-link` 中创建一个具有以下结构的新包：
 
 ```
 libs/parrot-link/
-  langchain_parrot_link/ # folder containing your package
+  langchain_parrot_link/ # 包含您包的文件夹
     ...
   tests/
     ...
-  docs/ # bootstrapped docs notebooks, must be moved to /docs in monorepo root
+  docs/ # 引导的文档笔记本，必须移动到 monorepo 根目录下的 /docs
     ...
-  scripts/ # scripts for CI
+  scripts/ # CI 脚本
     ...
   LICENSE
-  README.md # fill out with information about your package
-  Makefile # default commands for CI
-  pyproject.toml # package metadata, mostly managed by Poetry
-  poetry.lock # package lockfile, managed by Poetry
+  README.md # 填写关于您包的信息
+  Makefile # CI 的默认命令
+  pyproject.toml # 包元数据，主要由 Poetry 管理
+  poetry.lock # 包锁定文件，由 Poetry 管理
   .gitignore
 ```
 
-## Implement your package
+## 实现您的包
 
-First, add any dependencies your package needs, such as your company's SDK:
+首先，添加您的包所需的任何依赖项，例如您公司的 SDK：
 
 ```bash
 poetry add parrot-link-sdk
 ```
 
-If you need separate dependencies for type checking, you can add them to the `typing` group with:
+如果您需要单独的类型检查依赖项，可以使用以下命令将它们添加到 `typing` 组：
 
 ```bash
 poetry add --group typing types-parrot-link-sdk
 ```
 
-Then, implement your package in `libs/partners/parrot-link/langchain_parrot_link`.
+然后，在 `libs/partners/parrot-link/langchain_parrot_link` 中实现您的包。
 
-By default, this will include stubs for a Chat Model, an LLM, and/or a Vector Store. You should delete any of the files you won't use and remove them from `__init__.py`.
+默认情况下，这将包括一个聊天模型、一个 LLM 和/或一个向量存储的存根。您应该删除不使用的任何文件，并从 `__init__.py` 中删除它们。
 
-## Write Unit and Integration Tests
+## 编写单元和集成测试
 
-Some basic tests are presented in the `tests/` directory. You should add more tests to cover your package's functionality.
+`tests/` 目录中提供了一些基本测试。您应该添加更多测试来覆盖您包的功能。
 
-For information on running and implementing tests, see the [Testing guide](../testing.mdx).
+有关运行和实现测试的信息，请参阅 [测试指南](../testing.mdx)。
 
-## Write documentation
+## 编写文档
 
-Documentation is generated from Jupyter notebooks in the `docs/` directory. You should place the notebooks with examples
-to the relevant `docs/docs/integrations` directory in the monorepo root.
+文档是从 `docs/` 目录中的 Jupyter 笔记本生成的。您应该将包含示例的笔记本放在单仓库根目录的相应 `docs/docs/integrations` 目录中。
 
-## (If Necessary) Deprecate community integration
+## (如果需要) 弃用社区集成
 
-Note: this is only necessary if you're migrating an existing community integration into 
-a partner package. If the component you're integrating is net-new to LangChain (i.e. 
-not already in the `community` package), you can skip this step.
+注意：如果将现有社区集成迁移到合作伙伴包，则只需要此步骤。如果您集成的组件是 LangChain 的全新组件（即，尚未在 `community` 包中），则可以跳过此步骤。
 
-Let's pretend we migrated our `ChatParrotLink` chat model from the community package to 
-the partner package. We would need to deprecate the old model in the community package.
+我们假设我们将 `ChatParrotLink` 聊天模型从社区包迁移到了合作伙伴包。我们将需要弃用社区包中的旧模型。
 
-We would do that by adding a `@deprecated` decorator to the old model as follows, in
-`libs/community/langchain_community/chat_models/parrot_link.py`.
+我们将通过像下面这样在 `libs/community/langchain_community/chat_models/parrot_link.py` 中向旧模型添加一个 `@deprecated` 装饰器来实现。
 
-Before our change, our chat model might look like this:
+在我们的更改之前，我们的聊天模型可能看起来像这样：
 
 ```python
 class ChatParrotLink(BaseChatModel):
   ...
 ```
 
-After our change, it would look like this:
+在我们的更改之后，它将看起来像这样：
 
 ```python
 from langchain_core._api.deprecation import deprecated
 
 @deprecated(
-    since="0.0.<next community version>", 
-    removal="1.0.0", 
+    since="0.0.<next community version>",
+    removal="1.0.0",
     alternative_import="langchain_parrot_link.ChatParrotLink"
 )
 class ChatParrotLink(BaseChatModel):
   ...
 ```
 
-You should do this for *each* component that you're migrating to the partner package.
+您应该为*每个*迁移到合作伙伴包的组件执行此操作。
 
-## Additional steps
+## 额外步骤
 
-Contributor steps:
+贡献者步骤：
 
-- [ ] Add secret names to manual integrations workflow in `.github/workflows/_integration_test.yml`
-- [ ] Add secrets to release workflow (for pre-release testing) in `.github/workflows/_release.yml`
-- [ ] set up pypi and test pypi projects
-- [ ] add credential secrets to Github Actions
-- [ ] add package to conda-forge
+- [ ] 在 `.github/workflows/_integration_test.yml` 中的手动集成工作流中添加 secret 名称
+- [ ] 在发布工作流中添加 secret（用于预发布测试）在 `.github/workflows/_release.yml`
+- [ ] 设置 pypi 和 test pypi 项目
+- [ ] 向 Github Actions 添加凭证 secret
+- [ ] 将包添加到 conda-forge

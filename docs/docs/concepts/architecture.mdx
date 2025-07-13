@@ -1,9 +1,9 @@
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Architecture
+# 架构
 
-LangChain is a framework that consists of a number of packages.
+LangChain 是一个由多个包组成的框架。
 
 <ThemedImage
     alt="Diagram outlining the hierarchical organization of the LangChain framework, displaying the interconnected parts across multiple layers."
@@ -18,61 +18,61 @@ LangChain is a framework that consists of a number of packages.
 
 ## langchain-core
 
-This package contains base abstractions for different components and ways to compose them together.
-The interfaces for core components like chat models, vector stores, tools and more are defined here.
-No third-party integrations are defined here.
-The dependencies are very lightweight.
+此包包含不同组件的基础抽象以及将它们组合在一起的方法。
+此处定义了核心组件（如聊天模型、向量存储、工具等）的接口。
+此处未定义任何第三方集成。
+依赖关系非常轻量。
 
 ## langchain
 
-The main `langchain` package contains chains and retrieval strategies that make up an application's cognitive architecture.
-These are NOT third-party integrations.
-All chains, agents, and retrieval strategies here are NOT specific to any one integration, but rather generic across all integrations.
+主要的 `langchain` 包包含构成应用程序认知架构的链和检索策略。
+这些**不是**第三方集成。
+此处所有的链、代理和检索策略都不是特定于任何一个集成的，而是跨所有集成的通用。
 
-## Integration packages
+## 集成包
 
-Popular integrations have their own packages (e.g. `langchain-openai`, `langchain-anthropic`, etc) so that they can be properly versioned and appropriately lightweight.
+流行的集成有自己的包（例如 `langchain-openai`、`langchain-anthropic` 等），以便它们能够正确地进行版本管理且足够轻量。
 
-For more information see:
+有关更多信息，请参阅：
 
-* A list [integrations packages](/docs/integrations/providers/)
-* The [API Reference](https://python.langchain.com/api_reference/) where you can find detailed information about each of the integration package.
+* 集成[包列表](/docs/integrations/providers/)
+* [API 参考](https://python.langchain.com/api_reference/)，您可以在其中找到关于每个集成包的详细信息。
 
 ## langchain-community
 
-This package contains third-party integrations that are maintained by the LangChain community.
-Key integration packages are separated out (see above).
-This contains integrations for various components (chat models, vector stores, tools, etc).
-All dependencies in this package are optional to keep the package as lightweight as possible.
+此包包含由 LangChain 社区维护的第三方集成。
+关键集成包已单独列出（参见上文）。
+这包括各种组件（聊天模型、向量存储、工具等）的集成。
+此包中的所有依赖项都是可选的，以使包尽可能轻量。
 
 ## langgraph
 
-`langgraph` is an extension of `langchain` aimed at building robust and stateful multi-actor applications with LLMs by modeling steps as edges and nodes in a graph.
+`langgraph` 是 `langchain` 的一个扩展，旨在通过将 LLM 的步骤建模为图中的边和节点来构建健壮且有状态的多智能体应用程序。
 
-LangGraph exposes high level interfaces for creating common types of agents, as well as a low-level API for composing custom flows.
+LangGraph 为创建常见的代理类型公开了高级接口，以及用于组合自定义流程的低级 API。
 
-:::info[Further reading]
+:::info[深入阅读]
 
-* See our LangGraph overview [here](https://langchain-ai.github.io/langgraph/concepts/high_level/#core-principles).
-* See our LangGraph Academy Course [here](https://academy.langchain.com/courses/intro-to-langgraph).
+* 在此处[查看我们的 LangGraph 概述](https://langchain-ai.github.io/langgraph/concepts/high_level/#core-principles)。
+* 在此处[查看我们的 LangGraph 学院课程](https://academy.langchain.com/courses/intro-to-langgraph)。
 
 :::
 
 ## langserve
 
-A package to deploy LangChain chains as REST APIs. Makes it easy to get a production ready API up and running.
+一个用于将 LangChain 链部署为 REST API 的包。便于快速启动生产就绪的 API。
 
 :::important
-LangServe is designed to primarily deploy simple Runnables and work with well-known primitives in langchain-core.
+LangServe 主要设计用于部署简单的 Runnables，并与 langchain-core 中广为人知的原始组件配合使用。
 
-If you need a deployment option for LangGraph, you should instead be looking at LangGraph Platform (beta) which will be better suited for deploying LangGraph applications.
+如果您需要 LangGraph 的部署选项，则应查看 LangGraph Platform（测试版），该平台更适合部署 LangGraph 应用程序。
 :::
 
-For more information, see the [LangServe documentation](/docs/langserve).
+有关更多信息，请参阅[LangServe 文档](/docs/langserve)。
 
 
 ## LangSmith
 
-A developer platform that lets you debug, test, evaluate, and monitor LLM applications.
+一个开发者平台，可让您调试、测试、评估和监控 LLM 应用程序。
 
-For more information, see the [LangSmith documentation](https://docs.smith.langchain.com)
+有关更多信息，请参阅[LangSmith 文档](https://docs.smith.langchain.com)

@@ -1,98 +1,98 @@
-# Retrieval augmented generation (RAG)
+# 检索增强生成 (RAG)
 
-:::info[Prerequisites]
+:::info[先决条件]
 
-* [Retrieval](/docs/concepts/retrieval/)
-
-:::
-
-## Overview
-
-Retrieval Augmented Generation (RAG) is a powerful technique that enhances [language models](/docs/concepts/chat_models/) by combining them with external knowledge bases. 
-RAG addresses [a key limitation of models](https://www.glean.com/blog/how-to-build-an-ai-assistant-for-the-enterprise): models rely on fixed training datasets, which can lead to outdated or incomplete information.
-When given a query, RAG systems first search a knowledge base for relevant information.
-The system then incorporates this retrieved information into the model's prompt.
-The model uses the provided context to generate a response to the query.
-By bridging the gap between vast language models and dynamic, targeted information retrieval, RAG is a powerful technique for building more capable and reliable AI systems.
-
-## Key concepts
-
-![Conceptual Overview](/img/rag_concepts.png)
-
-(1) **Retrieval system**: Retrieve relevant information from a knowledge base.
-
-(2) **Adding external knowledge**: Pass retrieved information to a model.
-
-## Retrieval system
-
-Model's have internal knowledge that is often fixed, or at least not updated frequently due to the high cost of training.
-This limits their ability to answer questions about current events, or to provide specific domain knowledge.
-To address this, there are various knowledge injection techniques like [fine-tuning](https://hamel.dev/blog/posts/fine_tuning_valuable.html) or continued pre-training.
-Both are [costly](https://www.glean.com/blog/how-to-build-an-ai-assistant-for-the-enterprise) and often [poorly suited](https://www.anyscale.com/blog/fine-tuning-is-for-form-not-facts) for factual retrieval.
-Using a retrieval system offers several advantages:
-
-- **Up-to-date information**: RAG can access and utilize the latest data, keeping responses current.
-- **Domain-specific expertise**: With domain-specific knowledge bases, RAG can provide answers in specific domains.
-- **Reduced hallucination**: Grounding responses in retrieved facts helps minimize false or invented information.
-- **Cost-effective knowledge integration**: RAG offers a more efficient alternative to expensive model fine-tuning.
-
-:::info[Further reading]
-
-See our conceptual guide on [retrieval](/docs/concepts/retrieval/).
+* [检索](/docs/concepts/retrieval/)
 
 :::
 
-## Adding external knowledge
+## 概述
 
-With a retrieval system in place, we need to pass knowledge from this system to the model. 
-A RAG pipeline typically achieves this following these steps:
+检索增强生成 (RAG) 是一种强大的技术，通过将大型语言模型与外部知识库相结合来增强它们。
+RAG 解决了模型的一个关键局限性：模型依赖于固定的训练数据集，这可能导致信息过时或不完整。
+当给出查询时，RAG 系统首先从知识库中搜索相关信息。
+然后，系统将此检索到的信息整合到模型的提示中。
+模型利用提供的上下文来生成对查询的响应。
+通过弥合大型语言模型与动态、定向信息检索之间的差距，RAG 成为构建更强大、更可靠的 AI 系统的有力技术。
 
-- Receive an input query.
-- Use the retrieval system to search for relevant information based on the query.
-- Incorporate the retrieved information into the prompt sent to the LLM.
-- Generate a response that leverages the retrieved context.
+## 关键概念
 
-As an example, here's a simple RAG workflow that passes information from a [retriever](/docs/concepts/retrievers/) to a [chat model](/docs/concepts/chat_models/):
+![概念概述](/img/rag_concepts.png)
+
+(1) **检索系统**：从知识库中检索相关信息。
+
+(2) **添加外部知识**：将检索到的信息传递给模型。
+
+## 检索系统
+
+模型拥有内部知识，这些知识通常是固定的，或者由于训练成本高昂而更新不频繁。
+这限制了它们回答有关时事问题的能力，或提供特定领域知识的能力。
+为了解决这个问题，有各种知识注入技术，如[微调](https://hamel.dev/blog/posts/fine_tuning_valuable.html)或继续预训练。
+两者都[成本高昂](https://www.glean.com/blog/how-to-build-an-ai-assistant-for-the-enterprise)，并且通常[不适合](https://www.anyscale.com/blog/fine-tuning-is-for-form-not-facts)事实检索。
+使用检索系统有几个优点：
+
+- **最新信息**：RAG 可以访问和利用最新数据，使响应保持最新。
+- **特定领域专业知识**：通过特定领域的知识库，RAG 可以针对特定领域提供答案。
+- **减少幻觉**：将响应建立在检索到的事实基础上，有助于最小化虚假或捏造的信息。
+- **经济高效的知识集成**：RAG 提供了一种比昂贵的模型微调更有效率的替代方案。
+
+:::info[延伸阅读]
+
+请参阅我们关于[检索](/docs/concepts/retrieval/)的概念指南。
+
+:::
+
+## 添加外部知识
+
+在检索系统就位后，我们需要将来自该系统的知识传递给模型。
+RAG 管道通常通过以下步骤来实现这一点：
+
+- 接收输入查询。
+- 使用检索系统根据查询搜索相关信息。
+- 将检索到的信息整合到发送给 LLM 的提示中。
+- 生成利用检索到的上下文的响应。
+
+例如，这是一个简单的 RAG 工作流程，它将信息从[检索器](/docs/concepts/retrievers/)传递到[聊天模型](/docs/concepts/chat_models/)：
 
 ```python
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage
 
-# Define a system prompt that tells the model how to use the retrieved context
+# 定义一个系统提示，告诉模型如何使用检索到的上下文
 system_prompt = """You are an assistant for question-answering tasks. 
 Use the following pieces of retrieved context to answer the question. 
 If you don't know the answer, just say that you don't know. 
 Use three sentences maximum and keep the answer concise.
 Context: {context}:"""
     
-# Define a question
+# 定义一个问题
 question = """What are the main components of an LLM-powered autonomous agent system?"""
 
-# Retrieve relevant documents
+# 检索相关文档
 docs = retriever.invoke(question)
 
-# Combine the documents into a single string
+# 将文档合并为一个字符串
 docs_text = "".join(d.page_content for d in docs)
 
-# Populate the system prompt with the retrieved context
+# 使用检索到的上下文填充系统提示
 system_prompt_fmt = system_prompt.format(context=docs_text)
 
-# Create a model
+# 创建一个模型
 model = ChatOpenAI(model="gpt-4o", temperature=0) 
 
-# Generate a response
+# 生成响应
 questions = model.invoke([SystemMessage(content=system_prompt_fmt),
                           HumanMessage(content=question)])
 ```
 
-:::info[Further reading]
+:::info[延伸阅读]
 
-RAG a deep area with many possible optimization and design choices:
+RAG 是一个涉及许多可能的优化和设计选择的深入领域：
 
-* See [this excellent blog](https://cameronrwolfe.substack.com/p/a-practitioners-guide-to-retrieval?utm_source=profile&utm_medium=reader2) from Cameron Wolfe for a comprehensive overview and history of RAG.
-* See our [RAG how-to guides](/docs/how_to/#qa-with-rag).
-* See our RAG [tutorials](/docs/tutorials/).
-* See our RAG from Scratch course, with [code](https://github.com/langchain-ai/rag-from-scratch) and [video playlist](https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x).
-* Also, see our RAG from Scratch course [on Freecodecamp](https://youtu.be/sVcwVQRHIc8?feature=shared).
+* 请参阅 Cameron Wolfe 的这篇[优秀博文](https://cameronrwolfe.substack.com/p/a-practitioners-guide-to-retrieval?utm_source=profile&utm_medium=reader2)，其中对 RAG 进行了全面的概述和历史介绍。
+* 请参阅我们的[RAG 操作指南](/docs/how_to/#qa-with-rag)。
+* 请参阅我们的 RAG [教程](/docs/tutorials/)。
+* 请参阅我们的 RAG 从零开始课程，包含[代码](https://github.com/langchain-ai/rag-from-scratch)和[视频播放列表](https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x)。
+* 此外，请参阅我们在 Freecodecamp 上的 RAG 从零开始课程 [YouTube 视频](https://youtu.be/sVcwVQRHIc8?feature=shared)。
 
 :::

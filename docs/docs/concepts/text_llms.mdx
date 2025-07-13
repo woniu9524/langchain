@@ -1,10 +1,9 @@
-# String-in, string-out llms
+# 输入字符串，输出字符串的 LLM
 
 :::tip
-You are probably looking for the [Chat Model Concept Guide](/docs/concepts/chat_models) page for more information.
+您可能正在寻找 [Chat Model Concept Guide](/docs/concepts/chat_models) 页面以获取更多信息。
 :::
 
-LangChain has implementations for older language models that take a string as input and return a string as output. These models are typically named without the "Chat" prefix (e.g., `Ollama`, `Anthropic`, `OpenAI`, etc.), and may include the "LLM" suffix (e.g., `OllamaLLM`, `AnthropicLLM`, `OpenAILLM`, etc.). These models implement the [BaseLLM](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.llms.BaseLLM.html#langchain_core.language_models.llms.BaseLLM) interface.
+LangChain 为那些接受字符串作为输入并返回字符串作为输出的旧语言模型提供了实现。这些模型通常不带“Chat”前缀命名（例如 `Ollama`、`Anthropic`、`OpenAI` 等），并且可能带有“LLM”后缀（例如 `OllamaLLM`、`AnthropicLLM`、`OpenAILLM` 等）。这些模型实现了 [BaseLLM](https://python.langchain.com/api_reference/core/language_models/langchain_core.language_models.llms.BaseLLM.html#langchain_core.language_models.llms.BaseLLM) 接口。
 
-Users should be using almost exclusively the newer [Chat Models](/docs/concepts/chat_models) as most
-model providers have adopted a chat like interface for interacting with language models.
+用户应该几乎只使用较新的 [Chat Models](/docs/concepts/chat_models)，因为大多数模型提供商都采用了类似聊天的接口来与语言模型进行交互。

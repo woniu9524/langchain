@@ -1,30 +1,30 @@
 # Remembrall
 
-This page covers how to use the [Remembrall](https://remembrall.dev) ecosystem within LangChain.
+此页面介绍如何在 LangChain 中使用 Remembrall ([https://remembrall.dev](https://remembrall.dev)) 生态系统。
 
-## What is Remembrall?
+## 什么是 Remembrall？
 
-Remembrall gives your language model long-term memory, retrieval augmented generation, and complete observability with just a few lines of code.
+Remembrall 只需几行代码即可为您的语言模型提供长期记忆、检索增强生成以及完整的可观察性。
 
-![Screenshot of the Remembrall dashboard showing request statistics and model interactions.](/img/RemembrallDashboard.png "Remembrall Dashboard Interface")
+![Remembrall 仪表板截图，显示请求统计信息和模型交互。](/img/RemembrallDashboard.png "Remembrall 仪表板界面")
 
-It works as a light-weight proxy on top of your OpenAI calls and simply augments the context of the chat calls at runtime with relevant facts that have been collected.
+它作为 OpenAI 调用之上的轻量级代理运行，并在运行时通过收集到的相关事实简单地增强聊天调用的上下文。
 
-## Setup
+## 设置
 
-To get started, [sign in with Github on the Remembrall platform](https://remembrall.dev/login) and copy your [API key from the settings page](https://remembrall.dev/dashboard/settings).
+要开始，请在 Remembrall 平台 [使用 Github 登录](https://remembrall.dev/login)，并从设置页面 [复制您的 API 密钥](https://remembrall.dev/dashboard/settings)。
 
-Any request that you send with the modified `openai_api_base` (see below) and Remembrall API key will automatically be tracked in the Remembrall dashboard. You **never** have to share your OpenAI key with our platform and this information is **never** stored by the Remembrall systems.
+您通过修改后的 `openai_api_base`（如下所示）和 Remembrall API 密钥发送的任何请求都将在 Remembrall 仪表板中自动跟踪。您 **永远** 不需要与我们的平台共享您的 OpenAI 密钥，并且 Remembrall 系统 **绝不** 存储这些信息。
 
-To do this, we need to install the following dependencies:
+为实现此目的，我们需要安装以下依赖项：
 
 ```bash
 pip install -U langchain-openai
 ```
 
-### Enable Long Term Memory
+### 启用长期记忆
 
-In addition to setting the `openai_api_base` and Remembrall API key via `x-gp-api-key`, you should specify a UID to maintain memory for. This will usually be a unique user identifier (like email).
+除了通过 `x-gp-api-key` 设置 `openai_api_base` 和 Remembrall API 密钥外，您还应指定一个 UID 以维护记忆。这通常是一个唯一的用户标识符（例如电子邮件）。
 
 ```python
 from langchain_openai import ChatOpenAI
@@ -41,9 +41,9 @@ import time; time.sleep(5)  # wait for system to save fact via auto save
 print(chat_model.predict("What is my favorite color?"))
 ```
 
-### Enable Retrieval Augmented Generation
+### 启用检索增强生成
 
-First, create a document context in the [Remembrall dashboard](https://remembrall.dev/dashboard/spells). Paste in the document texts or upload documents as PDFs to be processed. Save the Document Context ID and insert it as shown below.
+首先，在 [Remembrall 仪表板](https://remembrall.dev/dashboard/spells) 中创建一个文档上下文。粘贴文档文本或上传 PDF 文档以供处理。保存文档上下文 ID 并按如下方式插入。
 
 ```python
 from langchain_openai import ChatOpenAI

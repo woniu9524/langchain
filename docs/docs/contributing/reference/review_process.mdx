@@ -1,95 +1,91 @@
-# Review Process
+# 评审流程
 
-## Overview
+## 概述
 
-This document outlines the process used by the LangChain maintainers for reviewing pull requests (PRs). The primary objective of this process is to enhance the LangChain developer experience.
+本文档概述了 LangChain 维护者用于评审拉取请求 (PR) 的流程。该流程的主要目标是提升 LangChain 的开发者体验。
 
-## Review Statuses
+## 评审状态
 
-We categorize PRs using three main statuses, which are marked as project item statuses in the right sidebar and can be viewed in detail [here](https://github.com/orgs/langchain-ai/projects/12/views/1).
+我们使用三种主要状态来对 PR 进行分类，这些状态在右侧边栏中标记为项目项状态，并可在此处详细查看：[项目看板](https://github.com/orgs/langchain-ai/projects/12/views/1)。
 
-- **Triage**: 
-  - Initial status for all newly submitted PRs.
-  - Requires a maintainer to categorize it into one of the other statuses.
+- **待分类 (Triage)**：
+  - 所有新提交 PR 的初始状态。
+  - 需要维护者将其归类到其他状态之一。
 
-- **Needs Support**:
-  - PRs that require community feedback or additional input before moving forward.
-  - Automatically promoted to the backlog if it receives 5 upvotes.
-  - An auto-comment is generated when this status is applied, explaining the flow and the upvote requirement.
-  - If the PR remains in this status for 25 days, it will be marked as “stale” via auto-comment.
-  - PRs will be auto-closed after 30 days if no further action is taken.
+- **需要支持 (Needs Support)**：
+  - 在继续进行之前需要社区反馈或额外输入的 PR。
+  - 如果获得 5 个赞，将自动晋升到待办事项 (backlog)。
+  - 应用此状态时会生成自动评论，解释流程和点赞要求。
+  - 如果 PR 在此状态下停留 25 天，它将被标记为“待处理 (stale)”，并通过自动评论提示。
+  - 如果在 30 天内没有进一步操作，PR 将被自动关闭。
 
-- **In Review**:
-  - PRs that are actively under review by our team.
-  - These are regularly reviewed and monitored.
+- **评审中 (In Review)**：
+  - 正在被我们团队积极评审的 PR。
+  - 这些 PR 会被定期评审和监控。
 
-**Note:** A PR may only have one status at a time.
+**注意：** 一个 PR 在同一时间只能有一个状态。
 
-**Note:** You may notice 3 additional statuses of Done, Closed, and Internal that
-are external to this lifecycle. Done and Closed PRs have been merged or closed,
-respectively. Internal is for PRs submitted by core maintainers, and these PRs are owned
-by the submitter.
+**请注意：** 您可能会注意到 3 种额外的状态：完成 (Done)、已关闭 (Closed) 和内部 (Internal)，它们不在此生命周期内。完成和已关闭的 PR 分别表示已合并或已关闭。内部是为核心维护者提交的 PR 保留的，这些 PR 由提交者负责。
 
-## Review Guidelines
+## 评审指南
 
-1. **PRs that touch /libs/core**:
-   - PRs that directly impact core code and are likely to affect end users.
-   - **Triage Guideline**: most PRs should either go straight to `In Review` or closed.
-   - These PRs are given top priority and are reviewed the fastest.
-   - PRs that don't have a **concise** descriptions of their motivation (either in PR summary or in a linked issue) are likely to be closed without an in-depth review. Please do not generate verbose PR descriptions with an LLM.
-   - PRs that don't have unit tests are likely to be closed.
-   - Feature requests should first be opened as a GitHub issue and discussed with the LangChain maintainers. Large PRs submitted without prior discussion are likely to be closed.
+1. **涉及 /libs/core 的 PR**：
+   - 直接影响核心代码并可能影响最终用户的 PR。
+   - **分类指南**：大多数 PR 应直接进入 `评审中 (In Review)` 或关闭。
+   - 这些 PR 被赋予最高优先级，评审速度最快。
+   - 对于 PR 摘要或链接 issue 中没有**简洁**描述其动机的 PR，很可能会被关闭，恕不进行深入评审。请勿使用 LLM 生成冗长的 PR 描述。
+   - 没有单元测试的 PR 很可能会被关闭。
+   - 功能请求应首先作为 GitHub issue 打开，并与 LangChain 维护者讨论。未事先讨论的大型 PR 很可能会被关闭。
 
-2. **PRs that touch /libs/langchain**:
-   - High-impact PRs that are closely related to core PRs but slightly lower in priority.
-   - **Triage Guideline**: most PRs should either go straight to `In Review` or closed.
-   - These are reviewed and closed aggressively, similar to core PRs.
-   - New feature requests should be discussed with the core maintainer team beforehand in an issue.
+2. **涉及 /libs/langchain 的 PR**：
+   - 高影响力 PR，与核心 PR 密切相关，但优先级略低。
+   - **分类指南**：大多数 PR 应直接进入 `评审中 (In Review)` 或关闭。
+   - 这些 PR 与核心 PR 类似，会得到积极的评审和快速关闭。
+   - 新功能请求应事先在 issue 中与核心维护者团队讨论。
 
-3. **PRs that touch /libs/partners/**:
-   - PRs involving integration packages.
-   - **Triage Guideline**: most PRs should either go straight to `In Review` or closed.
-   - The review may be conducted by our team or handed off to the partner's development team, depending on the PR's content.
-   - We maintain communication lines with most partner dev teams to facilitate this process.
+3. **涉及 /libs/partners/ 的 PR**：
+   - 涉及集成包的 PR。
+   - **分类指南**：大多数 PR 应直接进入 `评审中 (In Review)` 或关闭。
+   - 评审可能由我们的团队进行，或根据 PR 的内容移交给合作伙伴的开发团队。
+   - 我们与大多数合作伙伴开发团队保持沟通渠道，以促进此过程。
 
-4. **Community PRs**:
-   - Most community PRs will get an initial status of "needs support".
-   - **Triage Guideline**: most PRs should go to `Needs support`. Bugfixes on high-traffic integrations should go straight to `In review`.
-   - **Triage Guideline**: all new features and integrations should go to `Needs support` and will be closed if they do not get enough support (measured by upvotes or comments).
-   - PRs in the `Needs Support` status for 20 days are marked as “stale” and will be closed after 30 days if no action is taken.
+4. **社区 PR**：
+   - 大多数社区 PR 将获得“需要支持 (needs support)”的初始状态。
+   - **分类指南**：大多数 PR 应进入 `需要支持 (Needs support)`。高流量集成的 Bug 修复应直接进入 `评审中 (In review)`。
+   - **分类指南**：所有新功能和集成都应进入 `需要支持 (Needs support)`，如果它们未获得足够的支持（通过点赞或评论衡量），则会被关闭。
+   - 在 `需要支持 (Needs Support)` 状态下停留 20 天的 PR 将被标记为“待处理 (stale)”，如果在 30 天内没有采取行动，将被关闭。
 
-5. **Documentation PRs**:
-   - PRs that touch the documentation content in docs/docs.
-   - **Triage Guideline**:
-      - PRs that fix typos or small errors in a single file and pass CI should go straight to `In Review`.
-      - PRs that make changes that have been discussed and agreed upon in an issue should go straight to `In Review`.
-      - PRs that add new pages or change the structure of the documentation should go to `Needs Support`.
-   - We strive to standardize documentation formats to streamline the review process.
-   - CI jobs run against documentation to ensure adherence to standards, automating much of the review.
+5. **文档 PR**：
+   - 涉及 docs/docs 中文档内容的 PR。
+   - **分类指南**：
+      - 修复单个文件中拼写错误或小错误并通过 CI 的 PR 应直接进入 `评审中 (In Review)`。
+      - 在 issue 中已讨论并同意的更改的 PR 应直接进入 `评审中 (In Review)`。
+      - 添加新页面或更改文档结构的 PR 应进入 `需要支持 (Needs Support)`。
+   - 我们致力于标准化文档格式，以简化评审流程。
+   - CI 作业针对文档运行，以确保符合标准，从而自动化了大部分评审工作。
 
-6. **PRs must be in English**:
-   - PRs that are not in English will be closed without review.
-   - This is to ensure that all maintainers can review the PRs effectively.
+6. **PR 必须使用英语**：
+   - 非英语的 PR 将被关闭，恕不评审。
+   - 这是为了确保所有维护者都能有效地评审 PR。
 
-## How to see a PR's status
+## 如何查看 PR 的状态
 
-See screenshot:
+请参阅截图：
 
 ![PR Status](/img/review_process_status.png)
 
-*To see the status of all open PRs, please visit the [LangChain Project Board](https://github.com/orgs/langchain-ai/projects/12/views/2).*
+*要查看所有打开的 PR 的状态，请访问 [LangChain 项目看板](https://github.com/orgs/langchain-ai/projects/12/views/2)。*
 
-## Review Prioritization
+## 评审优先级
 
-Our goal is to provide the best possible development experience by focusing on making software that:
+我们的目标是通过专注于构建以下软件来实现最佳的开发体验：
 
-- Works: Works as intended (is bug-free).
-- Is useful: Improves LLM app development with components that work off-the-shelf and runtimes that simplify app building.
-- Is easy: Is intuitive to use and well-documented.
+- **可用**：按预期工作（无 Bug）。
+- **有用**：通过开箱即用的组件和简化应用构建的运行时来改进 LLM 应用开发。
+- **易用**：直观易用且文档齐全。
 
-We believe this process reflects our priorities and are open to feedback if you feel it does not.
+我们相信此流程反映了我们的优先事项，如果您觉得它不符合，欢迎提出反馈。
 
-## Github Discussion
+## Github 讨论
 
-We welcome your feedback on this process. Please feel free to add a comment in 
-[this GitHub Discussion](https://github.com/langchain-ai/langchain/discussions/25920).
+我们欢迎您对本流程提出反馈。请随时在 [此 GitHub 讨论](https://github.com/langchain-ai/langchain/discussions/25920)中发表评论。

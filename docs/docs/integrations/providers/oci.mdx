@@ -1,20 +1,18 @@
 # Oracle Cloud Infrastructure (OCI)
 
-The `LangChain` integrations related to [Oracle Cloud Infrastructure](https://www.oracle.com/artificial-intelligence/).
+与 [Oracle Cloud Infrastructure](https://www.oracle.com/artificial-intelligence/) 相关的 `LangChain` 集成。
 
 ## OCI Generative AI
-> Oracle Cloud Infrastructure (OCI) [Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/home.htm) is a fully managed service that provides a set of state-of-the-art,
-> customizable large language models (LLMs) that cover a wide range of use cases, and which are available through a single API.
-> Using the OCI Generative AI service you can access ready-to-use pretrained models, or create and host your own fine-tuned
-> custom models based on your own data on dedicated AI clusters. 
+> Oracle Cloud Infrastructure (OCI) [Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/home.htm) 是一项全托管服务，提供一系列最先进、可定制的大型语言模型 (LLM)，涵盖广泛的用例，可通过单一 API 访问。
+> 使用 OCI Generative AI 服务，您可以访问即用型预训练模型，或者在专用 AI 集群上基于您自己的数据创建和托管您自己的微调自定义模型。
 
-To use, you should have the latest `oci` python SDK and the langchain_community package installed.
+要使用，您应该安装最新的 `oci` python SDK 和 `langchain_community` 包。
 
 ```bash
 pip install -U oci langchain-community
 ```
 
-See [chat](/docs/integrations/llms/oci_generative_ai), [complete](/docs/integrations/chat/oci_generative_ai), and [embedding](/docs/integrations/text_embedding/oci_generative_ai) usage examples.
+请参阅 [聊天](/docs/integrations/llms/oci_generative_ai)、[补全](/docs/integrations/chat/oci_generative_ai) 和 [嵌入](/docs/integrations/text_embedding/oci_generative_ai) 用法示例。
 
 ```python
 from langchain_community.chat_models import ChatOCIGenAI
@@ -26,19 +24,18 @@ from langchain_community.embeddings import OCIGenAIEmbeddings
 
 ## OCI Data Science Model Deployment Endpoint
 
-> [OCI Data Science](https://docs.oracle.com/en-us/iaas/data-science/using/home.htm) is a
-> fully managed and serverless platform for data science teams. Using the OCI Data Science
-> platform you can build, train, and manage machine learning models, and then deploy them
-> as an OCI Model Deployment Endpoint using the
-> [OCI Data Science Model Deployment Service](https://docs.oracle.com/en-us/iaas/data-science/using/model-dep-about.htm).
+> [OCI Data Science](https://docs.oracle.com/en-us/iaas/data-science/using/home.htm) 是一个
+> 面向数据科学团队的全托管无服务器平台。使用 OCI Data Science
+> 平台，您可以构建、训练和管理机器学习模型，然后使用
+> [OCI Data Science Model Deployment Service](https://docs.oracle.com/en-us/iaas/data-science/using/model-dep-about.htm) 将它们部署为 OCI Model Deployment Endpoint。
 
-To use, you should have the latest `oracle-ads` python SDK installed.
+要使用，您应该安装最新的 `oracle-ads` python SDK。
 
 ```bash
 pip install -U oracle-ads
 ```
 
-See [chat](/docs/integrations/chat/oci_data_science) and [complete](/docs/integrations/llms/oci_model_deployment_endpoint) usage examples.
+请参阅 [聊天](/docs/integrations/chat/oci_data_science) 和 [补全](/docs/integrations/llms/oci_model_deployment_endpoint) 用法示例。
 
 
 ```python
@@ -46,4 +43,3 @@ from langchain_community.chat_models import ChatOCIModelDeployment
 
 from langchain_community.llms import OCIModelDeploymentLLM
 ```
-

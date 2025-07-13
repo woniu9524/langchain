@@ -1,33 +1,33 @@
 # Jina AI
 
->[Jina AI](https://jina.ai/about-us) is a search AI company. `Jina` helps businesses and developers unlock multimodal data with a better search.
+>[Jina AI](https://jina.ai/about-us) 是一家搜索 AI 公司。`Jina` 通过更优的搜索帮助企业和开发者解锁多模态数据。
 
 :::caution
-For proper compatibility, please ensure you are using the `openai` SDK at version **0.x**.
+为确保兼容性，请确保您使用的 `openai` SDK 版本为 **0.x**。
 :::
 
-## Installation and Setup
-- Get a Jina AI API token from [here](https://jina.ai/embeddings/) and set it as an environment variable (`JINA_API_TOKEN`)
+## 安装与设置
+- 从[此处](https://jina.ai/embeddings/)获取 Jina AI API 令牌，并将其设置为环境变量 (`JINA_API_TOKEN`)
 
-## Chat Models
+## 聊天模型
 
 ```python
 from langchain_community.chat_models import JinaChat
 ```
 
-See a [usage examples](/docs/integrations/chat/jinachat).
+查看[使用示例](/docs/integrations/chat/jinachat)。
 
-## Embedding Models
+## 嵌入模型
 
-You can check the list of available models from [here](https://jina.ai/embeddings/)
+您可以从[此处](https://jina.ai/embeddings/)查看可用模型的列表
 
 ```python
 from langchain_community.embeddings import JinaEmbeddings
 ```
 
-See a [usage examples](/docs/integrations/text_embedding/jina).
+查看[使用示例](/docs/integrations/text_embedding/jina)。
 
-## Document Transformers
+## 文档转换器
 
 ### Jina Rerank
 
@@ -35,5 +35,4 @@ See a [usage examples](/docs/integrations/text_embedding/jina).
 from langchain_community.document_compressors import JinaRerank
 ```
 
-See a [usage examples](/docs/integrations/document_transformers/jina_rerank).
-
+查看[使用示例](/docs/integrations/document_transformers/jina_rerank)。

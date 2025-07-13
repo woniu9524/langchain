@@ -1,20 +1,19 @@
-# How to load JSON
+# 如何加载 JSON
 
-[JSON (JavaScript Object Notation)](https://en.wikipedia.org/wiki/JSON) is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays (or other serializable values).
+[JSON (JavaScript Object Notation)](https://en.wikipedia.org/wiki/JSON) 是一种开放标准文件格式和数据交换格式，它使用人类可读的文本来存储和传输由属性-值对和数组（或其他可序列化值）组成的数据对象。
 
-[JSON Lines](https://jsonlines.org/) is a file format where each line is a valid JSON value.
+[JSON Lines](https://jsonlines.org/) 是一种文件格式，其中每一行都是一个有效的 JSON 值。
 
-LangChain implements a [JSONLoader](https://python.langchain.com/api_reference/community/document_loaders/langchain_community.document_loaders.json_loader.JSONLoader.html) 
-to convert JSON and JSONL data into LangChain [Document](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html#langchain_core.documents.base.Document) 
-objects. It uses a specified [jq schema](https://en.wikipedia.org/wiki/Jq_(programming_language)) to parse the JSON files, allowing for the extraction of specific fields into the content 
-and metadata of the LangChain Document.
+LangChain 实现了一个 [JSONLoader](https://python.langchain.com/api_reference/community/document_loaders/langchain_community.document_loaders.json_loader.JSONLoader.html)
+来将 JSON 和 JSONL 数据转换为 LangChain 的 [Document](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html#langchain_core.documents.base.Document)
+对象。它使用指定的 [jq schema](https://en.wikipedia.org/wiki/Jq_(programming_language)) 来解析 JSON 文件，允许将特定字段提取到 LangChain Document 的内容和元数据中。
 
-It uses the `jq` python package. Check out this [manual](https://stedolan.github.io/jq/manual/#Basicfilters) for a detailed documentation of the `jq` syntax.
+它使用了 `jq` python 包。请查看这篇 [手册](https://stedolan.github.io/jq/manual/#Basicfilters) 以获取 `jq` 语法的详细文档。
 
-Here we will demonstrate: 
+在这里，我们将演示：
 
-- How to load JSON and JSONL data into the content of a LangChain `Document`;
-- How to load JSON and JSONL data into metadata associated with a `Document`.
+- 如何将 JSON 和 JSONL 数据加载到 LangChain `Document` 的内容中；
+- 如何将 JSON 和 JSONL 数据加载到与 `Document` 相关联的元数据中。
 
 
 ```python
@@ -90,12 +89,12 @@ pprint(data)
 
 
 
-## Using `JSONLoader`
+## 使用 `JSONLoader`
 
-Suppose we are interested in extracting the values under the `content` field within the `messages` key of the JSON data. This can easily be done through the `JSONLoader` as shown below.
+假设我们有兴趣从 JSON 数据中的 `messages` 键下的 `content` 字段中提取值。可以使用下面的 `JSONLoader` 轻松完成此操作。
 
 
-### JSON file
+### JSON 文件
 
 ```python
 loader = JSONLoader(
@@ -127,10 +126,9 @@ pprint(data)
 
 
 
-### JSON Lines file
+### JSON Lines 文件
 
-If you want to load documents from a JSON Lines file, you pass `json_lines=True`
-and specify `jq_schema` to extract `page_content` from a single JSON object.
+如果您想从 JSON Lines 文件加载文档，请传递 `json_lines=True` 并指定 `jq_schema` 来从单个 JSON 对象提取 `page_content`。
 
 ```python
 file_path = './example_data/facebook_chat_messages.jsonl'
@@ -169,7 +167,7 @@ pprint(data)
 
 
 
-Another option is to set `jq_schema='.'` and provide `content_key`:
+另一个选项是设置 `jq_schema='.'` 并提供 `content_key`：
 
 ```python
 loader = JSONLoader(
@@ -192,10 +190,10 @@ pprint(data)
 ```
 
 
-### JSON file with jq schema `content_key`
+### 使用 jq schema `content_key` 的 JSON 文件
 
-To load documents from a JSON file using the content_key within the jq schema, set is_content_key_jq_parsable=True. 
-Ensure that content_key is compatible and can be parsed using the jq schema.
+要使用 `content_key` 在 jq schema 中从 JSON 文件加载文档，请将 `is_content_key_jq_parsable` 设置为 True。
+确保 `content_key` 是兼容的，并且可以使用 jq schema 进行解析。
 
 ```python
 file_path = './sample.json'
@@ -239,31 +237,31 @@ pprint(data)
 ```
 
 
-## Extracting metadata
+## 提取元数据
 
-Generally, we want to include metadata available in the JSON file into the documents that we create from the content.
+通常，我们希望将 JSON 文件中可用的元数据包含到我们从内容创建的文档中。
 
-The following demonstrates how metadata can be extracted using the `JSONLoader`.
+以下演示了如何使用 `JSONLoader` 提取元数据。
 
-There are some key changes to be noted. In the previous example where we didn't collect the metadata, we managed to directly specify in the schema where the value for the `page_content` can be extracted from.
+需要注意一些关键的变化。在之前不收集元数据的示例中，我们直接在 schema 中指定了 `page_content` 的值可以从何处提取。
 
 ```
 .messages[].content
 ```
 
-In the current example, we have to tell the loader to iterate over the records in the `messages` field. The jq_schema then has to be:
+在当前示例中，我们必须告诉加载器迭代 `messages` 字段中的记录。此时 `jq_schema` 必须是：
 
 ```
 .messages[]
 ```
 
-This allows us to pass the records (dict) into the `metadata_func` that has to be implemented. The `metadata_func` is responsible for identifying which pieces of information in the record should be included in the metadata stored in the final `Document` object.
+这允许我们将记录（字典）传递给必须实现的 `metadata_func`。`metadata_func` 负责识别记录中哪些信息片段应该包含在最终 `Document` 对象中存储的元数据里。
 
-Additionally, we now have to explicitly specify in the loader, via the `content_key` argument, the key from the record where the value for the `page_content` needs to be extracted from.
+此外，我们现在必须通过 `content_key` 参数在加载器中明确指定，从记录中提取 `page_content` 值所需的键。
 
 
 ```python
-# Define the metadata extraction function.
+# 定义元数据提取函数。
 def metadata_func(record: dict, metadata: dict) -> dict:
 
     metadata["sender_name"] = record.get("sender_name")
@@ -302,19 +300,19 @@ pprint(data)
 ```
 
 
-Now, you will see that the documents contain the metadata associated with the content we extracted.
+现在，您会发现 Document 包含了我们提取的内容的关联元数据。
 
-## The `metadata_func`
+## `metadata_func`
 
-As shown above, the `metadata_func` accepts the default metadata generated by the `JSONLoader`. This allows full control to the user with respect to how the metadata is formatted.
+如上所示，`metadata_func` 接受 `JSONLoader` 生成的默认元数据。这允许用户完全控制元数据的格式。
 
-For example, the default metadata contains the `source` and the `seq_num` keys. However, it is possible that the JSON data contain these keys as well. The user can then exploit the `metadata_func` to rename the default keys and use the ones from the JSON data.
+例如，默认元数据包含 `source` 和 `seq_num` 键。然而，JSON 数据本身也可能包含这些键。用户随后可以利用 `metadata_func` 来重命名默认键，并使用 JSON 数据中的键。
 
-The example below shows how we can modify the `source` to only contain information of the file source relative to the `langchain` directory.
+下面的示例展示了我们如何修改 `source`，使其仅包含相对于 `langchain` 目录的文件源信息。
 
 
 ```python
-# Define the metadata extraction function.
+# 定义元数据提取函数。
 def metadata_func(record: dict, metadata: dict) -> dict:
 
     metadata["sender_name"] = record.get("sender_name")
@@ -358,9 +356,9 @@ pprint(data)
 ```
 
 
-## Common JSON structures with jq schema
+## 常见 JSON 结构及其 jq schema
 
-The list below provides a reference to the possible `jq_schema` the user can use to extract content from the JSON data depending on the structure.
+下表提供了用户可以根据 JSON 数据结构使用的提取内容的可能 `jq_schema` 的参考。
 
 ```
 JSON        -> [{"text": ...}, {"text": ...}, {"text": ...}]

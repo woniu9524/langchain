@@ -1,15 +1,12 @@
 # Kinetica
 
-[Kinetica](https://www.kinetica.com/) is a real-time database purpose built for enabling
-analytics and generative AI on time-series & spatial data.
+[Kinetica](https://www.kinetica.com/) 是一个实时数据库，专门用于在时间序列与空间数据上实现分析和生成式 AI。
 
 ## Chat Model
 
-The Kinetica LLM wrapper uses the [Kinetica SqlAssist
-LLM](https://docs.kinetica.com/7.2/sql-gpt/concepts/) to transform natural language into
-SQL to simplify the process of data retrieval.
+Kinetica LLM wrapper 使用 [Kinetica SqlAssist LLM](https://docs.kinetica.com/7.2/sql-gpt/concepts/) 将自然语言转换为 SQL，以简化数据检索过程。
 
-See [Kinetica Language To SQL Chat Model](/docs/integrations/chat/kinetica) for usage.
+请参阅 [Kinetica Language To SQL Chat Model](/docs/integrations/chat/kinetica) 以了解用法。
 
 ```python
 from langchain_community.chat_models.kinetica import ChatKinetica
@@ -17,10 +14,9 @@ from langchain_community.chat_models.kinetica import ChatKinetica
 
 ## Vector Store
 
-The Kinetca vectorstore wrapper leverages Kinetica's native support for [vector
-similarity search](https://docs.kinetica.com/7.2/vector_search/).
+Kinetca vectorstore wrapper 利用 Kinetica 对 [向量相似性搜索](https://docs.kinetica.com/7.2/vector_search/) 的原生支持。
 
-See [Kinetica Vectorstore API](/docs/integrations/vectorstores/kinetica) for usage.
+请参阅 [Kinetica Vectorstore API](/docs/integrations/vectorstores/kinetica) 以了解用法。
 
 ```python
 from langchain_community.vectorstores import Kinetica
@@ -28,10 +24,9 @@ from langchain_community.vectorstores import Kinetica
 
 ## Document Loader
 
-The Kinetica Document loader can be used to load LangChain [Documents](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html) from the
-[Kinetica](https://www.kinetica.com/) database.
+Kinetica 文档加载器可用于从 [Kinetica](https://www.kinetica.com/) 数据库加载 LangChain [Documents](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html)。
 
-See [Kinetica Document Loader](/docs/integrations/document_loaders/kinetica) for usage
+请参阅 [Kinetica Document Loader](/docs/integrations/document_loaders/kinetica) 以了解用法。
 
 ```python
 from langchain_community.document_loaders.kinetica_loader import KineticaLoader
@@ -39,6 +34,6 @@ from langchain_community.document_loaders.kinetica_loader import KineticaLoader
 
 ## Retriever
 
-The Kinetica Retriever can return documents given an unstructured query.
+Kinetica Retriever 可在给定非结构化查询的情况下返回文档。
 
-See [Kinetica VectorStore based Retriever](/docs/integrations/retrievers/kinetica) for usage
+请参阅 [Kinetica VectorStore based Retriever](/docs/integrations/retrievers/kinetica) 以了解用法。

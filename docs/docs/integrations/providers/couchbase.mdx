@@ -1,12 +1,11 @@
 # Couchbase
 
->[Couchbase](http://couchbase.com/) is an award-winning distributed NoSQL cloud database 
-> that delivers unmatched versatility, performance, scalability, and financial value 
-> for all of your cloud, mobile, AI, and edge computing applications.
+>[Couchbase](http://couchbase.com/) 是一款屡获殊荣的分布式 NoSQL 云数据库，
+> 可为您的所有云、移动、AI 和边缘计算应用提供无与伦比的通用性、性能、可扩展性和财务价值。
 
-## Installation and Setup
+## 安装和设置
 
-We have to install the `langchain-couchbase` package.
+我们需要安装 `langchain-couchbase` 包。
 
 ```bash
 pip install langchain-couchbase
@@ -14,21 +13,21 @@ pip install langchain-couchbase
 
 ## Vector Store
 
-See a [usage example](/docs/integrations/vectorstores/couchbase).
+请参阅[使用示例](/docs/integrations/vectorstores/couchbase)。
 
 ```python
 from langchain_couchbase import CouchbaseSearchVectorStore
 
 import getpass
 
-# Constants for the connection
+# 连接常量
 COUCHBASE_CONNECTION_STRING = getpass.getpass(
-    "Enter the connection string for the Couchbase cluster: "
+    "请输入 Couchbase 集群的连接字符串： "
 )
-DB_USERNAME = getpass.getpass("Enter the username for the Couchbase cluster: ")
-DB_PASSWORD = getpass.getpass("Enter the password for the Couchbase cluster: ")
+DB_USERNAME = getpass.getpass("请输入 Couchbase 集群的用户名： ")
+DB_PASSWORD = getpass.getpass("请输入 Couchbase 集群的密码： ")
 
-# Create Couchbase connection object
+# 创建 Couchbase 连接对象
 from datetime import timedelta
 
 from couchbase.auth import PasswordAuthenticator
@@ -39,7 +38,7 @@ auth = PasswordAuthenticator(DB_USERNAME, DB_PASSWORD)
 options = ClusterOptions(auth)
 cluster = Cluster(COUCHBASE_CONNECTION_STRING, options)
 
-# Wait until the cluster is ready for use.
+# 等待集群准备好使用。
 cluster.wait_until_ready(timedelta(seconds=5))
 
 vector_store = CouchbaseSearchVectorStore(
@@ -51,31 +50,31 @@ vector_store = CouchbaseSearchVectorStore(
     index_name=SEARCH_INDEX_NAME,
 )
 
-# Add documents
-texts = ["Couchbase is a NoSQL database", "LangChain is a framework for LLM applications"]
+# 添加文档
+texts = ["Couchbase 是一个 NoSQL 数据库", "LangChain 是一个用于 LLM 应用的框架"]
 vectorstore.add_texts(texts)
 
-# Search
-query = "What is Couchbase?"
+# 搜索
+query = "什么是 Couchbase？"
 docs = vectorstore.similarity_search(query)
 ```
 
-API Reference: [CouchbaseSearchVectorStore](https://couchbase-ecosystem.github.io/langchain-couchbase/langchain_couchbase.html#module-langchain_couchbase.vectorstores.search_vector_store)
+API 参考：[CouchbaseSearchVectorStore](https://couchbase-ecosystem.github.io/langchain-couchbase/langchain_couchbase.html#module-langchain_couchbase.vectorstores.search_vector_store)
 
-## Document loader
+## 文档加载器
 
-See a [usage example](/docs/integrations/document_loaders/couchbase).
+请参阅[使用示例](/docs/integrations/document_loaders/couchbase)。
 
 ```python
 from langchain_community.document_loaders.couchbase import CouchbaseLoader
 
-connection_string = "couchbase://localhost"  # valid Couchbase connection string
+connection_string = "couchbase://localhost"  # 有效的 Couchbase 连接字符串
 db_username = (
-    "Administrator"  # valid database user with read access to the bucket being queried
+    "Administrator"  # 具有要查询的桶的读取访问权限的有效数据库用户
 )
-db_password = "Password"  # password for the database user
+db_password = "Password"  # 数据库用户的密码
 
-# query is a valid SQL++ query
+# query 是一个有效的 SQL++ 查询
 query = """
     SELECT h.* FROM `travel-sample`.inventory.hotel h 
         WHERE h.country = 'United States'
@@ -93,19 +92,19 @@ docs = loader.load()
 
 ```
 
-## LLM Caches
+## LLM 缓存
 
 ### CouchbaseCache
-Use Couchbase as a cache for prompts and responses.
+使用 Couchbase 作为提示和响应的缓存。
 
-See a [usage example](/docs/integrations/llm_caching/#couchbase-caches).
+请参阅[使用示例](/docs/integrations/llm_caching/#couchbase-caches)。
 
-To import this cache:
+导入此缓存：
 ```python
 from langchain_couchbase.cache import CouchbaseCache
 ```
 
-To use this cache with your LLMs:
+在您的 LLM 中使用此缓存：
 ```python
 from langchain_core.globals import set_llm_cache
 
@@ -121,24 +120,24 @@ set_llm_cache(
 )
 ```
 
-API Reference: [CouchbaseCache](https://couchbase-ecosystem.github.io/langchain-couchbase/langchain_couchbase.html#langchain_couchbase.cache.CouchbaseCache)
+API 参考：[CouchbaseCache](https://couchbase-ecosystem.github.io/langchain-couchbase/langchain_couchbase.html#langchain_couchbase.cache.CouchbaseCache)
 
 ### CouchbaseSemanticCache
-Semantic caching allows users to retrieve cached prompts based on the semantic similarity between the user input and previously cached inputs. Under the hood it uses Couchbase as both a cache and a vectorstore.
-The CouchbaseSemanticCache needs a Search Index defined to work. Please look at the [usage example](/docs/integrations/vectorstores/couchbase) on how to set up the index.
+语义缓存允许用户根据用户输入和先前缓存的输入之间的语义相似性来检索缓存的提示。在底层，它将 Couchbase 同时用作缓存和向量存储。
+CouchbaseSemanticCache 需要已定义的 Search Index 才能工作。请参阅[使用示例](/docs/integrations/vectorstores/couchbase)了解如何设置索引。
 
-See a [usage example](/docs/integrations/llm_caching/#couchbase-caches).
+请参阅[使用示例](/docs/integrations/llm_caching/#couchbase-caches)。
 
-To import this cache:
+导入此缓存：
 ```python
 from langchain_couchbase.cache import CouchbaseSemanticCache
 ```
 
-To use this cache with your LLMs:
+在您的 LLM 中使用此缓存：
 ```python
 from langchain_core.globals import set_llm_cache
 
-# use any embedding provider...
+# 使用任何 embedding 提供商...
 from langchain_openai.Embeddings import OpenAIEmbeddings
 
 embeddings = OpenAIEmbeddings()
@@ -156,14 +155,14 @@ set_llm_cache(
 )
 ```
 
-API Reference: [CouchbaseSemanticCache](https://couchbase-ecosystem.github.io/langchain-couchbase/langchain_couchbase.html#langchain_couchbase.cache.CouchbaseSemanticCache)
+API 参考：[CouchbaseSemanticCache](https://couchbase-ecosystem.github.io/langchain-couchbase/langchain_couchbase.html#langchain_couchbase.cache.CouchbaseSemanticCache)
 
 ## Chat Message History
-Use Couchbase as the storage for your chat messages.
+使用 Couchbase 作为聊天消息的存储。
 
-See a [usage example](/docs/integrations/memory/couchbase_chat_message_history).
+请参阅[使用示例](/docs/integrations/memory/couchbase_chat_message_history)。
 
-To use the chat message history in your applications:
+在您的应用程序中使用聊天消息历史记录：
 ```python
 from langchain_couchbase.chat_message_histories import CouchbaseChatMessageHistory
 
@@ -178,4 +177,4 @@ message_history = CouchbaseChatMessageHistory(
 message_history.add_user_message("hi!")
 ```
 
-API Reference: [CouchbaseChatMessageHistory](https://couchbase-ecosystem.github.io/langchain-couchbase/langchain_couchbase.html#module-langchain_couchbase.chat_message_histories)
+API 参考：[CouchbaseChatMessageHistory](https://couchbase-ecosystem.github.io/langchain-couchbase/langchain_couchbase.html#module-langchain_couchbase.chat_message_histories)

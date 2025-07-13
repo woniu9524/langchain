@@ -2,12 +2,12 @@
 
 # PubMed
 
->[PubMed®](https://pubmed.ncbi.nlm.nih.gov/) by `The National Center for Biotechnology Information, National Library of Medicine` 
-> comprises more than 35 million citations for biomedical literature from `MEDLINE`, life science journals, and online books. 
-> Citations may include links to full text content from `PubMed Central` and publisher web sites.
+>[PubMed®](https://pubmed.ncbi.nlm.nih.gov/) 由 `The National Center for Biotechnology Information, National Library of Medicine` 提供，
+> 包含来自 `MEDLINE`、生命科学期刊和在线书籍的超过 3500 万条生物医学文献引用。
+> 引用可能包含指向 `PubMed Central` 和出版商网站全文内容的链接。
 
-## Setup
-You need to install a python package.
+## 设置
+您需要安装一个 Python 包。
 
 ```bash
 pip install xmltodict
@@ -15,7 +15,7 @@ pip install xmltodict
 
 ### Retriever
 
-See a [usage example](/docs/integrations/retrievers/pubmed).
+请参阅[使用示例](/docs/integrations/retrievers/pubmed)。
 
 ```python
 from langchain.retrievers import PubMedRetriever
@@ -23,7 +23,7 @@ from langchain.retrievers import PubMedRetriever
 
 ### Document Loader
 
-See a [usage example](/docs/integrations/document_loaders/pubmed).
+请参阅[使用示例](/docs/integrations/document_loaders/pubmed)。
 
 ```python
 from langchain_community.document_loaders import PubMedLoader

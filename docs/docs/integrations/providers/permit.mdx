@@ -1,31 +1,28 @@
 # Permit
 
-[Permit.io](https://permit.io/) offers fine-grained access control and policy
-enforcement. With LangChain, you can integrate Permit checks to ensure only authorized
-users can access or retrieve data in your LLM applications.
+[Permit.io](https://permit.io/) 提供细粒度的访问控制和策略执行。通过 LangChain，您可以集成 Permit 检查，确保只有授权用户才能访问或检索您 LLM 应用中的数据。
 
-## Installation and Setup
+## 安装和设置
 
 ```bash
 pip install langchain-permit
 pip install permit
 ```
 
-Set environment variables for your Permit PDP and credentials:
+为您的 Permit PDP 和凭据设置环境变量：
 
 ```python
 export PERMIT_API_KEY="your_permit_api_key"
-export PERMIT_PDP_URL="http://localhost:7766"   # or your real PDP endpoint
+export PERMIT_PDP_URL="http://localhost:7766"   # 或者您的真实 PDP 端点
 ```
 
-Make sure your PDP is running and configured. See
-[Permit Docs](https://docs.permit.io/sdk/python/quickstart-python/#2-setup-your-pdp-policy-decision-point-container)
-for policy setup.
+请确保您的 PDP 正在运行并已配置。有关策略设置，请参阅
+[Permit 文档](https://docs.permit.io/sdk/python/quickstart-python/#2-setup-your-pdp-policy-decision-point-container)。
 
 ## Tools
 
-See detail on available tools [here](/docs/integrations/tools/permit).
+有关可用工具的详细信息，请参见[此处](/docs/integrations/tools/permit)。
 
 ## Retrievers
 
-See detail on available retrievers [here](/docs/integrations/retrievers/permit).
+有关可用检索器的详细信息，请参见[此处](/docs/integrations/retrievers/permit)。

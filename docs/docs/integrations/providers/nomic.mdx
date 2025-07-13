@@ -1,39 +1,39 @@
 # Nomic
 
->[Nomic](https://www.nomic.ai/) builds tools that enable everyone to interact with AI scale datasets and run AI models on consumer computers.
+>[Nomic](https://www.nomic.ai/) 构建工具，使每个人都能与 AI 规模的数据集进行交互，并在消费类计算机上运行 AI 模型。
 >
->`Nomic` currently offers two products:
+>`Nomic` 目前提供两种产品：
 >
->- `Atlas`: the Visual Data Engine
->- `GPT4All`: the Open Source Edge Language Model Ecosystem
+>- `Atlas`：可视化数据引擎
+>- `GPT4All`：开源边缘语言模型生态系统
 
-The Nomic integration exists in two partner packages: [langchain-nomic](https://pypi.org/project/langchain-nomic/)
-and in [langchain-community](https://pypi.org/project/langchain-community/). 
+Nomic 集成存在于两个合作伙伴包中：[langchain-nomic](https://pypi.org/project/langchain-nomic/)
+和 [langchain-community](https://pypi.org/project/langchain-community/)。
 
-## Installation
+## 安装
 
-You can install them with:
+您可以使用以下命令进行安装：
 
 ```bash
 pip install -U langchain-nomic
 pip install -U langchain-community
 ```
 
-## LLMs
+## 大型语言模型 (LLMs)
 
 ### GPT4All
 
-See [a usage example](/docs/integrations/llms/gpt4all).
+请参阅[使用示例](/docs/integrations/llms/gpt4all)。
 
 ```python
 from langchain_community.llms import GPT4All
 ```
 
-## Embedding models
+## 嵌入模型
 
 ### NomicEmbeddings
 
-See [a usage example](/docs/integrations/text_embedding/nomic).
+请参阅[使用示例](/docs/integrations/text_embedding/nomic)。
 
 ```python
 from langchain_nomic import NomicEmbeddings
@@ -41,17 +41,17 @@ from langchain_nomic import NomicEmbeddings
 
 ### GPT4All
 
-See [a usage example](/docs/integrations/text_embedding/gpt4all).
+请参阅[使用示例](/docs/integrations/text_embedding/gpt4all)。
 
 ```python
 from langchain_community.embeddings import GPT4AllEmbeddings
 ```
 
-## Vector store
+## 向量存储
 
 ### Atlas
 
-See [a usage example and installation instructions](/docs/integrations/vectorstores/atlas).
+请参阅[使用示例和安装说明](/docs/integrations/vectorstores/atlas)。
 
 ```python
 from langchain_community.vectorstores import AtlasDB

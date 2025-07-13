@@ -1,11 +1,8 @@
 # UpTrain
 
->[UpTrain](https://uptrain.ai/) is an open-source unified platform to evaluate and
->improve Generative AI applications. It provides grades for 20+ preconfigured evaluations 
->(covering language, code, embedding use cases), performs root cause analysis on failure 
->cases and gives insights on how to resolve them.
+>[UpTrain](https://uptrain.ai/) 是一个开源的统一平台，用于评估和改进生成式 AI 应用。它为 20 多项预配置的评估（涵盖语言、代码、嵌入式用例）提供评分，对失败案例进行根本原因分析，并给出解决它们的见解。
 
-## Installation and Setup
+## 安装和设置
 
 ```bash
 pip install uptrain
@@ -17,4 +14,4 @@ pip install uptrain
 from langchain_community.callbacks.uptrain_callback import UpTrainCallbackHandler
 ```
 
-See an [example](/docs/integrations/callbacks/uptrain).
+请参阅 [示例](/docs/integrations/callbacks/uptrain)。

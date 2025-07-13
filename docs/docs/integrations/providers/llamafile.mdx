@@ -1,30 +1,29 @@
 # llamafile
 
->[llamafile](https://github.com/Mozilla-Ocho/llamafile) lets you distribute and run LLMs 
-> with a single file.
+>[llamafile](https://github.com/Mozilla-Ocho/llamafile) 允许你通过单个文件分发和运行 LLM。
 
->`llamafile` makes open LLMs much more accessible to both developers and end users. 
-> `llamafile` is doing that by combining [llama.cpp](https://github.com/ggerganov/llama.cpp) with 
-> [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) into one framework that collapses 
-> all the complexity of LLMs down to a single-file executable (called a "llamafile") 
-> that runs locally on most computers, with no installation.
+>`llamafile` 使开放式 LLM 对开发者和终端用户都更加易于访问。
+>`llamafile` 通过将 [llama.cpp](https://github.com/ggerganov/llama.cpp) 与
+>[Cosmopolitan Libc](https://github.com/jart/cosmopolitan) 结合到一个框架中，
+> 将 LLM 的所有复杂性压缩成一个名为“llamafile”的单一文件可执行程序，
+> 该程序可以在大多数计算机上本地运行，无需安装。
 
 
-## Installation and Setup
+## 安装和设置
 
-See the [installation instructions](https://github.com/Mozilla-Ocho/llamafile?tab=readme-ov-file#quickstart).
+请参阅 [安装说明](https://github.com/Mozilla-Ocho/llamafile?tab=readme-ov-file#quickstart)。
 
 ## LLMs
 
-See a [usage example](/docs/integrations/llms/llamafile).
+请参阅 [使用示例](/docs/integrations/llms/llamafile)。
 
 ```python
 from langchain_community.llms.llamafile import Llamafile
 ```
 
-## Embedding models
+## 嵌入模型
 
-See a [usage example](/docs/integrations/text_embedding/llamafile).
+请参阅 [使用示例](/docs/integrations/text_embedding/llamafile)。
 
 ```python
 from langchain_community.embeddings import LlamafileEmbeddings

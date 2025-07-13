@@ -1,23 +1,22 @@
 # SWI-Prolog
 
-SWI-Prolog offers a comprehensive free Prolog environment.
+SWI-Prolog 提供了一个全面的免费 Prolog 环境。
 
-## Installation and Setup
+## 安装与设置
 
-Once SWI-Prolog has been installed, install lanchain-prolog using pip:
+安装 SWI-Prolog 后，使用 pip 安装 lanchain-prolog：
 ```bash
 pip install langchain-prolog
 ```
 
-## Tools
+## 工具
 
-The `PrologTool` class allows the generation of langchain tools that use Prolog rules to generate answers.
+`PrologTool` 类允许生成使用 Prolog 规则来生成答案的 langchain 工具。
 
 ```python
 from langchain_prolog import PrologConfig, PrologTool
 ```
 
-See a [usage example](/docs/integrations/tools/prolog_tool).
+请参阅 [用法示例](/docs/integrations/tools/prolog_tool)。
 
-See the same guide for usage examples of `PrologRunnable`, which allows the generation
-of LangChain runnables that use Prolog rules to generate answers.
+请参阅相同的指南，了解 `PrologRunnable` 的用法示例，该示例允许生成使用 Prolog 规则来生成答案的 LangChain runnables。

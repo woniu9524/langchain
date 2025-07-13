@@ -1,38 +1,37 @@
-# Key-value stores
+# 键值存储
 
-## Overview
+## 概述
 
-LangChain provides a key-value store interface for storing and retrieving data.
+LangChain 提供了一个键值存储接口，用于存储和检索数据。
 
-LangChain includes a [`BaseStore`](https://python.langchain.com/api_reference/core/stores/langchain_core.stores.BaseStore.html) interface,
-which allows for storage of arbitrary data. However, LangChain components that require KV-storage accept a
-more specific `BaseStore[str, bytes]` instance that stores binary data (referred to as a `ByteStore`), and internally take care of
-encoding and decoding data for their specific needs.
+LangChain 包含一个 [`BaseStore`](https://python.langchain.com/api_reference/core/stores/langchain_core.stores.BaseStore.html) 接口，
+允许存储任意数据。然而，需要 KV 存储的 LangChain 组件会接受一个更具体的 `BaseStore[str, bytes]` 实例，该实例存储二进制数据（称为 `ByteStore`），并会在内部处理
+数据编码和解码以满足其特定需求。
 
-This means that as a user, you only need to think about one type of store rather than different ones for different types of data.
+这意味着作为用户，您只需要考虑一种类型的存储，而不是针对不同类型数据的不同存储。
 
-## Usage
+## 用途
 
-The key-value store interface in LangChain is used primarily for:
+LangChain 中的键值存储接口主要用于：
 
-1. Caching [embeddings](/docs/concepts/embedding_models) via [CachedBackedEmbeddings](https://python.langchain.com/api_reference/langchain/embeddings/langchain.embeddings.cache.CacheBackedEmbeddings.html#langchain.embeddings.cache.CacheBackedEmbeddings) to avoid recomputing embeddings for repeated queries or when re-indexing content.
+1.  通过 [CachedBackedEmbeddings](https://python.langchain.com/api_reference/langchain/embeddings/langchain.embeddings.cache.CacheBackedEmbeddings.html#langchain.embeddings.cache.CacheBackedEmbeddings) 缓存 [embeddings](/docs/concepts/embedding_models)，以避免重复查询或重新索引内容时重新计算 embeddings。
 
-2. As a simple [Document](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html#langchain_core.documents.base.Document) persistence layer in some retrievers.
+2.  在某些检索器中用作简单的 [Document](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html#langchain_core.documents.base.Document) 持久化层。
 
-Please see these how-to guides for more information:
+请参阅以下操作指南了解更多信息：
 
-* [How to cache embeddings guide](/docs/how_to/caching_embeddings/).
-* [How to retriever using multiple vectors per document](/docs/how_to/custom_retriever/).
+*   [How to cache embeddings guide](/docs/how_to/caching_embeddings/)。
+*   [How to retriever using multiple vectors per document](/docs/how_to/custom_retriever/)。
 
-## Interface
+## 接口
 
-All [`BaseStores`](https://python.langchain.com/api_reference/core/stores/langchain_core.stores.BaseStore.html) support the following interface. Note that the interface allows for modifying **multiple** key-value pairs at once:
+所有 [`BaseStores`](https://python.langchain.com/api_reference/core/stores/langchain_core.stores.BaseStore.html) 都支持以下接口。请注意，该接口允许一次修改**多个**键值对：
 
-- `mget(key: Sequence[str]) -> List[Optional[bytes]]`: get the contents of multiple keys, returning `None` if the key does not exist
-- `mset(key_value_pairs: Sequence[Tuple[str, bytes]]) -> None`: set the contents of multiple keys
-- `mdelete(key: Sequence[str]) -> None`: delete multiple keys
-- `yield_keys(prefix: Optional[str] = None) -> Iterator[str]`: yield all keys in the store, optionally filtering by a prefix
+-   `mget(key: Sequence[str]) -> List[Optional[bytes]]`：获取多个键的内容，如果键不存在则返回 `None`。
+-   `mset(key_value_pairs: Sequence[Tuple[str, bytes]]) -> None`：设置多个键的内容。
+-   `mdelete(key: Sequence[str]) -> None`：删除多个键。
+-   `yield_keys(prefix: Optional[str] = None) -> Iterator[str]`：迭代存储中的所有键，可以选择按前缀过滤。
 
-## Integrations
+## 集成
 
-Please reference the [stores integration page](/docs/integrations/stores/) for a list of available key-value store integrations.
+请参考 [stores integration page](/docs/integrations/stores/) 查看可用的键值存储集成列表。

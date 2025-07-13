@@ -1,86 +1,85 @@
 # NAVER
 
-All functionality related to `Naver`, including HyperCLOVA X models, particularly those accessible through `Naver Cloud` [CLOVA Studio](https://clovastudio.ncloud.com/).
+所有与 `Naver` 相关的功能，包括 HyperCLOVA X 模型，特别是可以通过 `Naver Cloud` 的 [CLOVA Studio](https://clovastudio.ncloud.com/) 访问的模型。
 
-> [Naver](https://navercorp.com/) is a global technology company with cutting-edge technologies and a diverse business portfolio including search, commerce, fintech, content, cloud, and AI.
+> [Naver](https://navercorp.com/) 是一家全球性科技公司，拥有尖端技术和多元化的业务组合，包括搜索、电子商务、金融科技、内容、云和人工智能。
 
-> [Naver Cloud](https://www.navercloudcorp.com/lang/en/) is the cloud computing arm of Naver, a leading cloud service provider offering a comprehensive suite of cloud services to businesses through its [Naver Cloud Platform (NCP)](https://www.ncloud.com/).
+> [Naver Cloud](https://www.navercloudcorp.com/lang/en/) 是 Naver 的云计算部门，是一家领先的云服务提供商，通过其 [Naver Cloud Platform (NCP)](https://www.ncloud.com/) 为企业提供全面的云服务套件。
 
-Please refer to [NCP User Guide](https://guide.ncloud-docs.com/docs/clovastudio-overview) for more detailed instructions (also in Korean).
+有关更详细的说明，请参阅 [NCP 用户指南](https://guide.ncloud-docs.com/docs/clovastudio-overview)（也有韩文版）。
 
-## Installation and Setup
+## 安装和设置
 
-- Get a CLOVA Studio API Key by [issuing it](https://api.ncloud-docs.com/docs/ai-naver-clovastudio-summary#API%ED%82%A4) and set it as an environment variable (`CLOVASTUDIO_API_KEY`).
+- 通过[获取 API 密钥](https://api.ncloud-docs.com/docs/ai-naver-clovastudio-summary#API%ED%82%A4) 并将其设置为环境变量 (`CLOVASTUDIO_API_KEY`) 来获取 CLOVA Studio API 密钥。
 
+Naver 集成存在于两个软件包中：
 
-Naver integrations live in two packages:
-
-- `langchain-naver`: a dedicated integration package for Naver.
-- `langchain-naver-community`: a community-maintained package and is not officially maintained by Naver or LangChain.
+- `langchain-naver`: 一个专门用于 Naver 的集成软件包。
+- `langchain-naver-community`: 一个社区维护的软件包，不受 Naver 或 LangChain 的官方支持。
 
 ```bash
 pip install -U langchain-naver
-# pip install -U langchain-naver-community // Install to use Naver Search tool.
+# pip install -U langchain-naver-community // 安装以使用 Naver Search 工具。
 ```
 
-> **(Note)** Naver integration via `langchain-community`, a collection of [third-party integrations](https://python.langchain.com/docs/concepts/architecture/#langchain-community), is outdated.
-> - **Use `langchain-naver` instead as new features should only be implemented via this package**.
-> - If you are using `langchain-community` (outdated) and got a legacy API Key (that doesn't start with `nv-*` prefix), you should set it as `NCP_CLOVASTUDIO_API_KEY`, and might need to get an additional API Gateway API Key by [creating your app](https://guide.ncloud-docs.com/docs/en/clovastudio-playground01#create-test-app) and set it as `NCP_APIGW_API_KEY`.
+> **(注意)** 通过 `langchain-community`（一个[第三方集成](https://python.langchain.com/docs/concepts/architecture/#langchain-community)集合）进行的 Naver 集成已过时。
+> - **请改用 `langchain-naver`，新功能仅应通过此软件包实现**。
+> - 如果您使用的是 `langchain-community`（已过时）并且获得了旧版 API 密钥（不以 `nv-*` 前缀开头），您应该将其设置为 `NCP_CLOVASTUDIO_API_KEY`，并且可能需要通过[创建您的应用](https://guide.ncloud-docs.com/docs/en/clovastudio-playground01#create-test-app)获取额外的 API 网关 API 密钥，并将其设置为 `NCP_APIGW_API_KEY`。
 
-## Chat models
+## Chat 模型
 
-### ChatClovaX 
+### ChatClovaX
 
-See a [usage example](/docs/integrations/chat/naver).
+请参阅[使用示例](/docs/integrations/chat/naver)。
 
 ```python
 from langchain_naver import ChatClovaX
 ```
 
-## Embedding models
+## Embedding 模型
 
 ### ClovaXEmbeddings
 
-See a [usage example](/docs/integrations/text_embedding/naver).
+请参阅[使用示例](/docs/integrations/text_embedding/naver)。
 
 ```python
 from langchain_naver import ClovaXEmbeddings
 ```
 
-## Tools
+## 工具
 
-### Naver Search
+### Naver 搜索
 
-The Naver Search integration allows your LangChain applications to retrieve information from Naver's search engine. This is particularly useful for Korean language queries and getting up-to-date information about Korean topics.
+Naver Search 集成允许您的 LangChain 应用程序从 Naver 搜索引擎检索信息。这对于韩语查询和获取有关韩国主题的最新信息特别有用。
 
-To use the Naver Search tools, you need to:
+要使用 Naver Search 工具，您需要：
 
-1. Sign in to the [Naver Developers portal](https://developers.naver.com/main/)
-2. Create a new application and enable the Search API
-3. Obtain your **NAVER_CLIENT_ID** and **NAVER_CLIENT_SECRET** from the "Application List" section
-4. Set these as environment variables in your application
+1. 登录 [Naver Developers 门户](https://developers.naver.com/main/)
+2. 创建一个新应用程序并启用 Search API
+3. 从“应用程序列表”部分获取您的 **NAVER_CLIENT_ID** 和 **NAVER_CLIENT_SECRET**
+4. 在您的应用程序中将这些设置为环境变量
 
 ```python
 from langchain_naver_community.tool import NaverSearchResults
 from langchain_naver_community.utils import NaverSearchAPIWrapper
 
-# Set up the search wrapper
+# 设置搜索包装器
 search = NaverSearchAPIWrapper()
 
-# Create a tool
+# 创建一个工具
 tool = NaverSearchResults(api_wrapper=search)
 ```
 
-See a [usage example](/docs/integrations/tools/naver_search) for more details.
+有关更多详细信息，请参阅[使用示例](/docs/integrations/tools/naver_search)。
 
-### Specialized Search Tools
+### 专用搜索工具
 
-The package also provides specialized search tools for different types of content:
+该软件包还提供专门用于不同类型内容的搜索工具：
 
 ```python
-from langchain_naver_community.tool import NaverNewsSearch  # For news articles
-from langchain_naver_community.tool import NaverBlogSearch  # For blog posts
-from langchain_naver_community.tool import NaverImageSearch  # For images
+from langchain_naver_community.tool import NaverNewsSearch  # 用于新闻文章
+from langchain_naver_community.tool import NaverBlogSearch  # 用于博客文章
+from langchain_naver_community.tool import NaverImageSearch  # 用于图片
 ```
 
-Each of these can be used within LangChain agents to provide more targeted search capabilities.
+这些工具都可以在 LangChain 代理中使用，以提供更具针对性的搜索功能。

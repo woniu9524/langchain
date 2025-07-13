@@ -1,211 +1,204 @@
 # Tools
 
 :::info Prerequisites
-- [Chat models](/docs/concepts/chat_models/)
+- [Chat 模型](/docs/concepts/chat_models/)
 :::
 
-## Overview
+## 概览
 
-The **tool** abstraction in LangChain associates a Python **function** with a **schema** that defines the function's **name**, **description** and **expected arguments**. 
+LangChain 的 **工具** 抽象将一个 Python **函数** 与一个 **模式（schema）** 相关联，该模式定义了函数的 **名称**、**描述** 和 **预期参数**。
 
-**Tools** can be passed to [chat models](/docs/concepts/chat_models) that support [tool calling](/docs/concepts/tool_calling) allowing the model to request the execution of a specific function with specific inputs.
+**工具** 可以传递给支持 [工具调用](/docs/concepts/tool_calling) 的 [聊天模型](/docs/concepts/chat_models)，模型可以据此请求使用特定的输入来执行特定的函数。
 
-## Key concepts
+## 关键概念
 
-- Tools are a way to encapsulate a function and its schema in a way that can be passed to a chat model.
-- Create tools using the [@tool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.convert.tool.html) decorator, which simplifies the process of tool creation, supporting the following:
-   - Automatically infer the tool's **name**, **description** and **expected arguments**, while also supporting customization.
-   - Defining tools that return **artifacts** (e.g. images, dataframes, etc.)
-   - Hiding input arguments from the schema (and hence from the model) using **injected tool arguments**.
+- 工具是一种将函数及其模式封装起来，以便可以传递给聊天模型的方式。
+- 使用 `@tool` 装饰器创建工具。它简化了工具创建过程，支持以下功能：
+   - 自动推断工具的 **名称**、**描述** 和 **预期参数**，同时也支持自定义。
+   - 定义返回 **产出物（artifacts）**（例如：图像、数据帧等）的工具。
+   - 使用 **注入的工具参数（injected tool arguments）** 将输入参数隐藏在模式（以及模型）之外。
 
-## Tool interface
+## 工具接口
 
-The tool interface is defined in the [BaseTool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool) class which is a subclass of the [Runnable Interface](/docs/concepts/runnables).
+工具接口定义在 `BaseTool` 类中，它是 `Runnable Interface` 的一个子类。
 
-The key attributes that correspond to the tool's **schema**:
+与工具 **模式** 对应的关键属性：
 
-- **name**: The name of the tool.
-- **description**: A description of what the tool does.
-- **args**: Property that returns the JSON schema for the tool's arguments.
+- **name**: 工具的名称。
+- **description**: 工具功能的描述。
+- **args**: 返回工具参数的 JSON 模式的属性。
 
-The key methods to execute the function associated with the **tool**:
+用于执行与 **工具** 关联的函数：
 
-- **invoke**: Invokes the tool with the given arguments.
-- **ainvoke**: Invokes the tool with the given arguments, asynchronously. Used for [async programming with Langchain](/docs/concepts/async).
+- **invoke**: 使用给定的参数调用工具。
+- **ainvoke**: 使用给定的参数异步调用工具。用于 Langchain 的 [异步编程](/docs/concepts/async)。
 
-## Create tools using the `@tool` decorator
+## 使用 `@tool` 装饰器创建工具
 
-The recommended way to create tools is using the [@tool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.convert.tool.html) decorator. This decorator is designed to simplify the process of tool creation and should be used in most cases. After defining a function, you can decorate it with [@tool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.convert.tool.html) to create a tool that implements the [Tool Interface](#tool-interface).
+创建工具的推荐方式是使用 `@tool` 装饰器。该装饰器旨在简化工具创建过程，应在大多数情况下使用。定义函数后，您可以使用 `@tool` 装饰它来创建一个实现 [工具接口](#tool-interface) 的工具。
 
 ```python
 from langchain_core.tools import tool
 
 @tool
 def multiply(a: int, b: int) -> int:
-   """Multiply two numbers."""
+   """将两个数字相乘。"""
    return a * b
 ```
 
-For more details on how to create tools, see the [how to create custom tools](/docs/how_to/custom_tools/) guide.
+有关如何创建工具的更多详细信息，请参阅 [如何创建自定义工具](/docs/how_to/custom_tools/) 指南。
 
 :::note
-LangChain has a few other ways to create tools; e.g., by sub-classing the [BaseTool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool) class or by using `StructuredTool`. These methods are shown in the [how to create custom tools guide](/docs/how_to/custom_tools/), but
-we generally recommend using the `@tool` decorator for most cases.
+LangChain 还有其他几种创建工具的方式；例如，通过继承 `BaseTool` 类或使用 `StructuredTool`。这些方法在 [如何创建自定义工具](/docs/how_to/custom_tools/) 指南中有所展示，但我们通常建议在大多数情况下使用 `@tool` 装饰器。
 :::
 
-## Use the tool directly
+## 直接使用工具
 
-Once you have defined a tool, you can use it directly by calling the function. For example, to use the `multiply` tool defined above:
+定义工具后，您可以直接通过调用函数来使用它。例如，使用上面定义的 `multiply` 工具：
 
 ```python
 multiply.invoke({"a": 2, "b": 3})
 ```
 
-### Inspect
+### 查看
 
-You can also inspect the tool's schema and other properties:
+您还可以检查工具的模式和其他属性：
 
 ```python
 print(multiply.name) # multiply
-print(multiply.description) # Multiply two numbers.
-print(multiply.args) 
+print(multiply.description) # 将两个数字相乘。
+print(multiply.args)
 # {
-# 'type': 'object', 
-# 'properties': {'a': {'type': 'integer'}, 'b': {'type': 'integer'}}, 
+# 'type': 'object',
+# 'properties': {'a': {'type': 'integer'}, 'b': {'type': 'integer'}},
 # 'required': ['a', 'b']
 # }
 ```
 
 :::note
-If you're using pre-built LangChain or LangGraph components like [create_react_agent](https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.chat_agent_executor.create_react_agent),you might not need to interact with tools directly. However, understanding how to use them can be valuable for debugging and testing. Additionally, when building custom LangGraph workflows, you may find it necessary to work with tools directly.
+如果您使用的是预构建的 LangChain 或 LangGraph 组件，如 `create_react_agent`，您可能不需要直接与工具交互。但是，了解如何使用它们对于调试和测试可能很有价值。此外，在构建自定义 LangGraph 工作流时，您可能会发现直接使用工具是必要的。
 :::
 
-## Configuring the schema
+## 配置模式
 
-The `@tool` decorator offers additional options to configure the schema of the tool (e.g., modify name, description
-or parse the function's doc-string to infer the schema).
+`@tool` 装饰器提供了其他选项来配置工具的模式（例如，修改名称、描述或解析函数的文档字符串以推断模式）。
 
-Please see the [API reference for @tool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.convert.tool.html) for more details and review the [how to create custom tools](/docs/how_to/custom_tools/) guide for examples.
+有关更多详细信息，请参阅 [@tool 的 API 参考](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.convert.tool.html)，并查阅 [如何创建自定义工具](/docs/how_to/custom_tools/) 指南中的示例。
 
-## Tool artifacts
+## 工具产出物
 
-**Tools** are utilities that can be called by a model, and whose outputs are designed to be fed back to a model. Sometimes, however, there are artifacts of a tool's execution that we want to make accessible to downstream components in our chain or agent, but that we don't want to expose to the model itself. For example if a tool returns a custom object, a dataframe or an image, we may want to pass some metadata about this output to the model without passing the actual output to the model. At the same time, we may want to be able to access this full output elsewhere, for example in downstream tools.
+**工具** 是模型可以调用的实用程序，其输出旨在反馈给模型。然而，有时工具执行的产出物会让我们希望将其提供给链或代理中的下游组件，但又不想将其暴露给模型本身。例如，如果一个工具返回一个自定义对象、数据帧或图像，我们可能希望将该输出的某些元数据提供给模型，而不将实际输出传递给模型。同时，我们可能希望在其他地方访问完整的输出，例如在下游工具中。
 
 ```python
 @tool(response_format="content_and_artifact")
 def some_tool(...) -> Tuple[str, Any]:
-    """Tool that does something."""
+    """执行某项操作的工具。"""
     ...
-    return 'Message for chat model', some_artifact 
+    return '给聊天模型的消息', 某个产出物
 ```
 
-See [how to return artifacts from tools](/docs/how_to/tool_artifacts/) for more details.
+有关更多详细信息，请参阅 [如何从工具返回产出物](/docs/how_to/tool_artifacts/)。
 
-## Special type annotations
+## 特殊类型注解
 
-There are a number of special type annotations that can be used in the tool's function signature to configure the run time behavior of the tool.
+在工具的函数签名中可以使用一些特殊的类型注解来配置工具的运行时行为。
 
-The following type annotations will end up **removing** the argument from the tool's schema. This can be useful for arguments that should not be exposed to the model and that the model should not be able to control.
+以下类型注解将**移除**该参数的工具模式。这对于不应暴露给模型且模型不应控制的参数非常有用。
 
-- **InjectedToolArg**: Value should be injected manually at runtime using `.invoke` or `.ainvoke`.
-- **RunnableConfig**: Pass in the RunnableConfig object to the tool.
-- **InjectedState**: Pass in the overall state of the LangGraph graph to the tool.
-- **InjectedStore**: Pass in the LangGraph store object to the tool.
+- **InjectedToolArg**: 值应在运行时通过 `.invoke` 或 `.ainvoke` 手动注入。
+- **RunnableConfig**: 将 `RunnableConfig` 对象传递给工具。
+- **InjectedState**: 将 LangGraph 图的整体状态传递给工具。
+- **InjectedStore**: 将 LangGraph 存储对象传递给工具。
 
-You can also use the `Annotated` type with a string literal to provide a **description** for the corresponding argument that **WILL** be exposed in the tool's schema.
+您还可以使用 `Annotated` 类型配合字符串字面量来为相应的参数提供**描述**，该描述**将**被暴露在工具的模式中。
 
-- **Annotated[..., "string literal"]** -- Adds a description to the argument that will be exposed in the tool's schema.
+- **Annotated[..., "字符串字面量"]** -- 为将暴露在工具模式中的参数添加描述。
 
 ### InjectedToolArg
 
-There are cases where certain arguments need to be passed to a tool at runtime but should not be generated by the model itself. For this, we use the `InjectedToolArg` annotation, which allows certain parameters to be hidden from the tool's schema.
+在某些情况下，需要在运行时将某些参数传递给工具，但不能由模型本身生成。为此，我们使用 `InjectedToolArg` 注解，它允许某些参数从工具的模式中隐藏。
 
-For example, if a tool requires a `user_id` to be injected dynamically at runtime, it can be structured in this way:
+例如，如果一个工具需要在运行时动态注入 `user_id`，则可以这样构建：
 
 ```python
 from langchain_core.tools import tool, InjectedToolArg
 
 @tool
 def user_specific_tool(input_data: str, user_id: InjectedToolArg) -> str:
-    """Tool that processes input data."""
-    return f"User {user_id} processed {input_data}"
+    """处理输入数据的工具。"""
+    return f"用户 {user_id} 已处理 {input_data}"
 ```
 
-Annotating the `user_id` argument with `InjectedToolArg` tells LangChain that this argument should not be exposed as part of the
-tool's schema.
+使用 `InjectedToolArg` 注解 `user_id` 参数，即告诉 LangChain 不应将此参数作为工具模式的一部分暴露。
 
-See [how to pass run time values to tools](/docs/how_to/tool_runtime/) for more details on how to use `InjectedToolArg`.  
-
+有关如何使用 `InjectedToolArg` 的更多详细信息，请参阅 [如何将运行时值传递给工具](/docs/how_to/tool_runtime/)。
 
 ### RunnableConfig
 
-You can use the `RunnableConfig` object to pass custom run time values to tools.
+您可以使用 `RunnableConfig` 对象将自定义运行时值传递给工具。
 
-If you need to access the [RunnableConfig](/docs/concepts/runnables/#runnableconfig) object from within a tool. This can be done by using the `RunnableConfig` annotation in the tool's function signature.
+如果您需要在工具内部访问 `RunnableConfig` 对象。这可以通过在工具的函数签名中使用 `RunnableConfig` 注解来实现。
 
 ```python
 from langchain_core.runnables import RunnableConfig
 
 @tool
 async def some_func(..., config: RunnableConfig) -> ...:
-    """Tool that does something."""
-    # do something with config
+    """执行某项功能的工具。"""
+    # 使用 config 执行某些操作
     ...
 
 await some_func.ainvoke(..., config={"configurable": {"value": "some_value"}})
 ```
 
-The `config` will not be part of the tool's schema and will be injected at runtime with appropriate values.
+`config` 不会成为工具模式的一部分，并且将在运行时使用适当的值注入。
 
 :::note
-You may need to access the `config` object to manually propagate it to subclass. This happens if you're working with python 3.9 / 3.10 in an [async](/docs/concepts/async) environment and need to manually propagate the `config` object to sub-calls.
+您可能需要访问 `config` 对象以手动将其传播给子类。如果您在 [异步](/docs/concepts/async) 环境中使用 Python 3.9 / 3.10 并且需要手动将 `config` 对象传播给子调用，就会发生这种情况。
 
-Please read [Propagation RunnableConfig](/docs/concepts/runnables/#propagation-of-runnableconfig) for more details to learn how to propagate the `RunnableConfig` down the call chain manually (or upgrade to Python 3.11 where this is no longer an issue).
+请阅读 [传播 RunnableConfig](/docs/concepts/runnables/#propagation-of-runnableconfig) 以了解更多有关手动将 `RunnableConfig` 传播到调用链下（或升级到 Python 3.11，这样就不是问题了）的详细信息。
 :::
 
 ### InjectedState
 
-Please see the [InjectedState](https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.tool_node.InjectedState) documentation for more details.
+有关更多详细信息，请参阅 [InjectedState](https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.tool_node.InjectedState) 文档。
 
 ### InjectedStore
 
-Please see the [InjectedStore](https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.tool_node.InjectedStore) documentation for more details.
+有关更多详细信息，请参阅 [InjectedStore](https://langchain-ai.github.io/langgraph/reference/prebuilt/#langgraph.prebuilt.tool_node.InjectedStore) 文档。
 
-## Best practices
+## 最佳实践
 
-When designing tools to be used by models, keep the following in mind:
+在设计供模型使用的工具时，请牢记以下几点：
 
-- Tools that are well-named, correctly-documented and properly type-hinted are easier for models to use.
-- Design simple and narrowly scoped tools, as they are easier for models to use correctly.
-- Use chat models that support [tool-calling](/docs/concepts/tool_calling) APIs to take advantage of tools.
+- 命名良好、文档正确且类型提示准确的工具更容易被模型使用。
+- 设计简单、范围狭窄的工具，模型更容易正确使用它们。
+- 使用支持 [工具调用](/docs/concepts/tool_calling) API 的聊天模型来利用工具。
 
-
-## Toolkits
+## 工具包
 <span data-heading-keywords="toolkit,toolkits"></span>
 
-LangChain has a concept of **toolkits**. This a very thin abstraction that groups tools together that
-are designed to be used together for specific tasks.
+LangChain 有一个 **工具包** 的概念。这是一个非常轻量级的抽象，它将一起设计的工具组合起来，用于特定任务。
 
-### Interface
+### 接口
 
-All Toolkits expose a `get_tools` method which returns a list of tools. You can therefore do:
+所有工具包都公开一个 `get_tools` 方法，该方法返回一个工具列表。因此，您可以这样做：
 
 ```python
-# Initialize a toolkit
+# 初始化一个工具包
 toolkit = ExampleToolkit(...)
 
-# Get list of tools
+# 获取工具列表
 tools = toolkit.get_tools()
 ```
 
-## Related resources
+## 相关资源
 
-See the following resources for more information:
+有关更多信息，请参阅以下资源：
 
-- [API Reference for @tool](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.convert.tool.html)
-- [How to create custom tools](/docs/how_to/custom_tools/)
-- [How to pass run time values to tools](/docs/how_to/tool_runtime/)
-- [All LangChain tool how-to guides](https://docs.langchain.com/docs/how_to/#tools)
-- [Additional how-to guides that show usage with LangGraph](https://langchain-ai.github.io/langgraph/how-tos/tool-calling/)
-- Tool integrations, see the [tool integration docs](https://docs.langchain.com/docs/integrations/tools/).
-
+- [@tool 的 API 参考](https://python.langchain.com/api_reference/core/tools/langchain_core.tools.convert.tool.html)
+- [如何创建自定义工具](/docs/how_to/custom_tools/)
+- [如何将运行时值传递给工具](/docs/how_to/tool_runtime/)
+- [所有 LangChain 工具操作指南](https://docs.langchain.com/docs/how_to/#tools)
+- [演示与 LangGraph 使用的其他操作指南](https://langchain-ai.github.io/langgraph/how-tos/tool-calling/)
+- 工具集成，请参阅 [工具集成文档](https://docs.langchain.com/docs/integrations/tools/)。

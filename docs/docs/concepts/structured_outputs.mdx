@@ -1,24 +1,24 @@
-# Structured outputs
+# 结构化输出
 
-## Overview 
+## 概览
 
-For many applications, such as chatbots, models need to respond to users directly in natural language. 
-However, there are scenarios where we need models to output in a *structured format*. 
-For example, we might want to store the model output in a database and ensure that the output conforms to the database schema.
-This need motivates the concept of structured output, where models can be instructed to respond with a particular output structure.
+对于许多应用程序，例如聊天机器人，模型需要直接以自然语言响应用户。
+但是，在某些情况下，我们需要模型以*结构化格式*进行输出。
+例如，我们可能希望将模型输出存储在数据库中，并确保输出符合数据库的模式。
+这种需求促成了结构化输出的概念，即可以指示模型以特定的输出结构进行响应。
 
 ![Structured output](/img/structured_output.png)
 
-## Key concepts 
+## 关键概念
 
-1. **Schema definition:** The output structure is represented as a schema, which can be defined in several ways.<br/>
-2. **Returning structured output:** The model is given this schema, and is instructed to return output that conforms to it.
+1. **模式定义：** 输出结构由模式表示，该模式可以通过多种方式定义。<br/>
+2. **返回结构化输出：** 模型会接收此模式，并被指示返回符合该模式的输出。
 
-## Recommended usage
+## 推荐用法
 
-This pseudocode illustrates the recommended workflow when using structured output.
-LangChain provides a method, [`with_structured_output()`](/docs/how_to/structured_output/#the-with_structured_output-method), that automates the process of binding the schema to the [model](/docs/concepts/chat_models/) and parsing the output.
-This helper function is available for all model providers that support structured output. 
+此伪代码说明了使用结构化输出时推荐的工作流程。
+LangChain 提供了一个方法，[`with_structured_output()`](/docs/how_to/structured_output/#the-with_structured_output-method)，该方法自动化了将模式绑定到[模型](/docs/concepts/chat_models/)和解析输﻿这个过程。
+此辅助函数适用于所有支持结构化输出的模型提供商。
 
 ```python
 # Define schema
@@ -29,13 +29,13 @@ model_with_structure = model.with_structured_output(schema)
 structured_output = model_with_structure.invoke(user_input)
 ```
 
-## Schema definition
+## 模式定义
 
-The central concept is that the output structure of model responses needs to be represented in some way. 
-While types of objects you can use depend on the model you're working with, there are common types of objects that are typically allowed or recommended for structured output in Python.
+核心概念是需要以某种方式表示模型响应的输出结构。
+虽然您可以使用​​的对象类型取决于您正在使用的模型，但通常允许或推荐用于 Python 中结构化输出的常用对象类型。
 
-The simplest and most common format for structured output is a JSON-like structure, which in Python can be represented as a dictionary (dict) or list (list).
-JSON objects (or dicts in Python) are often used directly when the tool requires raw, flexible, and minimal-overhead structured data.
+结构化输出最简单也是最常见的格式是类似 JSON 的结构，在 Python 中可以表示为字典 (dict) 或列表 (list)。
+当工具需要原始、灵活且开销最小的结构化数据时，通常直接使用 JSON 对象（或 Python 中的 dict）。
 
 ```json
 {
@@ -44,8 +44,8 @@ JSON objects (or dicts in Python) are often used directly when the tool requires
 }
 ```
 
-As a second example, [Pydantic](https://docs.pydantic.dev/latest/) is particularly useful for defining structured output schemas because it offers type hints and validation.
-Here's an example of a Pydantic schema: 
+作为第二个示例，[Pydantic](https://docs.pydantic.dev/latest/) 因其提供类型提示和验证而特别适用于定义结构化输出模式。
+这是一个 Pydantic 模式的示例：
 
 ```python
 from pydantic import BaseModel, Field
@@ -56,18 +56,18 @@ class ResponseFormatter(BaseModel):
 
 ```
 
-## Returning structured output
+## 返回结构化输出
 
-With a schema defined, we need a way to instruct the model to use it.
-While one approach is to include this schema in the prompt and *ask nicely* for the model to use it, this is not recommended. 
-Several more powerful methods that utilizes native features in the model provider's API are available.
+定义了模式后，我们需要一种方法来指示模型使用它。
+虽然一种方法是将此模式包含在提示中并*礼貌地要求*模型使用它，但不推荐这样做。
+有几种更强大的方法利用模型提供商 API 中的原生功能。
 
-### Using tool calling
+### 使用工具调用
 
-Many [model providers support](/docs/integrations/chat/) tool calling, a concept discussed in more detail in our [tool calling guide](/docs/concepts/tool_calling/).
-In short, tool calling involves binding a tool to a model and, when appropriate, the model can *decide* to call this tool and ensure its response conforms to the tool's schema.
-With this in mind, the central concept is straightforward: *simply bind our schema to a model as a tool!*
-Here is an example using the `ResponseFormatter` schema defined above:
+许多[模型提供商支持](/docs/integrations/chat/)工具调用，其概念将在我们的[工具调用指南](/docs/concepts/tool_calling/)中更详细地讨论。
+简而言之，工具调用涉及将工具绑定到模型，并在适当的时候，模型可以*决定*调用该工具并确保其响应符合该工具的模式。
+考虑到这一点，核心概念很简单：*只需将我们的模式作为工具绑定到模型！*
+这是一个使用上面定义的 `ResponseFormatter` 模式的示例：
 
 ```python
 from langchain_openai import ChatOpenAI
@@ -78,8 +78,8 @@ model_with_tools = model.bind_tools([ResponseFormatter])
 ai_msg = model_with_tools.invoke("What is the powerhouse of the cell?")
 ```
 
-The arguments of the tool call are already extracted as a dictionary. 
-This dictionary can be optionally parsed into a Pydantic object, matching our original `ResponseFormatter` schema.
+工具调用的参数已经提取为一个字典。
+这个字典可以根据需要选择性地解析为 Pydantic 对象，以匹配我们原始的 `ResponseFormatter` 模式。
 
 ```python
 # Get the tool call arguments
@@ -90,12 +90,12 @@ ai_msg.tool_calls[0]["args"]
 pydantic_object = ResponseFormatter.model_validate(ai_msg.tool_calls[0]["args"])
 ```
 
-### JSON mode
+### JSON 模式
 
-In addition to tool calling, some model providers support a feature called `JSON mode`. 
-This supports JSON schema definition as input and enforces the model to produce a conforming JSON output.
-You can find a table of model providers that support JSON mode [here](/docs/integrations/chat/).
-Here is an example of how to use JSON mode with OpenAI:
+除了工具调用，一些模型提供商还支持称为 `JSON mode` 的功能。
+它支持将 JSON 模式定义作为输入，并强制模型生成符合要求的 JSON 输出。
+您可以在[此处](/docs/integrations/chat/)找到支持 JSON 模式的模型提供商的表格。
+以下是如何在 OpenAI 中使用 JSON 模式的示例：
 
 ```python
 from langchain_openai import ChatOpenAI
@@ -105,21 +105,21 @@ ai_msg
 {'random_ints': [45, 67, 12, 34, 89, 23, 78, 56, 90, 11]}
 ```
 
-## Structured output method 
+## 结构化输出方法
 
-There are a few challenges when producing structured output with the above methods: 
+使用上述方法生成结构化输出时存在一些挑战：
 
-1. When tool calling is used, tool call arguments needs to be parsed from a dictionary back to the original schema.<br/>  
+1. 当使用工具调用时，需要将工具调用参数从字典解析回原始模式。<br/>  
 
-2. In addition, the model needs to be instructed to *always* use the tool when we want to enforce structured output, which is a provider specific setting.<br/> 
+2. 此外，当我们要强制执行结构化输出时，需要指示模型*始终*使用该工具，这是一个特定于提供商的设置。<br/> 
 
-3. When JSON mode is used, the output needs to be parsed into a JSON object. 
+3. 当使用 JSON 模式时，需要将输出解析为 JSON 对象。 
 
-With these challenges in mind, LangChain provides a helper function (`with_structured_output()`) to streamline the process.
+考虑到这些挑战，LangChain 提供了一个辅助函数（`with_structured_output()`）来简化此过程。
 
 ![Diagram of with structured output](/img/with_structured_output.png)
 
-This both binds the schema to the model as a tool and parses the output to the specified output schema. 
+它将模式作为工具绑定到模型，并将输出解析为指定的输出模式。
 
 ```python
 # Bind the schema to the model
@@ -131,8 +131,8 @@ structured_output
 ResponseFormatter(answer="The powerhouse of the cell is the mitochondrion. Mitochondria are organelles that generate most of the cell's supply of adenosine triphosphate (ATP), which is used as a source of chemical energy.", followup_question='What is the function of ATP in the cell?')
 ```
 
-:::info[Further reading]
+:::info[进一步阅读]
 
-For more details on usage, see our [how-to guide](/docs/how_to/structured_output/#the-with_structured_output-method).
+有关更多用法详细信息，请参阅我们的[操作指南](/docs/how_to/structured_output/#the-with_structured_output-method)。
 
 :::

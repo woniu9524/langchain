@@ -1,28 +1,28 @@
-# Text embedding models
+# 文本嵌入模型
 
 :::info
-Head to [Integrations](/docs/integrations/text_embedding/) for documentation on built-in integrations with text embedding model providers.
+前往 [Integrations](/docs/integrations/text_embedding/) 查看关于内置文本嵌入模型提供商集成的文档。
 :::
 
-The Embeddings class is a class designed for interfacing with text embedding models. There are lots of embedding model providers (OpenAI, Cohere, Hugging Face, etc) - this class is designed to provide a standard interface for all of them.
+Embeddings 类是用于与文本嵌入模型交互的类。存在许多嵌入模型提供商（如 OpenAI、Cohere、Hugging Face 等），此类旨在为所有提供商提供标准接口。
 
-Embeddings create a vector representation of a piece of text. This is useful because it means we can think about text in the vector space, and do things like semantic search where we look for pieces of text that are most similar in the vector space.
+Embeddings 会为一段文本创建一个向量表示。这很有用，因为它意味着我们可以在向量空间中思考文本，并执行诸如语义搜索之类的操作，在向量空间中查找最相似的文本片段。
 
-The base Embeddings class in LangChain provides two methods: one for embedding documents and one for embedding a query. The former, `.embed_documents`, takes as input multiple texts, while the latter, `.embed_query`, takes a single text. The reason for having these as two separate methods is that some embedding providers have different embedding methods for documents (to be searched over) vs queries (the search query itself).
-`.embed_query` will return a list of floats, whereas `.embed_documents` returns a list of lists of floats.
+LangChain 中的基类 Embeddings 提供了两个方法：一个用于嵌入文档，一个用于嵌入查询。前者 `.embed_documents` 的输入是多个文本，后者 `.embed_query` 的输入是单个文本。之所以将它们设为两个独立的方法，是因为某些嵌入提供商对文档（用于搜索）和查询（搜索查询本身）有不同的嵌入方法。
+`.embed_query` 将返回一个浮点数列表，而 `.embed_documents` 返回一个浮点数列表的列表。
 
-## Get started
+## 入门
 
-### Setup
+### 设置
 
 import EmbeddingTabs from "@theme/EmbeddingTabs";
 
 <EmbeddingTabs customVarName="embeddings_model" />
 
 ### `embed_documents`
-#### Embed list of texts
+#### 嵌入文本列表
 
-Use `.embed_documents` to embed a list of strings, recovering a list of embeddings:
+使用 `.embed_documents` 来嵌入字符串列表，恢复嵌入列表：
 
 ```python
 embeddings = embeddings_model.embed_documents(
@@ -43,8 +43,8 @@ len(embeddings), len(embeddings[0])
 
 
 ### `embed_query`
-#### Embed single query
-Use `.embed_query` to embed a single piece of text (e.g., for the purpose of comparing to other embedded pieces of texts).
+#### 嵌入单个查询
+使用 `.embed_query` 来嵌入单个文本片段（例如，用于与其他嵌入文本片段进行比较）。
 
 ```python
 embedded_query = embeddings_model.embed_query("What was the name mentioned in the conversation?")
@@ -58,4 +58,3 @@ embedded_query[:5]
  -0.003001077566295862,
  -0.00900818221271038]
 ```
-

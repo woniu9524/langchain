@@ -1,17 +1,16 @@
 # Fiddler
 
->[Fiddler](https://www.fiddler.ai/) provides a unified platform to monitor, explain, analyze, 
-> and improve ML deployments at an enterprise scale. 
+>[Fiddler](https://www.fiddler.ai/) 提供了一个统一的平台，用于在企业规模上监控、解释、分析和改进 ML 部署。
 
-## Installation and Setup
+## 安装与设置
 
-Set up your model [with Fiddler](https://demo.fiddler.ai):
+使用 [Fiddler](https://demo.fiddler.ai) 设置您的模型：
 
-* The URL you're using to connect to Fiddler
-* Your organization ID
-* Your authorization token
+* 您用于连接到 Fiddler 的 URL
+* 您的组织 ID
+* 您的授权令牌
 
-Install the Python package:
+安装 Python 包：
 
 ```bash
 pip install fiddler-client
@@ -24,4 +23,4 @@ pip install fiddler-client
 from langchain_community.callbacks.fiddler_callback import FiddlerCallbackHandler
 ```
 
-See an [example](/docs/integrations/callbacks/fiddler).
+请参阅 [示例](/docs/integrations/callbacks/fiddler)。

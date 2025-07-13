@@ -1,32 +1,31 @@
 ---
 sidebar_position: 0.5
 ---
-# Repository Structure
+# 仓库结构
 
-If you plan on contributing to LangChain code or documentation, it can be useful
-to understand the high level structure of the repository.
+如果你打算为 LangChain 的代码或文档做贡献，了解仓库的整体结构会很有帮助。
 
-LangChain is organized as a [monorepo](https://en.wikipedia.org/wiki/Monorepo) that contains multiple packages.
-You can check out our [installation guide](/docs/how_to/installation/) for more on how they fit together.
+LangChain 被组织成一个包含多个包的 [monorepo](https://en.wikipedia.org/wiki/Monorepo)。
+你可以查看我们的 [安装指南](/docs/how_to/installation/) 来了解它们是如何协同工作的。
 
-Here's the structure visualized as a tree:
+下面是仓库结构的树状可视化：
 
 ```text
 .
-├── cookbook # Tutorials and examples
-├── docs # Contains content for the documentation here: https://python.langchain.com/
+├── cookbook # 教程和示例
+├── docs # 包含文档内容：https://python.langchain.com/
 ├── libs
 │   ├── langchain
 │   │   ├── langchain
-│   │   ├── tests/unit_tests # Unit tests (present in each package not shown for brevity)
-│   │   ├── tests/integration_tests # Integration tests (present in each package not shown for brevity)
-│   ├── community # Third-party integrations
+│   │   ├── tests/unit_tests # 单测 (每个包中都存在，为简洁起见未显示)
+│   │   ├── tests/integration_tests # 集成测试 (每个包中都存在，为简洁起见未显示)
+│   ├── community # 第三方集成
 │   │   ├── langchain-community
-│   ├── core # Base interfaces for key abstractions
+│   ├── core # 关键抽象的基础接口
 │   │   ├── langchain-core
-│   ├── experimental # Experimental components and chains
+│   ├── experimental # 实验性组件和链
 │   │   ├── langchain-experimental
-|   ├── cli # Command line interface
+|   ├── cli # 命令行接口
 │   │   ├── langchain-cli
 │   ├── text-splitters
 │   │   ├── langchain-text-splitters
@@ -37,29 +36,28 @@ Here's the structure visualized as a tree:
 │       ├── langchain-partner-2
 │       ├── ...
 │
-├── templates # A collection of easily deployable reference architectures for a wide variety of tasks.
+├── templates # 一系列易于部署的参考架构，适用于各种任务。
 ```
 
-The root directory also contains the following files:
+根目录还包含以下文件：
 
-* `pyproject.toml`: Dependencies for building docs and linting docs, cookbook.
-* `Makefile`: A file that contains shortcuts for building, linting and docs and cookbook.
+* `pyproject.toml`: 构建文档和 linting 文档、cookbook 的依赖项。
+* `Makefile`: 包含构建、linting、文档和 cookbook 的快捷方式的文件。
 
-There are other files in the root directory level, but their presence should be self-explanatory. Feel free to browse around!
+根目录级别还有其他文件，但它们的存在应该是显而易见的。欢迎随意浏览！
 
-## Documentation
+## 文档
 
-The `/docs` directory contains the content for the documentation that is shown
-at https://python.langchain.com/ and the associated API Reference https://python.langchain.com/api_reference/langchain/index.html.
+`/docs` 目录包含显示在 https://python.langchain.com/ 的文档内容以及相关的 API 参考 https://python.langchain.com/api_reference/langchain/index.html。
 
-See the [documentation](../how_to/documentation/index.mdx) guidelines to learn how to contribute to the documentation.
+请参阅 [文档](../how_to/documentation/index.mdx) 指南，了解如何为文档做出贡献。
 
-## Code
+## 代码
 
-The `/libs` directory contains the code for the LangChain packages.
+`/libs` 目录包含 LangChain 包的代码。
 
-To learn more about how to contribute code see the following guidelines:
+要了解更多关于如何贡献代码的信息，请参阅以下指南：
 
-- [Code](../how_to/code/index.mdx): Learn how to develop in the LangChain codebase.
-- [Integrations](../how_to/integrations/index.mdx): Learn how to contribute to third-party integrations to `langchain-community` or to start a new partner package.
-- [Testing](../how_to/testing.mdx): Guidelines to learn how to write tests for the packages.
+- [代码](../how_to/code/index.mdx): 了解如何在 LangChain 代码库中进行开发。
+- [集成](../how_to/integrations/index.mdx): 了解如何为 `langchain-community` 贡献第三方集成或启动新的合作伙伴包。
+- [测试](../how_to/testing.mdx): 用于了解如何为包编写测试的指南。

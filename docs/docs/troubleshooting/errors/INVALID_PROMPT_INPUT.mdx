@@ -1,14 +1,14 @@
 # INVALID_PROMPT_INPUT
 
-A [prompt template](/docs/concepts/prompt_templates) received missing or invalid input variables.
+收到的 [prompt template](/docs/concepts/prompt_templates) 缺少或包含无效的输入变量。
 
-## Troubleshooting
+## 排查
 
-The following may help resolve this error:
+以下方法可能有助于解决此错误：
 
-- Double-check your prompt template to ensure that it is correct.
-  - If you are using the default f-string format and you are using curly braces `{` anywhere in your template, they should be double escaped like this: `{{` (and if you want to render a double curly brace, you should use four curly braces: `{{{{`).
-- If you are using a [`MessagesPlaceholder`](/docs/concepts/prompt_templates/#messagesplaceholder), make sure that you are passing in an array of messages or message-like objects.
-  - If you are using shorthand tuples to declare your prompt template, make sure that the variable name is wrapped in curly braces (`["placeholder", "{messages}"]`).
-- Try viewing the inputs into your prompt template using [LangSmith](https://docs.smith.langchain.com/) or log statements to confirm they appear as expected.
-- If you are pulling a prompt from the [LangChain Prompt Hub](https://smith.langchain.com/prompts), try pulling and logging it or running it in isolation with a sample input to confirm that it is what you expect.
+- 仔细检查您的 prompt template，确保其正确无误。
+  - 如果您使用的是默认的 f-string 格式，并且在模板中的任何位置使用了花括号 `{`，则应该将它们双重转义，如下所示：`{{` (如果您想渲染一个花括号，应该使用四个花括号：`{{{{`)。
+- 如果您使用的是 [`MessagesPlaceholder`](/docs/concepts/prompt_templates/#messagesplaceholder)，请确保您传递的是一个消息数组或类似消息的对象。
+  - 如果您使用简写元组来声明您的 prompt template，请确保变量名被花括号包围 (`["placeholder", "{messages}"]`)。
+- 尝试使用 [LangSmith](https://docs.smith.langchain.com/) 查看您 prompt template 的输入，或使用日志语句确认输入是否符合预期。
+- 如果您是从 [LangChain Prompt Hub](https://smith.langchain.com/prompts) 获取 prompt，请尝试拉取并记录它，或使用示例输入将其单独运行，以确认它是否符合您的预期。

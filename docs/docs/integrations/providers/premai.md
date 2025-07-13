@@ -1,69 +1,68 @@
 # PremAI
 
-[PremAI](https://premai.io/) is an all-in-one platform that simplifies the creation of robust, production-ready applications powered by Generative AI. By streamlining the development process, PremAI allows you to concentrate on enhancing user experience and driving overall growth for your application. You can quickly start using our platform [here](https://docs.premai.io/quick-start).
+[PremAI](https://premai.io/) 是一个一体化平台，可简化由生成式 AI 驱动的健壮、生产就绪型应用的创建。通过简化开发流程，PremAI 让您可以专注于提升用户体验和推动应用的整体增长。您可以 [在此处](https://docs.premai.io/quick-start) 快速开始使用我们的平台。
 
 
 ## ChatPremAI
 
-This example goes over how to use LangChain to interact with different chat models with `ChatPremAI`
+本示例将介绍如何使用 LangChain 与 `ChatPremAI` 交互不同的聊天模型。
 
-### Installation and setup
+### 安装和设置
 
-We start by installing `langchain` and `premai-sdk`. You can type the following command to install:
+我们首先安装 `langchain` and `premai-sdk`。您可以输入以下命令进行安装：
 
 ```bash
 pip install premai langchain
 ```
 
-Before proceeding further, please make sure that you have made an account on PremAI and already created a project. If not, please refer to the [quick start](https://docs.premai.io/introduction) guide to get started with the PremAI platform. Create your first project and grab your API key.
+在进一步操作之前，请确保您已在 PremAI 上创建账户并已创建项目。如果尚未创建，请参阅 [快速入门](https://docs.premai.io/introduction) 指南以开始使用 PremAI 平台。创建您的第一个项目并获取您的 API 密钥。
 
 ```python
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_community.chat_models import ChatPremAI
 ```
 
-### Setup PremAI client in LangChain
+### 在 LangChain 中设置 PremAI 客户端
 
-Once we imported our required modules, let's setup our client. For now let's assume that our `project_id` is `8`. But make sure you use your project-id, otherwise it will throw error.
+导入所需模块后，我们来设置客户端。目前我们假设 `project_id` 为 `8`。但请确保使用您的 `project_id`，否则会出错。
 
-To use langchain with prem, you do not need to pass any model name or set any parameters with our chat-client. By default it will use the model name and parameters used in the [LaunchPad](https://docs.premai.io/get-started/launchpad). 
+要将 Langchain 与 PremAI 结合使用，您无需传递任何模型名称或使用我们的聊天客户端设置任何参数。默认情况下，它将使用在 [LaunchPad](https://docs.premai.io/get-started/launchpad) 中使用的模型名称和参数。
 
-> Note: If you change the `model` or any other parameters like `temperature`  or `max_tokens` while setting the client, it will override existing default configurations, that was used in LaunchPad.   
-
+> 注意：如果您在设置客户端时更改了 `model` 或任何其他参数（如 `temperature` 或 `max_tokens`），它将覆盖 LaunchPad 中使用的现有默认配置。
 
 ```python
 import os
 import getpass
 
 if "PREMAI_API_KEY" not in os.environ:
-    os.environ["PREMAI_API_KEY"] = getpass.getpass("PremAI API Key:")
+    os.environ["PREMAI_API_KEY"] = getpass.getpass("您的 PremAI API 密钥：")
 
 chat = ChatPremAI(project_id=1234, model_name="gpt-4o")
 ```
 
-### Chat Completions
+### 聊天补全
 
-`ChatPremAI` supports two methods: `invoke` (which is the same as `generate`) and `stream`. 
+`ChatPremAI` 支持两种方法：`invoke`（与 `generate` 相同）和 `stream`。
 
-The first one will give us a static result. Whereas the second one will stream tokens one by one. Here's how you can generate chat-like completions. 
+第一种方法将提供静态结果。而第二种方法将逐个流式传输 token。以下是如何生成类似聊天的补全。
 
 ```python
-human_message = HumanMessage(content="Who are you?")
+human_message = HumanMessage(content="你是谁？")
 
 response = chat.invoke([human_message])
 print(response.content)
 ```
 
-You can provide system prompt here like this:
+您可以像这样在此处提供系统提示：
 
 ```python
-system_message = SystemMessage(content="You are a friendly assistant.")
-human_message = HumanMessage(content="Who are you?")
+system_message = SystemMessage(content="你是一个友好的助手。")
+human_message = HumanMessage(content="你是谁？")
 
 chat.invoke([system_message, human_message])
 ```
 
-You can also change generation parameters while calling the model. Here's how you can do that:
+您也可以在调用模型时更改生成参数。以下是实现此目的的方法：
 
 ```python
 chat.invoke(
@@ -72,20 +71,20 @@ chat.invoke(
 )
 ```
 
-> If you are going to place system prompt here, then it will override your system prompt that was fixed while deploying the application from the platform. 
+> 如果您在此处放置系统提示，它将覆盖您在从平台部署应用程序时固定的系统提示。
 
-> You can find all the optional parameters [here](https://docs.premai.io/get-started/sdk#optional-parameters). Any parameters other than [these supported parameters](https://docs.premai.io/get-started/sdk#optional-parameters) will be automatically removed before calling the model.
+> 您可以在 [此处](https://docs.premai.io/get-started/sdk#optional-parameters) 找到所有可选参数。除 [这些支持的参数](https://docs.premai.io/get-started/sdk#optional-parameters) 外的任何参数都将在调用模型前被自动删除。
 
 
-### Native RAG Support with Prem Repositories
+### 使用 Prem Repositories 进行原生 RAG 支持
 
-Prem Repositories which allows users to upload documents (.txt, .pdf etc) and connect those repositories to the LLMs. You can think Prem repositories as native RAG, where each repository can be considered as a vector database. You can connect multiple repositories. You can learn more about repositories [here](https://docs.premai.io/get-started/repositories).
+Prem Repositories 允许用户上传文档（.txt、.pdf 等）并将这些存储库连接到 LLM。您可以将 Prem Repositories 视为原生 RAG，其中每个存储库都可以被视为一个向量数据库。您可以连接多个存储库。您可以在 [此处](https://docs.premai.io/get-started/repositories) 了解更多关于存储库的信息。
 
-Repositories are also supported in langchain premai. Here is how you can do it. 
+Langchain PremAI 也支持 Repositories。以下是实现此目的的方法。
 
-```python 
+```python
 
-query = "Which models are used for dense retrieval"
+query = "用于密集检索的模型是哪些？"
 repository_ids = [1985,]
 repositories = dict(
     ids=repository_ids,
@@ -94,13 +93,13 @@ repositories = dict(
 )
 ```
 
-First we start by defining our repository with some repository ids. Make sure that the ids are valid repository ids. You can learn more about how to get the repository id [here](https://docs.premai.io/get-started/repositories). 
+首先，我们通过定义一些存储库 ID 来开始。请确保 ID 是有效的存储库 ID。您可以在 [此处](https://docs.premai.io/get-started/repositories) 找到有关如何获取存储库 ID 的更多信息。
 
-> Please note: Similar like `model_name` when you invoke the argument `repositories`, then you are potentially overriding the repositories connected in the launchpad. 
+> 请注意：与 `model_name` 类似，当您调用 `repositories` 参数时，您可能会覆盖在 LaunchPad 中连接的存储库。
 
-Now, we connect the repository with our chat object to invoke RAG based generations. 
+现在，我们将存储库与聊天对象连接起来以调用基于 RAG 的生成。
 
-```python 
+```python
 import json
 
 response = chat.invoke(query, max_tokens=100, repositories=repositories)
@@ -109,79 +108,77 @@ print(response.content)
 print(json.dumps(response.response_metadata, indent=4))
 ```
 
-This is how an output looks like. 
+这是输出的外观。
 
 ```bash
-Dense retrieval models typically include:
+密集检索模型通常包括：
 
-1. **BERT-based Models**: Such as DPR (Dense Passage Retrieval) which uses BERT for encoding queries and passages.
-2. **ColBERT**: A model that combines BERT with late interaction mechanisms.
-3. **ANCE (Approximate Nearest Neighbor Negative Contrastive Estimation)**: Uses BERT and focuses on efficient retrieval.
-4. **TCT-ColBERT**: A variant of ColBERT that uses a two-tower
+1. **基于 BERT 的模型**：例如 DPR（密集段检索），它使用 BERT 对查询和段进行编码。
+2. **ColBERT**：一种结合了 BERT 和后期交互机制的模型。
+3. **ANCE（近似最近邻负对比估计）**：使用 BERT 并专注于高效检索。
+4. **TCT-ColBERT**：ColBERT 的一个变体，它使用双塔
 {
     "document_chunks": [
         {
             "repository_id": 1985,
             "document_id": 1306,
             "chunk_id": 173899,
-            "document_name": "[D] Difference between sparse and dense information\u2026",
+            "document_name": "[D] 稀疏检索和密集信息之间的区别...",
             "similarity_score": 0.3209080100059509,
-            "content": "with the difference or anywhere\nwhere I can read about it?\n\n\n      17                  9\n\n\n      u/ScotiabankCanada        \u2022  Promoted\n\n\n                       Accelerate your study permit process\n                       with Scotiabank's Student GIC\n                       Program. We're here to help you tur\u2026\n\n\n                       startright.scotiabank.com         Learn More\n\n\n                            Add a Comment\n\n\nSort by:   Best\n\n\n      DinosParkour      \u2022 1y ago\n\n\n     Dense Retrieval (DR) m"
+            "content": "与差异或任何地方\n我可以阅读关于它的信息吗？\n\n\n      17                  9\n\n\n      u/ScotiabankCanada        \u2022  推广\n\n\n                       通过斯科舍银行的学生 GIC 计划，加速您的学习许可流程。\n                       我们在这里帮助您转换...\n\n\n                       startright.scotiabank.com         了解更多\n\n\n                            添加评论\n\n\n排序方式：   最佳\n\n\n      DinosParkour      \u2022 1 年前\n\n\n     密集检索 (DR) M"
         }
     ]
 }
 ```
 
-So, this also means that you do not need to make your own RAG pipeline when using the Prem Platform. Prem uses it's own RAG technology to deliver best in class performance for Retrieval Augmented Generations.
+因此，这也意味着您无需自行构建 RAG 管道即可使用 Prem Platform。Prem 使用其专有的 RAG 技术，为检索增强生成提供一流的性能。
 
-> Ideally, you do not need to connect Repository IDs here to get Retrieval Augmented Generations. You can still get the same result if you have connected the repositories in prem platform. 
+> 理想情况下，您无需在此处连接 Repository IDs 即可获得检索增强生成。如果您已在 Prem 平台中连接了存储库，仍可获得相同的结果。
 
-### Streaming
+### 流式传输
 
-In this section, let's see how we can stream tokens using langchain and PremAI. Here's how you do it. 
+在本节中，我们将了解如何使用 Langchain 和 PremAI 流式传输 token。以下是实现方法。
 
 ```python
 import sys
 
-for chunk in chat.stream("hello how are you"):
+for chunk in chat.stream("你好，你怎么样"):
     sys.stdout.write(chunk.content)
     sys.stdout.flush()
 ```
 
-Similar to above, if you want to override the system-prompt and the generation parameters, you need to add the following:
+与上面类似，如果您想覆盖系统提示和生成参数，则需要添加以下内容：
 
 ```python
 import sys
 
 for chunk in chat.stream(
-    "hello how are you",
-    system_prompt = "You are an helpful assistant", temperature = 0.7, max_tokens = 20
+    "你好，你怎么样",
+    system_prompt = "你是一个乐于助人的助手", temperature = 0.7, max_tokens = 20
 ):
     sys.stdout.write(chunk.content)
     sys.stdout.flush()
 ```
 
-This will stream tokens one after the other.
+这将逐个流式传输 token。
 
-> Please note: As of now, RAG with streaming is not supported. However we still support it with our API. You can learn more about that [here](https://docs.premai.io/get-started/chat-completion-sse). 
+> 请注意：目前，RAG 与流式传输不支持。但是，我们仍然通过我们的 API 支持它。您可以在 [此处](https://docs.premai.io/get-started/chat-completion-sse) 了解更多信息。
 
+## Prem 模板
 
-## Prem Templates
+编写 Prompt 模板可能非常混乱。Prompt 模板很长，难以管理，并且必须不断调整以改进和保持在整个应用程序中的一致性。
 
-Writing Prompt Templates can be super messy. Prompt templates are long, hard to manage, and must be continuously tweaked to improve and keep the same throughout the application. 
+使用 **Prem**，编写和管理提示可能非常简单。[Launchpad](https://docs.premai.io/get-started/launchpad) 中的 **_Templates_** 选项卡可帮助您编写所需的任意数量的提示，并在 SDK 中使用它们，以使您的应用程序使用这些提示运行。您可以在 [此处](https://docs.premai.io/get-started/prem-templates) 阅读有关 Prompt 模板的更多信息。
 
-With **Prem**, writing and managing prompts can be super easy. The **_Templates_** tab inside the [launchpad](https://docs.premai.io/get-started/launchpad) helps you write as many prompts you need and use it inside the SDK to make your application running using those prompts. You can read more about Prompt Templates [here](https://docs.premai.io/get-started/prem-templates). 
+要在 LangChain 中本地使用 Prem 模板，您需要将 ID 传递给 `HumanMessage`。此 ID 应该是您的 Prompt 模板变量的名称。`HumanMessage` 中的 `content` 应该是该变量的值。
 
-To use Prem Templates natively with LangChain, you need to pass an id the `HumanMessage`. This id should be the name the variable of your prompt template. the `content` in `HumanMessage` should be the value of that variable. 
-
-let's say for example, if your prompt template was this:
+例如，假设您的 Prompt 模板是这样的：
 
 ```text
-Say hello to my name and say a feel-good quote
-from my age. My name is: {name} and age is {age}
+向我的名字打个招呼，并根据我的年龄说一句令人振奋的名言。我的名字是：{name}，年龄是 {age}
 ```
 
-So now your human_messages should look like:
+那么现在您的 `human_messages` 应该如下所示：
 
 ```python
 human_messages = [
@@ -190,19 +187,18 @@ human_messages = [
 ]
 ```
 
-Pass this `human_messages` to ChatPremAI Client. Please note: Do not forget to
-pass the additional `template_id` to invoke generation with Prem Templates. If you are not aware of `template_id` you can learn more about that [in our docs](https://docs.premai.io/get-started/prem-templates). Here is an example:
+将此 `human_messages` 传递给 ChatPremAI 客户端。请注意：不要忘记传递额外的 `template_id` 来调用 Prem 模板生成。如果您不熟悉 `template_id`，可以在 [我们的文档](https://docs.premai.io/get-started/prem-templates) 中了解更多信息。这是一个示例：
 
 ```python
 template_id = "78069ce8-xxxxx-xxxxx-xxxx-xxx"
 response = chat.invoke([human_message], template_id=template_id)
 ```
 
-Prem Templates are also available for Streaming too. 
+Prem 模板也支持流式传输。
 
 ## Prem Embeddings
 
-In this section we cover how we can get access to different embedding models using `PremEmbeddings` with LangChain. Let's start by importing our modules and setting our API Key.
+在本节中，我们将介绍如何使用 LangChain 中的 `PremEmbeddings` 来访问不同的嵌入模型。首先导入我们的模块并设置我们的 API 密钥。
 
 ```python
 import os
@@ -211,55 +207,54 @@ from langchain_community.embeddings import PremEmbeddings
 
 
 if os.environ.get("PREMAI_API_KEY") is None:
-    os.environ["PREMAI_API_KEY"] = getpass.getpass("PremAI API Key:")
+    os.environ["PREMAI_API_KEY"] = getpass.getpass("您的 PremAI API 密钥：")
 
 ```
 
-We support lots of state of the art embedding models. You can view our list of supported LLMs and embedding models [here](https://docs.premai.io/get-started/supported-models). For now let's go for `text-embedding-3-large` model for this example. . 
+我们支持许多最先进的嵌入模型。您可以在 [此处](https://docs.premai.io/get-started/supported-models) 查看我们支持的 LLM 和嵌入模型列表。现在，让我们以 `text-embedding-3-large` 模型为例。
 
 ```python
 
 model = "text-embedding-3-large"
 embedder = PremEmbeddings(project_id=8, model=model)
 
-query = "Hello, this is a test query"
+query = "你好，这是一个测试查询"
 query_result = embedder.embed_query(query)
 
-# Let's print the first five elements of the query embedding vector
+# 让我们打印查询嵌入向量的前五个元素
 
 print(query_result[:5])
 ```
 
 :::note
-Setting `model_name` argument in mandatory for PremAIEmbeddings unlike chat. 
+与 Chat 一不同，为 PremAIEmbeddings 设置 `model_name` 参数是强制性的。
 :::
 
-Finally, let's embed some sample document
+最后，让我们嵌入一些示例文档
 
 ```python
 documents = [
-    "This is document1",
-    "This is document2",
-    "This is document3"
+    "这是文档1",
+    "这是文档2",
+    "这是文档3"
 ]
 
 doc_result = embedder.embed_documents(documents)
 
-# Similar to the previous result, let's print the first five element
-# of the first document vector
+# 与先前的结果类似，让我们打印第一个文档向量的前五个元素
 
 print(doc_result[0][:5])
 ```
 
 ```python
-print(f"Dimension of embeddings: {len(query_result)}")
+print(f"嵌入的维度：{len(query_result)}")
 ```
-Dimension of embeddings: 3072
+嵌入的维度：3072
 
 ```python
 doc_result[:5]
 ```
->Result:
+>结果：
 >
 >[-0.02129288576543331,
  0.0008162345038726926,
@@ -267,81 +262,81 @@ doc_result[:5]
  0.02918623760342598,
  -0.02547479420900345]
 
-## Tool/Function Calling
+## 工具/函数调用
 
-LangChain PremAI supports tool/function calling. Tool/function calling allows a model to respond to a given prompt by generating output that matches a user-defined schema. 
+LangChain PremAI 支持工具/函数调用。工具/函数调用允许模型通过生成与用户定义的模式匹配的输出来响应给定提示。
 
-- You can learn all about tool calling in details [in our documentation here](https://docs.premai.io/get-started/function-calling).
-- You can learn more about langchain tool calling in [this part of the docs](https://python.langchain.com/v0.1/docs/modules/model_io/chat/function_calling).
+- 您可以在 [此处](https://docs.premai.io/get-started/function-calling) 的文档中详细了解所有关于工具调用的信息。
+- 您可以在 [文档的这部分](https://python.langchain.com/v0.1/docs/modules/model_io/chat/function_calling) 了解更多关于 langchain 工具调用的信息。
 
-**NOTE:**
+**注意：**
 
-> The current version of LangChain ChatPremAI do not support function/tool calling with streaming support. Streaming support along with function calling will come soon. 
+> LangChain ChatPremAI 的当前版本不支持带流式传输支持的函数/工具调用。即将支持带函数调用的流式传输支持。
 
-### Passing tools to model
+### 传递工具给模型
 
-In order to pass tools and let the LLM choose the tool it needs to call, we need to pass a tool schema. A tool schema is the function definition along with proper docstring on what does the function do, what each argument of the function is etc. Below are some simple arithmetic functions with their schema. 
+为了传递工具并让 LLM 选择它需要的工具，我们需要传递一个工具模式。工具模式是函数定义以及关于函数功能、函数每个参数等信息的正确文档字符串。以下是一些带有其模式的简单算术函数。
 
-**NOTE:** 
-> When defining function/tool schema, do not forget to add information around the function arguments, otherwise it would throw error.
+**注意：**
+> 在定义函数/工具模式时，不要忘记添加有关函数参数的信息，否则会出错。
 
 ```python
 from langchain_core.tools import tool
-from pydantic import BaseModel, Field 
+from pydantic import BaseModel, Field
 
-# Define the schema for function arguments
+# 定义函数参数的模式
 class OperationInput(BaseModel):
-    a: int = Field(description="First number")
-    b: int = Field(description="Second number")
+    a: int = Field(description="第一个数字")
+    b: int = Field(description="第二个数字")
 
 
-# Now define the function where schema for argument will be OperationInput
+# 现在定义参数模式将是 OperationInput 的函数
 @tool("add", args_schema=OperationInput, return_direct=True)
 def add(a: int, b: int) -> int:
-    """Adds a and b.
+    """将 a 和 b 相加。
 
     Args:
-        a: first int
-        b: second int
+        a: 第一个整数
+        b: 第二个整数
     """
     return a + b
 
 
 @tool("multiply", args_schema=OperationInput, return_direct=True)
 def multiply(a: int, b: int) -> int:
-    """Multiplies a and b.
+    """将 a 和 b 相乘。
 
     Args:
-        a: first int
-        b: second int
+        a: 第一个整数
+        b: 第二个整数
     """
     return a * b
 ```
 
-### Binding tool schemas with our LLM
+### 将工具模式与我们的 LLM 绑定
 
-We will now use the `bind_tools` method to convert our above functions to a "tool" and binding it with the model. This means we are going to pass these tool information everytime we invoke the model. 
+我们现在将使用 `bind_tools` 方法将上述函数转换为“工具”并与模型绑定。这意味着我们将在每次调用模型时传递这些工具信息。
 
 ```python
 tools = [add, multiply]
 llm_with_tools = chat.bind_tools(tools)
 ```
 
-After this, we get the response from the model which is now binded with the tools. 
+之后，我们从已绑定工具的模型获取响应。
 
-```python 
-query = "What is 3 * 12? Also, what is 11 + 49?"
+```python
+query = "3 * 12 是多少？另外，11 + 49 是多少？"
 
 messages = [HumanMessage(query)]
 ai_msg = llm_with_tools.invoke(messages)
 ```
 
-As we can see, when our chat model is binded with tools, then based on the given prompt, it calls the correct set of the tools and sequentially. 
+如我们所见，当我们的聊天模型与工具绑定时，它会根据给定的提示按顺序调用正确的工具集。
 
-```python 
+```python
 ai_msg.tool_calls
 ```
-**Output**
+**输出**
 
 ```python
 [{'name': 'multiply',
@@ -352,17 +347,17 @@ ai_msg.tool_calls
   'id': 'call_MPKYGLHbf39csJIyb5BZ9xIk'}]
 ```
 
-We append this message shown above to the LLM which acts as a context and makes the LLM aware that what all functions it has called. 
+我们将上面显示的此消息附加到 LLM，充当上下文，并使 LLM 了解它已调用了哪些函数。
 
-```python 
+```python
 messages.append(ai_msg)
 ```
 
-Since tool calling happens into two phases, where:
+由于工具调用分为两个阶段，其中：
 
-1. in our first call, we gathered all the tools that the LLM decided to tool, so that it can get the result as an added context to give more accurate and hallucination free result. 
+1. 在我们的第一次调用中，我们收集了 LLM 决定调用的所有工具，以便它可以获取结果作为附加上下文，从而提供更准确且无幻觉的结果。
 
-2. in our second call, we will parse those set of tools decided by LLM and run them (in our case it will be the functions we defined, with the LLM's extracted arguments) and pass this result to the LLM
+2. 在我们的第二次调用中，我们将解析这些由 LLM 决定的工具集并运行它们（在我们的例子中将是我们定义的函数及其提取的参数），然后将此结果传递给 LLM。
 
 ```python
 from langchain_core.messages import ToolMessage
@@ -373,56 +368,56 @@ for tool_call in ai_msg.tool_calls:
     messages.append(ToolMessage(tool_output, tool_call_id=tool_call["id"]))
 ```
 
-Finally, we call the LLM (binded with the tools) with the function response added in it's context. 
+最后，我们使用添加到其上下文中的函数响应来调用 LLM（与工具绑定）。
 
 ```python
 response = llm_with_tools.invoke(messages)
 print(response.content)
 ```
-**Output**
+**输出**
 
 ```txt
-The final answers are:
+最终答案是：
 
 - 3 * 12 = 36
 - 11 + 49 = 60
 ```
 
-### Defining tool schemas: Pydantic class `Optional`
+### 定义工具模式：Pydantic 类 `Optional`
 
-Above we have shown how to define schema using `tool` decorator, however we can equivalently define the schema using Pydantic. Pydantic is useful when your tool inputs are more complex:
+上面我们展示了如何使用 `tool` 装饰器定义模式，但是我们也可以通过 Pydantic 获得相同的结果。当您的工具输入更复杂时，Pydantic 非常有用：
 
 ```python
 from langchain_core.output_parsers.openai_tools import PydanticToolsParser
 
 class add(BaseModel):
-    """Add two integers together."""
+    """将两个整数相加。"""
 
-    a: int = Field(..., description="First integer")
-    b: int = Field(..., description="Second integer")
+    a: int = Field(..., description="第一个整数")
+    b: int = Field(..., description="第二个整数")
 
 
 class multiply(BaseModel):
-    """Multiply two integers together."""
+    """将两个整数相乘。"""
 
-    a: int = Field(..., description="First integer")
-    b: int = Field(..., description="Second integer")
+    a: int = Field(..., description="第一个整数")
+    b: int = Field(..., description="第二个整数")
 
 
 tools = [add, multiply]
 ```
 
-Now, we can bind them to chat models and directly get the result:
+现在，我们可以将它们绑定到聊天模型并直接获取结果：
 
 ```python
 chain = llm_with_tools | PydanticToolsParser(tools=[multiply, add])
 chain.invoke(query)
 ```
 
-**Output**
+**输出**
 
 ```txt
 [multiply(a=3, b=12), add(a=11, b=49)]
 ```
 
-Now, as done above, we parse this and run this functions and call the LLM once again to get the result.
+现在，就像上面一样，我们解析它并运行这些函数，然后再次调用 LLM 以获取结果。

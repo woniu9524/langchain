@@ -1,17 +1,17 @@
 # ModelScope
 
->[ModelScope](https://www.modelscope.cn/home) is a big repository of the models and datasets.
+>[ModelScope](https://www.modelscope.cn/home) 是一个大型模型和数据集仓库。
 
-This page covers how to use the modelscope ecosystem within LangChain.
-It is broken into two parts: installation and setup, and then references to specific modelscope wrappers.
+本页面将介绍如何在 LangChain 中使用 ModelScope 生态系统。
+本页面分为两部分：安装和设置，以及特定 ModelScope 包装器的参考。
 
-## Installation
+## 安装
 
 ```bash
 pip install -U langchain-modelscope-integration
 ```
 
-Head to [ModelScope](https://modelscope.cn/) to sign up to ModelScope and generate an [SDK token](https://modelscope.cn/my/myaccesstoken). Once you've done this set the `MODELSCOPE_SDK_TOKEN` environment variable:
+前往 [ModelScope](https://modelscope.cn/) 注册 ModelScope 并生成 [SDK token](https://modelscope.cn/my/myaccesstoken)。完成这些步骤后，设置 `MODELSCOPE_SDK_TOKEN` 环境变量：
 
 ```bash
 export MODELSCOPE_SDK_TOKEN=<your_sdk_token>
@@ -19,7 +19,7 @@ export MODELSCOPE_SDK_TOKEN=<your_sdk_token>
 
 ## Chat Models
 
-`ModelScopeChatEndpoint` class exposes chat models from ModelScope. See available models [here](https://www.modelscope.cn/docs/model-service/API-Inference/intro).
+`ModelScopeChatEndpoint` 类公开了来自 ModelScope 的聊天模型。在此处查看可用模型 [here](https://www.modelscope.cn/docs/model-service/API-Inference/intro)。
 
 ```python
 from langchain_modelscope import ModelScopeChatEndpoint
@@ -30,7 +30,7 @@ llm.invoke("Sing a ballad of LangChain.")
 
 ## Embeddings
 
-`ModelScopeEmbeddings` class exposes embeddings from ModelScope.
+`ModelScopeEmbeddings` 类公开了来自 ModelScope 的嵌入。
 
 ```python
 from langchain_modelscope import ModelScopeEmbeddings
@@ -40,7 +40,7 @@ embeddings.embed_query("What is the meaning of life?")
 ```
 
 ## LLMs
-`ModelScopeLLM` class exposes LLMs from ModelScope.
+`ModelScopeLLM` 类公开了来自 ModelScope 的 LLM。
 
 ```python
 from langchain_modelscope import ModelScopeLLM

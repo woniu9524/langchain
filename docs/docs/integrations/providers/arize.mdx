@@ -1,23 +1,18 @@
 # Arize
 
-[Arize](https://arize.com) is an AI observability and LLM evaluation platform that offers
-support for LangChain applications, providing detailed traces of input, embeddings, retrieval,
-functions, and output messages.
+[Arize](https://arize.com) 是一个 AI 可观测性和 LLM 评估平台，支持 LangChain 应用程序，提供输入、嵌入、检索、函数和输出消息的详细跟踪。
 
+## 安装和设置
 
-## Installation and Setup
-
-First, you need to install `arize` python package.
+首先，您需要安装 `arize` Python 包。
 
 ```bash
 pip install arize
 ```
 
-Second, you need to set up your [Arize account](https://app.arize.com/auth/join)
-and get your  `API_KEY` or `SPACE_KEY`.
+其次，您需要设置您的 [Arize 账户](https://app.arize.com/auth/join) 并获取您的 `API_KEY` 或 `SPACE_KEY`。
 
-
-## Callback handler
+## 回调处理程序
 
 ```python
 from langchain_community.callbacks import ArizeCallbackHandler

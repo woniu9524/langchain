@@ -1,195 +1,191 @@
-# Setup
+# 设置
 
-This guide walks through how to run the repository locally and check in your first code.
-For a [development container](https://containers.dev/), see the [.devcontainer folder](https://github.com/langchain-ai/langchain/tree/master/.devcontainer).
+本指南将指导你如何在本地运行仓库并提交你的第一段代码。
+关于 [开发容器](https://containers.dev/)，请参阅 [.devcontainer 文件夹](https://github.com/langchain-ai/langchain/tree/master/.devcontainer)。
 
-## Dependency Management: `uv` and other env/dependency managers
+## 依赖管理：`uv` 及其他环境/依赖管理器
 
-This project utilizes [uv](https://docs.astral.sh/uv/) v0.5+ as a dependency manager.
+本项目使用 [uv](https://docs.astral.sh/uv/) v0.5+ 作为依赖管理器。
 
-Install `uv`: **[documentation on how to install it](https://docs.astral.sh/uv/getting-started/installation/)**.
+安装 `uv`：**[安装指南](https://docs.astral.sh/uv/getting-started/installation/)**。
 
-## Different packages
+## 不同包
 
-This repository contains multiple packages:
-- `langchain-core`: Base interfaces for key abstractions as well as logic for combining them in chains (LangChain Expression Language).
-- `langchain`: Chains, agents, and retrieval logic that makes up the cognitive architecture of your applications.
-- Partner integrations: Partner packages in `libs/partners` that are independently version controlled.
+此仓库包含多个包：
+- `langchain-core`：核心抽象的基类接口以及将它们组合成链（LangChain Expression Language）的逻辑。
+- `langchain`：构成应用程序认知架构的链、代理和检索逻辑。
+- 合作伙伴集成：`libs/partners` 目录下的合作伙伴包，它们拥有独立的版本控制。
 
 :::note
 
-Some LangChain packages live outside the monorepo, see for example
-[langchain-community](https://github.com/langchain-ai/langchain-community) for various
-third-party integrations and
-[langchain-experimental](https://github.com/langchain-ai/langchain-experimental) for
-abstractions that are experimental (either in the sense that the techniques are novel
-and still being tested, or they require giving the LLM more access than would be
-possible in most production systems).
+一些 LangChain 包位于单体仓库之外，例如可以查看
+[langchain-community](https://github.com/langchain-ai/langchain-community) 以了解各种
+第三方集成，以及
+[langchain-experimental](https://github.com/langchain-ai/langchain-experimental) 以了解
+是实验性抽象（意味着技术新颖且仍在测试中，或者需要给予 LLM 比大多数生产系统允许的更多的访问权限）。
 
 :::
 
-Each of these has its own development environment. Docs are run from the top-level makefile, but development
-is split across separate test & release flows.
+每个包都有自己的开发环境。文档是从顶层 makefile 运行的，但开发
+被分割到单独的测试和发布流程中。
 
-For this quickstart, start with `langchain`:
+对于此快速入门，请从 `langchain` 开始：
 
 ```bash
 cd libs/langchain
 ```
 
-## Local Development Dependencies
+## 本地开发依赖项
 
-Install development requirements (for running langchain, running examples, linting, formatting, tests, and coverage):
+安装开发需求（用于运行 langchain、运行示例、代码检查、格式化、测试和覆盖率）：
 
 ```bash
 uv sync
 ```
 
-Then verify dependency installation:
+然后验证依赖项安装：
 
 ```bash
 make test
 ```
 
-## Testing
+## 测试
 
-**Note:** In `langchain`, `langchain-community`, and `langchain-experimental`, some test dependencies are optional. See the following section about optional dependencies.
+**注意：** 在 `langchain`、`langchain-community` 和 `langchain-experimental` 中，一些测试依赖项是可选的。请参阅关于可选依赖项的下一节。
 
-Unit tests cover modular logic that does not require calls to outside APIs.
-If you add new logic, please add a unit test.
+单元测试涵盖不需要调用外部 API 的模块化逻辑。
+如果你添加了新逻辑，请添加单元测试。
 
-To run unit tests:
+运行单元测试：
 
 ```bash
 make test
 ```
 
-To run unit tests in Docker:
+在 Docker 中运行单元测试：
 
 ```bash
 make docker_tests
 ```
 
-There are also [integration tests and code-coverage](../testing.mdx) available.
+还有 [集成测试和代码覆盖率](../testing.mdx) 可用。
 
-### Developing langchain_core
+### 开发 langchain_core
 
-If you are only developing `langchain_core`, you can simply install the dependencies for the project and run tests:
+如果你只开发 `langchain_core`，可以简单地安装项目的依赖项并运行测试：
 
 ```bash
 cd libs/core
 make test
 ```
 
-## Formatting and Linting
+## 格式化和代码检查
 
-Run these locally before submitting a PR; the CI system will check also.
+在提交 PR 之前在本地运行这些命令；CI 系统也会进行检查。
 
-### Code Formatting
+### 代码格式化
 
-Formatting for this project is done via [ruff](https://docs.astral.sh/ruff/rules/).
+此项目的格式化是通过 [ruff](https://docs.astral.sh/ruff/rules/) 完成的。
 
-To run formatting for docs, cookbook and templates:
+运行文档、食谱和模板的格式化：
 
 ```bash
 make format
 ```
 
-To run formatting for a library, run the same command from the relevant library directory:
+要为库运行格式化，请从相关库目录运行相同的命令：
 
 ```bash
 cd libs/{LIBRARY}
 make format
 ```
 
-Additionally, you can run the formatter only on the files that have been modified in your current branch as compared to the master branch using the format_diff command:
+此外，你可以使用 `format_diff` 命令仅针对当前分支与 master 分支相比已修改的文件运行格式化器：
 
 ```bash
 make format_diff
 ```
 
-This is especially useful when you have made changes to a subset of the project and want to ensure your changes are properly formatted without affecting the rest of the codebase.
+当你只修改了项目的一部分并想确保你的更改已正确格式化而不会影响其余代码库时，这特别有用。
 
-#### Linting
+#### 代码检查
 
-Linting for this project is done via a combination of [ruff](https://docs.astral.sh/ruff/rules/) and [mypy](http://mypy-lang.org/).
+此项目的代码检查是通过结合使用 [ruff](https://docs.astral.sh/ruff/rules/) 和 [mypy](http://mypy-lang.org/) 来完成的。
 
-To run linting for docs, cookbook and templates:
+运行文档、食谱和模板的代码检查：
 
 ```bash
 make lint
 ```
 
-To run linting for a library, run the same command from the relevant library directory:
+要为库运行代码检查，请从相关库目录运行相同的命令：
 
 ```bash
 cd libs/{LIBRARY}
 make lint
 ```
 
-In addition, you can run the linter only on the files that have been modified in your current branch as compared to the master branch using the lint_diff command:
+此外，你可以使用 `lint_diff` 命令仅针对当前分支与 master 分支相比已修改的文件运行 linter：
 
 ```bash
 make lint_diff
 ```
 
-This can be very helpful when you've made changes to only certain parts of the project and want to ensure your changes meet the linting standards without having to check the entire codebase.
+当你只修改了项目的部分内容并想确保你的更改符合代码检查标准，而无需检查整个代码库时，这会非常有帮助。
 
-We recognize linting can be annoying - if you do not want to do it, please contact a project maintainer, and they can help you with it. We do not want this to be a blocker for good code getting contributed.
+我们理解代码检查可能会很烦人 - 如果你不想做，请联系项目维护者，他们会帮助你完成。我们不希望这成为贡献优秀代码的障碍。
 
-### Spellcheck
+### 拼写检查
 
-Spellchecking for this project is done via [codespell](https://github.com/codespell-project/codespell).
-Note that `codespell` finds common typos, so it could have false-positive (correctly spelled but rarely used) and false-negatives (not finding misspelled) words.
+此项目的拼写检查是通过 [codespell](https://github.com/codespell-project/codespell) 完成的。
+请注意，`codespell` 会查找常见的拼写错误，因此它可能存在误报（拼写正确但很少使用的词）和漏报（未找到拼写错误的词）。
 
-To check spelling for this project:
+检查项目拼写：
 
 ```bash
 make spell_check
 ```
 
-To fix spelling in place:
+就地修复拼写：
 
 ```bash
 make spell_fix
 ```
 
-If codespell is incorrectly flagging a word, you can skip spellcheck for that word by adding it to the codespell config in the `pyproject.toml` file.
+如果 codespell 错误地标记了一个词，你可以通过将其添加到 `pyproject.toml` 文件中的 codespell 配置来跳过该词的拼写检查。
 
 ```python
 [tool.codespell]
 ...
-# Add here:
+# 在此处添加：
 ignore-words-list = 'momento,collison,ned,foor,reworkd,parth,whats,aapply,mysogyny,unsecure'
 ```
 
-## Working with Optional Dependencies
+## 使用可选依赖项
 
-`langchain`, `langchain-community`, and `langchain-experimental` rely on optional dependencies to keep these packages lightweight.
+`langchain`、`langchain-community` 和 `langchain-experimental` 依赖于可选依赖项，以保持这些包的轻量级。
 
-`langchain-core` and partner packages **do not use** optional dependencies in this way.
+`langchain-core` 和合作伙伴包 **不以** 这种方式使用可选依赖项。
 
-You'll notice that `pyproject.toml` and `uv.lock` are **not** touched when you add optional dependencies below.
+你会注意到当你添加可选依赖项时，`pyproject.toml` 和 `uv.lock` **不会** 被修改。
 
-If you're adding a new dependency to Langchain, assume that it will be an optional dependency, and
-that most users won't have it installed.
+如果你向 Langchain 添加新依赖项，请假定它将是一个可选依赖项，
+并且大多数用户不会安装它。
 
-Users who do not have the dependency installed should be able to **import** your code without
-any side effects (no warnings, no errors, no exceptions).
+未安装该依赖项的用户应该能够 **导入** 你的代码而不会产生任何副作用（没有警告、没有错误、没有异常）。
 
-To introduce the dependency to a library, please do the following:
+要将依赖项引入库，请执行以下操作：
 
-1. Open extended_testing_deps.txt and add the dependency
-2. Add a unit test that the very least attempts to import the new code. Ideally, the unit
-test makes use of lightweight fixtures to test the logic of the code.
-3. Please use the `@pytest.mark.requires(package_name)` decorator for any unit tests that require the dependency.
+1. 打开 `extended_testing_deps.txt` 并添加依赖项。
+2. 添加一个单元测试，至少尝试导入新代码。理想情况下，单元测试会使用轻量级的 fixture 来测试代码的逻辑。
+3. 请使用 `@pytest.mark.requires(package_name)` 装饰器来标记任何需要该依赖项的单元测试。
 
-## Adding a Jupyter Notebook
+## 添加 Jupyter Notebook
 
-If you are adding a Jupyter Notebook example, you'll want to run with `test` dependencies:
+如果你要添加 Jupyter Notebook 示例，你需要使用 `test` 依赖项运行：
 
 ```bash
 uv run --group test jupyter notebook
 ```
 
-When you run `uv sync`, the `langchain` package is installed as editable in the virtualenv, so your new logic can be imported into the notebook.
+当你运行 `uv sync` 时，`langchain` 包将以可编辑模式安装在 virtualenv 中，因此你的新逻辑可以导入到 notebook 中。

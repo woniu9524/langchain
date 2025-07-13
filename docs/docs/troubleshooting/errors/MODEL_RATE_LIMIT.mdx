@@ -1,13 +1,13 @@
 # MODEL_RATE_LIMIT
 
-You have hit the maximum number of requests that a model provider allows over a given time period and are being temporarily blocked.
-Generally, this error is temporary and your limit will reset after a certain amount of time.
+您已达到模型提供商在给定时间段内允许的最大请求数，目前被暂时阻止。
+通常情况下，此错误是暂时的，您的限制会在一段时间后重置。
 
-## Troubleshooting
+## 故障排除
 
-The following may help resolve this error:
+以下方法可能有助于解决此错误：
 
-- Contact your model provider and ask for a rate limit increase.
-- If many of your incoming requests are the same, utilize [model response caching](/docs/how_to/chat_model_caching/).
-- Spread requests across different providers if your application allows it.
-- Use a [`rate_limiter`](/docs/how_to/chat_model_rate_limiting/) to control the rate of requests to the model.
+- 联系您的模型提供商，要求提高速率限制。
+- 如果许多传入请求相同，请利用 [模型响应缓存](/docs/how_to/chat_model_caching/)。
+- 如果您的应用程序允许，请将请求分散到不同的提供商。
+- 使用 [`rate_limiter`](/docs/how_to/chat_model_rate_limiting/) 来控制对模型的请求速率。

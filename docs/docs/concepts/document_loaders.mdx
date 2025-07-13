@@ -1,45 +1,45 @@
-# Document loaders
+# 文档加载器
 <span data-heading-keywords="document loader,document loaders"></span>
 
-:::info[Prerequisites]
+:::info[先决条件]
 
-* [Document loaders API reference](/docs/how_to/#document-loaders)
+* [文档加载器 API 参考](/docs/how_to/#document-loaders)
 :::
 
-Document loaders are designed to load document objects. LangChain has hundreds of integrations with various data sources to load data from: Slack, Notion, Google Drive, etc.
+文档加载器旨在加载文档对象。LangChain 拥有数百种与各种数据源的集成，可从 Slack、Notion、Google Drive 等加载数据。
 
-## Integrations
+## 集成
 
-You can find available integrations on the [Document loaders integrations page](/docs/integrations/document_loaders/).
+您可以在[文档加载器集成页面](/docs/integrations/document_loaders/)上找到可用的集成。
 
-## Interface
+## 接口
 
-Documents loaders implement the [BaseLoader interface](https://python.langchain.com/api_reference/core/document_loaders/langchain_core.document_loaders.base.BaseLoader.html).
+文档加载器实现了[BaseLoader 接口](https://python.langchain.com/api_reference/core/document_loaders/langchain_core.document_loaders.base.BaseLoader.html)。
 
-Each DocumentLoader has its own specific parameters, but they can all be invoked in the same way with the `.load` method or `.lazy_load`.
+每个文档加载器都有其特定的参数，但都可以通过 `.load` 方法或 `.lazy_load` 以相同的方式调用。
 
-Here's a simple example:
+这是一个简单的例子：
 
 ```python
 from langchain_community.document_loaders.csv_loader import CSVLoader
 
 loader = CSVLoader(
-    ...  # <-- Integration specific parameters here
+    ...  # <-- 此处为集成特定参数
 )
 data = loader.load()
 ```
 
-When working with large datasets, you can use the `.lazy_load` method:
+在处理大型数据集时，您可以使用 `.lazy_load` 方法：
 
 ```python
 for document in loader.lazy_load():
     print(document)
 ```
 
-## Related resources
+## 相关资源
 
-Please see the following resources for more information:
+请参阅以下资源以获取更多信息：
 
-* [How-to guides for document loaders](/docs/how_to/#document-loaders)
-* [Document API reference](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html)
-* [Document loaders integrations](/docs/integrations/document_loaders/)
+* [文档加载器的操作指南](/docs/how_to/#document-loaders)
+* [文档 API 参考](https://python.langchain.com/api_reference/core/documents/langchain_core.documents.base.Document.html)
+* [文档加载器集成](/docs/integrations/document_loaders/)

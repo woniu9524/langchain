@@ -1,31 +1,30 @@
 # OceanBase
 
-[OceanBase Database](https://github.com/oceanbase/oceanbase) is a distributed relational database. 
-It is developed entirely by Ant Group. The OceanBase Database is built on a common server cluster. 
-Based on the Paxos protocol and its distributed structure, the OceanBase Database provides high availability and linear scalability.
+[OceanBase Database](https://github.com/oceanbase/oceanbase) 是一个分布式关系型数据库。
+它完全由蚂蚁集团开发。OceanBase Database 构建在通用的服务器集群之上。
+基于 Paxos 协议及其分布式结构，OceanBase Database 提供了高可用性和线性扩展能力。
 
-OceanBase currently has the ability to store vectors. Users can easily perform the following operations with SQL:
+OceanBase 目前支持存储向量。用户可以使用 SQL 轻松执行以下操作：
 
-- Create a table containing vector type fields;
-- Create a vector index table based on the HNSW algorithm;
-- Perform vector approximate nearest neighbor queries;
+- 创建包含向量类型字段的表；
+- 基于 HNSW 算法创建向量索引表；
+- 执行向量近似最近邻查询；
 - ...
 
-## Installation
+## 安装
 
 ```bash
 pip install -U langchain-oceanbase
 ```
 
-We recommend using Docker to deploy OceanBase:
+我们推荐使用 Docker 来部署 OceanBase：
 
 ```shell
 docker run --name=ob433 -e MODE=slim -p 2881:2881 -d oceanbase/oceanbase-ce:4.3.3.0-100000132024100711
 ```
 
-[More methods to deploy OceanBase cluster](https://github.com/oceanbase/oceanbase-doc/blob/V4.3.1/en-US/400.deploy/500.deploy-oceanbase-database-community-edition/100.deployment-overview.md)
+[部署 OceanBase 集群的更多方法](https://github.com/oceanbase/oceanbase-doc/blob/V4.3.1/en-US/400.deploy/500.deploy-oceanbase-database-community-edition/100.deployment-overview.md)
 
-### Usage
+### 使用
 
-For a more detailed walkthrough of the OceanBase Wrapper, see [this notebook](https://github.com/oceanbase/langchain-oceanbase/blob/main/docs/vectorstores.ipynb)
-
+有关 OceanBase Wrapper 的更详细教程，请参阅[此Notebook](https://github.com/oceanbase/langchain-oceanbase/blob/main/docs/vectorstores.ipynb)

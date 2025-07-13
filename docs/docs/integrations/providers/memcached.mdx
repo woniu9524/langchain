@@ -1,19 +1,19 @@
 # Memcached
 
-> [Memcached](https://www.memcached.org/) is a free & open source, high-performance, distributed memory object caching system,
-> generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.
+> [Memcached](https://www.memcached.org/) 是一个免费且开源、高性能的分布式内存对象缓存系统，
+> 本质上是通用的，但旨在通过减轻数据库负载来加速动态 Web 应用程序。
 
-This page covers how to use Memcached with langchain, using [pymemcache](https://github.com/pinterest/pymemcache) as
-a client to connect to an already running Memcached instance.
+本页介绍如何将 Memcached 与 Langchain 结合使用，使用 [pymemcache](https://github.com/pinterest/pymemcache)
+作为客户端连接到已运行的 Memcached 实例。
 
-## Installation and Setup
+## 安装和设置
 ```bash
 pip install pymemcache
 ```
 
-## LLM Cache
+## LLM 缓存
 
-To integrate a Memcached Cache into your application:
+将 Memcached 缓存集成到您的应用程序中：
 ```python3
 from langchain.globals import set_llm_cache
 from langchain_openai import OpenAI
@@ -24,11 +24,11 @@ from pymemcache.client.base import Client
 llm = OpenAI(model="gpt-3.5-turbo-instruct", n=2, best_of=2)
 set_llm_cache(MemcachedCache(Client('localhost')))
 
-# The first time, it is not yet in cache, so it should take longer
+# 第一次调用时，缓存中尚未命中，因此耗时较长
 llm.invoke("Which city is the most crowded city in the USA?")
 
-# The second time it is, so it goes faster
+# 第二次调用时，缓存命中，速度较快
 llm.invoke("Which city is the most crowded city in the USA?")
 ```
 
-Learn more in the [example notebook](/docs/integrations/llm_caching#memcached-cache)
+在[示例笔记本](/docs/integrations/llm_caching#memcached-cache)中了解更多信息

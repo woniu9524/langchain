@@ -1,12 +1,11 @@
 # StarRocks
 
->[StarRocks](https://www.starrocks.io/) is a High-Performance Analytical Database.
-`StarRocks` is a next-gen sub-second MPP database for full analytics scenarios, including multi-dimensional analytics, real-time analytics and ad-hoc query.
+>[StarRocks](https://www.starrocks.io/) 是一个高性能分析数据库。
+`StarRocks` 是下一代亚秒级 MPP 数据库，适用于全分析场景，包括多维分析、实时分析和即席查询。
 
->Usually `StarRocks` is categorized into OLAP, and it has showed excellent performance in [ClickBench — a Benchmark For Analytical DBMS](https://benchmark.clickhouse.com/). Since it has a super-fast vectorized execution engine, it could also be used as a fast vectordb.
+>通常 `StarRocks` 被归类为 OLAP，在[ClickBench — 面向分析型数据库的基准测试](https://benchmark.clickhouse.com/)中表现出色。由于它拥有超快的向量化执行引擎，也可以用作快速向量数据库。
 
-## Installation and Setup
-
+## 安装与设置
 
 ```bash
 pip install pymysql
@@ -14,7 +13,7 @@ pip install pymysql
 
 ## Vector Store
 
-See a [usage example](/docs/integrations/vectorstores/starrocks).
+请参阅[用法示例](/docs/integrations/vectorstores/starrocks)。
 
 ```python
 from langchain_community.vectorstores import StarRocks

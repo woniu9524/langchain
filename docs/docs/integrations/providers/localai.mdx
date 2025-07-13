@@ -1,32 +1,28 @@
 # LocalAI
 
->[LocalAI](https://localai.io/) is the free, Open Source OpenAI alternative. 
-> `LocalAI` act as a drop-in replacement REST API that’s compatible with OpenAI API 
-> specifications for local inferencing. It allows you to run LLMs, generate images, 
-> audio (and not only) locally or on-prem with consumer grade hardware, 
-> supporting multiple model families and architectures.
+>[LocalAI](https://localai.io/) 是免费、开源的 OpenAI 替代品。
+> `LocalAI` 可作为一种即插即用的 REST API 替代方案，与 OpenAI API 规范兼容，用于本地推理。它允许您使用消费级硬件在本地或本地部署运行大型语言模型、生成图像、音频（以及更多），支持多种模型家族和架构。
 
 :::caution
-For proper compatibility, please ensure you are using the `openai` SDK at version **0.x**.
+为确保兼容性，请确保您使用的 `openai` SDK 版本为 **0.x**。
 :::
 
 :::info
-`langchain-localai` is a 3rd party integration package for LocalAI. It provides a simple way to use LocalAI services in Langchain.
-The source code is available on [Github](https://github.com/mkhludnev/langchain-localai)
+`langchain-localai` 是 LocalAI 的第三方集成包。它提供了一种在 Langchain 中使用 LocalAI 服务的方式。
+源代码可在 [Github](https://github.com/mkhludnev/langchain-localai) 上找到
 :::
 
-## Installation and Setup
+## 安装和设置
 
-We have to install several python packages: 
+我们需要安装几个 Python 包：
 
 ```bash
 pip install tenacity openai
 ```
 
-
 ## Embedding models
 
-See a [usage example](/docs/integrations/text_embedding/localai).
+请参阅[使用示例](/docs/integrations/text_embedding/localai)。
 
 ```python
 from langchain_localai import LocalAIEmbeddings

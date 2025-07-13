@@ -1,27 +1,26 @@
 # Google
 
-All functionality related to [Google Cloud](https://cloud.google.com/), [Google Gemini](https://ai.google.dev/gemini-api/docs) and other Google products.
+所有与 [Google Cloud](https://cloud.google.com/)、[Google Gemini](https://ai.google.dev/gemini-api/docs) 及其他 Google 产品相关的功能。
 
-1.  **Google Generative AI (Gemini API & AI Studio)**: Access Google Gemini models directly via the Gemini API. Use [Google AI Studio](https://aistudio.google.com/) for rapid prototyping and get started quickly with the `langchain-google-genai` package. This is often the best starting point for individual developers.
-2.  **Google Cloud (Vertex AI & other services)**: Access Gemini models, Vertex AI Model Garden and a wide range of cloud services (databases, storage, document AI, etc.) via the [Google Cloud Platform](https://cloud.google.com/). Use the `langchain-google-vertexai` package for Vertex AI models and specific packages (e.g., `langchain-google-cloud-sql-pg`, `langchain-google-community`) for other cloud services. This is ideal for developers already using Google Cloud or needing enterprise features like MLOps, specific model tuning or enterprise support.
+1.  **Google 生成式 AI (Gemini API & AI Studio)**：通过 Gemini API 直接访问 Google Gemini 模型。使用 [Google AI Studio](https://aistudio.google.com/) 进行快速原型设计，并通过 `langchain-google-genai` 包快速上手。这通常是个人开发者的最佳起点。
+2.  **Google Cloud (Vertex AI 及其他服务)**：通过 [Google Cloud Platform](https://cloud.google.com/) 访问 Gemini 模型、Vertex AI Model Garden 以及各种云服务（数据库、存储、文档 AI 等）。使用 `langchain-google-vertexai` 包来获取 Vertex AI 模型，以及特定包（例如 `langchain-google-cloud-sql-pg`、`langchain-google-community`）来获取其他云服务。这非常适合已在使用 Google Cloud 或需要企业级功能（如 MLOps、特定模型微调或企业支持）的开发者。
 
-See Google's guide on [migrating from the Gemini API to Vertex AI](https://ai.google.dev/gemini-api/docs/migrate-to-cloud) for more details on the differences.
+有关更多差异信息，请参阅 Google 关于[从 Gemini API 迁移到 Vertex AI 的指南](https://ai.google.dev/gemini-api/docs/migrate-to-cloud)。
 
-Integration packages for Gemini models and the Vertex AI platform are maintained in
-the [langchain-google](https://github.com/langchain-ai/langchain-google) repository.
-You can find a host of LangChain integrations with other Google APIs and services in the
-[googleapis](https://github.com/googleapis?q=langchain-&type=all&language=&sort=)
-Github organization and the `langchain-google-community` package.
+Gemini 模型和 Vertex AI 平台的集成包维护在
+[langchain-google](https://github.com/langchain-ai/langchain-google) 仓库中。
+您可以在 [googleapis](https://github.com/googleapis?q=langchain-&type=all&language=&sort=)
+GitHub 组织和 `langchain-google-community` 包中找到 LangChain 与其他 Google API 和服务的集成。
 
-## Google Generative AI (Gemini API & AI Studio)
+## Google 生成式 AI (Gemini API & AI Studio)
 
-Access Google Gemini models directly using the Gemini API, best suited for rapid development and experimentation. Gemini models are available in [Google AI Studio](https://aistudio.google.com/).
+使用 Gemini API 直接访问 Google Gemini 模型，最适合快速开发和实验。Gemini 模型可在 [Google AI Studio](https://aistudio.google.com/) 中找到。
 
 ```bash
 pip install -U langchain-google-genai
 ```
 
-Start for free and get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
+免费开始使用，并从 [Google AI Studio](https://aistudio.google.com/app/apikey) 获取您的 API 密钥。
 
 ```bash
 export GOOGLE_API_KEY="YOUR_API_KEY"
@@ -29,8 +28,8 @@ export GOOGLE_API_KEY="YOUR_API_KEY"
 
 ### Chat Models
 
-Use the `ChatGoogleGenerativeAI` class to interact with Gemini 2.0 and 2.5 models. See
-details in [this guide](/docs/integrations/chat/google_generative_ai).
+使用 `ChatGoogleGenerativeAI` 类与 Gemini 2.0 和 2.5 模型进行交互。详情请参阅
+[本指南](/docs/integrations/chat/google_generative_ai)。
 
 ```python
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -38,11 +37,11 @@ from langchain_core.messages import HumanMessage
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
-# Simple text invocation
+# 简单的文本调用
 result = llm.invoke("Sing a ballad of LangChain.")
 print(result.content)
 
-# Multimodal invocation with gemini-pro-vision
+# 使用 gemini-pro-vision 进行多模态调用
 message = HumanMessage(
     content=[
         {
@@ -56,14 +55,14 @@ result = llm.invoke([message])
 print(result.content)
 ```
 
-The `image_url` can be a public URL, a GCS URI (`gs://...`), a local file path, a base64 encoded image string (`data:image/png;base64,...`), or a PIL Image object.
+`image_url` 可以是公共 URL、GCS URI（`gs://...`）、本地文件路径、base64 编码的图像字符串（`data:image/png;base64,...`）或 PIL Image 对象。
 
 
 ### Embedding Models
 
-Generate text embeddings using models like `gemini-embedding-exp-03-07` with the `GoogleGenerativeAIEmbeddings` class.
+使用 `GoogleGenerativeAIEmbeddings` 类生成文本嵌入，例如使用 `gemini-embedding-exp-03-07` 模型。
 
-See a [usage example](/docs/integrations/text_embedding/google_generative_ai).
+请参阅[用法示例](/docs/integrations/text_embedding/google_generative_ai)。
 
 ```python
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
@@ -75,10 +74,10 @@ print(vector[:5])
 
 ### LLMs
 
-Access the same Gemini models using the ([legacy](/docs/concepts/text_llms)) LLM
-interface with the `GoogleGenerativeAI` class.
+使用 ([旧版](/docs/concepts/text_llms)) LLM
+接口和 `GoogleGenerativeAI` 类来访问相同的 Gemini 模型。
 
-See a [usage example](/docs/integrations/llms/google_ai).
+请参阅[用法示例](/docs/integrations/llms/google_ai)。
 
 ```python
 from langchain_google_genai import GoogleGenerativeAI
@@ -90,100 +89,100 @@ print(result)
 
 ## Google Cloud
 
-Access Gemini models, Vertex AI Model Garden and other Google Cloud services via Vertex AI and specific cloud integrations.
+通过 Vertex AI 和特定的云集成访问 Gemini 模型、Vertex AI Model Garden 及其他 Google Cloud 服务。
 
-Vertex AI models require the `langchain-google-vertexai` package. Other services might require additional packages like `langchain-google-community`, `langchain-google-cloud-sql-pg`, etc.
+Vertex AI 模型需要 `langchain-google-vertexai` 包。其他服务可能需要额外的包，如 `langchain-google-community`、`langchain-google-cloud-sql-pg` 等。
 
 ```bash
 pip install langchain-google-vertexai
-# pip install langchain-google-community[...] # For other services
+# pip install langchain-google-community[...] # 适用于其他服务
 ```
 
-Google Cloud integrations typically use Application Default Credentials (ADC). Refer to the [Google Cloud authentication documentation](https://cloud.google.com/docs/authentication) for setup instructions (e.g., using `gcloud auth application-default login`).
+Google Cloud 集成通常使用 Application Default Credentials (ADC)。有关设置说明（例如，使用 `gcloud auth application-default login`），请参阅[Google Cloud 身份验证文档](https://cloud.google.com/docs/authentication)。
 
 ### Chat Models
 
 #### Vertex AI
 
-Access chat models like `Gemini` via the Vertex AI platform.
+通过 Vertex AI 平台访问 `Gemini` 等聊天模型。
 
-See a [usage example](/docs/integrations/chat/google_vertex_ai_palm).
+请参阅[用法示例](/docs/integrations/chat/google_vertex_ai_palm)。
 
 ```python
 from langchain_google_vertexai import ChatVertexAI
 ```
 
-#### Anthropic on Vertex AI Model Garden
+#### Vertex AI Model Garden 中的 Anthropic 模型
 
-See a [usage example](/docs/integrations/llms/google_vertex_ai_palm).
+请参阅[用法示例](/docs/integrations/llms/google_vertex_ai_palm)。
 
 ```python
 from langchain_google_vertexai.model_garden import ChatAnthropicVertex
 ```
 
-#### Llama on Vertex AI Model Garden
+#### Vertex AI Model Garden 中的 Llama 模型
 
 ```python
 from langchain_google_vertexai.model_garden_maas.llama import VertexModelGardenLlama
 ```
 
-#### Mistral on Vertex AI Model Garden
+#### Vertex AI Model Garden 中的 Mistral 模型
 
 ```python
 from langchain_google_vertexai.model_garden_maas.mistral import VertexModelGardenMistral
 ```
 
-#### Gemma local from Hugging Face
+#### Hugging Face 的本地 Gemma 模型
 
->Local `Gemma` model loaded from `HuggingFace`. Requires `langchain-google-vertexai`.
+>从 `HuggingFace` 加载的本地 `Gemma` 模型。需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.gemma import GemmaChatLocalHF
 ```
 
-#### Gemma local from Kaggle
+#### Kaggle 的本地 Gemma 模型
 
->Local `Gemma` model loaded from `Kaggle`. Requires `langchain-google-vertexai`.
+>从 `Kaggle` 加载的本地 `Gemma` 模型。需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.gemma import GemmaChatLocalKaggle
 ```
 
-#### Gemma on Vertex AI Model Garden
+#### Vertex AI Model Garden 中的 Gemma 模型
 
->Requires `langchain-google-vertexai`.
+>需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.gemma import GemmaChatVertexAIModelGarden
 ```
 
-#### Vertex AI image captioning
+#### Vertex AI 图像字幕生成
 
->Implementation of the `Image Captioning model` as a chat. Requires `langchain-google-vertexai`.
+>将 `Image Captioning model` 实现为聊天模型。需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.vision_models import VertexAIImageCaptioningChat
 ```
 
-#### Vertex AI image editor
+#### Vertex AI 图像编辑器
 
->Given an image and a prompt, edit the image. Currently only supports mask-free editing. Requires `langchain-google-vertexai`.
+>给定图像和提示，编辑图像。目前仅支持无遮罩编辑。需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.vision_models import VertexAIImageEditorChat
 ```
 
-#### Vertex AI image generator
+#### Vertex AI 图像生成器
 
->Generates an image from a prompt. Requires `langchain-google-vertexai`.
+>根据提示生成图像。需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.vision_models import VertexAIImageGeneratorChat
 ```
 
-#### Vertex AI visual QnA
+#### Vertex AI 视觉问答
 
->Chat implementation of a visual QnA model. Requires `langchain-google-vertexai`.
+>视觉问答模型的聊天实现。需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.vision_models import VertexAIVisualQnAChat
@@ -191,46 +190,46 @@ from langchain_google_vertexai.vision_models import VertexAIVisualQnAChat
 
 ### LLMs
 
-You can also use the ([legacy](/docs/concepts/text_llms)) string-in, string-out LLM
-interface.
+您还可以使用 ([旧版](/docs/concepts/text_llms)) 字符串输入、字符串输出 LLM
+接口。
 
 #### Vertex AI Model Garden
 
-Access `Gemini`, and hundreds of OSS models via `Vertex AI Model Garden` service. Requires `langchain-google-vertexai`.
+通过 `Vertex AI Model Garden` 服务访问 `Gemini` 和数百种 OSS 模型。需要 `langchain-google-vertexai`。
 
-See a [usage example](/docs/integrations/llms/google_vertex_ai_palm#vertex-model-garden).
+请参阅[用法示例](/docs/integrations/llms/google_vertex_ai_palm#vertex-model-garden)。
 
 ```python
 from langchain_google_vertexai import VertexAIModelGarden
 ```
 
-#### Gemma local from Hugging Face
+#### HuggFace 的本地 Gemma 模型
 
->Local `Gemma` model loaded from `HuggingFace`. Requires `langchain-google-vertexai`.
+>从 `HuggingFace` 加载的本地 `Gemma` 模型。需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.gemma import GemmaLocalHF
 ```
 
-#### Gemma local from Kaggle
+#### Kaggle 的本地 Gemma 模型
 
->Local `Gemma` model loaded from `Kaggle`. Requires `langchain-google-vertexai`.
+>从 `Kaggle` 加载的本地 `Gemma` 模型。需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.gemma import GemmaLocalKaggle
 ```
 
-#### Gemma on Vertex AI Model Garden
+#### Vertex AI Model Garden 中的 Gemma 模型
 
->Requires `langchain-google-vertexai`.
+>需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.gemma import GemmaVertexAIModelGarden
 ```
 
-#### Vertex AI image captioning
+#### Vertex AI 图像字幕生成
 
->Implementation of the `Image Captioning model` as an LLM. Requires `langchain-google-vertexai`.
+>将 `Image Captioning model` 实现为 LLM。需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.vision_models import VertexAIImageCaptioning
@@ -240,9 +239,9 @@ from langchain_google_vertexai.vision_models import VertexAIImageCaptioning
 
 #### Vertex AI
 
-Generate embeddings using models deployed on Vertex AI. Requires `langchain-google-vertexai`.
+使用部署在 Vertex AI 上的模型生成嵌入。需要 `langchain-google-vertexai`。
 
-See a [usage example](/docs/integrations/text_embedding/google_vertex_ai_palm).
+请参阅[用法示例](/docs/integrations/text_embedding/google_vertex_ai_palm)。
 
 ```python
 from langchain_google_vertexai import VertexAIEmbeddings
@@ -251,34 +250,34 @@ from langchain_google_vertexai import VertexAIEmbeddings
 
 ### Document Loaders
 
-Load documents from various Google Cloud sources.
+从各种 Google Cloud 源加载文档。
 #### AlloyDB for PostgreSQL
 
-> [Google Cloud AlloyDB](https://cloud.google.com/alloydb) is a fully managed PostgreSQL-compatible database service.
+> [Google Cloud AlloyDB](https://cloud.google.com/alloydb) 是一个完全托管的、与 PostgreSQL 兼容的数据库服务。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-alloydb-pg
 ```
 
-See [usage example](/docs/integrations/document_loaders/google_alloydb).
+请参阅[用法示例](/docs/integrations/document_loaders/google_alloydb)。
 
 ```python
-from langchain_google_alloydb_pg import AlloyDBLoader # AlloyDBEngine also available
+from langchain_google_alloydb_pg import AlloyDBLoader # 也提供 AlloyDBEngine
 ```
 
 #### BigQuery
 
-> [Google Cloud BigQuery](https://cloud.google.com/bigquery) is a serverless data warehouse.
+> [Google Cloud BigQuery](https://cloud.google.com/bigquery) 是一个无服务器数据仓库。
 
-Install with BigQuery dependencies:
+使用 BigQuery 依赖项进行安装：
 
 ```bash
 pip install langchain-google-community[bigquery]
 ```
 
-See a [usage example](/docs/integrations/document_loaders/google_bigquery).
+请参阅[用法示例](/docs/integrations/document_loaders/google_bigquery)。
 
 ```python
 from langchain_google_community import BigQueryLoader
@@ -286,15 +285,15 @@ from langchain_google_community import BigQueryLoader
 
 #### Bigtable
 
-> [Google Cloud Bigtable](https://cloud.google.com/bigtable/docs) is a fully managed NoSQL Big Data database service.
+> [Google Cloud Bigtable](https://cloud.google.com/bigtable/docs) 是一个完全托管的 NoSQL 大数据数据库服务。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-bigtable
 ```
 
-See [usage example](/docs/integrations/document_loaders/google_bigtable).
+请参阅[用法示例](/docs/integrations/document_loaders/google_bigtable)。
 
 ```python
 from langchain_google_bigtable import BigtableLoader
@@ -302,79 +301,79 @@ from langchain_google_bigtable import BigtableLoader
 
 #### Cloud SQL for MySQL
 
-> [Google Cloud SQL for MySQL](https://cloud.google.com/sql) is a fully-managed MySQL database service.
+> [Google Cloud SQL for MySQL](https://cloud.google.com/sql) 是一个完全托管的 MySQL 数据库服务。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-cloud-sql-mysql
 ```
 
-See [usage example](/docs/integrations/document_loaders/google_cloud_sql_mysql).
+请参阅[用法示例](/docs/integrations/document_loaders/google_cloud_sql_mysql)。
 
 ```python
-from langchain_google_cloud_sql_mysql import MySQLLoader # MySQLEngine also available
+from langchain_google_cloud_sql_mysql import MySQLLoader # 也提供 MySQLEngine
 ```
 
 #### Cloud SQL for SQL Server
 
-> [Google Cloud SQL for SQL Server](https://cloud.google.com/sql) is a fully-managed SQL Server database service.
+> [Google Cloud SQL for SQL Server](https://cloud.google.com/sql) 是一个完全托管的 SQL Server 数据库服务。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-cloud-sql-mssql
 ```
 
-See [usage example](/docs/integrations/document_loaders/google_cloud_sql_mssql).
+请参阅[用法示例](/docs/integrations/document_loaders/google_cloud_sql_mssql)。
 
 ```python
-from langchain_google_cloud_sql_mssql import MSSQLLoader # MSSQLEngine also available
+from langchain_google_cloud_sql_mssql import MSSQLLoader # 也提供 MSSQLEngine
 ```
 
 #### Cloud SQL for PostgreSQL
 
-> [Google Cloud SQL for PostgreSQL](https://cloud.google.com/sql) is a fully-managed PostgreSQL database service.
+> [Google Cloud SQL for PostgreSQL](https://cloud.google.com/sql) 是一个完全托管的 PostgreSQL 数据库服务。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-cloud-sql-pg
 ```
 
-See [usage example](/docs/integrations/document_loaders/google_cloud_sql_pg).
+请参阅[用法示例](/docs/integrations/document_loaders/google_cloud_sql_pg)。
 
 ```python
-from langchain_google_cloud_sql_pg import PostgresLoader # PostgresEngine also available
+from langchain_google_cloud_sql_pg import PostgresLoader # 也提供 PostgresEngine
 ```
 
 #### Cloud Storage
 
->[Cloud Storage](https://en.wikipedia.org/wiki/Google_Cloud_Storage) is a managed service for storing unstructured data.
+>[Cloud Storage](https://en.wikipedia.org/wiki/Google_Cloud_Storage) 是一种托管的非结构化数据存储服务。
 
-Install with GCS dependencies:
+使用 GCS 依赖项进行安装：
 
 ```bash
 pip install langchain-google-community[gcs]
 ```
 
-Load from a directory or a specific file:
+从目录或特定文件加载：
 
-See [directory usage example](/docs/integrations/document_loaders/google_cloud_storage_directory).
+请参阅[目录用法示例](/docs/integrations/document_loaders/google_cloud_storage_directory)。
 ```python
 from langchain_google_community import GCSDirectoryLoader
 ```
 
-See [file usage example](/docs/integrations/document_loaders/google_cloud_storage_file).
+请参阅[文件用法示例](/docs/integrations/document_loaders/google_cloud_storage_file)。
 ```python
 from langchain_google_community import GCSFileLoader
 ```
 
-#### Cloud Vision loader
+#### Cloud Vision 加载器
 
-Load data using Google Cloud Vision API.
+使用 Google Cloud Vision API 加载数据。
 
-Install with Vision dependencies:
+使用 Vision 依赖项进行安装：
 
 ```bash
 pip install langchain-google-community[vision]
@@ -386,15 +385,15 @@ from langchain_google_community.vision import CloudVisionLoader
 
 #### El Carro for Oracle Workloads
 
-> Google [El Carro Oracle Operator](https://github.com/GoogleCloudPlatform/elcarro-oracle-operator) runs Oracle databases in Kubernetes.
+> Google [El Carro Oracle Operator](https://github.com/GoogleCloudPlatform/elcarro-oracle-operator) 在 Kubernetes 中运行 Oracle 数据库。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-el-carro
 ```
 
-See [usage example](/docs/integrations/document_loaders/google_el_carro).
+请参阅[用法示例](/docs/integrations/document_loaders/google_el_carro)。
 
 ```python
 from langchain_google_el_carro import ElCarroLoader
@@ -402,15 +401,15 @@ from langchain_google_el_carro import ElCarroLoader
 
 #### Firestore (Native Mode)
 
-> [Google Cloud Firestore](https://cloud.google.com/firestore/docs/) is a NoSQL document database.
+> [Google Cloud Firestore](https://cloud.google.com/firestore/docs/) 是一个 NoSQL 文档数据库。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-firestore
 ```
 
-See [usage example](/docs/integrations/document_loaders/google_firestore).
+请参阅[用法示例](/docs/integrations/document_loaders/google_firestore)。
 
 ```python
 from langchain_google_firestore import FirestoreLoader
@@ -418,15 +417,15 @@ from langchain_google_firestore import FirestoreLoader
 
 #### Firestore (Datastore Mode)
 
-> [Google Cloud Firestore in Datastore mode](https://cloud.google.com/datastore/docs).
+> [Google Cloud Firestore in Datastore mode](https://cloud.google.com/datastore/docs)。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-datastore
 ```
 
-See [usage example](/docs/integrations/document_loaders/google_datastore).
+请参阅[用法示例](/docs/integrations/document_loaders/google_datastore)。
 
 ```python
 from langchain_google_datastore import DatastoreLoader
@@ -434,15 +433,15 @@ from langchain_google_datastore import DatastoreLoader
 
 #### Memorystore for Redis
 
-> [Google Cloud Memorystore for Redis](https://cloud.google.com/memorystore/docs/redis) is a fully managed Redis service.
+> [Google Cloud Memorystore for Redis](https://cloud.google.com/memorystore/docs/redis) 是一个完全托管的 Redis 服务。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-memorystore-redis
 ```
 
-See [usage example](/docs/integrations/document_loaders/google_memorystore_redis).
+请参阅[用法示例](/docs/integrations/document_loaders/google_memorystore_redis)。
 
 ```python
 from langchain_google_memorystore_redis import MemorystoreDocumentLoader
@@ -450,15 +449,15 @@ from langchain_google_memorystore_redis import MemorystoreDocumentLoader
 
 #### Spanner
 
-> [Google Cloud Spanner](https://cloud.google.com/spanner/docs) is a fully managed, globally distributed relational database service.
+> [Google Cloud Spanner](https://cloud.google.com/spanner/docs) 是一个完全托管的、全球分布式的关系型数据库服务。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-spanner
 ```
 
-See [usage example](/docs/integrations/document_loaders/google_spanner).
+请参阅[用法示例](/docs/integrations/document_loaders/google_spanner)。
 
 ```python
 from langchain_google_spanner import SpannerLoader
@@ -466,15 +465,15 @@ from langchain_google_spanner import SpannerLoader
 
 #### Speech-to-Text
 
-> [Google Cloud Speech-to-Text](https://cloud.google.com/speech-to-text) transcribes audio files.
+> [Google Cloud Speech-to-Text](https://cloud.google.com/speech-to-text) 可转录音频文件。
 
-Install with Speech-to-Text dependencies:
+使用 Speech-to-Text 依赖项进行安装：
 
 ```bash
 pip install langchain-google-community[speech]
 ```
 
-See [usage example and authorization instructions](/docs/integrations/document_loaders/google_speech_to_text).
+请参阅[用法示例和授权说明](/docs/integrations/document_loaders/google_speech_to_text)。
 
 ```python
 from langchain_google_community import SpeechToTextLoader
@@ -482,25 +481,24 @@ from langchain_google_community import SpeechToTextLoader
 
 ### Document Transformers
 
-Transform documents using Google Cloud services.
+使用 Google Cloud 服务转换文档。
 
 #### Document AI
 
->[Google Cloud Document AI](https://cloud.google.com/document-ai/docs/overview) is a Google Cloud
-> service that transforms unstructured data from documents into structured data, making it easier
-> to understand, analyze, and consume.
+>[Google Cloud Document AI](https://cloud.google.com/document-ai/docs/overview) 是一个 Google Cloud
+> 服务，可将文档中的非结构化数据转换为结构化数据，使其更易于理解、分析和使用。
 
-We need to set up a [`GCS` bucket and create your own OCR processor](https://cloud.google.com/document-ai/docs/create-processor)
-The `GCS_OUTPUT_PATH` should be a path to a folder on GCS (starting with `gs://`)
-and a processor name should look like `projects/PROJECT_NUMBER/locations/LOCATION/processors/PROCESSOR_ID`.
-We can get it either programmatically or copy from the `Prediction endpoint` section of the `Processor details`
-tab in the Google Cloud Console.
+我们需要设置一个 [`GCS` 存储桶并创建自己的 OCR processor](https://cloud.google.com/document-ai/docs/create-processor)
+`GCS_OUTPUT_PATH` 应该是 GCS 上某个文件夹的路径（以 `gs://` 开头），
+并且 processor 名称应类似于 `projects/PROJECT_NUMBER/locations/LOCATION/processors/PROCESSOR_ID`。
+我们可以通过编程方式获取它，或者从 Google Cloud Console 的“Processor details”
+标签页中的“Prediction endpoint”部分复制。
 
 ```bash
 pip install langchain-google-community[docai]
 ```
 
-See a [usage example](/docs/integrations/document_transformers/google_docai).
+请参阅[用法示例](/docs/integrations/document_transformers/google_docai)。
 
 ```python
 from langchain_core.document_loaders.blob_loaders import Blob
@@ -509,19 +507,18 @@ from langchain_google_community import DocAIParser
 
 #### Google Translate
 
-> [Google Translate](https://translate.google.com/) is a multilingual neural machine
-> translation service developed by Google to translate text, documents and websites
-> from one language into another.
+> [Google Translate](https://translate.google.com/) 是由 Google 开发的多语言神经机器
+> 翻译服务，用于将文本、文档和网站从一种语言翻译成另一种语言。
 
-The `GoogleTranslateTransformer` allows you to translate text and HTML with the [Google Cloud Translation API](https://cloud.google.com/translate).
+`GoogleTranslateTransformer` 允许您使用 [Google Cloud Translation API](https://cloud.google.com/translate) 翻译文本和 HTML。
 
-First, we need to install the `langchain-google-community` with translate dependencies.
+首先，我们需要安装带有翻译依赖项的 `langchain-google-community`。
 
 ```bash
 pip install langchain-google-community[translate]
 ```
 
-See [usage example and authorization instructions](/docs/integrations/document_transformers/google_translate).
+请参阅[用法示例和授权说明](/docs/integrations/document_transformers/google_translate)。
 
 ```python
 from langchain_google_community import GoogleTranslateTransformer
@@ -529,59 +526,59 @@ from langchain_google_community import GoogleTranslateTransformer
 
 ### Vector Stores
 
-Store and search vectors using Google Cloud databases and Vertex AI Vector Search.
+使用 Google Cloud 数据库和 Vertex AI Vector Search 存储和搜索向量。
 
 #### AlloyDB for PostgreSQL
 
-> [Google Cloud AlloyDB](https://cloud.google.com/alloydb) is a fully managed relational database service that offers high performance, seamless integration, and impressive scalability on Google Cloud. AlloyDB is 100% compatible with PostgreSQL.
+> [Google Cloud AlloyDB](https://cloud.google.com/alloydb) 是一个完全托管的关系型数据库服务，可在 Google Cloud 上提供高性能、无缝集成和卓越的可扩展性。AlloyDB 与 PostgreSQL 100% 兼容。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-alloydb-pg
 ```
 
-See [usage example](/docs/integrations/vectorstores/google_alloydb).
+请参阅[用法示例](/docs/integrations/vectorstores/google_alloydb)。
 
 ```python
-from langchain_google_alloydb_pg import AlloyDBVectorStore # AlloyDBEngine also available
+from langchain_google_alloydb_pg import AlloyDBVectorStore # 也提供 AlloyDBEngine
 ```
 
 #### BigQuery Vector Search
 
-> [Google Cloud BigQuery](https://cloud.google.com/bigquery),
-> BigQuery is a serverless and cost-effective enterprise data warehouse in Google Cloud.
+> [Google Cloud BigQuery](https://cloud.google.com/bigquery)，
+> BigQuery 是 Google Cloud 中无服务器且经济高效的企业级数据仓库。
 >
 > [Google Cloud BigQuery Vector Search](https://cloud.google.com/bigquery/docs/vector-search-intro)
-> BigQuery vector search lets you use GoogleSQL to do semantic search, using vector indexes for fast but approximate results, or using brute force for exact results.
+> BigQuery 向量搜索允许您使用 GoogleSQL 进行语义搜索，使用向量索引获取快速但近似的结果，或者使用暴力搜索获取精确结果。
 
-> It can calculate Euclidean or Cosine distance. With LangChain, we default to use Euclidean distance.
+> 它可以计算欧几里得距离或余弦距离。在 LangChain 中，我们默认使用欧几里得距离。
 
-We need to install several python packages.
+我们需要安装几个 Python 包。
 
 ```bash
 pip install google-cloud-bigquery
 ```
 
-See [usage example](/docs/integrations/vectorstores/google_bigquery_vector_search).
+请参阅[用法示例](/docs/integrations/vectorstores/google_bigquery_vector_search)。
 
 ```python
-# Note: BigQueryVectorSearch might be in langchain or langchain_community depending on version
-# Check imports in the usage example.
-from langchain.vectorstores import BigQueryVectorSearch # Or langchain_community.vectorstores
+# 注意：BigQueryVectorSearch 可能位于 langchain 或 langchain_community 中，具体取决于版本
+# 请检查用法示例中的导入。
+from langchain.vectorstores import BigQueryVectorSearch # 或 langchain_community.vectorstores
 ```
 
 #### Memorystore for Redis
 
-> Vector store using [Memorystore for Redis](https://cloud.google.com/memorystore/docs/redis).
+> 使用 [Memorystore for Redis](https://cloud.google.com/memorystore/docs/redis) 的向量存储。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-memorystore-redis
 ```
 
-See [usage example](/docs/integrations/vectorstores/google_memorystore_redis).
+请参阅[用法示例](/docs/integrations/vectorstores/google_memorystore_redis)。
 
 ```python
 from langchain_google_memorystore_redis import RedisVectorStore
@@ -589,15 +586,15 @@ from langchain_google_memorystore_redis import RedisVectorStore
 
 #### Spanner
 
-> Vector store using [Cloud Spanner](https://cloud.google.com/spanner/docs).
+> 使用 [Cloud Spanner](https://cloud.google.com/spanner/docs) 的向量存储。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-spanner
 ```
 
-See [usage example](/docs/integrations/vectorstores/google_spanner).
+请参阅[用法示例](/docs/integrations/vectorstores/google_spanner)。
 
 ```python
 from langchain_google_spanner import SpannerVectorStore
@@ -605,15 +602,15 @@ from langchain_google_spanner import SpannerVectorStore
 
 #### Firestore (Native Mode)
 
-> Vector store using [Firestore](https://cloud.google.com/firestore/docs/).
+> 使用 [Firestore](https://cloud.google.com/firestore/docs/) 的向量存储。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-firestore
 ```
 
-See [usage example](/docs/integrations/vectorstores/google_firestore).
+请参阅[用法示例](/docs/integrations/vectorstores/google_firestore)。
 
 ```python
 from langchain_google_firestore import FirestoreVectorStore
@@ -621,68 +618,67 @@ from langchain_google_firestore import FirestoreVectorStore
 
 #### Cloud SQL for MySQL
 
-> Vector store using [Cloud SQL for MySQL](https://cloud.google.com/sql).
+> 使用 [Cloud SQL for MySQL](https://cloud.google.com/sql) 的向量存储。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-cloud-sql-mysql
 ```
 
-See [usage example](/docs/integrations/vectorstores/google_cloud_sql_mysql).
+请参阅[用法示例](/docs/integrations/vectorstores/google_cloud_sql_mysql)。
 
 ```python
-from langchain_google_cloud_sql_mysql import MySQLVectorStore # MySQLEngine also available
+from langchain_google_cloud_sql_mysql import MySQLVectorStore # 也提供 MySQLEngine
 ```
 
 #### Cloud SQL for PostgreSQL
 
-> Vector store using [Cloud SQL for PostgreSQL](https://cloud.google.com/sql).
+> 使用 [Cloud SQL for PostgreSQL](https://cloud.google.com/sql) 的向量存储。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-cloud-sql-pg
 ```
 
-See [usage example](/docs/integrations/vectorstores/google_cloud_sql_pg).
+请参阅[用法示例](/docs/integrations/vectorstores/google_cloud_sql_pg)。
 
 ```python
-from langchain_google_cloud_sql_pg import PostgresVectorStore # PostgresEngine also available
+from langchain_google_cloud_sql_pg import PostgresVectorStore # 也提供 PostgresEngine
 ```
 
 #### Vertex AI Vector Search
 
-> [Google Cloud Vertex AI Vector Search](https://cloud.google.com/vertex-ai/docs/vector-search/overview) from Google Cloud,
-> formerly known as `Vertex AI Matching Engine`, provides the industry's leading high-scale
-> low latency vector database. These vector databases are commonly
-> referred to as vector similarity-matching or an approximate nearest neighbor (ANN) service.
+> Google Cloud 的 [Google Cloud Vertex AI Vector Search](https://cloud.google.com/vertex-ai/docs/vector-search/overview)
+> 原名 `Vertex AI Matching Engine`，提供行业领先的高规模、低延迟向量数据库。这些向量数据库通常
+> 被称为向量相似性匹配或近似最近邻 (ANN) 服务。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-vertexai
 ```
 
-See a [usage example](/docs/integrations/vectorstores/google_vertex_ai_vector_search).
+请参阅[用法示例](/docs/integrations/vectorstores/google_vertex_ai_vector_search)。
 
 ```python
 from langchain_google_vertexai import VectorSearchVectorStore
 ```
 
-##### With DataStore Backend
+##### 使用 DataStore 后端
 
-> Vector search using Datastore for document storage.
+> 使用 Datastore 进行文档存储的向量搜索。
 
-See [usage example](/docs/integrations/vectorstores/google_vertex_ai_vector_search/#optional--you-can-also-create-vectore-and-store-chunks-in-a-datastore).
+请参阅[用法示例](/docs/integrations/vectorstores/google_vertex_ai_vector_search/#optional--you-can-also-create-vectore-and-store-chunks-in-a-datastore)。
 
 ```python
 from langchain_google_vertexai import VectorSearchVectorStoreDatastore
 ```
 
-##### With GCS Backend
+##### 使用 GCS 后端
 
-> Alias for `VectorSearchVectorStore` storing documents/index in GCS.
+> `VectorSearchVectorStore` 的别名，用于在 GCS 中存储文档/索引。
 
 ```python
 from langchain_google_vertexai import VectorSearchVectorStoreGCS
@@ -690,18 +686,18 @@ from langchain_google_vertexai import VectorSearchVectorStoreGCS
 
 ### Retrievers
 
-Retrieve information using Google Cloud services.
+使用 Google Cloud 服务检索信息。
 
 #### Vertex AI Search
 
-> Build generative AI powered search engines using [Vertex AI Search](https://cloud.google.com/generative-ai-app-builder/docs/introduction).
-> from Google Cloud allows developers to quickly build generative AI powered search engines for customers and employees.
+> 使用 [Vertex AI Search](https://cloud.google.com/generative-ai-app-builder/docs/introduction) 构建支持生成式 AI 的搜索引擎。
+> Google Cloud 使开发者能够快速为客户和员工构建支持生成式 AI 的搜索引擎。
 
-See a [usage example](/docs/integrations/retrievers/google_vertex_ai_search).
+请参阅[用法示例](/docs/integrations/retrievers/google_vertex_ai_search)。
 
-Note: `GoogleVertexAISearchRetriever` is deprecated. Use the components below from `langchain-google-community`.
+注意：`GoogleVertexAISearchRetriever` 已弃用。请使用 `langchain-google-community` 中的以下组件。
 
-Install the `google-cloud-discoveryengine` package for underlying access.
+安装 `google-cloud-discoveryengine` 包以进行底层访问。
 
 ```bash
 pip install google-cloud-discoveryengine langchain-google-community
@@ -716,9 +712,9 @@ from langchain_google_community import VertexAIMultiTurnSearchRetriever
 ##### VertexAISearchRetriever
 
 ```python
-# Note: The example code shows VertexAIMultiTurnSearchRetriever, confirm if VertexAISearchRetriever is separate or related.
-# Assuming it might be related or a typo in the original doc:
-from langchain_google_community import VertexAISearchRetriever # Verify class name if needed
+# 注意：示例代码显示了 VertexAIMultiTurnSearchRetriever，请确认 VertexAISearchRetriever 是否独立或相关。
+# 假设它可能相关或原始内容有误：
+from langchain_google_community import VertexAISearchRetriever # 如有需要，请验证类名
 ```
 
 ##### VertexAISearchSummaryTool
@@ -729,14 +725,14 @@ from langchain_google_community import VertexAISearchSummaryTool
 
 #### Document AI Warehouse
 
-> Search, store, and manage documents using [Document AI Warehouse](https://cloud.google.com/document-ai-warehouse).
+> 使用 [Document AI Warehouse](https://cloud.google.com/document-ai-warehouse) 搜索、存储和管理文档。
 
-Note: `GoogleDocumentAIWarehouseRetriever` (from `langchain`) is deprecated. Use `DocumentAIWarehouseRetriever` from `langchain-google-community`.
+注意：`GoogleDocumentAIWarehouseRetriever`（来自 `langchain`）已弃用。请使用 `langchain-google-community` 中的 `DocumentAIWarehouseRetriever`。
 
-Requires installation of relevant Document AI packages (check specific docs).
+需要安装相关的 Document AI 包（请查看具体文档）。
 
 ```bash
-pip install langchain-google-community # Add specific docai dependencies if needed
+pip install langchain-google-community # 如有需要，请添加特定的 docai 依赖项
 ```
 
 ```python
@@ -745,22 +741,21 @@ from langchain_google_community.documentai_warehouse import DocumentAIWarehouseR
 
 ### Tools
 
-Integrate agents with various Google services.
+将代理与各种 Google 服务集成。
 
 #### Text-to-Speech
 
->[Google Cloud Text-to-Speech](https://cloud.google.com/text-to-speech) is a Google Cloud service that enables developers to
-> synthesize natural-sounding speech with 100+ voices, available in multiple languages and variants.
-> It applies DeepMind's groundbreaking research in WaveNet and Google's powerful neural networks
-> to deliver the highest fidelity possible.
+>[Google Cloud Text-to-Speech](https://cloud.google.com/text-to-speech) 是一个 Google Cloud 服务，它使开发者能够
+> 合成自然语音，拥有 100 多种语音，支持多种语言和变体。
+> 它应用了 DeepMind 在 WaveNet 和 Google 强大的神经网络方面的突破性研究成果，以提供尽可能高的保真度。
 
-Install required packages:
+安装所需的软件包：
 
 ```bash
 pip install google-cloud-text-to-speech langchain-google-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_cloud_texttospeech).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_cloud_texttospeech)。
 
 ```python
 from langchain_google_community import TextToSpeechTool
@@ -768,15 +763,15 @@ from langchain_google_community import TextToSpeechTool
 
 #### Google Drive
 
-Tools for interacting with Google Drive.
+用于与 Google Drive 交互的工具。
 
-Install required packages:
+安装所需的软件包：
 
 ```bash
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib langchain-googledrive
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_drive).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_drive)。
 
 ```python
 from langchain_googledrive.utilities.google_drive import GoogleDriveAPIWrapper
@@ -785,13 +780,13 @@ from langchain_googledrive.tools.google_drive.tool import GoogleDriveSearchTool
 
 #### Google Finance
 
-Query financial data. Requires `google-search-results` package and SerpApi key.
+查询金融数据。需要 `google-search-results` 包和 SerpApi 密钥。
 
 ```bash
-pip install google-search-results langchain-community # Requires langchain-community
+pip install google-search-results langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_finance).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_finance)。
 
 ```python
 from langchain_community.tools.google_finance import GoogleFinanceQueryRun
@@ -800,29 +795,29 @@ from langchain_community.utilities.google_finance import GoogleFinanceAPIWrapper
 
 #### Google Jobs
 
-Query job listings. Requires `google-search-results` package and SerpApi key.
+查询职位列表。需要 `google-search-results` 包和 SerpApi 密钥。
 
 ```bash
-pip install google-search-results langchain-community # Requires langchain-community
+pip install google-search-results langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_jobs).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_jobs)。
 
 ```python
 from langchain_community.tools.google_jobs import GoogleJobsQueryRun
-# Note: Utilities might be shared, e.g., GoogleFinanceAPIWrapper was listed, verify correct utility
-# from langchain_community.utilities.google_jobs import GoogleJobsAPIWrapper # If exists
+# 注意：实用程序可能是共享的，例如列出了 GoogleFinanceAPIWrapper，请验证正确的实用程序
+# from langchain_community.utilities.google_jobs import GoogleJobsAPIWrapper # 如果存在
 ```
 
 #### Google Lens
 
-Perform visual searches. Requires `google-search-results` package and SerpApi key.
+执行视觉搜索。需要 `google-search-results` 包和 SerpApi 密钥。
 
 ```bash
-pip install google-search-results langchain-community # Requires langchain-community
+pip install google-search-results langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_lens).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_lens)。
 
 ```python
 from langchain_community.tools.google_lens import GoogleLensQueryRun
@@ -831,28 +826,28 @@ from langchain_community.utilities.google_lens import GoogleLensAPIWrapper
 
 #### Google Places
 
-Search for places information. Requires `googlemaps` package and a Google Maps API key.
+搜索地点信息。需要 `googlemaps` 包和 Google Maps API 密钥。
 
 ```bash
-pip install googlemaps langchain # Requires base langchain
+pip install googlemaps langchain # 需要基础 langchain
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_places).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_places)。
 
 ```python
-# Note: GooglePlacesTool might be in langchain or langchain_community depending on version
-from langchain.tools import GooglePlacesTool # Or langchain_community.tools
+# 注意：GooglePlacesTool 可能位于 langchain 或 langchain_community 中，具体取决于版本
+from langchain.tools import GooglePlacesTool # 或 langchain_community.tools
 ```
 
 #### Google Scholar
 
-Search academic papers. Requires `google-search-results` package and SerpApi key.
+搜索学术论文。需要 `google-search-results` 包和 SerpApi 密钥。
 
 ```bash
-pip install google-search-results langchain-community # Requires langchain-community
+pip install google-search-results langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_scholar).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_scholar)。
 
 ```python
 from langchain_community.tools.google_scholar import GoogleScholarQueryRun
@@ -861,40 +856,40 @@ from langchain_community.utilities.google_scholar import GoogleScholarAPIWrapper
 
 #### Google Search
 
-Perform web searches using Google Custom Search Engine (CSE). Requires `GOOGLE_API_KEY` and `GOOGLE_CSE_ID`.
+使用 Google 自定义搜索引擎 (CSE) 执行网络搜索。需要 `GOOGLE_API_KEY` 和 `GOOGLE_CSE_ID`。
 
-Install `langchain-google-community`:
+安装 `langchain-google-community`：
 ```bash
 pip install langchain-google-community
 ```
 
-Wrapper:
+包装器：
 ```python
 from langchain_google_community import GoogleSearchAPIWrapper
 ```
 
-Tools:
+工具：
 ```python
 from langchain_community.tools import GoogleSearchRun, GoogleSearchResults
 ```
 
-Agent Loading:
+加载代理：
 ```python
 from langchain_community.agent_toolkits.load_tools import load_tools
 tools = load_tools(["google-search"])
 ```
 
-See [detailed notebook](/docs/integrations/tools/google_search).
+请参阅[详细的 Notebook](/docs/integrations/tools/google_search)。
 
 #### Google Trends
 
-Query Google Trends data. Requires `google-search-results` package and SerpApi key.
+查询 Google Trends 数据。需要 `google-search-results` 包和 SerpApi 密钥。
 
 ```bash
-pip install google-search-results langchain-community # Requires langchain-community
+pip install google-search-results langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_trends).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_trends)。
 
 ```python
 from langchain_community.tools.google_trends import GoogleTrendsQueryRun
@@ -903,25 +898,25 @@ from langchain_community.utilities.google_trends import GoogleTrendsAPIWrapper
 
 ### Toolkits
 
-Collections of tools for specific Google services.
+用于特定 Google 服务的工具集合。
 
 #### GMail
 
 
-> [Google Gmail](https://en.wikipedia.org/wiki/Gmail) is a free email service provided by Google.
-This toolkit works with emails through the `Gmail API`.
+> [Google Gmail](https://en.wikipedia.org/wiki/Gmail) 是 Google 提供的免费电子邮件服务。
+> 此工具包通过 `Gmail API` 处理电子邮件。
 
 ```bash
 pip install langchain-google-community[gmail]
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/gmail).
+请参阅[用法示例和授权说明](/docs/integrations/tools/gmail)。
 
 ```python
-# Load the whole toolkit
+# 加载整个工具包
 from langchain_google_community import GmailToolkit
 
-# Or use individual tools
+# 或使用单个工具
 from langchain_google_community.gmail.create_draft import GmailCreateDraft
 from langchain_google_community.gmail.get_message import GmailGetMessage
 from langchain_google_community.gmail.get_thread import GmailGetThread
@@ -931,83 +926,83 @@ from langchain_google_community.gmail.send_message import GmailSendMessage
 
 ### Memory
 
-Store conversation history using Google Cloud databases.
+使用 Google Cloud 数据库存储对话历史。
 
 #### AlloyDB for PostgreSQL
 
-> Chat memory using [AlloyDB](https://cloud.google.com/alloydb).
+> 使用 [AlloyDB](https://cloud.google.com/alloydb) 进行聊天记忆。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-alloydb-pg
 ```
 
-See [usage example](/docs/integrations/memory/google_alloydb).
+请参阅[用法示例](/docs/integrations/memory/google_alloydb)。
 
 ```python
-from langchain_google_alloydb_pg import AlloyDBChatMessageHistory # AlloyDBEngine also available
+from langchain_google_alloydb_pg import AlloyDBChatMessageHistory # 也提供 AlloyDBEngine
 ```
 
 #### Cloud SQL for PostgreSQL
 
-> Chat memory using [Cloud SQL for PostgreSQL](https://cloud.google.com/sql).
+> 使用 [Cloud SQL for PostgreSQL](https://cloud.google.com/sql) 进行聊天记忆。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-cloud-sql-pg
 ```
 
-See [usage example](/docs/integrations/memory/google_sql_pg).
+请参阅[用法示例](/docs/integrations/memory/google_sql_pg)。
 
 ```python
-from langchain_google_cloud_sql_pg import PostgresChatMessageHistory # PostgresEngine also available
+from langchain_google_cloud_sql_pg import PostgresChatMessageHistory # 也提供 PostgresEngine
 ```
 
 #### Cloud SQL for MySQL
 
-> Chat memory using [Cloud SQL for MySQL](https://cloud.google.com/sql).
+> 使用 [Cloud SQL for MySQL](https://cloud.google.com/sql) 进行聊天记忆。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-cloud-sql-mysql
 ```
 
-See [usage example](/docs/integrations/memory/google_sql_mysql).
+请参阅[用法示例](/docs/integrations/memory/google_sql_mysql)。
 
 ```python
-from langchain_google_cloud_sql_mysql import MySQLChatMessageHistory # MySQLEngine also available
+from langchain_google_cloud_sql_mysql import MySQLChatMessageHistory # 也提供 MySQLEngine
 ```
 
 #### Cloud SQL for SQL Server
 
-> Chat memory using [Cloud SQL for SQL Server](https://cloud.google.com/sql).
+> 使用 [Cloud SQL for SQL Server](https://cloud.google.com/sql) 进行聊天记忆。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-cloud-sql-mssql
 ```
 
-See [usage example](/docs/integrations/memory/google_sql_mssql).
+请参阅[用法示例](/docs/integrations/memory/google_sql_mssql)。
 
 ```python
-from langchain_google_cloud_sql_mssql import MSSQLChatMessageHistory # MSSQLEngine also available
+from langchain_google_cloud_sql_mssql import MSSQLChatMessageHistory # 也提供 MSSQLEngine
 ```
 
 #### Spanner
 
-> Chat memory using [Cloud Spanner](https://cloud.google.com/spanner/docs).
+> 使用 [Cloud Spanner](https://cloud.google.com/spanner/docs) 进行聊天记忆。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-spanner
 ```
 
-See [usage example](/docs/integrations/memory/google_spanner).
+请参阅[用法示例](/docs/integrations/memory/google_spanner)。
 
 ```python
 from langchain_google_spanner import SpannerChatMessageHistory
@@ -1015,15 +1010,15 @@ from langchain_google_spanner import SpannerChatMessageHistory
 
 #### Memorystore for Redis
 
-> Chat memory using [Memorystore for Redis](https://cloud.google.com/memorystore/docs/redis).
+> 使用 [Memorystore for Redis](https://cloud.google.com/memorystore/docs/redis) 进行聊天记忆。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-memorystore-redis
 ```
 
-See [usage example](/docs/integrations/memory/google_memorystore_redis).
+请参阅[用法示例](/docs/integrations/memory/google_memorystore_redis)。
 
 ```python
 from langchain_google_memorystore_redis import MemorystoreChatMessageHistory
@@ -1031,15 +1026,15 @@ from langchain_google_memorystore_redis import MemorystoreChatMessageHistory
 
 #### Bigtable
 
-> Chat memory using [Cloud Bigtable](https://cloud.google.com/bigtable/docs).
+> 使用 [Cloud Bigtable](https://cloud.google.com/bigtable/docs) 进行聊天记忆。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-bigtable
 ```
 
-See [usage example](/docs/integrations/memory/google_bigtable).
+请参阅[用法示例](/docs/integrations/memory/google_bigtable)。
 
 ```python
 from langchain_google_bigtable import BigtableChatMessageHistory
@@ -1047,15 +1042,15 @@ from langchain_google_bigtable import BigtableChatMessageHistory
 
 #### Firestore (Native Mode)
 
-> Chat memory using [Firestore](https://cloud.google.com/firestore/docs/).
+> 使用 [Firestore](https://cloud.google.com/firestore/docs/) 进行聊天记忆。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-firestore
 ```
 
-See [usage example](/docs/integrations/memory/google_firestore).
+请参阅[用法示例](/docs/integrations/memory/google_firestore)。
 
 ```python
 from langchain_google_firestore import FirestoreChatMessageHistory
@@ -1063,15 +1058,15 @@ from langchain_google_firestore import FirestoreChatMessageHistory
 
 #### Firestore (Datastore Mode)
 
-> Chat memory using [Firestore in Datastore mode](https://cloud.google.com/datastore/docs).
+> 使用 [Firestore in Datastore mode](https://cloud.google.com/datastore/docs) 进行聊天记忆。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-datastore
 ```
 
-See [usage example](/docs/integrations/memory/google_firestore_datastore).
+请参阅[用法示例](/docs/integrations/memory/google_firestore_datastore)。
 
 ```python
 from langchain_google_datastore import DatastoreChatMessageHistory
@@ -1079,15 +1074,15 @@ from langchain_google_datastore import DatastoreChatMessageHistory
 
 #### El Carro: The Oracle Operator for Kubernetes
 
-> Chat memory using Oracle databases run via [El Carro](https://github.com/GoogleCloudPlatform/elcarro-oracle-operator).
+> 使用通过 [El Carro](https://github.com/GoogleCloudPlatform/elcarro-oracle-operator) 运行的 Oracle 数据库进行聊天记忆。
 
-Install the python package:
+安装 Python 包：
 
 ```bash
 pip install langchain-google-el-carro
 ```
 
-See [usage example](/docs/integrations/memory/google_el_carro).
+请参阅[用法示例](/docs/integrations/memory/google_el_carro)。
 
 ```python
 from langchain_google_el_carro import ElCarroChatMessageHistory
@@ -1095,13 +1090,13 @@ from langchain_google_el_carro import ElCarroChatMessageHistory
 
 ### Callbacks
 
-Track LLM/Chat model usage.
+跟踪 LLM/Chat 模型的使用情况。
 
 #### Vertex AI callback handler
 
->Callback Handler that tracks `VertexAI` usage info.
+>跟踪 `VertexAI` 使用情况信息的 Callback Handler。
 
-Requires `langchain-google-vertexai`.
+需要 `langchain-google-vertexai`。
 
 ```python
 from langchain_google_vertexai.callbacks import VertexAICallbackHandler
@@ -1109,13 +1104,13 @@ from langchain_google_vertexai.callbacks import VertexAICallbackHandler
 
 ### Evaluators
 
-Evaluate model outputs using Vertex AI.
+使用 Vertex AI 评估模型输出。
 
-Requires `langchain-google-vertexai`.
+需要 `langchain-google-vertexai`。
 
 #### VertexPairWiseStringEvaluator
 
->Pair-wise evaluation using Vertex AI models.
+>使用 Vertex AI 模型进行成对评估。
 
 ```python
 from langchain_google_vertexai.evaluators.evaluation import VertexPairWiseStringEvaluator
@@ -1123,30 +1118,30 @@ from langchain_google_vertexai.evaluators.evaluation import VertexPairWiseString
 
 #### VertexStringEvaluator
 
->Evaluate a single prediction string using Vertex AI models.
+>使用 Vertex AI 模型评估单个预测字符串。
 
 ```python
-# Note: Original doc listed VertexPairWiseStringEvaluator twice. Assuming this class exists.
-from langchain_google_vertexai.evaluators.evaluation import VertexStringEvaluator # Verify class name if needed
+# 注意：原始内容重复列出了 VertexPairWiseStringEvaluator。假定此类存在。
+from langchain_google_vertexai.evaluators.evaluation import VertexStringEvaluator # 如有需要，请验证类名
 ```
 
 ## Other Google Products
 
-Integrations with various Google services beyond the core Cloud Platform.
+与核心 Cloud Platform 以外的各种 Google 服务集成。
 
 ### Document Loaders
 
 #### Google Drive
 
->[Google Drive](https://en.wikipedia.org/wiki/Google_Drive) file storage. Currently supports `Google Docs`.
+>[Google Drive](https://en.wikipedia.org/wiki/Google_Drive) 文件存储。目前支持 `Google Docs`。
 
-Install with Drive dependencies:
+使用 Drive 依赖项进行安装：
 
 ```bash
 pip install langchain-google-community[drive]
 ```
 
-See [usage example and authorization instructions](/docs/integrations/document_loaders/google_drive).
+请参阅[用法示例和授权说明](/docs/integrations/document_loaders/google_drive)。
 
 ```python
 from langchain_google_community import GoogleDriveLoader
@@ -1157,23 +1152,21 @@ from langchain_google_community import GoogleDriveLoader
 #### ScaNN (Local Index)
 
 >[Google ScaNN](https://github.com/google-research/google-research/tree/master/scann)
-> (Scalable Nearest Neighbors) is a python package.
+> (Scalable Nearest Neighbors) 是一个 Python 包。
 >
->`ScaNN` is a method for efficient vector similarity search at scale.
+> `ScaNN` 是一种用于大规模高效向量相似性搜索的方法。
 
->`ScaNN` includes search space pruning and quantization for Maximum Inner
-> Product Search and also supports other distance functions such as
-> Euclidean distance. The implementation is optimized for x86 processors
-> with AVX2 support. See its [Google Research github](https://github.com/google-research/google-research/tree/master/scann)
-> for more details.
+> `ScaNN` 包括用于最大内积搜索的搜索空间剪枝和量化，并且还支持欧几里得距离等其他距离函数。该实现针对支持
+> AVX2 的 x86 处理器进行了优化。有关更多详细信息，请参阅其
+> [Google Research github](https://github.com/google-research/google-research/tree/master/scann)。
 
-Install the `scann` package:
+安装 `scann` 包：
 
 ```bash
-pip install scann langchain-community # Requires langchain-community
+pip install scann langchain-community # 需要 langchain-community
 ```
 
-See a [usage example](/docs/integrations/vectorstores/scann).
+请参阅[用法示例](/docs/integrations/vectorstores/scann)。
 
 ```python
 from langchain_community.vectorstores import ScaNN
@@ -1183,15 +1176,15 @@ from langchain_community.vectorstores import ScaNN
 
 #### Google Drive
 
-Retrieve documents from Google Drive.
+从 Google Drive 检索文档。
 
-Install required packages:
+安装所需的软件包：
 
 ```bash
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib langchain-googledrive
 ```
 
-See [usage example and authorization instructions](/docs/integrations/retrievers/google_drive).
+请参阅[用法示例和授权说明](/docs/integrations/retrievers/google_drive)。
 
 ```python
 from langchain_googledrive.retrievers import GoogleDriveRetriever
@@ -1201,15 +1194,15 @@ from langchain_googledrive.retrievers import GoogleDriveRetriever
 
 #### Google Drive
 
-Tools for interacting with Google Drive.
+用于与 Google Drive 交互的工具。
 
-Install required packages:
+安装所需的软件包：
 
 ```bash
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib langchain-googledrive
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_drive).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_drive)。
 
 ```python
 from langchain_googledrive.utilities.google_drive import GoogleDriveAPIWrapper
@@ -1218,13 +1211,13 @@ from langchain_googledrive.tools.google_drive.tool import GoogleDriveSearchTool
 
 #### Google Finance
 
-Query financial data. Requires `google-search-results` package and SerpApi key.
+查询金融数据。需要 `google-search-results` 包和 SerpApi 密钥。
 
 ```bash
-pip install google-search-results langchain-community # Requires langchain-community
+pip install google-search-results langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_finance).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_finance)。
 
 ```python
 from langchain_community.tools.google_finance import GoogleFinanceQueryRun
@@ -1233,29 +1226,29 @@ from langchain_community.utilities.google_finance import GoogleFinanceAPIWrapper
 
 #### Google Jobs
 
-Query job listings. Requires `google-search-results` package and SerpApi key.
+查询职位列表。需要 `google-search-results` 包和 SerpApi 密钥。
 
 ```bash
-pip install google-search-results langchain-community # Requires langchain-community
+pip install google-search-results langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_jobs).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_jobs)。
 
 ```python
 from langchain_community.tools.google_jobs import GoogleJobsQueryRun
-# Note: Utilities might be shared, e.g., GoogleFinanceAPIWrapper was listed, verify correct utility
-# from langchain_community.utilities.google_jobs import GoogleJobsAPIWrapper # If exists
+# 注意：实用程序可能是共享的，例如列出了 GoogleFinanceAPIWrapper，请验证正确的实用程序
+# from langchain_community.utilities.google_jobs import GoogleJobsAPIWrapper # 如果存在
 ```
 
 #### Google Lens
 
-Perform visual searches. Requires `google-search-results` package and SerpApi key.
+执行视觉搜索。需要 `google-search-results` 包和 SerpApi 密钥。
 
 ```bash
-pip install google-search-results langchain-community # Requires langchain-community
+pip install google-search-results langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_lens).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_lens)。
 
 ```python
 from langchain_community.tools.google_lens import GoogleLensQueryRun
@@ -1264,28 +1257,28 @@ from langchain_community.utilities.google_lens import GoogleLensAPIWrapper
 
 #### Google Places
 
-Search for places information. Requires `googlemaps` package and a Google Maps API key.
+搜索地点信息。需要 `googlemaps` 包和 Google Maps API 密钥。
 
 ```bash
-pip install googlemaps langchain # Requires base langchain
+pip install googlemaps langchain # 需要基础 langchain
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_places).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_places)。
 
 ```python
-# Note: GooglePlacesTool might be in langchain or langchain_community depending on version
-from langchain.tools import GooglePlacesTool # Or langchain_community.tools
+# 注意：GooglePlacesTool 可能位于 langchain 或 langchain_community 中，具体取决于版本
+from langchain.tools import GooglePlacesTool # 或 langchain_community.tools
 ```
 
 #### Google Scholar
 
-Search academic papers. Requires `google-search-results` package and SerpApi key.
+搜索学术论文。需要 `google-search-results` 包和 SerpApi 密钥。
 
 ```bash
-pip install google-search-results langchain-community # Requires langchain-community
+pip install google-search-results langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_scholar).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_scholar)。
 
 ```python
 from langchain_community.tools.google_scholar import GoogleScholarQueryRun
@@ -1294,40 +1287,40 @@ from langchain_community.utilities.google_scholar import GoogleScholarAPIWrapper
 
 #### Google Search
 
-Perform web searches using Google Custom Search Engine (CSE). Requires `GOOGLE_API_KEY` and `GOOGLE_CSE_ID`.
+使用 Google 自定义搜索引擎 (CSE) 执行网络搜索。需要 `GOOGLE_API_KEY` 和 `GOOGLE_CSE_ID`。
 
-Install `langchain-google-community`:
+安装 `langchain-google-community`：
 ```bash
 pip install langchain-google-community
 ```
 
-Wrapper:
+包装器：
 ```python
 from langchain_google_community import GoogleSearchAPIWrapper
 ```
 
-Tools:
+工具：
 ```python
 from langchain_community.tools import GoogleSearchRun, GoogleSearchResults
 ```
 
-Agent Loading:
+加载代理：
 ```python
 from langchain_community.agent_toolkits.load_tools import load_tools
 tools = load_tools(["google-search"])
 ```
 
-See [detailed notebook](/docs/integrations/tools/google_search).
+请参阅[详细的 Notebook](/docs/integrations/tools/google_search)。
 
 #### Google Trends
 
-Query Google Trends data. Requires `google-search-results` package and SerpApi key.
+查询 Google Trends 数据。需要 `google-search-results` 包和 SerpApi 密钥。
 
 ```bash
-pip install google-search-results langchain-community # Requires langchain-community
+pip install google-search-results langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/google_trends).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_trends)。
 
 ```python
 from langchain_community.tools.google_trends import GoogleTrendsQueryRun
@@ -1339,20 +1332,20 @@ from langchain_community.utilities.google_trends import GoogleTrendsAPIWrapper
 #### GMail
 
 
-> [Google Gmail](https://en.wikipedia.org/wiki/Gmail) is a free email service provided by Google.
-This toolkit works with emails through the `Gmail API`.
+> [Google Gmail](https://en.wikipedia.org/wiki/Gmail) 是 Google 提供的免费电子邮件服务。
+> 此工具包通过 `Gmail API` 处理电子邮件。
 
 ```bash
 pip install langchain-google-community[gmail]
 ```
 
-See [usage example and authorization instructions](/docs/integrations/tools/gmail).
+请参阅[用法示例和授权说明](/docs/integrations/tools/gmail)。
 
 ```python
-# Load the whole toolkit
+# 加载整个工具包
 from langchain_google_community import GmailToolkit
 
-# Or use individual tools
+# 或使用单个工具
 from langchain_google_community.gmail.create_draft import GmailCreateDraft
 from langchain_google_community.gmail.get_message import GmailGetMessage
 from langchain_google_community.gmail.get_thread import GmailGetThread
@@ -1364,15 +1357,15 @@ from langchain_google_community.gmail.send_message import GmailSendMessage
 
 #### GMail
 
-> Load chat history from Gmail threads.
+> 从 Gmail 线程加载聊天历史记录。
 
-Install with GMail dependencies:
+使用 GMail 依赖项进行安装：
 
 ```bash
 pip install langchain-google-community[gmail]
 ```
 
-See [usage example and authorization instructions](/docs/integrations/chat_loaders/gmail).
+请参阅[用法示例和授权说明](/docs/integrations/chat_loaders/gmail)。
 
 ```python
 from langchain_google_community import GMailLoader
@@ -1380,13 +1373,13 @@ from langchain_google_community import GMailLoader
 
 ## 3rd Party Integrations
 
-Access Google services via third-party APIs.
+通过第三方 API 访问 Google 服务。
 
 ### SearchApi
 
->[SearchApi](https://www.searchapi.io/) provides API access to Google search, YouTube, etc. Requires `langchain-community`.
+>[SearchApi](https://www.searchapi.io/) 提供 Google 搜索、YouTube 等的 API 访问。需要 `langchain-community`。
 
-See [usage examples and authorization instructions](/docs/integrations/tools/searchapi).
+请参阅[用法示例和授权说明](/docs/integrations/tools/searchapi)。
 
 ```python
 from langchain_community.utilities import SearchApiAPIWrapper
@@ -1394,9 +1387,9 @@ from langchain_community.utilities import SearchApiAPIWrapper
 
 ### SerpApi
 
->[SerpApi](https://serpapi.com/) provides API access to Google search results. Requires `langchain-community`.
+>[SerpApi](https://serpapi.com/) 提供 Google 搜索结果的 API 访问。需要 `langchain-community`。
 
-See a [usage example and authorization instructions](/docs/integrations/tools/serpapi).
+请参阅[用法示例和授权说明](/docs/integrations/tools/serpapi)。
 
 ```python
 from langchain_community.utilities import SerpAPIWrapper
@@ -1404,9 +1397,9 @@ from langchain_community.utilities import SerpAPIWrapper
 
 ### Serper.dev
 
->[Google Serper](https://serper.dev/) provides API access to Google search results. Requires `langchain-community`.
+>[Google Serper](https://serper.dev/) 提供 Google 搜索结果的 API 访问。需要 `langchain-community`。
 
-See a [usage example and authorization instructions](/docs/integrations/tools/google_serper).
+请参阅[用法示例和授权说明](/docs/integrations/tools/google_serper)。
 
 ```python
 from langchain_community.utilities import GoogleSerperAPIWrapper
@@ -1416,44 +1409,44 @@ from langchain_community.utilities import GoogleSerperAPIWrapper
 
 #### YouTube Search Tool
 
->Search `YouTube` videos without the official API. Requires `youtube_search` package.
+>在没有官方 API 的情况下搜索 `YouTube` 视频。需要 `youtube_search` 包。
 
 ```bash
-pip install youtube_search langchain # Requires base langchain
+pip install youtube_search langchain # 需要基础 langchain
 ```
 
-See a [usage example](/docs/integrations/tools/youtube).
+请参阅[用法示例](/docs/integrations/tools/youtube)。
 
 ```python
-# Note: YouTubeSearchTool might be in langchain or langchain_community
-from langchain.tools import YouTubeSearchTool # Or langchain_community.tools
+# 注意：YouTubeSearchTool 可能位于 langchain 或 langchain_community
+from langchain.tools import YouTubeSearchTool # 或 langchain_community.tools
 ```
 
 #### YouTube Audio Loader
 
->Download audio from YouTube videos. Requires `yt_dlp`, `pydub`, `librosa`.
+>下载 YouTube 视频的音频。需要 `yt_dlp`、`pydub`、`librosa`。
 
 ```bash
-pip install yt_dlp pydub librosa langchain-community # Requires langchain-community
+pip install yt_dlp pydub librosa langchain-community # 需要 langchain-community
 ```
 
-See [usage example and authorization instructions](/docs/integrations/document_loaders/youtube_audio).
+请参阅[用法示例和授权说明](/docs/integrations/document_loaders/youtube_audio)。
 
 ```python
 from langchain_community.document_loaders.blob_loaders.youtube_audio import YoutubeAudioLoader
-# Often used with whisper parsers:
+# 常与 whisper 解析器一起使用：
 # from langchain_community.document_loaders.parsers import OpenAIWhisperParser, OpenAIWhisperParserLocal
 ```
 
 #### YouTube Transcripts Loader
 
->Load video transcripts. Requires `youtube-transcript-api`.
+>加载视频字幕。需要 `youtube-transcript-api`。
 
 ```bash
-pip install youtube-transcript-api langchain-community # Requires langchain-community
+pip install youtube-transcript-api langchain-community # 需要 langchain-community
 ```
 
-See a [usage example](/docs/integrations/document_loaders/youtube_transcript).
+请参阅[用法示例](/docs/integrations/document_loaders/youtube_transcript)。
 
 ```python
 from langchain_community.document_loaders import YoutubeLoader

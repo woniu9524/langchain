@@ -1,45 +1,43 @@
-# Banana
+# 香蕉
 
->[Banana](https://www.banana.dev/) provided serverless GPU inference for AI models, 
-> a CI/CD build pipeline and a simple Python framework (`Potassium`) to server your models.
+>[Banana](https://www.banana.dev/) 为 AI 模型提供了无服务器 GPU 推理、CI/CD 构建管道以及用于部署模型的简单 Python 框架（`Potassium`）。
 
-This page covers how to use the [Banana](https://www.banana.dev) ecosystem within LangChain.
+本页介绍如何在 LangChain 中使用 [Banana](https://www.banana.dev) 生态系统。
 
-## Installation and Setup
+## 安装与设置
 
-- Install the python package `banana-dev`:
+- 安装 Python 包 `banana-dev`：
 
 ```bash
 pip install banana-dev
 ```
 
-- Get an Banana api key from the [Banana.dev dashboard](https://app.banana.dev) and set it as an environment variable (`BANANA_API_KEY`)
-- Get your model's key and url slug from the model's details page.
+- 从 [Banana.dev 仪表板](https://app.banana.dev) 获取 Banana API 密钥，并将其设置为环境变量（`BANANA_API_KEY`）。
+- 从模型的详情页面获取模型的密钥和 URL 缩写。
 
-## Define your Banana Template
+## 定义您的 Banana 模板
 
-You'll need to set up a Github repo for your Banana app. You can get started in 5 minutes using [this guide](https://docs.banana.dev/banana-docs/).
+您需要为您的 Banana 应用设置一个 Github 仓库。您可以使用[此指南](https://docs.banana.dev/banana-docs/)在 5 分钟内入门。
 
-Alternatively, for a ready-to-go LLM example, you can check out Banana's [CodeLlama-7B-Instruct-GPTQ](https://github.com/bananaml/demo-codellama-7b-instruct-gptq) GitHub repository. Just fork it and deploy it within Banana.
+或者，您可以查看 Banana 的 [CodeLlama-7B-Instruct-GPTQ](https://github.com/bananaml/demo-codellama-7b-instruct-gptq) GitHub 仓库作为现成的 LLM 示例。只需 fork 它并在 Banana 中进行部署。
 
-Other starter repos are available [here](https://github.com/orgs/bananaml/repositories?q=demo-&type=all&language=&sort=).
+其他入门仓库可在[此处](https://github.com/orgs/bananaml/repositories?q=demo-&type=all&language=&sort=)找到。
 
-## Build the Banana app
+## 构建 Banana 应用
 
-To use Banana apps within Langchain, you must include the `outputs` key 
-in the returned json, and the value must be a string.
+要在 Langchain 中使用 Banana 应用，您必须在返回的 JSON 中包含 `outputs` 键，并且其值必须是字符串。
 
 ```python
-# Return the results as a dictionary
+# 将结果作为字典返回
 result = {'outputs': result}
 ```
 
-An example inference function would be:
+一个示例推理函数是：
 
 ```python
 @app.handler("/")
 def handler(context: dict, request: Request) -> Response:
-    """Handle a request to generate code from a prompt."""
+    """处理从提示生成代码的请求。"""
     model = context.get("model")
     tokenizer = context.get("tokenizer")
     max_new_tokens = request.json.get("max_new_tokens", 512)
@@ -55,7 +53,7 @@ def handler(context: dict, request: Request) -> Response:
     return Response(json={"outputs": result}, status=200)
 ```
 
-This example is from the `app.py` file in [CodeLlama-7B-Instruct-GPTQ](https://github.com/bananaml/demo-codellama-7b-instruct-gptq).
+此示例来自 [CodeLlama-7B-Instruct-GPTQ](https://github.com/bananaml/demo-codellama-7b-instruct-gptq) 中的 `app.py` 文件。
 
 
 ## LLM
@@ -65,4 +63,4 @@ This example is from the `app.py` file in [CodeLlama-7B-Instruct-GPTQ](https://g
 from langchain_community.llms import Banana
 ```
 
-See a [usage example](/docs/integrations/llms/banana).
+请参阅[使用示例](/docs/integrations/llms/banana)。

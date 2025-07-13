@@ -1,20 +1,20 @@
 # DashVector
 
-> [DashVector](https://help.aliyun.com/document_detail/2510225.html) is a fully-managed vectorDB service that supports high-dimension dense and sparse vectors, real-time insertion and filtered search. It is built to scale automatically and can adapt to different application requirements.  
+> [DashVector](https://help.aliyun.com/document_detail/2510225.html) 是一项全托管的向量数据库服务，支持高维密集向量和稀疏向量、实时插入和过滤搜索。它旨在自动扩展并能适应不同的应用需求。  
 
-This document demonstrates to leverage DashVector within the LangChain ecosystem. In particular, it shows how to install DashVector, and how to use it as a VectorStore plugin in LangChain.
-It is broken into two parts: installation and setup, and then references to specific DashVector wrappers.
+本文档演示了如何在 LangChain 生态系统中利用 DashVector。特别是，它展示了如何安装 DashVector，以及如何将其作为 LangChain 的 VectorStore 插件使用。
+本文档分为两个部分：安装和设置，然后是关于特定 DashVector 的包装器。
 
-## Installation and Setup
+## 安装和设置
 
 
-Install the Python SDK:
+安装 Python SDK：
 
 ```bash
 pip install dashvector
 ```
 
-You must have an API key. Here are the [installation instructions](https://help.aliyun.com/document_detail/2510223.html).
+您必须拥有一个 API 密钥。以下是[安装说明](https://help.aliyun.com/document_detail/2510223.html)。
 
 
 ## Embedding models
@@ -23,17 +23,17 @@ You must have an API key. Here are the [installation instructions](https://help.
 from langchain_community.embeddings import DashScopeEmbeddings
 ```
 
-See the [use example](/docs/integrations/vectorstores/dashvector).
+请参阅[使用示例](/docs/integrations/vectorstores/dashvector)。
 
 
 ## Vector Store
 
-A DashVector Collection is wrapped as a familiar VectorStore for native usage within LangChain, 
-which allows it to be readily used for various scenarios, such as semantic search or example selection.
+DashVector Collection 被包装成了一个熟悉的 VectorStore，方便在 LangChain 中原生使用，
+这使得它可以轻松用于各种场景，例如语义搜索或示例选择。
 
-You may import the vectorstore by:
+您可以通过以下方式导入 vectorstore：
 ```python
 from langchain_community.vectorstores import DashVector
 ```
 
-For a detailed walkthrough of the DashVector wrapper, please refer to [this notebook](/docs/integrations/vectorstores/dashvector)
+有关 DashVector 包装器的详细演练，请参阅[此 notebook](/docs/integrations/vectorstores/dashvector)。

@@ -1,15 +1,12 @@
-# iFlytek
+# 科大讯飞
 
->[iFlytek](https://www.iflytek.com) is a Chinese information technology company 
-> established in 1999. It creates voice recognition software and 
-> voice-based internet/mobile products covering education, communication, 
-> music, intelligent toys industries.
+>[科大讯飞](https://www.iflytek.com)是一家成立于1999年的中国信息技术公司。它创建了语音识别软件和基于语音的互联网/移动产品，涵盖教育、通信、音乐、智能玩具等行业。
 
 
-## Installation and Setup
+## 安装与设置
 
-- Get `SparkLLM` app_id, api_key and api_secret from [iFlyTek SparkLLM API Console](https://console.xfyun.cn/services/bm3) (for more info, see [iFlyTek SparkLLM Intro](https://xinghuo.xfyun.cn/sparkapi)).
-- Install the Python package (not for the embedding models):
+- 从 [科大讯飞星火认知大模型 API 控制台](https://console.xfyun.cn/services/bm3) 获取 `SparkLLM` 的 app_id, api_key 和 api_secret（更多信息请参阅 [科大讯飞星火认知大模型介绍](https://xinghuo.xfyun.cn/sparkapi)）。
+- 安装 Python 包（嵌入式模型除外）：
 
 ```bash
 pip install websocket-client
@@ -17,7 +14,7 @@ pip install websocket-client
 
 ## LLMs
 
-See a [usage example](/docs/integrations/llms/sparkllm).
+请参阅 [用法示例](/docs/integrations/llms/sparkllm)。
 
 ```python
 from langchain_community.llms import SparkLLM
@@ -25,7 +22,7 @@ from langchain_community.llms import SparkLLM
 
 ## Chat models
 
-See a [usage example](/docs/integrations/chat/sparkllm).
+请参阅 [用法示例](/docs/integrations/chat/sparkllm)。
 
 ```python
 from langchain_community.chat_models import ChatSparkLLM

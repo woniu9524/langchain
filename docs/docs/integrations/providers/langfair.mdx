@@ -1,25 +1,25 @@
-# LangFair: Use-Case Level LLM Bias and Fairness Assessments
+# LangFair：用例级别的 LLM 偏见和公平性评估
 
-LangFair is a comprehensive Python library designed for conducting bias and fairness assessments of large language model (LLM) use cases. The LangFair [repository](https://github.com/cvs-health/langfair) includes a comprehensive framework for [choosing bias and fairness metrics](https://github.com/cvs-health/langfair/tree/main#-choosing-bias-and-fairness-metrics-for-an-llm-use-case), along with [demo notebooks](https://github.com/cvs-health/langfair/tree/main/examples) and a [technical playbook](https://arxiv.org/abs/2407.10853) that discusses LLM bias and fairness risks, evaluation metrics, and best practices. 
+LangFair 是一个全面的 Python 库，旨在对大型语言模型 (LLM) 用例进行偏见和公平性评估。LangFair [代码库](https://github.com/cvs-health/langfair)包含一个全面的框架，用于[选择偏见和公平性指标](https://github.com/cvs-health/langfair/tree/main#-choosing-bias-and-fairness-metrics-for-an-llm-use-case)，以及[演示 Notebook](https://github.com/cvs-health/langfair/tree/main/examples) 和一份[技术手册](https://arxiv.org/abs/2407.10853)，其中讨论了 LLM 偏见和公平性风险、评估指标以及最佳实践。
 
-Explore our [documentation site](https://cvs-health.github.io/langfair/) for detailed instructions on using LangFair.
+请访问我们的[文档网站](https://cvs-health.github.io/langfair/)，了解使用 LangFair 的详细说明。
 
-## ⚡ Quickstart Guide
-### (Optional) Create a virtual environment for using LangFair
-We recommend creating a new virtual environment using venv before installing LangFair. To do so, please follow instructions [here](https://docs.python.org/3/library/venv.html).
+## ⚡ 快速入门指南
+### （可选）为使用 LangFair 创建虚拟环境
+我们建议在安装 LangFair 之前使用 venv 创建一个新的虚拟环境。要做到这一点，请在此[处](https://docs.python.org/3/library/venv.html)遵循说明。
 
-### Installing LangFair
-The latest version can be installed from PyPI:
+### 安装 LangFair
+可以从 PyPI 安装最新版本：
 
 ```bash
 pip install langfair
 ```
 
-### Usage Examples
-Below are code samples illustrating how to use LangFair to assess bias and fairness risks in text generation and summarization use cases. The below examples assume the user has already defined a list of prompts from their use case, `prompts`. 
+### 使用示例
+以下代码示例说明了如何使用 LangFair 来评估文本生成和摘要用例中的偏见和公平性风险。以下示例假设用户已定义了用例中的提示列表 `prompts`。
 
-##### Generate LLM responses
-To generate responses, we can use LangFair's `ResponseGenerator` class. First, we must create a `langchain` LLM object. Below we use `ChatVertexAI`, but **any of [LangChain’s LLM classes](https://js.langchain.com/docs/integrations/chat/) may be used instead**. Note that `InMemoryRateLimiter` is to used to avoid rate limit errors.
+##### 生成 LLM 回复
+要生成回复，我们可以使用 LangFair 的 `ResponseGenerator` 类。首先，我们必须创建一个 `langchain` LLM 对象。下面我们使用 `ChatVertexAI`，但**可以使用 [LangChain 的任何 LLM 类](https://js.langchain.com/docs/integrations/chat/) 代替**。请注意，`InMemoryRateLimiter` 用于避免速率限制错误。
 ```python
 from langchain_google_vertexai import ChatVertexAI
 from langchain_core.rate_limiters import InMemoryRateLimiter
@@ -30,23 +30,23 @@ llm = ChatVertexAI(
     model_name="gemini-pro", temperature=0.3, rate_limiter=rate_limiter
 )
 ```
-We can use `ResponseGenerator.generate_responses` to generate 25 responses for each prompt, as is convention for toxicity evaluation.
+我们可以使用 `ResponseGenerator.generate_responses` 为每个提示生成 25 个回复，这是毒性评估的约定。
 ```python
 from langfair.generator import ResponseGenerator
 rg = ResponseGenerator(langchain_llm=llm)
 generations = await rg.generate_responses(prompts=prompts, count=25)
 responses = generations["data"]["response"]
-duplicated_prompts = generations["data"]["prompt"] # so prompts correspond to responses
+duplicated_prompts = generations["data"]["prompt"] # 这样提示就对应于回复
 ```
 
-##### Compute toxicity metrics
-Toxicity metrics can be computed with `ToxicityMetrics`. Note that use of `torch.device` is optional and should be used if GPU is available to speed up toxicity computation.
+##### 计算毒性指标
+可以使用 `ToxicityMetrics` 计算毒性指标。请注意，`torch.device` 的使用是可选的，如果有 GPU 可用，应使用它来加快毒性计算。
 ```python
-# import torch # uncomment if GPU is available
-# device = torch.device("cuda") # uncomment if GPU is available
+# import torch # 如果有 GPU 可用，请取消注释
+# device = torch.device("cuda") # 如果有 GPU 可用，请取消注释
 from langfair.metrics.toxicity import ToxicityMetrics
 tm = ToxicityMetrics(
-    # device=device, # uncomment if GPU is available,
+    # device=device, # 如果有 GPU 可用，请取消注释,
 )
 tox_result = tm.evaluate(
     prompts=duplicated_prompts, 
@@ -54,27 +54,27 @@ tox_result = tm.evaluate(
     return_data=True
 )
 tox_result['metrics']
-# # Output is below
+# # 输出如下
 # {'Toxic Fraction': 0.0004,
 # 'Expected Maximum Toxicity': 0.013845130120171235,
 # 'Toxicity Probability': 0.01}
 ```
 
-##### Compute stereotype metrics
-Stereotype metrics can be computed with `StereotypeMetrics`.
+##### 计算刻板印象指标
+可以使用 `StereotypeMetrics` 计算刻板印象指标。
 ```python
 from langfair.metrics.stereotype import StereotypeMetrics
 sm = StereotypeMetrics()
 stereo_result = sm.evaluate(responses=responses, categories=["gender"])
 stereo_result['metrics']
-# # Output is below
+# # 输出如下
 # {'Stereotype Association': 0.3172750176745329,
 # 'Cooccurrence Bias': 0.44766333654278373,
 # 'Stereotype Fraction - gender': 0.08}
 ```
 
-##### Generate counterfactual responses and compute metrics
-We can generate counterfactual responses with `CounterfactualGenerator`.
+##### 生成反事实回复并计算指标
+我们可以使用 `CounterfactualGenerator` 生成反事实回复。
 ```python
 from langfair.generator.counterfactual import CounterfactualGenerator
 cg = CounterfactualGenerator(langchain_llm=llm)
@@ -85,7 +85,7 @@ male_responses = cf_generations['data']['male_response']
 female_responses = cf_generations['data']['female_response']
 ```
 
-Counterfactual metrics can be easily computed with `CounterfactualMetrics`.
+可以使用 `CounterfactualMetrics` 轻松计算反事实指标。
 ```python
 from langfair.metrics.counterfactual import CounterfactualMetrics
 cm = CounterfactualMetrics()
@@ -95,25 +95,25 @@ cf_result = cm.evaluate(
     attribute='gender'
 )
 cf_result['metrics']
-# # Output is below
+# # 输出如下
 # {'Cosine Similarity': 0.8318708,
 # 'RougeL Similarity': 0.5195852482361165,
 # 'Bleu Similarity': 0.3278433712872481,
 # 'Sentiment Bias': 0.0009947145187601957}
 ```
 
-##### Alternative approach: Semi-automated evaluation with `AutoEval`
-To streamline assessments for text generation and summarization use cases, the `AutoEval` class conducts a multi-step process that completes all of the aforementioned steps with two lines of code.
+##### 替代方法：使用 `AutoEval` 进行半自动化评估
+为了简化文本生成和摘要用例的评估，`AutoEval` 类执行一个多步骤过程，该过程用两行代码完成上述所有步骤。
 ```python
 from langfair.auto import AutoEval
 auto_object = AutoEval(
     prompts=prompts, 
     langchain_llm=llm,
-    # toxicity_device=device # uncomment if GPU is available
+    # toxicity_device=device # 如果有 GPU 可用，请取消注释
 )
 results = await auto_object.evaluate()
 results['metrics']
-# # Output is below
+# # 输出如下
 # {'Toxicity': {'Toxic Fraction': 0.0004,
 #   'Expected Maximum Toxicity': 0.013845130120171235,
 #   'Toxicity Probability': 0.01},

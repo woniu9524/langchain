@@ -1,20 +1,20 @@
 # Log10
 
-This page covers how to use the [Log10](https://log10.io) within LangChain.
+此页面介绍如何在 LangChain 中使用 [Log10](https://log10.io)。
 
-## What is Log10?
+## 什么是 Log10？
 
-Log10 is an [open-source](https://github.com/log10-io/log10) proxiless LLM data management and application development platform that lets you log, debug and tag your Langchain calls.
+Log10 是一个 [开源](https://github.com/log10-io/log10) 的无代理 LLM 数据管理和应用程序开发平台，可让您记录、调试和标记 Langchain 调用。
 
-## Quick start
+## 快速入门
 
-1. Create your free account at [log10.io](https://log10.io)
-2. Add your `LOG10_TOKEN` and `LOG10_ORG_ID` from the Settings and Organization tabs respectively as environment variables.
-3. Also add `LOG10_URL=https://log10.io` and your usual LLM API key: for e.g. `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` to your environment
+1. 在 [log10.io](https://log10.io) 创建您的免费账户。
+2. 将您的 `LOG10_TOKEN` 和 `LOG10_ORG_ID`（分别来自“设置”和“组织”选项卡）添加为环境变量。
+3. 还请将 `LOG10_URL=https://log10.io` 和您常用的 LLM API 密钥（例如 `OPENAI_API_KEY` 或 `ANTHROPIC_API_KEY`）添加到您的环境中。
 
-## How to enable Log10 data management for Langchain
+## 如何为 Langchain 启用 Log10 数据管理
 
-Integration with log10 is a simple one-line `log10_callback` integration as shown below:
+与 log10 的集成是一个简单的单行 `log10_callback` 集成，如下所示：
 
 ```python
 from langchain_openai import ChatOpenAI
@@ -33,11 +33,11 @@ messages = [
 llm = ChatOpenAI(model="gpt-3.5-turbo", callbacks=[log10_callback])
 ```
 
-[Log10 + Langchain + Logs docs](https://github.com/log10-io/log10/blob/main/logging.md#langchain-logger)
+[Log10 + Langchain + Logs 文档](https://github.com/log10-io/log10/blob/main/logging.md#langchain-logger)
 
-[More details + screenshots](https://log10.io/docs/observability/logs) including instructions for self-hosting logs
+[更多详情 + 屏幕截图](https://log10.io/docs/observability/logs)，包括自托管日志的说明。
 
-## How to use tags with Log10
+## 如何使用 Log10 标记
 
 ```python
 from langchain_openai import OpenAI
@@ -68,7 +68,7 @@ completion = llm.predict("You are a ping pong machine.\nPing?\n")
 print(completion)
 ```
 
-You can also intermix direct OpenAI calls and Langchain LLM calls:
+您也可以混合使用直接 OpenAI 调用和 Langchain LLM 调用：
 
 ```python
 import os
@@ -79,7 +79,7 @@ from langchain_openai import OpenAI
 log10(openai)
 
 with log10_session(tags=["foo", "bar"]):
-    # Log a direct OpenAI call
+    # 记录直接的 OpenAI 调用
     response = openai.Completion.create(
         model="text-ada-001",
         prompt="Where is the Eiffel Tower?",
@@ -91,14 +91,14 @@ with log10_session(tags=["foo", "bar"]):
     )
     print(response)
 
-    # Log a call via Langchain
+    # 通过 Langchain 记录调用
     llm = OpenAI(model_name="text-ada-001", temperature=0.5)
     response = llm.predict("You are a ping pong machine.\nPing?\n")
     print(response)
 ```
 
-## How to debug Langchain calls
+## 如何调试 Langchain 调用
 
-[Example of debugging](https://log10.io/docs/observability/prompt_chain_debugging)
+[调试示例](https://log10.io/docs/observability/prompt_chain_debugging)
 
-[More Langchain examples](https://github.com/log10-io/log10/tree/main/examples#langchain)
+[更多 Langchain 示例](https://github.com/log10-io/log10/tree/main/examples#langchain)

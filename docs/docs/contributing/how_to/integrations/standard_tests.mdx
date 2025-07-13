@@ -2,21 +2,20 @@
 pagination_next: contributing/how_to/integrations/publish
 pagination_prev: contributing/how_to/integrations/package
 ---
-# How to add standard tests to an integration
+# 为集成添加标准测试
 
-When creating either a custom class for yourself or to publish in a LangChain integration, it is important to add standard tests to ensure it works as expected. This guide will show you how to add standard tests to each integration type.
+在创建自定义类（无论是自己使用还是发布到 LangChain 集成中）时，添加标准测试以确保其按预期工作非常重要。本指南将展示如何为每种集成类型添加标准测试。
 
-## Setup
+## 设置
 
-First, let's install 2 dependencies:
+首先，让我们安装 2 个依赖项：
 
-- `langchain-core` will define the interfaces we want to import to define our custom tool.
-- `langchain-tests` will provide the standard tests we want to use, as well as pytest plugins necessary to run them. Recommended to pin to the latest version: <img src="https://img.shields.io/pypi/v/langchain-tests" style={{position:"relative",top:4,left:3}} />
+- `langchain-core` 将定义我们要导入以定义自定义工具的接口。
+- `langchain-tests` 将提供我们要使用的标准测试，以及运行它们所需的 pytest 插件。建议固定到最新版本：<img src="https://img.shields.io/pypi/v/langchain-tests" style={{position:"relative",top:4,left:3}} />
 
 :::note
 
-Because added tests in new versions of `langchain-tests` can break your CI/CD pipelines, we recommend pinning the 
-version of `langchain-tests` to avoid unexpected changes.
+由于 `langchain-tests` 新版本中添加的测试可能会破坏您的 CI/CD 管道，因此我们建议固定 `langchain-tests` 的版本以避免意外更改。
 
 :::
 
@@ -25,7 +24,7 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
     <TabItem value="poetry" label="Poetry" default>
-If you followed the [previous guide](../package), you should already have these dependencies installed!
+如果您已按照[上一指南](../package)进行操作，应该已经安装了这些依赖项！
 
 ```bash
 poetry add langchain-core
@@ -37,61 +36,56 @@ poetry install --with test
 ```bash
 pip install -U langchain-core langchain-tests
 
-# install current package in editable mode
+# 以可编辑模式安装当前包
 pip install --editable .
 ```
     </TabItem>
 </Tabs>
 
-## Add and configure standard tests
+## 添加和配置标准测试
 
-There are 2 namespaces in the `langchain-tests` package: 
+`langchain-tests` 包中有 2 个命名空间：
 
-- [unit tests](../../../concepts/testing.mdx#unit-tests) (`langchain_tests.unit_tests`): designed to be used to test the component in isolation and without access to external services
-- [integration tests](../../../concepts/testing.mdx#integration-tests) (`langchain_tests.integration_tests`): designed to be used to test the component with access to external services (in particular, the external service that the component is designed to interact with).
+- [单元测试](../../../concepts/testing.mdx#unit-tests)（`langchain_tests.unit_tests`）：设计用于独立测试组件，无需访问外部服务。
+- [集成测试](../../../concepts/testing.mdx#integration-tests)（`langchain_tests.integration_tests`）：设计用于测试组件，允许访问外部服务（特别是组件旨在交互的外部服务）。
 
-Both types of tests are implemented as [`pytest` class-based test suites](https://docs.pytest.org/en/7.1.x/getting-started.html#group-multiple-tests-in-a-class).
+这两种测试都实现为[`pytest` 基于类的测试套件](https://docs.pytest.org/en/7.1.x/getting-started.html#group-multiple-tests-in-a-class)。
 
-By subclassing the base classes for each type of standard test (see below), you get all of the standard tests for that type, and you
-can override the properties that the test suite uses to configure the tests.
+通过继承每种标准测试类型的基类（如下所示），您可以获得该类型的​​所有标准测试，并且可以覆盖测试套件用于配置测试的属性。
 
-In order to run the tests in the same way as this guide, we recommend subclassing these
-classes in test files under two test subdirectories:
+为了以与本指南相同的方式运行测试，我们建议在两个测试子目录下的测试文件中继承这些类：
 
-- `tests/unit_tests` for unit tests
-- `tests/integration_tests` for integration tests
+- `tests/unit_tests` 用于单元测试
+- `tests/integration_tests` 用于集成测试
 
-### Implementing standard tests
+### 实现标准测试
 
 import CodeBlock from '@theme/CodeBlock';
 
-In the following tabs, we show how to implement the standard tests for
-each component type:
+在以下选项卡中，我们展示了如何为每种组件类型实现标准测试：
 
 <Tabs>
 
     <TabItem value="chat_models" label="Chat models">
 
-To configure standard tests for a chat model, we subclass `ChatModelUnitTests` and `ChatModelIntegrationTests`. On each subclass, we override the following `@property` methods to specify the chat model to be tested and the chat model's configuration:
+要为聊天模型配置标准测试，我们继承 `ChatModelUnitTests` 和 `ChatModelIntegrationTests`。在每个子类上，我们覆盖以下 `@property` 方法来指定要测试的聊天模型及其配置：
 
 | Property | Description |
 | --- | --- |
-| `chat_model_class` | The class for the chat model to be tested |
-| `chat_model_params` | The parameters to pass to the chat
-model's constructor |
+| `chat_model_class` | 要测试的聊天模型类 |
+| `chat_model_params` | 要传递给聊天模型构造函数的参数 |
 
-Additionally, chat model standard tests test a range of behaviors, from the most basic requirements (generating a response to a query) to optional capabilities like multi-modal support and tool-calling. For a test run to be successful:
+此外，聊天模型标准测试会测试一系列行为，从最基本的要求（生成查询响应）到多模态支持和工具调用等可选功能。为了使测试运行成功：
 
-1. If a feature is intended to be supported by the model, it should pass;
-2. If a feature is not intended to be supported by the model, it should be skipped.
+1. 如果模型旨在支持某项功能，则应通过测试；
+2. 如果模型不支持某项功能，则应跳过测试。
 
-Tests for "optional" capabilities are controlled via a set of properties that can be overridden on the test model subclass.
+“可选”功能的测试通过可以覆盖测试模型子类上的一组属性来控制。
 
-You can see the **entire list of configurable capabilities** in the API references for
-[unit tests](https://python.langchain.com/api_reference/standard_tests/unit_tests/langchain_tests.unit_tests.chat_models.ChatModelUnitTests.html)
-and [integration tests](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.chat_models.ChatModelIntegrationTests.html).
+您可以在 API 参考中找到**所有可配置功能的列表**：
+[单元测试](https://python.langchain.com/api_reference/standard_tests/unit_tests/langchain_tests.unit_tests.chat_models.ChatModelUnitTests.html) 和 [集成测试](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.chat_models.ChatModelIntegrationTests.html)。
 
-For example, to enable integration tests for image inputs, we can implement
+例如，要为图像输入启用集成测试，我们可以在集成测试类中实现：
 
 ```python
 @property
@@ -99,18 +93,16 @@ def supports_image_inputs(self) -> bool:
     return True
 ```
 
-on the integration test class.
-
 :::note
 
-Details on what tests are run, how each test can be skipped, and troubleshooting tips for each test can be found in the API references. See details:
+有关运行哪些测试、如何跳过每个测试以及每个测试的故障排除技巧的详细信息，请参阅 API 参考。请参阅详细信息：
 
-- [Unit tests API reference](https://python.langchain.com/api_reference/standard_tests/unit_tests/langchain_tests.unit_tests.chat_models.ChatModelUnitTests.html)
-- [Integration tests API reference](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.chat_models.ChatModelIntegrationTests.html)
+- [单元测试 API 参考](https://python.langchain.com/api_reference/standard_tests/unit_tests/langchain_tests.unit_tests.chat_models.ChatModelUnitTests.html)
+- [集成测试 API 参考](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.chat_models.ChatModelIntegrationTests.html)
 
 :::
 
-Unit test example:
+单元测试示例：
 
 import ChatUnitSource from '../../../../src/theme/integration_template/tests/unit_tests/test_chat_models.py';
 
@@ -123,7 +115,7 @@ import ChatUnitSource from '../../../../src/theme/integration_template/tests/uni
 }
 </CodeBlock>
 
-Integration test example:
+集成测试示例：
 
 
 import ChatIntegrationSource from '../../../../src/theme/integration_template/tests/integration_tests/test_chat_models.py';
@@ -141,10 +133,9 @@ import ChatIntegrationSource from '../../../../src/theme/integration_template/te
     <TabItem value="vector_stores" label="Vector stores">
 
 
-Here's how you would configure the standard tests for a typical vector store (using
-`ParrotVectorStore` as a placeholder):
+以下是如何为典型的向量商店配置标准测试（使用 `ParrotVectorStore` 作为占位符）：
 
-Vector store tests do not have optional capabilities to be configured at this time.
+目前，向量存储测试没有可以配置的可选功能。
 
 import VectorStoreIntegrationSource from '../../../../src/theme/integration_template/tests/integration_tests/test_vectorstores.py';
 
@@ -157,15 +148,13 @@ import VectorStoreIntegrationSource from '../../../../src/theme/integration_temp
 }
 </CodeBlock>
 
-Configuring the tests consists of implementing pytest fixtures for setting up an
-empty vector store and tearing down the vector store after the test run ends.
+配置测试包括实现用于设置空向量存储和在测试运行结束后清理向量存储的 pytest 夹具。
 
 | Fixture | Description |
 | --- | --- |
-| `vectorstore` | A generator that yields an empty vector store for unit tests. The vector store is cleaned up after the test run ends. |
+| `vectorstore` | 一个生成器，用于为单元测试生成一个空向量存储。向量存储将在测试运行结束后清理。 |
 
-For example, below is the `VectorStoreIntegrationTests` class for the [Chroma](https://python.langchain.com/docs/integrations/vectorstores/chroma/)
-integration:
+例如，以下是 [Chroma](https://python.langchain.com/docs/integrations/vectorstores/chroma/) 集成的 `VectorStoreIntegrationTests` 类：
 
 ```python
 from typing import Generator
@@ -180,7 +169,7 @@ from langchain_chroma import Chroma
 class TestChromaStandard(VectorStoreIntegrationTests):
     @pytest.fixture()
     def vectorstore(self) -> Generator[VectorStore, None, None]:  # type: ignore
-        """Get an empty vectorstore for unit tests."""
+        """为单元测试获取一个空的 vectorstore。"""
         store = Chroma(embedding_function=self.get_embeddings())
         try:
             yield store
@@ -190,19 +179,13 @@ class TestChromaStandard(VectorStoreIntegrationTests):
 
 ```
 
-Note that before the initial `yield`, we instantiate the vector store with an
-[embeddings](/docs/concepts/embedding_models/) object. This is a pre-defined
-["fake" embeddings model](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.vectorstores.VectorStoreIntegrationTests.html#langchain_tests.integration_tests.vectorstores.VectorStoreIntegrationTests.get_embeddings)
-that will generate short, arbitrary vectors for documents. You can use a different
-embeddings object if desired.
+请注意，在第一次 `yield` 之前，我们使用[嵌入模型](/docs/concepts/embedding_models/)对象实例化了向量存储。这是一个预定义的“虚假”嵌入模型，用于为文档生成简短的任意向量。您可以根据需要使用不同的嵌入对象。
 
-In the `finally` block, we call whatever integration-specific logic is needed to
-bring the vector store to a clean state. This logic is executed in between each test
-(e.g., even if tests fail).
+在 `finally` 块中，我们调用任何特定于集成的逻辑来将向量存储置于干净状态。此逻辑在每个测试之间执行（例如，即使测试失败）。
 
 :::note
 
-Details on what tests are run and troubleshooting tips for each test can be found in the [API reference](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.vectorstores.VectorStoreIntegrationTests.html).
+有关运行哪些测试以及每个测试的故障排除技巧的详细信息，请参阅[API 参考](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.vectorstores.VectorStoreIntegrationTests.html)。
 
 :::
 
@@ -210,23 +193,23 @@ Details on what tests are run and troubleshooting tips for each test can be foun
     </TabItem>
     <TabItem value="embeddings" label="Embeddings">
 
-To configure standard tests for an embeddings model, we subclass `EmbeddingsUnitTests` and `EmbeddingsIntegrationTests`. On each subclass, we override the following `@property` methods to specify the embeddings model to be tested and the embeddings model's configuration:
+要为嵌入模型配置标准测试，我们继承 `EmbeddingsUnitTests` 和 `EmbeddingsIntegrationTests`。在每个子类上，我们覆盖以下 `@property` 方法来指定要测试的嵌入模型及其配置：
 
 | Property | Description |
 | --- | --- |
-| `embeddings_class` | The class for the embeddings model to be tested |
-| `embedding_model_params` | The parameters to pass to the embeddings model's constructor |
+| `embeddings_class` | 要测试的嵌入模型类 |
+| `embedding_model_params` | 要传递给嵌入模型构造函数的参数 |
 
 :::note
 
-Details on what tests are run, how each test can be skipped, and troubleshooting tips for each test can be found in the API references. See details:
+有关运行哪些测试、如何跳过每个测试以及每个测试的故障排除技巧的详细信息，请参阅 API 参考。请参阅详细信息：
 
-- [Unit tests API reference](https://python.langchain.com/api_reference/standard_tests/unit_tests/langchain_tests.unit_tests.embeddings.EmbeddingsUnitTests.html)
-- [Integration tests API reference](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.embeddings.EmbeddingsIntegrationTests.html)
+- [单元测试 API 参考](https://python.langchain.com/api_reference/standard_tests/unit_tests/langchain_tests.unit_tests.embeddings.EmbeddingsUnitTests.html)
+- [集成测试 API 参考](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.embeddings.EmbeddingsIntegrationTests.html)
 
 :::
 
-Unit test example:
+单元测试示例：
 
 import EmbeddingsUnitSource from '../../../../src/theme/integration_template/tests/unit_tests/test_embeddings.py';
 
@@ -239,7 +222,7 @@ import EmbeddingsUnitSource from '../../../../src/theme/integration_template/tes
 }
 </CodeBlock>
 
-Integration test example:
+集成测试示例：
 
 
 ```python title="tests/integration_tests/test_embeddings.py"
@@ -273,27 +256,24 @@ import EmbeddingsIntegrationSource from '../../../../src/theme/integration_templ
     </TabItem>
     <TabItem value="tools" label="Tools">
 
-To configure standard tests for a tool, we subclass `ToolsUnitTests` and
-`ToolsIntegrationTests`. On each subclass, we override the following `@property` methods
-to specify the tool to be tested and the tool's configuration:
+要为工具配置标准测试，我们继承 `ToolsUnitTests` 和 `ToolsIntegrationTests`。在每个子类上，我们覆盖以下 `@property` 方法来指定要测试的工具及其配置：
 
 | Property | Description |
 | --- | --- |
-| `tool_constructor` | The constructor for the tool to be tested, or an instantiated tool. |
-| `tool_constructor_params` | The parameters to pass to the tool (optional). |
-| `tool_invoke_params_example` | An example of the parameters to pass to the tool's `invoke` method. |
+| `tool_constructor` | 要测试的工具的构造函数，或已实例化的工具。 |
+| `tool_constructor_params` | 要传递给工具的参数（可选）。 |
+| `tool_invoke_params_example` | 要传递给工具 `invoke` 方法的参数示例。 |
 
-If you are testing a tool class and pass a class like `MyTool` to `tool_constructor`, you can pass the parameters to the constructor in `tool_constructor_params`. 
+如果您正在测试一个工具类并将类（如 `MyTool`）传递给 `tool_constructor`，您可以通过 `tool_constructor_params` 传递构造函数参数。
 
-If you are testing an instantiated tool, you can pass the instantiated tool to `tool_constructor` and do not
-override `tool_constructor_params`.
+如果您正在测试一个已实例化的工具，您可以将该已实例化的工具传递给 `tool_constructor`，并且不需要覆盖 `tool_constructor_params`。
 
 :::note
 
-Details on what tests are run, how each test can be skipped, and troubleshooting tips for each test can be found in the API references. See details:
+有关运行哪些测试、如何跳过每个测试以及每个测试的故障排除技巧的详细信息，请参阅 API 参考。请参阅详细信息：
 
-- [Unit tests API reference](https://python.langchain.com/api_reference/standard_tests/unit_tests/langchain_tests.unit_tests.tools.ToolsUnitTests.html)
-- [Integration tests API reference](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.tools.ToolsIntegrationTests.html)
+- [单元测试 API 参考](https://python.langchain.com/api_reference/standard_tests/unit_tests/langchain_tests.unit_tests.tools.ToolsUnitTests.html)
+- [集成测试 API 参考](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.tools.ToolsIntegrationTests.html)
 
 :::
 
@@ -323,18 +303,17 @@ import ToolsIntegrationSource from '../../../../src/theme/integration_template/t
 
     <TabItem value="retrievers" label="Retrievers">
 
-To configure standard tests for a retriever, we subclass `RetrieversUnitTests` and
-`RetrieversIntegrationTests`. On each subclass, we override the following `@property` methods
+要为检索器配置标准测试，我们继承 `RetrieversUnitTests` 和 `RetrieversIntegrationTests`。在每个子类上，我们覆盖以下 `@property` 方法
 
 | Property | Description |
 | --- | --- |
-| `retriever_constructor` | The class for the retriever to be tested |
-| `retriever_constructor_params` | The parameters to pass to the retriever's constructor |
-| `retriever_query_example` | An example of the query to pass to the retriever's `invoke` method |
+| `retriever_constructor` | 要测试的检索器的类 |
+| `retriever_constructor_params` | 要传递给检索器构造函数的参数 |
+| `retriever_query_example` | 要传递给检索器 `invoke` 方法的查询示例 |
 
 :::note
 
-Details on what tests are run and troubleshooting tips for each test can be found in the [API reference](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.retrievers.RetrieversIntegrationTests.html).
+有关运行哪些测试以及每个测试的故障排除技巧的详细信息，请参阅[API 参考](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.retrievers.RetrieversIntegrationTests.html)。
 
 :::
 
@@ -354,18 +333,18 @@ import RetrieverIntegrationSource from '../../../../src/theme/integration_templa
 
 ---
 
-### Running the tests
+### 运行测试
 
-You can run these with the following commands from your project root
+您可以使用项目根目录下的以下命令运行这些测试：
 
 <Tabs>
     <TabItem value="poetry" label="Poetry" default>
 
 ```bash
-# run unit tests without network access
+# 在没有网络访问的情况下运行单元测试
 poetry run pytest --disable-socket --allow-unix-socket --asyncio-mode=auto tests/unit_tests
 
-# run integration tests
+# 运行集成测试
 poetry run pytest --asyncio-mode=auto tests/integration_tests
 ```
 
@@ -373,21 +352,18 @@ poetry run pytest --asyncio-mode=auto tests/integration_tests
     <TabItem value="pip" label="Pip">
 
 ```bash
-# run unit tests without network access
+# 在没有网络访问的情况下运行单元测试
 pytest --disable-socket --allow-unix-socket --asyncio-mode=auto tests/unit_tests
 
-# run integration tests
+# 运行集成测试
 pytest --asyncio-mode=auto tests/integration_tests
 ```
 
     </TabItem>
 </Tabs>
 
-## Test suite information and troubleshooting
+## 测试套件信息和故障排除
 
-For a full list of the standard test suites that are available, as well as
-information on which tests are included and how to troubleshoot common issues,
-see the [Standard Tests API Reference](https://python.langchain.com/api_reference/standard_tests/index.html).
+有关可用的标准测试套件的完整列表，以及有关包含哪些测试和如何排除常见问题的信息，请参阅[标准测试 API 参考](https://python.langchain.com/api_reference/standard_tests/index.html)。
 
-You can see troubleshooting guides under the individual test suites listed in that API Reference. For example,
-[here is the guide for `ChatModelIntegrationTests.test_usage_metadata`](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.chat_models.ChatModelIntegrationTests.html#langchain_tests.integration_tests.chat_models.ChatModelIntegrationTests.test_usage_metadata).
+您可以在 API 参考中列出的各个测试套件下找到故障排除指南。例如，[这是 `ChatModelIntegrationTests.test_usage_metadata`](https://python.langchain.com/api_reference/standard_tests/integration_tests/langchain_tests.integration_tests.chat_models.ChatModelIntegrationTests.html#langchain_tests.integration_tests.chat_models.ChatModelIntegrationTests.test_usage_metadata) 的故障排除指南。

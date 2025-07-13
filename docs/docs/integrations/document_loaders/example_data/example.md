@@ -1,51 +1,51 @@
-# Sample Markdown Document
+# 示例 Markdown 文档
 
-## Introduction
+## 引言
 
-Welcome to this sample Markdown document. Markdown is a lightweight markup language used for formatting text. It's widely used for documentation, readme files, and more.
+欢迎阅读本示例 Markdown 文档。Markdown 是一种轻量级标记语言，用于格式化文本。它被广泛用于文档、自述文件等场景。
 
-## Features
+## 特性
 
-### Headers
+### 标题
 
-Markdown supports multiple levels of headers:
+Markdown 支持多个级别的标题：
 
-- **Header 1**: `# Header 1`
-- **Header 2**: `## Header 2`
-- **Header 3**: `### Header 3`
+- **一级标题**: `# 一级标题`
+- **二级标题**: `## 二级标题`
+- **三级标题**: `### 三级标题`
 
-### Lists
+### 列表
 
-#### Unordered List
+#### 无序列表
 
-- Item 1
-- Item 2
-  - Subitem 2.1
-  - Subitem 2.2
+- 项目 1
+- 项目 2
+  - 子项目 2.1
+  - 子项目 2.2
 
-#### Ordered List
+#### 有序列表
 
-1. First item
-2. Second item
-3. Third item
+1. 第一个项目
+2. 第二个项目
+3. 第三个项目
 
-### Links
+### 链接
 
-[OpenAI](https://www.openai.com) is an AI research organization.
+[OpenAI](https://www.openai.com) 是一个人工智能研究组织。
 
-### Images
+### 图片
 
-Here's an example image:
+这里是一个示例图片：
 
-![Sample Image](https://via.placeholder.com/150)
+![示例图片](https://via.placeholder.com/150)
 
-### Code
+### 代码
 
-#### Inline Code
+#### 行内代码
 
-Use `code` for inline code snippets.
+使用 `code` 来表示行内代码片段。
 
-#### Code Block
+#### 代码块
 
 ```python
 def greet(name):

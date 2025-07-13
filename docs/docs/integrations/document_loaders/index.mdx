@@ -3,71 +3,71 @@ sidebar_position: 0
 sidebar_class_name: hidden
 ---
 
-# Document loaders
+# 文档加载器
 
 import { CategoryTable, IndexTable } from "@theme/FeatureTables";
 
-DocumentLoaders load data into the standard LangChain Document format.
+DocumentLoaders 将数据加载为标准的 LangChain Document 格式。
 
-Each DocumentLoader has its own specific parameters, but they can all be invoked in the same way with the .load method.
-An example use case is as follows:
+每个 DocumentLoader 都有其特定的参数，但都可以通过 `.load` 方法以相同的方式调用。
+以下是一个示例用例：
 
 ```python
 from langchain_community.document_loaders.csv_loader import CSVLoader
 
 loader = CSVLoader(
-    ...  # <-- Integration specific parameters here
+    ...  # <-- 集成特定的参数在此处
 )
 data = loader.load()
 ```
 
-## Webpages
+## 网页
 
-The below document loaders allow you to load webpages.
+以下文档加载器允许您加载网页。
 
-See this guide for a starting point: [How to: load web pages](/docs/how_to/document_loader_web).
+请参阅此指南作为起点：[如何：加载网页](/docs/how_to/document_loader_web)。
 
 <CategoryTable category="webpage_loaders" />
 
-## PDFs
+## PDF
 
-The below document loaders allow you to load PDF documents.
+以下文档加载器允许您加载 PDF 文档。
 
-See this guide for a starting point: [How to: load PDF files](/docs/how_to/document_loader_pdf).
+请参阅此指南作为起点：[如何：加载 PDF 文件](/docs/how_to/document_loader_pdf)。
 
 <CategoryTable category="pdf_loaders" />
 
-## Cloud Providers
+## 云服务提供商
 
-The below document loaders allow you to load documents from your favorite cloud providers.
+以下文档加载器允许您从您喜欢的云服务提供商处加载文档。
 
 <CategoryTable category="cloud_provider_loaders"/>
 
-## Social Platforms
+## 社交平台
 
-The below document loaders allow you to load documents from different social media platforms.
+以下文档加载器允许您从不同的社交媒体平台加载文档。
 
 <CategoryTable category="social_loaders"/>
 
-## Messaging Services
+## 即时消息服务
 
-The below document loaders allow you to load data from different messaging platforms.
+以下文档加载器允许您从不同的即时消息平台加载数据。
 
 <CategoryTable category="messaging_loaders"/>
 
-## Productivity tools
+## 常用生产力工具
 
-The below document loaders allow you to load data from commonly used productivity tools.
+以下文档加载器允许您从常用的生产力工具加载数据。
 
 <CategoryTable category="productivity_loaders"/>
 
-## Common File Types
+## 常见文件类型
 
-The below document loaders allow you to load data from common data formats.
+以下文档加载器允许您从常见的数据格式加载数据。
 
 <CategoryTable category="common_loaders" />
 
 
-## All document loaders
+## 所有文档加载器
 
 <IndexTable />

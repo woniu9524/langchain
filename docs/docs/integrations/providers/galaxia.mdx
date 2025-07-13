@@ -1,20 +1,20 @@
 # Smabbler
-> Smabbler’s graph-powered platform boosts AI development by transforming data into a structured knowledge foundation.
+> Smabbler 的图驱动平台通过将数据转化为结构化的知识基础来加速 AI 开发。
 
 # Galaxia
 
-> Galaxia Knowledge Base is an integrated knowledge base and retrieval mechanism for RAG. In contrast to standard solution, it is based on Knowledge Graphs built using symbolic NLP and Knowledge Representation solutions. Provided texts are analysed and transformed into Graphs containing text, language and semantic information. This rich structure allows for retrieval that is based on semantic information, not on vector similarity/distance.
+> Galaxia 知识库是用于检索增强生成 (RAG) 的集成知识库和检索机制。与标准解决方案不同，它基于使用符号自然语言处理和知识表示解决方案构建的知识图。提供的文本会被分析并转化为包含文本、语言和语义信息的图。这种丰富的结构允许基于语义信息进行检索，而不是基于向量相似性/距离。
 
-Implementing RAG using Galaxia involves first uploading your files to [Galaxia](https://beta.cloud.smabbler.com/home), analyzing them there and then building a model (knowledge graph). When the model is built, you can use `GalaxiaRetriever` to connect to the API and start retrieving.
+使用 Galaxia 实现 RAG 涉及首先将文件上传到 [Galaxia](https://beta.cloud.smabbler.com/home)，在那里进行分析，然后构建模型（知识图）。模型构建完成后，您可以使用 `GalaxiaRetriever` 连接到 API 并开始检索。
 
-More information: [docs](https://smabbler.gitbook.io/smabbler)
+更多信息：[docs](https://smabbler.gitbook.io/smabbler)
 
-## Installation
+## 安装
 ```
 pip install langchain-galaxia-retriever
 ```
 
-## Usage
+## 用法
 
 ```
 from langchain_galaxia_retriever.retriever import GalaxiaRetriever
@@ -29,4 +29,4 @@ gr = GalaxiaRetriever(
 
 result = gr.invoke('<test question>')
 print(result)
-
+```

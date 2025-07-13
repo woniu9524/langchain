@@ -1,24 +1,22 @@
 # MLflow AI Gateway for LLMs
 
->[The MLflow AI Gateway for LLMs](https://www.mlflow.org/docs/latest/llms/deployments/index.html) is a powerful tool designed to streamline the usage and management of various large
-> language model (LLM) providers, such as OpenAI and Anthropic, within an organization. It offers a high-level interface
-> that simplifies the interaction with these services by providing a unified endpoint to handle specific LLM related requests.
+>[MLflow AI Gateway for LLMs](https://www.mlflow.org/docs/latest/llms/deployments/index.html) 是一个强大的工具，旨在简化组织内各种大型语言模型（LLM）提供商（如 OpenAI 和 Anthropic）的使用和管理。它提供了一个高级接口，通过提供统一的端点来处理特定于 LLM 的请求，从而简化了与这些服务的交互。
 
-## Installation and Setup
+## 安装和设置
 
-Install `mlflow` with MLflow GenAI dependencies:
+使用 MLflow GenAI 依赖项安装 `mlflow`：
 
 ```sh
 pip install 'mlflow[genai]'
 ```
 
-Set the OpenAI API key as an environment variable:
+将 OpenAI API 密钥设置为环境变量：
 
 ```sh
 export OPENAI_API_KEY=...
 ```
 
-Create a configuration file:
+创建一个配置文件：
 
 ```yaml
 endpoints:
@@ -39,21 +37,19 @@ endpoints:
         openai_api_key: $OPENAI_API_KEY
 ```
 
-Start the gateway server:
+启动网关服务器：
 
 ```sh
 mlflow gateway start --config-path /path/to/config.yaml
 ```
 
-## Example provided by `MLflow`
+## `MLflow` 提供的示例
 
->The `mlflow.langchain` module provides an API for logging and loading `LangChain` models.
-> This module exports multivariate LangChain models in the langchain flavor and univariate LangChain
-> models in the pyfunc flavor.
+> `mlflow.langchain` 模块提供了用于记录和加载 `LangChain` 模型的 API。此模块以 langchain flavor 的形式导出多元 LangChain 模型，以 pyfunc flavor 的形式导出单变量 LangChain 模型。
 
-See the [API documentation and examples](https://www.mlflow.org/docs/latest/llms/langchain/index.html) for more information.
+有关更多信息，请参阅[API 文档和示例](https://www.mlflow.org/docs/latest/llms/langchain/index.html)。
 
-## Completions Example
+## Completions 示例
 
 ```python
 import mlflow
@@ -82,7 +78,7 @@ model = mlflow.pyfunc.load_model(model_info.model_uri)
 print(model.predict([{"adjective": "funny"}]))
 ```
 
-## Embeddings Example
+## Embeddings 示例
 
 ```python
 from langchain_community.embeddings import MlflowEmbeddings
@@ -96,7 +92,7 @@ print(embeddings.embed_query("hello"))
 print(embeddings.embed_documents(["hello"]))
 ```
 
-## Chat Example
+## Chat 示例
 
 ```python
 from langchain_community.chat_models import ChatMlflow

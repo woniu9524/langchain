@@ -1,36 +1,33 @@
 # Doctran
 
->[Doctran](https://github.com/psychic-api/doctran) is a python package. It uses LLMs and open-source
-> NLP libraries to transform raw text into clean, structured, information-dense documents
-> that are optimized for vector space retrieval. You can think of `Doctran` as a black box where
-> messy strings go in and nice, clean, labelled strings come out.
+>[Doctran](https://github.com/psychic-api/doctran) 是一个 Python 包。它使用 LLM 和开源 NLP 库将原始文本转换为干净、结构化、信息密集型的文档，以优化向量空间检索。您可以将 `Doctran` 视为一个黑匣子，混乱的字符串进入，整洁、干净、带标签的字符串出来。
 
 
-## Installation and Setup
+## 安装和设置
 
 ```bash
 pip install doctran
 ```
 
-## Document Transformers
+## 文档转换器
 
-### Document Interrogator
+### 文档询问器
 
-See a [usage example for DoctranQATransformer](/docs/integrations/document_transformers/doctran_interrogate_document).
+请参阅 [DoctranQATransformer 的用法示例](/docs/integrations/document_transformers/doctran_interrogate_document)。
 
 ```python
 from langchain_community.document_transformers import DoctranQATransformer
 ```
-### Property Extractor
+### 属性提取器
 
-See a [usage example for DoctranPropertyExtractor](/docs/integrations/document_transformers/doctran_extract_properties).
+请参阅 [DoctranPropertyExtractor 的用法示例](/docs/integrations/document_transformers/doctran_extract_properties)。
 
 ```python
 from langchain_community.document_transformers import DoctranPropertyExtractor
 ```
-### Document Translator
+### 文档翻译器
 
-See a [usage example for DoctranTextTranslator](/docs/integrations/document_transformers/doctran_translate_document).
+请参阅 [DoctranTextTranslator 的用法示例](/docs/integrations/document_transformers/doctran_translate_document)。
 
 ```python
 from langchain_community.document_transformers import DoctranTextTranslator
