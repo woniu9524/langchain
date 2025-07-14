@@ -15,7 +15,7 @@ permissions:
 
 # 只允许一个并发部署，跳过正在运行的队列中的运行
 concurrency:
-  group: "pages"
+  group: "pages-zh"
   cancel-in-progress: false
 
 jobs:
@@ -82,6 +82,7 @@ jobs:
         NODE_OPTIONS="--max-old-space-size=5000" yarn run docusaurus build
     
     - name: 设置 Pages
+      if: github.ref == 'refs/heads/translate/zh'
       uses: actions/configure-pages@v4
     
     - name: 上传构建产物
@@ -90,12 +91,10 @@ jobs:
         path: docs/build
 
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: 部署到 GitHub Pages
+        if: github.ref == 'refs/heads/translate/zh'
         id: deployment
         uses: actions/deploy-pages@v4 
