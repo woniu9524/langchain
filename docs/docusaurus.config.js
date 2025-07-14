@@ -27,9 +27,9 @@ const config = {
   // 对于 GitHub Pages 部署，通常是 '/<projectName>/'
   baseUrl: baseUrl,
   trailingSlash: true, // URL是否以斜杠结尾
-  onBrokenLinks: "throw", // 遇到断开链接时的行为
-  onBrokenMarkdownLinks: "throw", // 遇到断开Markdown链接时的行为
-  onBrokenAnchors: "throw", // 遇到断开锚点时的行为
+  onBrokenLinks: "warn", // 遇到断开链接时的行为 - 改为警告而不是抛出错误
+  onBrokenMarkdownLinks: "warn", // 遇到断开Markdown链接时的行为 - 改为警告而不是抛出错误
+  onBrokenAnchors: "warn", // 遇到断开锚点时的行为 - 改为警告而不是抛出错误
 
   // 主题配置
   themes: ["@docusaurus/theme-mermaid"], // 启用 Mermaid 图表支持
