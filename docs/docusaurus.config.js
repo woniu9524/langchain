@@ -13,7 +13,7 @@ const prism = require("prism-react-renderer"); // 代码高亮库
 const baseLightCodeBlockTheme = prism.themes.vsLight; // 浅色主题
 const baseDarkCodeBlockTheme = prism.themes.vsDark; // 深色主题
 
-const baseUrl = "/"; // 站点基础URL
+const baseUrl = "/langchain/"; // 站点基础URL - 修改为 GitHub Pages 部署路径
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -21,8 +21,8 @@ const config = {
   tagline: "LangChain Python 文档", // 站点标语
   favicon: "img/brand/favicon.png", // 站点图标
 
-  // 设置站点的生产环境URL
-  url: "https://python.langchain.com",
+  // 设置站点的生产环境URL - 修改为 GitHub Pages URL
+  url: "https://woniu9524.github.io",
   // 设置站点在 /<baseUrl>/ 路径下提供服务
   // 对于 GitHub Pages 部署，通常是 '/<projectName>/'
   baseUrl: baseUrl,
