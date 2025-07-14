@@ -40,6 +40,11 @@ jobs:
         cache: 'yarn'
         cache-dependency-path: docs/yarn.lock
     
+    - name: 安装 Node.js 依赖
+      run: |
+        cd docs
+        yarn install --frozen-lockfile
+    
     - name: 安装系统依赖
       run: |
         sudo apt-get update
