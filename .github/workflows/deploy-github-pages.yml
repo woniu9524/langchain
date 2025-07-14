@@ -62,8 +62,19 @@ jobs:
       run: |
         source .venv/bin/activate
         cd docs
-        # 使用 Makefile 中的 vercel-build 目标
-        make vercel-build
+        # 使用 Makefile 中的 build 目标，跳过 vercel-deps
+        make build
+        make generate-references
+        # 手动执行 vercel-build 的其余步骤
+        rm -rf docs
+        mv build/output-new/docs docs
+        cp -r ../libs/cli/langchain_cli/integration_template src/theme
+        rm -rf build
+        mkdir -p static/api_reference
+        git clone --depth=1 https://github.com/langchain-ai/langchain-api-docs-html.git
+        mv langchain-api-docs-html/api_reference_build/html/* static/api_reference/
+        rm -rf langchain-api-docs-html
+        NODE_OPTIONS="--max-old-space-size=5000" yarn run docusaurus build
     
     - name: 设置 Pages
       uses: actions/configure-pages@v4
