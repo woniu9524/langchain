@@ -35,14 +35,14 @@ xinference
 你也可以在分布式集群中部署 Xinference。为此，首先在你想要运行它的服务器上启动一个 Xinference supervisor：
 
 ```bash
-xinference-supervisor -H "${supervisor_host}"
+xinference-supervisor -H "supervisor_host"
 ```
 
 
 然后，在你想要运行它们的其他服务器上启动 Xinference workers：
 
 ```bash
-xinference-worker -e "http://${supervisor_host}:9997"
+xinference-worker -e "http://supervisor_host:9997"
 ```
 
 你也可以通过运行以下命令来启动一个本地 Xinference 实例：
