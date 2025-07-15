@@ -400,8 +400,8 @@
     "translator_version": "1.0"
   },
   "docs/docs/how_to/code_splitter.ipynb": {
-    "source_hash": "3da6622478bb06bc54e381a81936884e20ce58a6",
-    "last_translated_at": "2025-07-13T15:00:12.688Z",
+    "source_hash": "efa4fde9a7942d78d39119ede45ad50bd5085e3f",
+    "last_translated_at": "2025-07-15T02:42:48.704Z",
     "translator_version": "1.0"
   },
   "docs/docs/how_to/configure.ipynb": {
@@ -750,8 +750,8 @@
     "translator_version": "1.0"
   },
   "docs/docs/how_to/prompts_composition.ipynb": {
-    "source_hash": "7573c3de8dd909809846edcc7433e4fe13072340",
-    "last_translated_at": "2025-07-13T15:00:12.688Z",
+    "source_hash": "bdadc2db79f78307d2133d4c3249a651d9adbc9e",
+    "last_translated_at": "2025-07-15T02:42:48.705Z",
     "translator_version": "1.0"
   },
   "docs/docs/how_to/prompts_partial.ipynb": {
@@ -1710,8 +1710,8 @@
     "translator_version": "1.0"
   },
   "docs/docs/integrations/document_loaders/amazon_textract.ipynb": {
-    "source_hash": "b76b6ddf63072549acaf3797351793a6f08f8f43",
-    "last_translated_at": "2025-07-13T15:00:12.688Z",
+    "source_hash": "71da1059ea126440468fbd422edf22571e85b778",
+    "last_translated_at": "2025-07-15T02:42:48.705Z",
     "translator_version": "1.0"
   },
   "docs/docs/integrations/document_loaders/apify_dataset.ipynb": {
@@ -4935,8 +4935,8 @@
     "translator_version": "1.0"
   },
   "docs/docs/integrations/providers/scrapegraph.mdx": {
-    "source_hash": "93507ef3a88d8efddf0da4fab5b51f05af76fafc",
-    "last_translated_at": "2025-07-13T15:00:12.689Z",
+    "source_hash": "dffbc063d5f0d95a3c6e709a60c985bd85eeac07",
+    "last_translated_at": "2025-07-15T02:42:48.705Z",
     "translator_version": "1.0"
   },
   "docs/docs/integrations/providers/searchapi.mdx": {
@@ -6785,8 +6785,8 @@
     "translator_version": "1.0"
   },
   "docs/docs/integrations/tools/scrapegraph.ipynb": {
-    "source_hash": "e8c0f53e706b0566533d81b3f18d052b37aa9f94",
-    "last_translated_at": "2025-07-13T15:00:12.689Z",
+    "source_hash": "3434c9d3e9a1d7316aa35c5a0c2a3691c44ea49d",
+    "last_translated_at": "2025-07-15T02:42:48.705Z",
     "translator_version": "1.0"
   },
   "docs/docs/integrations/tools/searchapi.ipynb": {
